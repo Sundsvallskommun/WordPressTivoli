@@ -5,3 +5,12 @@ function sundsvall_se_styles() {
 }
 
 add_action( 'wp_enqueue_scripts', 'sundsvall_se_styles' );
+
+function register_sk_menus() {
+  register_nav_menus(
+    array(
+      'main-menu' => __( 'Huvudmeny' )
+    )
+  );
+}
+add_action( 'init', 'register_sk_menus' );

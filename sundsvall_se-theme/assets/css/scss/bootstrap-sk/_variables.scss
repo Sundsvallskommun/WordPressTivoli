@@ -1,0 +1,30 @@
+// Colors
+//
+// Grayscale and brand colors for use across Bootstrap.
+
+$gray-dark:                 #373a3c !default;
+$gray:                      #55595c !default;
+$gray-light:                #818a91 !default;
+$gray-lighter:              #eceeef !default;
+$gray-lightest:             rgb(249, 249, 251);
+
+$brand-primary:             rgb(219, 87, 160);
+$brand-success:             #5cb85c !default;
+$brand-info:                #5bc0de !default;
+$brand-warning:             #f0ad4e !default;
+$brand-danger:              #d9534f !default;
+
+
+// Body
+//
+// Settings for the `<body>` element.
+
+$body-bg:                    #fff !default;
+$body-color:                 #000;
+
+$font-family-sans-serif: 'Raleway', sans-serif;
+
+$breadcrumb-bg:                 transparent;
+$breadcrumb-divider-color:      inherit;
+$breadcrumb-padding-vertical:   .75rem !default;
+$breadcrumb-padding-horizontal: 0;

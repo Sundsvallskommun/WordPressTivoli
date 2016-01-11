@@ -1,6 +1,8 @@
 /*
  * Override !default variables before importing bootstrap
  * */
-@import '_variables.scss';
+@import 'variables';
 
-@import '../bootstrap/bootstrap.scss';
+@import '../bootstrap/bootstrap';
+
+@import 'shame'
