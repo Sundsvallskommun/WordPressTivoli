@@ -58,3 +58,19 @@
 @import "./bootstrap/utilities-spacing";
 @import "./bootstrap/utilities-responsive";
 
+
+// Customizations
+@import "reboot";
+@import "type";
+
+@import "breadcrumb";
+
+
+/*
+ * Shame/test/temporary below.
+ *
+ * Include this in appropriate file.
+ * */
+.container-fluid {
+	max-width: 73.125em;
+}

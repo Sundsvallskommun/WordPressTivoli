@@ -9,7 +9,7 @@
 	</div>
 </nav>
 
-<header class="site-header">
+<header class="site-header bg-faded">
 
 	<div class="container-fluid">
 
