@@ -6,16 +6,16 @@
  * @since 1.0.0
  */
 
- /**
-	* Output navigational breadcrumbs with bootstrap compatible markup.
-	*
-	* @since 1.0.0
-	* @author Johan Linder <johan@flatmate.se>
-	*
-	* @param bool $echo Optional, default to true. Whether to display or return.
-	*
-	* @return string|void String if $echo parameter is false.
-	*/
+/**
+ * Output navigational breadcrumbs with bootstrap compatible markup.
+ *
+ * @since 1.0.0
+ * @author Johan Linder <johan@flatmate.se>
+ *
+ * @param bool $echo Optional, default to true. Whether to display or return.
+ *
+ * @return string|void String if $echo parameter is false.
+ */
 function the_breadcrumbs( $echo = true ) {
 
 	$breadcrumbs = get_the_breadcrumbs();
@@ -32,14 +32,14 @@ function the_breadcrumbs( $echo = true ) {
 
 }
 
- /**
-	* Retrieve navigational breadcrumbs with bootstrap compatible markup.
-	*
-	* @since 1.0.0
-	* @author Johan Linder <johan@flatmate.se>
-	*
-	* @return string;
-	*/
+/**
+ * Retrieve navigational breadcrumbs with bootstrap compatible markup.
+ *
+ * @since 1.0.0
+ * @author Johan Linder <johan@flatmate.se>
+ *
+ * @return string;
+ */
 function get_the_breadcrumbs() {
 
 	global $post;
