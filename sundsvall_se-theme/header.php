@@ -53,12 +53,7 @@
 
 	<div class="container-fluid">
 
-		<ol class="breadcrumb">
-			<li><a href="#">Startsida</a></li>
-			<li><a href="#">Bygga, bo & miljö</a></li>
-			<li><a href="#">Parker & grönområden</a></li>
-			<li class="active">Kommunens skog</li>
-		</ol>
+		<?php the_breadcrumbs(); ?>
 
 	</div> <?php //.container-fluid ?>
 
