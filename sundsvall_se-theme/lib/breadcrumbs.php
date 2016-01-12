@@ -44,6 +44,8 @@ function get_the_breadcrumbs() {
 
 	global $post;
 
+	if(!is_home()) {
+
 	$item_wrapper_start        = apply_filters('sk_breadcrumbs_item_wrapper_start', '<li>');
 	$active_item_wrapper_start = apply_filters('sk_breadcrumbs_active_item_wrapper_start', '<li class="active">');
 	$item_wrapper_end          = apply_filters('sk_breadcrumbs_item_wrapper_end', '</li>');
@@ -80,5 +82,7 @@ function get_the_breadcrumbs() {
 	$bc .= apply_filters('sk_breadcrumbs_wrapper_end', '</ol>');
 
 	return apply_filters('sk_breadcrumbs', $bc);
+
+	}
 
 }
