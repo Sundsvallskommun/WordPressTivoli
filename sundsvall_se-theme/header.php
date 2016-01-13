@@ -24,16 +24,10 @@
 				</h1>
 			</div>
 
-			<?php //Search form ?>
 			<div class="col-sm-9 col-xs-12">
-				<form>
-					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Vad kan vi hjälpa dig med?">
-						<span class="input-group-btn">
-							<button class="btn btn-secondary" type="button">Sök!</button>
-						</span>
-					</div>
-				</form>
+
+				<?php get_search_form(); ?>
+
 			</div>
 
 		</div> <?php //.row ?>
