@@ -1,0 +1,48 @@
+/*
+ * Regular page/post like single.php, post.php
+ * */
+
+.single-post {
+
+	&__row {
+		@include media-breakpoint-up(sm) {
+			display: flex;
+		}
+	}
+
+	&__sidebar {
+		min-width: 7rem;
+		width: 7rem;
+		margin-right: 2em;
+		@include media-breakpoint-up(md) {
+			margin-right: 6em;
+		}
+		//@include make-col();
+		//@include make-col-span(2);
+		//
+		ul {
+			list-style: none;
+			padding: 0;
+		}
+		hr {
+			margin: 2em 0;
+		}
+	}
+
+	&__content {
+		//@include make-col();
+		//@include make-col-span(10);
+		max-width: 48.125em;
+	}
+
+	&__title {
+		font-size: 3.25em;
+		margin-bottom: 1em;
+		font-weight: 300;
+	}
+
+	&__date {
+		margin-bottom: 1rem;
+	}
+
+}

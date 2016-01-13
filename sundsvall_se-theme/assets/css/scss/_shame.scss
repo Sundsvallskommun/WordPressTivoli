@@ -1,4 +1,11 @@
+/*
+ * Temporary stuff during development, hacks etc.
+ *
+ * If it's a hack, document it well.
+ * */
+
 .site-header {
+	margin-bottom: 5.5rem;
 	form {
 		margin-top: 2.25em;
 	}
@@ -37,3 +44,9 @@
 	}
 }
 
+.site-footer {
+	background: rgb(100, 186, 233);
+	color: #fff;
+	padding: 3em;
+	margin-top: 5.5rem;
+}
