@@ -44,7 +44,9 @@ function get_the_breadcrumbs() {
 
 	global $post;
 
-	if(!is_home()) {
+	if(is_home()) {
+		return false;
+	}
 
 	$item_wrapper_start        = apply_filters('sk_breadcrumbs_item_wrapper_start', '<li>');
 	$active_item_wrapper_start = apply_filters('sk_breadcrumbs_active_item_wrapper_start', '<li class="active">');
@@ -74,15 +76,24 @@ function get_the_breadcrumbs() {
 
 	}
 
-	// Active self
-	$bc .= $active_item_wrapper_start;
-	$bc .= get_the_title($post->ID);
-	$bc .= $item_wrapper_end;
+	if(is_search()) {
+
+		$bc .= $active_item_wrapper_start;
+		$bc .= __('Sökresultat', 'sundsvall_se');
+		$bc .= $item_wrapper_end;
+
+	} else {
+
+		// Active self
+		$bc .= $active_item_wrapper_start;
+		$bc .= get_the_title($post->ID);
+		$bc .= $item_wrapper_end;
+
+	}
 
 	$bc .= apply_filters('sk_breadcrumbs_wrapper_end', '</ol>');
 
 	return apply_filters('sk_breadcrumbs', $bc);
 
-	}
 
 }
