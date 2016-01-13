@@ -38,14 +38,16 @@ foreach($children as $child) {
 	$modified  = $child->post_modified;
 	$permalink = get_the_permalink($child->ID);
 ?>
-			<div class="card">
+			<div class="card navigation-card">
 				<div class="card-block">
 					<h3 class="card-title">
 						<a href="<?php echo $permalink; ?>">
 							<?php echo $title; ?>
 						</a>
 					</h3>
-					<p class="card-text">Lorem ipsum</p>
+					<p class="card-text">Lorem ipsum dolor sit amet, consectetur
+					adipiscing elit. Phasellus dictum, turpis et efficitur elementum, leo
+					libero iaculis justo, sed accumsan.</p>
 				</div>
 			</div>
 <?php
