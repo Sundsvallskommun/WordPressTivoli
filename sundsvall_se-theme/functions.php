@@ -15,9 +15,8 @@ function register_sk_menus() {
 }
 add_action( 'init', 'register_sk_menus' );
 
-function first_paragraph($content){
-	return preg_replace('/<p([^>]+)?>/', '<p$1 class="lead">', $content, 1);
-}
-add_filter('the_content', 'first_paragraph');
-
 include_once 'lib/breadcrumbs.php';
+
+require_once locate_template( 'lib/class-sk-page-lead.php' );
+$first_paragraph_lead = new SK_Page_Lead();
+
