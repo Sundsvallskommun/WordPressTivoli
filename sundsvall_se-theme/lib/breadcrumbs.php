@@ -32,32 +32,28 @@ function the_breadcrumbs( $echo = true ) {
 
 }
 
+/*
+ * Create a single breadcrumb item (<li>)
+ *
+ * @since 1.0.0
+ * @author Johan Linder <johan@flatmate.se>
+ *
+ * @param string $title Breadcrumb title
+ * @param string $url optional link. If omitted it is assumed the item is the active one.
+ *
+ * @return string a breadcrumb <li> item.
+ * */
 function bc_item($title, $url = null) {
 
-	$item_wrapper_start        = apply_filters('sk_breadcrumbs_item_wrapper_start', '<li>');
-	$active_item_wrapper_start = apply_filters('sk_breadcrumbs_active_item_wrapper_start', '<li class="active">');
-	$item_wrapper_end          = apply_filters('sk_breadcrumbs_item_wrapper_end', '</li>');
-
-	$item = '';
-
-	if(isset($url)) {
-
-		$item .= $item_wrapper_start;
-		$item .= '<a href="' . $url . '">';
-
-	} else {
-
-		$item .= $active_item_wrapper_start;
-
-	}
-
-	$item .= $title;
+	$item_wrapper        = apply_filters('sk_breadcrumbs_item_wrapper',   '<li><a href="%s">%s</a></li>');
+	$item_active_wrapper = apply_filters('sk_breadcrumbs_active_wrapper', '<li class="active">%s</li>');
 
 	if($url) {
-		$item .= '</a>';
+		return apply_filters('breadcrumb_item', sprintf($item_wrapper, $url, $title), $title, $url);
 	}
 
-	$item .= $item_wrapper_end;
+	return apply_filters('breadcrumb_active_item', sprintf($item_active_wrapper, $title), $title, $url);
+
 	return $item;
 
 }
@@ -68,7 +64,7 @@ function bc_item($title, $url = null) {
  * @since 1.0.0
  * @author Johan Linder <johan@flatmate.se>
  *
- * @return string;
+ * @return string
  */
 function get_the_breadcrumbs() {
 
@@ -76,16 +72,12 @@ function get_the_breadcrumbs() {
 
 	$home_url         = get_option('home');
 	$posts_page_id    = get_option('page_for_posts');
-	$posts_page_url   = get_the_permalink($posts_page_id);
-	$posts_page_title = get_the_title($posts_page_id);
-	$front_page_id    = get_option('page_on_front');
-	$front_page_title = get_the_title($front_page_id);
 
 	$bc  = ''; // Breadcrumb string to return
-	$bc .= apply_filters('sk_breadcrumbs_wrapper_start', '<ol class="breadcrumb">');
 
 	if(!is_front_page()) {
 		// Link to front page
+		$front_page_title = get_the_title(get_option('page_on_front'));
 		$bc .= bc_item($front_page_title, $home_url);
 	}
 
@@ -122,7 +114,7 @@ function get_the_breadcrumbs() {
 		$post_type = get_post_type_object( $post->post_type );
 		$post_type_url = get_post_type_archive_link( $post->post_type );
 
-		if(false == $post_type_url && 'post' == $post_type ) {
+		if(false == $post_type_url && 'post' == $post->post_type ) {
 			$post_type_url = get_the_permalink($posts_page_id);
 		}
 
@@ -136,14 +128,21 @@ function get_the_breadcrumbs() {
 
 	} else if(is_category()) {
 
-		$post_type = get_post_type_object( $post->post_type );
-		$post_type_url = get_post_type_archive_link( $post->post_type );
+		/**
+		* @todo category ancestors
+		*/
+		if(is_object($post)) {
 
-		if(false == $post_type_url) {
-			$post_type_url = get_the_permalink($posts_page_id);
+			$post_type = get_post_type_object( $post->post_type );
+			$post_type_url = get_post_type_archive_link( $post->post_type );
+
+			if(false == $post_type_url) {
+				$post_type_url = get_the_permalink($posts_page_id);
+			}
+
+			$bc .= bc_item($post_type->labels->name, $post_type_url);
+
 		}
-
-		$bc .= bc_item($post_type->labels->name, $post_type_url);
 
 		$bc .= bc_item(single_cat_title( '', false));
 
@@ -159,9 +158,9 @@ function get_the_breadcrumbs() {
 
 	}
 
-	$bc .= apply_filters('sk_breadcrumbs_wrapper_end', '</ol>');
+	$bc_wrapper = apply_filters('sk_breadcrumbs_wrapper', '<ol class="breadcrumb">%s</ol>');
 
-	return apply_filters('sk_breadcrumbs', $bc);
+	return apply_filters('sk_breadcrumbs', sprintf($bc_wrapper, $bc), $bc);
 
 
 }
