@@ -20,3 +20,6 @@ include_once 'lib/breadcrumbs.php';
 require_once locate_template( 'lib/class-sk-page-lead.php' );
 $first_paragraph_lead = new SK_Page_Lead();
 
+require_once locate_template( 'lib/class-sk-comments.php' );
+$sk_comments = new SK_Comments();
+
