@@ -49,10 +49,10 @@ function bc_item($title, $url = null) {
 	$item_active_wrapper = apply_filters('sk_breadcrumbs_active_wrapper', '<li class="active">%s</li>');
 
 	if($url) {
-		return apply_filters('breadcrumb_item', sprintf($item_wrapper, $url, $title), $title, $url);
+		return apply_filters('sk_breadcrumb_item', sprintf($item_wrapper, $url, $title), $title, $url);
 	}
 
-	return apply_filters('breadcrumb_active_item', sprintf($item_active_wrapper, $title), $title, $url);
+	return apply_filters('sk_breadcrumb_active_item', sprintf($item_active_wrapper, $title), $title, $url);
 
 	return $item;
 
