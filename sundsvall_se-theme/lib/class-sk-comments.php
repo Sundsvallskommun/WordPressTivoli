@@ -11,9 +11,9 @@
 class SK_Comments {
 	public function __construct() {
 		add_action( 'admin_init', array( &$this, 'df_disable_comments_post_types_support' ) );
-		add_filter( 'comments_open', array( &$this, 'df_disable_comments_status', 20, 2 ) );
-		add_filter( 'pings_open', array( &$this, 'df_disable_comments_status', 20, 2 ) );
-		add_filter( 'comments_array', array( &$this, 'df_disable_comments_hide_existing_comments', 10, 2 ) );
+		add_filter( 'comments_open', array( &$this, 'df_disable_comments_status'), 20, 2 );
+		add_filter( 'pings_open', array( &$this, 'df_disable_comments_status'), 20, 2 );
+		add_filter( 'comments_array', array( &$this, 'df_disable_comments_hide_existing_comments'), 10, 2 );
 		add_action( 'admin_menu', array( &$this, 'df_disable_comments_admin_menu' ) );
 		add_action( 'admin_init', array( &$this, 'df_disable_comments_admin_menu_redirect' ) );
 		add_action( 'admin_init', array( &$this, 'df_disable_comments_dashboard' ) );
