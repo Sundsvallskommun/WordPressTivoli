@@ -82,6 +82,11 @@ function get_the_breadcrumbs() {
 		$bc .= __('Sökresultat', 'sundsvall_se');
 		$bc .= $item_wrapper_end;
 
+	} else if(is_404()) {
+
+		$bc .= $active_item_wrapper_start;
+		$bc .= '404';
+		$bc .= $item_wrapper_end;
 	} else {
 
 		// Active self
