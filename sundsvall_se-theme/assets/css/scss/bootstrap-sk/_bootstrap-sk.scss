@@ -19,7 +19,7 @@
 @import "./bootstrap/reboot";
 @import "./bootstrap/type";
 @import "./bootstrap/images";
-@import "./bootstrap/code";
+//@import "./bootstrap/code";
 @import "./bootstrap/grid";
 @import "./bootstrap/tables";
 @import "./bootstrap/forms";
@@ -47,10 +47,10 @@
 @import "./bootstrap/close";
 
 // Components w/ JavaScript
-@import "./bootstrap/modal";
-@import "./bootstrap/tooltip";
-@import "./bootstrap/popover";
-@import "./bootstrap/carousel";
+//@import "./bootstrap/modal";
+//@import "./bootstrap/tooltip";
+//@import "./bootstrap/popover";
+//@import "./bootstrap/carousel";
 
 // Utility classes
 @import "./bootstrap/utilities";
@@ -68,12 +68,10 @@
 // New components
 @import "navigation-card";
 
-
-/*
- * Shame/test/temporary below.
- *
- * Include this in appropriate file.
- * */
 .container-fluid {
 	max-width: 73.125em;
+}
+
+#content {
+	@extend .container-fluid;
 }

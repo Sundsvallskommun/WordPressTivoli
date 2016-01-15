@@ -1,6 +1,5 @@
 <?php get_header(); ?>
 
-<div class="container-fluid">
 
 	<?php if ( have_posts() ) : ?>
 
@@ -35,5 +34,4 @@
 	endif;
 ?>
 
-</div>
 <?php get_footer(); ?>

@@ -1,27 +1,17 @@
 <?php get_template_part('head'); ?>
 
-<nav class="navbar navbar-full bg-faded">
-	<div class="container-fluid">
-		<div class="nav navbar-nav pull-xs-right">
-			<a class="nav-item nav-link btn btn-secondary" href="https://e-tjanster.sundsvall.se/">Våra e-tjänster</a>
-			<a class="nav-item nav-link btn btn-primary" href="#">Lyssna</a>
-		</div>
-	</div>
-</nav>
+<header role="banner" class="site-header bg-faded">
 
-<header class="site-header bg-faded">
+<?php get_template_part('partials/site-navbar'); ?>
 
 	<div class="container-fluid">
 
 		<div class="row">
 
 			<div class="col-sm-3 col-xs-12">
-				<h1 class="site-title">
-					<a href="<?php bloginfo('url'); ?>">
-						<img src="<?php bloginfo('template_directory')?>/assets/images/logo.svg" alt="">
-						<span class="sr-only"><?php bloginfo( 'title' ); ?></span>
-					</a>
-				</h1>
+
+				<?php get_template_part('partials/site-logo'); ?>
+
 			</div>
 
 			<div class="col-sm-9 col-xs-12">
@@ -30,27 +20,19 @@
 
 			</div>
 
-		</div> <?php //.row ?>
+		</div>
 
-	</div> <?php //.container-fluid ?>
+	</div>
 
- <?php
-	$nav_args = array(
-		'theme_location'  => 'main-menu',
-		'container'       => 'nav',
-		'container_class' => 'site-navigation',
-		'menu_class'      => 'container-fluid list-inline',
-		'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>'
-	);
-	wp_nav_menu( $nav_args );
-?>
+	<?php get_template_part('partials/site-navigation'); ?>
 
 	<div class="container-fluid">
 
 		<?php the_breadcrumbs(); ?>
 
-	</div> <?php //.container-fluid ?>
+	</div>
 
 </header>
 
+<main role="main" id="content">
 

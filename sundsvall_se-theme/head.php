@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <!--[if lt IE 8]> <html class="no-js lt-ie9 lt-ie8 lt-ie10" <?php language_attributes(); ?>> <![endif]-->
 <!--[if lt IE 8]> <html class="no-js lt-ie9 lt-ie10" <?php language_attributes(); ?>> <![endif]-->
 <!--[if IE 9]>    <html class="no-js lt-ie10" <?php language_attributes(); ?>> <![endif]-->
