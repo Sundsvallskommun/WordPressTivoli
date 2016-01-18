@@ -5,6 +5,7 @@ var gulp         = require('gulp'),
     sass         = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
     sourcemaps   = require('gulp-sourcemaps'),
+    concat       = require('gulp-concat'),
     browserSync  = require('browser-sync').create();
 
 var config = {
@@ -25,6 +26,13 @@ gulp.task('styles', function() {
 		.pipe(browserSync.stream());
 });
 
+gulp.task('scripts', function() {
+	gulp.src('./assets/js/source/**/*.js')
+		.pipe(concat('app.js'))
+		.pipe(gulp.dest('./assets/js'))
+		.pipe(browserSync.stream());
+});
+
 gulp.task('browser-sync', function() {
 	browserSync.init({
 		proxy: process.env.PROXY || config.PROXY
@@ -36,6 +44,10 @@ gulp.task('watch', ['default'], function() {
 		gulp.start('styles');
 	});
 
+	watch('./assets/js/source/**/*.js', function() {
+		gulp.start('scripts');
+	});
+
 	watch('./**/*.php', function() {
 		browserSync.reload();
 	});
@@ -43,5 +55,5 @@ gulp.task('watch', ['default'], function() {
 
 gulp.task('serve', ['browser-sync', 'watch']);
 
-gulp.task('default', ['styles']);
+gulp.task('default', ['styles', 'scripts']);
 
