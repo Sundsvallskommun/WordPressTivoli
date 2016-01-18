@@ -15,6 +15,8 @@ function register_sk_menus() {
 }
 add_action( 'init', 'register_sk_menus' );
 
+require_once locate_template( 'lib/helpers/sk-logger.php' );
+
 include_once 'lib/breadcrumbs.php';
 
 require_once locate_template( 'lib/class-sk-page-lead.php' );
