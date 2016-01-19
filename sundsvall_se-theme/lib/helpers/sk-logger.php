@@ -16,6 +16,12 @@ if(!function_exists('sk_log')) {
 	 * @param string $type optional type, defaults to 'error'.
 	 */
 	function sk_log($message, $data, $type = 'error') {
+
+		$bt = debug_backtrace();
+		$caller = array_shift($bt);
+		$caller_file = $caller['file'];
+		$caller_line = $caller['line'];
+
 	/*
 	 * Från utveckling.sundsvall.se (15/1-2016):
 	 *
@@ -61,14 +67,17 @@ if(!function_exists('sk_log')) {
 		}
 
 		if( !empty($data) && is_array( $data ) || is_object( $data )) {
-			$output  .= "\n";
+			$output  .= " | ";
 			$output .= print_r( $data, true );
 		} else if( !empty($data) ){
-			$output  .= "\n";
+			$output  .= " | ";
 			$output .= $data;
 		}
 
-		$output  .= "\n";
+
+    $output .= ", called in " . $caller_file . " on line " . $caller_line;
+
+    $output  .= "\n";
 
 		error_log( $output, 3, $log_file );
 	}
