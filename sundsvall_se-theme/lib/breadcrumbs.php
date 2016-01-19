@@ -188,19 +188,28 @@ function get_the_breadcrumbs() {
 
 		// TODO
 
+	} else if(is_tag()){
+
+			$term_id        = get_query_var('tag_id');
+			$taxonomy       = 'post_tag';
+			$args           = 'include=' . $term_id;
+			$terms          = get_terms( $taxonomy, $args );
+			$term_name  = $terms[0]->name;
+
+			// Display the tag name
+			$bc .= bc_item($term_name);
+
 	} else if(is_archive()) {
 
 		$post_type = get_post_type_object( $post->post_type );
 
 		$bc .= bc_item($post_type->labels->name);
 
-	} else if(is_tag()){
-
-		// TODO
 
 	} else if(is_search()) {
 
-		$bc .= bc_item(__('Sökresultat', 'sundsvall_se'));
+		$search_query = get_search_query();
+		$bc .= bc_item(sprintf(__('Sökresultat för: "%s"', 'sundsvall_se'), $search_query));
 
 	} else if(is_404()) {
 
