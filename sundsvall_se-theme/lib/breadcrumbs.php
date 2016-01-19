@@ -81,22 +81,7 @@ function get_the_breadcrumbs() {
 		$bc .= bc_item($front_page_title, $home_url);
 	}
 
-	if(is_page()) {
-
-		// Link to each ancestor
-		$ancestors = get_ancestors($post->ID, 'page');
-		foreach( array_reverse($ancestors) as $ancestor ) {
-			$bc .= bc_item(get_the_title($ancestor), get_the_permalink($ancestor));
-		}
-
-	}
-
-	// Current page
-	if(is_search()) {
-
-		$bc .= bc_item(__('Sökresultat', 'sundsvall_se'));
-
-	} else if(is_home()) {
+	if(is_home()) {
 
 		// Blog/news page
 
@@ -106,6 +91,12 @@ function get_the_breadcrumbs() {
 		$bc .= bc_item($post_type->labels->name);
 
 	} else if(is_page()) {
+
+		// Link to each ancestor
+		$ancestors = get_ancestors($post->ID, 'page');
+		foreach( array_reverse($ancestors) as $ancestor ) {
+			$bc .= bc_item(get_the_title($ancestor), get_the_permalink($ancestor));
+		}
 
 		$bc .= bc_item(get_the_title($post->ID));
 
@@ -124,13 +115,27 @@ function get_the_breadcrumbs() {
 
 		$bc .= bc_item($post_type->labels->name, $post_type_url);
 
+		$category = get_the_category();
+
+		if(!empty($category)) {
+
+			// Category hiearcy
+			$last_category = end($category);
+			$cat_parents = explode(',', rtrim(get_category_parents($last_category->term_id, false, ','), ','));
+
+			foreach($cat_parents as $parent) {
+				$cat_link = get_category_link( get_cat_ID($parent));
+				$bc .= bc_item($parent, $cat_link);
+			}
+
+		}
+
+		// @todo: Possibly show if post is in custom taxonomy
+
 		$bc .= bc_item(get_the_title($post->ID));
 
 	} else if(is_category()) {
 
-		/**
-		* @todo category ancestors
-		*/
 		if(is_object($post)) {
 
 			$post_type = get_post_type_object( $post->post_type );
@@ -144,13 +149,58 @@ function get_the_breadcrumbs() {
 
 		}
 
-		$bc .= bc_item(single_cat_title( '', false));
+		$cat_title = single_cat_title( '', false);
+
+		$category = get_cat_ID( $cat_title );
+
+		// Category parents
+		$cat_parents = explode(',', rtrim(get_category_parents($category, false, ','), ','));
+
+		foreach($cat_parents as $parent) {
+			$cat_link = get_category_link( get_cat_ID($parent));
+			if ($parent != $cat_title) {
+				$bc .= bc_item($parent, $cat_link);
+			}
+		}
+
+
+		$bc .= bc_item($cat_title);
+
+	} else if(is_year()){
+
+		$bc .= bc_item(get_the_time('Y'));
+
+	} else if(is_month()){
+
+		$bc .= bc_item(get_the_time('Y'), get_year_link( get_the_time('Y') ));
+
+		$bc .= bc_item(get_the_time('m'));
+
+	} else if(is_day()){
+
+		$bc .= bc_item(get_the_time('Y'), get_year_link( get_the_time('Y') ));
+
+		$bc .= bc_item(get_the_time('m'), get_month_link( get_the_time('Y'), get_the_time('m') ));
+
+		$bc .= bc_item(get_the_time('j'));
+
+	} else if(is_author()) {
+
+		// TODO
 
 	} else if(is_archive()) {
 
 		$post_type = get_post_type_object( $post->post_type );
 
 		$bc .= bc_item($post_type->labels->name);
+
+	} else if(is_tag()){
+
+		// TODO
+
+	} else if(is_search()) {
+
+		$bc .= bc_item(__('Sökresultat', 'sundsvall_se'));
 
 	} else if(is_404()) {
 
