@@ -26,6 +26,16 @@ gulp.task('styles', function() {
 		.pipe(browserSync.stream());
 });
 
+gulp.task('editor-styles', function() {
+	gulp.src('./assets/css/scss/editor-styles.scss')
+		.pipe(sass().on('error', sass.logError))
+		.pipe(autoprefixer({
+			browsers: ['last 2 versions'],
+			cascade: false
+		}))
+		.pipe(gulp.dest('./assets/css'));
+});
+
 gulp.task('scripts', function() {
 	gulp.src('./assets/js/source/**/*.js')
 		.pipe(concat('app.js'))
