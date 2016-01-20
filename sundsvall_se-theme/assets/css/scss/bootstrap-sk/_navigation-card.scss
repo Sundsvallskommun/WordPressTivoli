@@ -26,5 +26,12 @@
 		font-size: .825em;
 	}
 
+	&.shortcut {
+	  .card-title a:before {
+			border-radius: 0;
+			background: $gray-light;
+		}
+	}
+
 }
 

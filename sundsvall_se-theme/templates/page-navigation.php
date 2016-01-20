@@ -19,27 +19,32 @@ get_header();
 
 	<?php do_action('sk_after_page_content'); ?>
 
-	<div class="card-columns">
+	<div class="">
 <?php
 
 $children = get_children(array(
-'post_parent' => get_the_id(),
-'post_type'   => 'page',
-'post_status' => 'publish'
+	'post_parent' => get_the_id(),
+	'post_type'   => 'page',
+	'post_status' => 'publish',
+	'orderby'     => 'title',
+	'order'       => 'ASC'
 ));
 
 foreach($children as $child) {
-//echo '<pre>';
-//print_r($child);
-//echo '</pre>';
-$title     = $child->post_title;
-$modified  = $child->post_modified;
-$permalink = get_the_permalink($child->ID);
+
+	$child_id     = $child->ID;
+	$title        = $child->post_title;
+	$modified     = $child->post_modified;
+	$permalink    = get_the_permalink($child_id);
+
+	$is_shortcut  = sk_is_shortcut($child_id);
+	$shortcut_url = sk_shortcut_url($child_id);
+
 ?>
-		<div class="card navigation-card">
+	<div class="card navigation-card col-sm-4 <?php echo $is_shortcut ? 'shortcut' : '' ; ?>">
 			<div class="card-block">
 				<h3 class="card-title">
-					<a href="<?php echo $permalink; ?>">
+					<a href="<?php echo $is_shortcut ? $shortcut_url : $permalink ; ?>">
 						<?php echo $title; ?>
 					</a>
 				</h3>
