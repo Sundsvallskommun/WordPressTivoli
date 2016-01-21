@@ -1,0 +1,64 @@
+#skiplinks {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	z-index: 9999999;
+}
+
+.focus-only {
+	display: inline-block;
+	height: 0;
+	position: absolute;
+	overflow: hidden;
+	background: $gray-dark;
+	color: #fff !important;
+
+	&:focus {
+		height: auto;
+		position: static;
+		overflow: auto;
+		padding: 1em;
+	}
+}
+
+.site-header {
+	margin-bottom: 5.5rem;
+	form {
+		margin-top: 2.25em;
+	}
+}
+
+.site-logo {
+	img {
+		max-height: 100%;
+		max-width: 100%;
+	}
+}
+
+.site-navigation {
+	margin-top: 2em;
+	border-bottom: 5px solid $gray-lighter;
+
+	ul {
+		margin-bottom: -5px;
+	}
+	li {
+		display: inline-block;
+
+		a {
+			display: inline-block;
+			padding: 2em 1.5em 2em 1.5em;
+			border-bottom: 5px solid $gray-lighter;
+		}
+
+		&:hover a,
+		&.current-menu-item a {
+			border-bottom: 5px solid $brand-primary;
+		}
+
+		a {
+		}
+	}
+}
+
+

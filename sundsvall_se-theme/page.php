@@ -7,6 +7,8 @@
 
 	<aside class="single-post__sidebar">
 
+		<a href="#post-content" class="focus-only"><?php _e('Hoppa över sidomeny', 'sundsvall_se'); ?></a>
+
 		<ul>
 			<li><a href="#">Dela</a></li>
 			<li><a href="#">Lyssna</a></li>
@@ -22,7 +24,7 @@
 
 	</aside>
 
-	<div class="single-post__content">
+	<div class="single-post__content" id="post-content">
 
 		<?php do_action('sk_before_page_title'); ?>
 

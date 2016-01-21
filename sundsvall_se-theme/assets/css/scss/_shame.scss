@@ -4,46 +4,6 @@
  * If it's a hack, document it well.
  * */
 
-.site-header {
-	margin-bottom: 5.5rem;
-	form {
-		margin-top: 2.25em;
-	}
-}
-
-.site-title {
-	img {
-		max-height: 2.25em;
-		max-width: 100%;
-	}
-}
-
-.site-navigation {
-	margin-top: 2em;
-	border-bottom: 5px solid $gray-lighter;
-
-	ul {
-		margin-bottom: -5px;
-	}
-	li {
-		display: inline-block;
-
-		a {
-			display: inline-block;
-			padding: 2em 1.5em 2em 1.5em;
-			border-bottom: 5px solid $gray-lighter;
-		}
-
-		&:hover a,
-		&.current-menu-item a {
-			border-bottom: 5px solid $brand-primary;
-		}
-
-		a {
-		}
-	}
-}
-
 .site-footer {
 	background: rgb(100, 186, 233);
 	color: #fff;
