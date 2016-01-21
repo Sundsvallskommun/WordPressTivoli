@@ -111,5 +111,77 @@
         ],
         "active": 1,
         "description": ""
+    },
+    {
+        "key": "group_56a0d29fd790b",
+        "title": "L\u00e4ttl\u00e4st",
+        "fields": [
+            {
+                "key": "field_56a0d2dfe4bf4",
+                "label": "Visa l\u00e4ttl\u00e4st inneh\u00e5ll",
+                "name": "show_easyread",
+                "type": "true_false",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "Ja",
+                "default_value": 0
+            },
+            {
+                "key": "field_56a0d2a4e4bf3",
+                "label": "L\u00e4ttl\u00e4st inneh\u00e5ll",
+                "name": "easyread_content",
+                "type": "wysiwyg",
+                "instructions": "L\u00e4ttl\u00e4st inneh\u00e5ll som bes\u00f6karen kan v\u00e4lja att visa ist\u00e4llet f\u00f6r det vanliga inneh\u00e5llet.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_56a0d2dfe4bf4",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "tabs": "all",
+                "toolbar": "full",
+                "media_upload": 1
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "post"
+                }
+            ],
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "page"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": 1,
+        "description": ""
     }
 ]

@@ -10,9 +10,7 @@
 		<a href="#post-content" class="focus-only"><?php _e('Hoppa över sidomeny', 'sundsvall_se'); ?></a>
 
 		<ul>
-			<li><a href="#">Dela</a></li>
-			<li><a href="#">Lyssna</a></li>
-			<li><a href="#">Skriv ut</a></li>
+			<?php do_action('sk_page_helpmenu'); ?>
 		</ul>
 
 		<hr>
