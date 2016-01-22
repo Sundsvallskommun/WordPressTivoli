@@ -139,15 +139,7 @@
                 "type": "wysiwyg",
                 "instructions": "L\u00e4ttl\u00e4st inneh\u00e5ll som bes\u00f6karen kan v\u00e4lja att visa ist\u00e4llet f\u00f6r det vanliga inneh\u00e5llet.",
                 "required": 0,
-                "conditional_logic": [
-                    [
-                        {
-                            "field": "field_56a0d2dfe4bf4",
-                            "operator": "==",
-                            "value": "1"
-                        }
-                    ]
-                ],
+                "conditional_logic": 0,
                 "wrapper": {
                     "width": "",
                     "class": "",
@@ -172,6 +164,11 @@
                     "param": "post_type",
                     "operator": "==",
                     "value": "page"
+                },
+                {
+                    "param": "page_template",
+                    "operator": "!=",
+                    "value": "templates\/page-shortcut.php"
                 }
             ]
         ],
