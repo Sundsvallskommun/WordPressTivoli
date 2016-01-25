@@ -13,6 +13,7 @@ class SK_Post_Type_Contacts {
 
 	function __construct() {
 		add_action( 'init', array(&$this, 'register_post_type'));
+		add_action( 'sk_after_page_content', array(&$this, 'output_page_contact'), 10);
 	}
 
 	function register_post_type() {
@@ -50,6 +51,35 @@ class SK_Post_Type_Contacts {
 		);
 
 		register_post_type('contact_persons', $args);
+
+	}
+
+	function output_page_contact() {
+		global $post;
+
+		$contact_id = get_field('page-contact', $post->ID);
+
+		if(!$contact_id || get_post_status($contact_id) !== 'publish' ) {
+			return false;
+		}
+
+		$contact_name  = get_the_title($contact_id);
+		$contact_role  = get_field('role', $contact_id);
+		$contact_email = get_field('email', $contact_id);
+		$contact_phone = get_field('phone', $contact_id);
+		$contact_thumb = get_the_post_thumbnail($contact_id, 'thumbnail');
+
+		$page_contact_markup = '<div class="page-contact">
+			<div class="page-contact__image">%1$s</div>
+				<div class="page-contact__block">
+					<h3 class="page-contact__title">%2$s <small class="contact-role text-muted">%3$s</small></h3>
+					<p class="page-contact__email"><a href="mailto:%4$s">%4$s</a></p>
+				</div>
+			</div>';
+
+		echo apply_filters( 'sk_page_contact',
+			sprintf($page_contact_markup, $contact_thumb, $contact_name, $contact_role, $contact_email
+		), $contact_thumb, $contact_name, $contact_role, $contact_email);
 	}
 
 }

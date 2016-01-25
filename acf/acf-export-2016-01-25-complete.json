@@ -113,6 +113,89 @@
         "description": ""
     },
     {
+        "key": "group_56a202365e8c9",
+        "title": "Kontaktuppgifter",
+        "fields": [
+            {
+                "key": "field_56a2058e2c6e2",
+                "label": "Roll",
+                "name": "role",
+                "type": "text",
+                "instructions": "Publik rollbeskrivning (ex. Informat\u00f6r)",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "Ange roll",
+                "prepend": "",
+                "append": "",
+                "maxlength": "",
+                "readonly": 0,
+                "disabled": 0
+            },
+            {
+                "key": "field_56a202576a2f6",
+                "label": "E-post",
+                "name": "email",
+                "type": "email",
+                "instructions": "Publik e-postadress (ex. f\u00f6rnamn.efternamn@sundsvall.se)",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": 50,
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "Ange e-post",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_56a202fe6a2f7",
+                "label": "Telefonnummer",
+                "name": "phone",
+                "type": "text",
+                "instructions": "Publikt telefonnummer (ex. 070-123 45 67 eller 060-19 00 00)",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": 50,
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "Ange telefonnummer",
+                "prepend": "",
+                "append": "",
+                "maxlength": "",
+                "readonly": 0,
+                "disabled": 0
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "contact_persons"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": 1,
+        "description": ""
+    },
+    {
         "key": "group_56a0d29fd790b",
         "title": "L\u00e4ttl\u00e4st",
         "fields": [
@@ -174,6 +257,51 @@
         ],
         "menu_order": 0,
         "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": 1,
+        "description": ""
+    },
+    {
+        "key": "group_56a623d12a9ec",
+        "title": "Sidansvarig",
+        "fields": [
+            {
+                "key": "field_56a623e6f7481",
+                "label": "Sidansvarig",
+                "name": "page-contact",
+                "type": "post_object",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "post_type": [
+                    "contact_persons"
+                ],
+                "taxonomy": [],
+                "allow_null": 0,
+                "multiple": 0,
+                "return_format": "id",
+                "ui": 1
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "page"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "side",
         "style": "default",
         "label_placement": "top",
         "instruction_placement": "label",
