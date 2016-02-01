@@ -8,6 +8,9 @@ function register_sk_menus() {
 }
 add_action( 'init', 'register_sk_menus' );
 
+require_once locate_template( 'lib/class-sk-init.php' );
+$sk_init = new SK_Init();
+
 require_once locate_template( 'lib/helpers/sk-logger.php' );
 
 include_once 'lib/breadcrumbs.php';
