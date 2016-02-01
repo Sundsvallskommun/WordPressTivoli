@@ -23,3 +23,14 @@ följer med.  Om filer i undermappar ska användas läggs dessa till i arrayen.
 
 Alla bootstrap-komponenters script finns angivna, men de som inte används är
 utkommenterade.
+
+## Ikoner
+
+svg-ikoner placeras under `./assets/images/icons/`. Dessa blir sedan kombinerad
+till en fil med <symbol>-element med hjälp av
+[svgstore](https://github.com/w0rm/gulp-svgstore). Denna fil laddas in av ett
+script efter sidladdning.
+
+Två hjälpfunktioner finns för att hämkta ut ikonerna: `the_icon()` och
+`get_icon()`. Dessa skapar ett svg-element som länkar in ikonen medd ett
+`<use>`-element.

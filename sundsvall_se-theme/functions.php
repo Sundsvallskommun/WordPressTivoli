@@ -13,6 +13,8 @@ $sk_init = new SK_Init();
 
 require_once locate_template( 'lib/helpers/sk-logger.php' );
 
+require_once locate_template( 'lib/helpers/sk-general.php' );
+
 include_once 'lib/breadcrumbs.php';
 
 require_once locate_template( 'lib/class-sk-enqueues.php' );

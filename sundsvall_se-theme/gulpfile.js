@@ -2,12 +2,18 @@
 
 var gulp         = require('gulp'),
     watch        = require('gulp-watch'),
-    babel        = require('gulp-babel'),
+    sourcemaps   = require('gulp-sourcemaps'),
+
     sass         = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
-    sourcemaps   = require('gulp-sourcemaps'),
+
+    babel        = require('gulp-babel'),
     concat       = require('gulp-concat'),
     uglify       = require('gulp-uglify'),
+
+    svgstore     = require('gulp-svgstore'),
+    svgmin       = require('gulp-svgmin'),
+
     browserSync  = require('browser-sync').create();
 
 var config = {
@@ -68,6 +74,13 @@ gulp.task('scripts', function() {
 		.pipe(browserSync.stream());
 });
 
+gulp.task('icons', function() {
+	gulp.src('./assets/images/icons/*.svg')
+		.pipe(svgmin())
+		.pipe(svgstore())
+		.pipe(gulp.dest('./assets/images/'));
+});
+
 gulp.task('browser-sync', function() {
 	browserSync.init({
 		proxy: process.env.PROXY || config.PROXY
@@ -85,6 +98,10 @@ gulp.task('watch', ['default'], function() {
 		gulp.start('scripts');
 	});
 
+	watch('./assets/images/icons/*.svg', watchArgs, function() {
+		gulp.start('icons');
+	});
+
 	watch('./**/*.php', watchArgs,function() {
 		browserSync.reload();
 	});
@@ -92,5 +109,5 @@ gulp.task('watch', ['default'], function() {
 
 gulp.task('serve', ['browser-sync', 'watch']);
 
-gulp.task('default', ['styles', 'scripts']);
+gulp.task('default', ['styles', 'scripts', 'icons']);
 
