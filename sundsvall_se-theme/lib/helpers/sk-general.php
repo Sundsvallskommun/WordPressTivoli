@@ -5,13 +5,18 @@
  *
  * @author Johan Linder <johan@flatmate.se>
  */
-
-function the_icon($id) {
-	echo get_icon($id, $size);
+function the_icon($id, array $args = array()) {
+	echo get_icon($id, $args);
 }
 
-function get_icon($id) {
+function get_icon($id, array $args = array()) {
+
+	$args = array_merge(array(
+		'alt' => ''
+	), $args);
+
 	return '<svg class="icon icon-'.$id.'">
+		<title>'.$args['alt'].'</title>
 		<use xlink:href="#'.$id.'" />
 	</svg>';
 }
