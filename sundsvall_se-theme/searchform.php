@@ -4,8 +4,7 @@
 		<label class="sr-only" for="s"><?php _e( 'Sök', 'sundsvall_se' ); ?></label>
 		<span class="input-group-btn">
 			<button class="btn btn-secondary" type="submit" id="searchsubmit">
-				<span aria-hidden="true">&#128269;</span>
-				<span class="sr-only">Sök</span>
+				<?php the_icon('search', array('alt' => 'Sök')); ?>
 			</button>
 		</span>
 	</div>

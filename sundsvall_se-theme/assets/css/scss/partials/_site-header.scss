@@ -23,8 +23,47 @@
 
 .site-header {
 	margin-bottom: 5.5rem;
+	font-family: arial;
+}
+
+.logo-container {
+	max-width: 15.65rem;
+	float: left;
+	@include make-col();
+}
+
+.search-container {
+	@include make-col();
+	padding-left: 3.25em;
+	float: none;
+	overflow: auto;
+
 	form {
-		margin-top: 2.25em;
+		margin-top: 1.6em;
+	}
+}
+
+.searchform {
+
+	.form-control {
+		font-size: 1.0625rem;
+		padding: .8em 1.5em;
+		//border-right: none;
+	}
+
+	.btn {
+		font-size: 1.0625rem;
+		padding: .80em 1em;
+		&:not(:hover) {
+			border-left: none;
+		}
+	}
+
+	.icon {
+		fill: $brand-primary;
+		width: 2.1em;
+		height: 1.50em;
+		vertical-align: middle;
 	}
 }
 

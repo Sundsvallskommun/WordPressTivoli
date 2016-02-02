@@ -8,13 +8,13 @@
 
 		<div class="row">
 
-			<div class="col-sm-3 col-xs-12">
+			<div class="logo-container">
 
 				<?php get_template_part('partials/site-logo'); ?>
 
 			</div>
 
-			<div class="col-sm-9 col-xs-12">
+			<div class="search-container">
 
 				<?php get_search_form(); ?>
 
