@@ -90,21 +90,30 @@
 	border-bottom: 5px solid $gray-lighter;
 	line-height: 1.25;
 
-	ul {
-		margin-bottom: -5px;
+	.menu-container {
 	}
-	li {
-		display: inline-block;
 
-		&:first-child {
-			margin-left: -1.5em;
-		}
+	ul {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		align-content: flex-end;
+		overflow: visible;
+
+		max-width: 76.125em;
+		margin: 0 auto -5px;
+		@include clearfix;
+	}
+
+	li {
+		width: 100%;
 
 		a {
+			width: 100%;
 			display: inline-block;
-			padding: 2em 1em 2em 1em;
+			padding: 2em .5em 2em .5em;
 			border-bottom: 5px solid $gray-lighter;
-
+			color: inherit;
 		}
 
 		&:hover a,
@@ -113,21 +122,22 @@
 			text-decoration: none;
 		}
 
-		a {
-			color: inherit;
-		}
-
-
 		.menu-item-icon {
 			fill: #fff;
 			background: $brand-primary;
 			display: inline-block;
-			width: 3.5rem;
-			height: 3.5rem;
 			border-radius: 50%;
 			vertical-align: middle;
 			position: relative;
 			margin-right: .2em;
+
+			width: 2rem;
+			height: 2rem;
+
+			@include media-breakpoint-up(xl) {
+				width: 3.5rem;
+				height: 3.5rem;
+			}
 
 			.icon {
 				position: absolute;
@@ -141,7 +151,7 @@
 
 		.menu-item-text {
 			display: inline-block;
-			max-width: 5.375rem;
+			max-width: 92px;
 			vertical-align: middle;
 		}
 	}
