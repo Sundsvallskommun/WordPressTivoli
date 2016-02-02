@@ -86,8 +86,9 @@
 }
 
 .site-navigation {
-	margin-top: 2em;
+	margin-top: 2.2em;
 	border-bottom: 5px solid $gray-lighter;
+	line-height: 1.25;
 
 	ul {
 		margin-bottom: -5px;
@@ -95,18 +96,53 @@
 	li {
 		display: inline-block;
 
+		&:first-child {
+			margin-left: -1.5em;
+		}
+
 		a {
 			display: inline-block;
-			padding: 2em 1.5em 2em 1.5em;
+			padding: 2em 1em 2em 1em;
 			border-bottom: 5px solid $gray-lighter;
+
 		}
 
 		&:hover a,
 		&.current-menu-item a {
 			border-bottom: 5px solid $brand-primary;
+			text-decoration: none;
 		}
 
 		a {
+			color: inherit;
+		}
+
+
+		.menu-item-icon {
+			fill: #fff;
+			background: $brand-primary;
+			display: inline-block;
+			width: 3.5rem;
+			height: 3.5rem;
+			border-radius: 50%;
+			vertical-align: middle;
+			position: relative;
+			margin-right: .2em;
+
+			.icon {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 60%;
+				height: 60%;
+			}
+		}
+
+		.menu-item-text {
+			display: inline-block;
+			max-width: 5.375rem;
+			vertical-align: middle;
 		}
 	}
 }
