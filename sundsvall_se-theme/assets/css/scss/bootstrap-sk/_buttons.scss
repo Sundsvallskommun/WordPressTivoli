@@ -1,0 +1,10 @@
+.btn-sm {
+	font-size: .8125rem;
+	border-radius: 0;
+	padding-top: .25em;
+	padding-bottom: .25em;
+}
+
+.btn-purple {
+  @include button-variant($btn-primary-color, $sk-purple, $sk-purple);
+}

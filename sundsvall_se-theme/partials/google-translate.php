@@ -1,6 +1,6 @@
 <div class="nav-item dropdown translation-dropdown">
 
-	<button class="btn btn-info nav-link dropdown-toggle" lang="en" type="button" id="languageMenuButton" aria-haspopup="true" aria-expanded="false">
+	<button class="btn btn-primary btn-sm nav-link dropdown-toggle" lang="en" type="button" id="languageMenuButton" aria-haspopup="true" aria-expanded="false">
 		Language
 	</button>
 	<div class="dropdown-menu" aria-labelledby="languageMenuButton">
