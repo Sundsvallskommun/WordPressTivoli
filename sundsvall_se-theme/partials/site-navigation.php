@@ -28,7 +28,7 @@
 					<span class='menu-item-icon'>%s</span>
 					<span class='menu-item-text'>%s</span>
 				</a>
-				</li>\n",
+				\n",
 				$keyword,
 				$class_names,
 				$item->url,
