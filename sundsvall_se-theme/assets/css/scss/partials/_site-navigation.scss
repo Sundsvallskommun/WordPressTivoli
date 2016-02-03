@@ -28,7 +28,6 @@
 
 		&:hover a,
 		&.current-menu-item a {
-			border-bottom: 5px solid $brand-primary;
 			text-decoration: none;
 		}
 
@@ -71,7 +70,9 @@
 			.menu-item-icon {
 				background-color: $color;
 			}
-			&:hover a {
+			&:hover a,
+			&.current-menu-item a,
+			&.current-page-ancestor a {
 				border-bottom-color: $color;
 			}
 		}

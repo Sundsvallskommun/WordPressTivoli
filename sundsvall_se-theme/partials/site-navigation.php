@@ -19,13 +19,18 @@
 			$keyword = strtolower(preg_split("/\ |,\ */", trim($item->title))[0]);
 			$keyword = str_replace(array('å', 'ä', 'ö'), array('a', 'a', 'o'), $keyword);
 
-			$output .= sprintf( "\n<li class='nav-%s'>
+			if( is_array( $item->classes ) ) {
+				$class_names = join( ' ', $item->classes );
+			}
+
+			$output .= sprintf( "\n<li class='nav-%s %s'>
 				<a href='%s'%s>
 					<span class='menu-item-icon'>%s</span>
 					<span class='menu-item-text'>%s</span>
 				</a>
 				</li>\n",
 				$keyword,
+				$class_names,
 				$item->url,
 				( $item->object_id === get_the_ID() ) ? ' class="current"' : '',
 				get_icon($keyword),
