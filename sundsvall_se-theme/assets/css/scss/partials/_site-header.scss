@@ -25,30 +25,59 @@
 	margin-bottom: 5.5rem;
 	font-family: arial;
 
+	@include media-breakpoint-down(sm) {
+		position: fixed;
+		top: 2.5em;
+		width: 100%;
+		z-index: 99;
+		max-height: calc(100vh - 2.5em);
+		overflow: auto;
+	}
+
 	.navbar {
 		margin-bottom: 1.25rem;
+	}
+}
+
+.navbar-mobile {
+	background: rgba($sk-purple, .95);
+	svg {
+		fill: currentColor;
 	}
 }
 
 .logo-container {
 	max-width: 15.65rem;
 	float: left;
+	display: none;
 	@include make-col();
+	@include media-breakpoint-up(md) {
+		display: block;
+	}
 }
 
 .search-container {
 	@include make-col();
-	padding-left: 3.25em;
+	@include media-breakpoint-up(md) {
+		padding-left: 3.25em;
+		display: block;
+	}
 	float: none;
 	overflow: auto;
 
 	form {
-		margin-top: 1.6em;
+		@include media-breakpoint-up(md) {
+			margin-top: 1.6em;
+		}
 	}
 }
 
-.searchform {
+.search-container {
+	background: rgba($sk-purple, .95);
+}
 
+.searchform {
+	padding: 1em 0;
 	.form-control {
 		font-size: 1.0625rem;
 		padding: .8em 1.5em;

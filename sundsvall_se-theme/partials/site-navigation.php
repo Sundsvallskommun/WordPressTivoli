@@ -1,4 +1,4 @@
-<nav role="navigation" class="site-navigation">
+<nav role="navigation" id="mainNavigation" class="site-navigation collapse">
 <?php
 	$nav_args = array(
 		'theme_location'  => 'main-menu',
