@@ -1,4 +1,10 @@
 	.breadcrumb {
 		font-size: .75em;
 		margin-bottom: 0;
+		color: #423f3f;
+
+		a {
+			color: inherit;
+			font-weight: 600;
+		}
 	}
