@@ -1,3 +1,6 @@
+require('./bootstrap/umd/collapse.js');
+require('./bootstrap/umd/dropdown.js');
+
 (function($) {
 	"use strict";
 

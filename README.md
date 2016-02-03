@@ -15,15 +15,6 @@ WordPress-plugins:
 
 ## JavaScript
 
-All JS i temat körs via Babel (med ES2015), läggs samman och minifieras. De
-filer som ska ingå anges i `gulpfile.js` i `themeScripts`-variableln.
-
-Det är angivet att alla filer som ligger direkt under `assets/js/source/`
-följer med.  Om filer i undermappar ska användas läggs dessa till i arrayen.
-
-Alla bootstrap-komponenters script finns angivna, men de som inte används är
-utkommenterade.
-
 ## Ikoner
 
 svg-ikoner placeras under `./assets/images/icons/`. Dessa blir sedan kombinerad

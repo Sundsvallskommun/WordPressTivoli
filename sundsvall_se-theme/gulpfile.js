@@ -7,9 +7,11 @@ var gulp         = require('gulp'),
     sass         = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
 
-    babel        = require('gulp-babel'),
     concat       = require('gulp-concat'),
+    rename       = require('gulp-rename'),
     uglify       = require('gulp-uglify'),
+
+    browserify   = require('gulp-browserify'),
 
     svgstore     = require('gulp-svgstore'),
     svgmin       = require('gulp-svgmin'),
@@ -46,28 +48,11 @@ gulp.task('editor-styles', function() {
 		.pipe(gulp.dest('./assets/css'));
 });
 
-var themeScripts = [
-	'*.js',
-	//'/bootstrap/util.js',
-	//'/bootstrap/alert.js',
-	//'/bootstrap/button.js',
-	//'/bootstrap/carousel.js',
-	//'/bootstrap/collapse.js',
-	'/bootstrap/dropdown.js',
-	//'/bootstrap/modal.js',
-	//'/bootstrap/scrollspy.js',
-	//'/bootstrap/tab.js',
-	//'/bootstrap/tooltip.js',
-	//'/bootstrap/popover.js'
-].map(s => './assets/js/source/' + s);
-
 gulp.task('scripts', function() {
-	gulp.src(themeScripts)
+	gulp.src('./assets/js/source/app.dev.js')
 		.pipe(sourcemaps.init())
-		.pipe(babel({
-			presets: ['es2015']
-		}))
-		.pipe(concat('app.js'))
+		.pipe(browserify())
+		.pipe(rename('app.js'))
 		.pipe(uglify())
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('./assets/js'))
