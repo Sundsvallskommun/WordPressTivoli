@@ -73,11 +73,15 @@
 }
 
 .search-container {
-	background: rgba($sk-purple, .95);
+	@include media-breakpoint-down(sm) {
+		background: rgba($sk-purple, .95);
+	}
 }
 
 .searchform {
-	padding: 1em 0;
+	@include media-breakpoint-down(sm) {
+		padding: 1em 0;
+	}
 	.form-control {
 		font-size: 1.0625rem;
 		padding: .8em 1.5em;
