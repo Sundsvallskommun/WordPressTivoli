@@ -15,15 +15,20 @@
 	class Menu_Icons_Walker extends Walker_Nav_Menu {
 
 		function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-			$output .= sprintf( "\n<li>
+
+			$keyword = strtolower(preg_split("/\ |,\ */", trim($item->title))[0]);
+			$keyword = str_replace(array('å', 'ä', 'ö'), array('a', 'a', 'o'), $keyword);
+
+			$output .= sprintf( "\n<li class='nav-%s'>
 				<a href='%s'%s>
 					<span class='menu-item-icon'>%s</span>
 					<span class='menu-item-text'>%s</span>
 				</a>
 				</li>\n",
+				$keyword,
 				$item->url,
 				( $item->object_id === get_the_ID() ) ? ' class="current"' : '',
-				get_icon('bo-miljo'),
+				get_icon($keyword),
 				$item->title
 			);
 		}
