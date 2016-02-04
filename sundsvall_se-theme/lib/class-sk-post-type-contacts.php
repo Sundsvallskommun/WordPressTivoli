@@ -57,6 +57,14 @@ class SK_Post_Type_Contacts {
 	function output_page_contact() {
 		global $post;
 
+		// We don't show page contact on navigation page. ACF is set to not show
+		// the field on nav-page. But if it was set and saved and later changed
+		// to nav-template, it would be output.
+		if (is_page_template('templates/page-navigation.php') ||
+				is_page_template('templates/page-shortcut.php')) {
+				return;
+		}
+
 		$contact_id = get_field('page-contact', $post->ID);
 
 		if(!$contact_id || get_post_status($contact_id) !== 'publish' ) {
