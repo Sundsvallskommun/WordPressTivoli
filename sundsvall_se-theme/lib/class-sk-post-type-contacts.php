@@ -67,6 +67,29 @@ class SK_Post_Type_Contacts {
 
 		$contact_id = get_field('page-contact', $post->ID);
 
+		echo '<div class="page-contacts">';
+
+			echo $this->get_page_contact($contact_id);
+
+			foreach(get_field('other_contacts', $post->ID) as $contact) {
+				echo $this->get_page_contact($contact, false);
+			}
+
+		echo '</div>';
+
+
+	}
+
+	/**
+	 * Return page contact with markup
+	 *
+	 * @author Johan Linder <johan@flatmate.se>
+	 *
+	 * @param int $contact_id
+	 * @param bool $show_thumb Whether or not to show a thumbnail.
+	 */
+	function get_page_contact($contact_id, $show_thumb = true) {
+
 		if(!$contact_id || get_post_status($contact_id) !== 'publish' ) {
 			return false;
 		}
@@ -75,19 +98,24 @@ class SK_Post_Type_Contacts {
 		$contact_role  = get_field('role', $contact_id);
 		$contact_email = get_field('email', $contact_id);
 		$contact_phone = get_field('phone', $contact_id);
-		$contact_thumb = get_the_post_thumbnail($contact_id, 'thumbnail');
+			$contact_thumb = get_the_post_thumbnail($contact_id, 'thumbnail');
 
-		$page_contact_markup = '<div class="page-contact">
-			<div class="page-contact__image">%1$s</div>
-				<div class="page-contact__block">
-					<h3 class="page-contact__title">%2$s <small class="page-contact__role text-muted">%3$s</small></h3>
-					<p class="page-contact__email"><a href="mailto:%4$s">%4$s</a> %5$s</p>
-				</div>
-			</div>';
+			$contact =  '<div class="page-contact">';
+			if($contact_thumb && $show_thumb) {
+				$contact .= sprintf('<div class="page-contact__image">%s</div>', $contact_thumb);
+			}
+			$contact .= '<div class="page-contact__block">';
 
-		echo apply_filters( 'sk_page_contact',
-			sprintf($page_contact_markup, $contact_thumb, $contact_name, $contact_role, $contact_email, $contact_phone ? ' / '.$contact_phone : ''
-		), $contact_thumb, $contact_name, $contact_role, $contact_email, $contact_phone);
+			$contact .= sprintf('<h3 class="page-contact__title"> %s 
+				<small class="page-contact__role text-muted">%s</small></h3>', $contact_name, $contact_role);
+
+			$contact .= sprintf('<p class="page-contact__email"><a href="mailto:%1$s">%1$s</a></p>', $contact_email);
+			$contact .= '</div>';
+			$contact .= '<div class="clearfix"></div>';
+			$contact .= '</div>';
+
+		return apply_filters( 'sk_page_contact', $contact, $contact_thumb, $contact_name, $contact_role, $contact_email, $contact_phone);
+
 	}
 
 }

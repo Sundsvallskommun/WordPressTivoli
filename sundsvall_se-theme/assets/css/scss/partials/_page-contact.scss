@@ -1,11 +1,24 @@
 /**
  * Contact person displayed after page content.
  */
-.page-contact {
 
+.page-contacts {
 	border-top: 1px solid $hr-border-color;
 	padding-top: 2.5rem;
 	margin-top: 3rem;
+}
+
+.page-contact {
+	+ .page-contact {
+		margin-top: 2em;
+		.page-contact__title {
+			font-size: 1em;
+		}
+
+		+ .page-contact {
+			margin-top: 1em;
+		}
+	}
 
 	&__image {
 		max-width: 3.125em;
@@ -17,7 +30,6 @@
 	}
 
 	&__block {
-
 	}
 
 	&__title {
@@ -35,6 +47,7 @@
 	&__email {
 		font-size: .8125em;
 		color: $text-muted;
+		margin-bottom: 0;
 		a {
 			font-weight: bold;
 		}
