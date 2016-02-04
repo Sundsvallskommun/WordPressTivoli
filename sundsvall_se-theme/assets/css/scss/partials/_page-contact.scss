@@ -1,0 +1,45 @@
+/**
+ * Contact person displayed after page content.
+ */
+.page-contact {
+
+	border-top: 1px solid $hr-border-color;
+	padding-top: 2.5rem;
+	margin-top: 3rem;
+
+	&__image {
+		max-width: 3.125em;
+		float: left;
+		margin-right: 1em;
+		img {
+			border-radius: 50%;
+		}
+	}
+
+	&__block {
+
+	}
+
+	&__title {
+		font-size: 1.25em;
+		margin: 0;
+		font-weight: 300;
+	}
+
+	&__role {
+		font-family: $font-family-sans-serif;
+		font-size: .7em;
+		margin-left: 1em;
+	}
+
+	&__email {
+		font-size: .8125em;
+		color: $text-muted;
+		a {
+			font-weight: bold;
+		}
+	}
+
+}
+
+

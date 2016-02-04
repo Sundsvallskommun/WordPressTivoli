@@ -72,14 +72,14 @@ class SK_Post_Type_Contacts {
 		$page_contact_markup = '<div class="page-contact">
 			<div class="page-contact__image">%1$s</div>
 				<div class="page-contact__block">
-					<h3 class="page-contact__title">%2$s <small class="contact-role text-muted">%3$s</small></h3>
-					<p class="page-contact__email"><a href="mailto:%4$s">%4$s</a></p>
+					<h3 class="page-contact__title">%2$s <small class="page-contact__role text-muted">%3$s</small></h3>
+					<p class="page-contact__email"><a href="mailto:%4$s">%4$s</a> %5$s</p>
 				</div>
 			</div>';
 
 		echo apply_filters( 'sk_page_contact',
-			sprintf($page_contact_markup, $contact_thumb, $contact_name, $contact_role, $contact_email
-		), $contact_thumb, $contact_name, $contact_role, $contact_email);
+			sprintf($page_contact_markup, $contact_thumb, $contact_name, $contact_role, $contact_email, $contact_phone ? ' / '.$contact_phone : ''
+		), $contact_thumb, $contact_name, $contact_role, $contact_email, $contact_phone);
 	}
 
 }
