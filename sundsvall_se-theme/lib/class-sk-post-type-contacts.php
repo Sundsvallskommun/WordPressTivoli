@@ -69,11 +69,15 @@ class SK_Post_Type_Contacts {
 
 		echo '<div class="page-contacts">';
 
-			echo $this->get_page_contact($contact_id);
+		echo $this->get_page_contact($contact_id);
 
-			foreach(get_field('other_contacts', $post->ID) as $contact) {
+		$other_contacts = get_field('other_contacts', $post->ID);
+
+		if(is_array($other_contacts)) {
+			foreach($other_contacts as $contact) {
 				echo $this->get_page_contact($contact, false);
 			}
+		}
 
 		echo '</div>';
 
