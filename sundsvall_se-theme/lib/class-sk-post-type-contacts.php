@@ -106,7 +106,8 @@ class SK_Post_Type_Contacts {
 		$contact_role  = get_field('role', $contact_id);
 		$contact_email = get_field('email', $contact_id);
 		$contact_phone = get_field('phone', $contact_id);
-			$contact_thumb = get_the_post_thumbnail($contact_id, 'thumbnail');
+		$contact_address = get_field('address', $contact_id);
+		$contact_thumb = get_the_post_thumbnail($contact_id, 'thumbnail');
 
 			$contact =  '<div class="page-contact">';
 			if($contact_thumb && $show_thumb) {
@@ -117,7 +118,19 @@ class SK_Post_Type_Contacts {
 			$contact .= sprintf('<h3 class="page-contact__title"> %s 
 				<small class="page-contact__role text-muted">%s</small></h3>', $contact_name, $contact_role);
 
-			$contact .= sprintf('<p class="page-contact__email"><a href="mailto:%1$s">%1$s</a></p>', $contact_email);
+			if($contact_address) {
+				$contact .= sprintf('<div class="page-contact__address">%s</div>', $contact_address);
+			}
+
+			$contact .= '<p class="page-contact__email">';
+			if($contact_email) {
+				$contact .= sprintf('<a href="mailto:%1$s">%1$s</a>', $contact_email);
+			}
+			if($contact_phone) {
+				$contact .= sprintf(' / <span>%1$s</span>', $contact_phone);
+			}
+			$contact .= '</p>';
+
 			$contact .= '</div>';
 			$contact .= '<div class="clearfix"></div>';
 			$contact .= '</div>';

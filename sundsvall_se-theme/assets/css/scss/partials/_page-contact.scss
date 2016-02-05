@@ -43,6 +43,17 @@
 		}
 	}
 
+	&__address {
+		font-size: .8125em;
+		color: $text-muted;
+		margin-bottom: 0;
+		line-height: 1.25;
+		margin-top: .3em;
+		p {
+			margin: 0;
+		}
+	}
+
 }
 
 .other-page-contacts {
