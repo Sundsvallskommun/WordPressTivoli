@@ -9,16 +9,6 @@
 }
 
 .page-contact {
-	+ .page-contact {
-		margin-top: 2em;
-		.page-contact__title {
-			font-size: 1em;
-		}
-
-		+ .page-contact {
-			margin-top: 1em;
-		}
-	}
 
 	&__image {
 		max-width: 3.125em;
@@ -50,6 +40,24 @@
 		margin-bottom: 0;
 		a {
 			font-weight: bold;
+		}
+	}
+
+}
+
+.other-page-contacts {
+
+	background: $gray-lightest;
+	padding: 2em 1.5em;
+	margin-top: 2em;
+
+	.page-contact {
+		.page-contact__title {
+			font-size: 1em;
+		}
+
+		+ .page-contact {
+			margin-top: 1em;
 		}
 	}
 

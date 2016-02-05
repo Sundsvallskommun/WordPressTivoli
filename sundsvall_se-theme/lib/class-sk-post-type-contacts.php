@@ -71,6 +71,8 @@ class SK_Post_Type_Contacts {
 
 		echo $this->get_page_contact($contact_id);
 
+		echo '<div class="other-page-contacts">';
+
 		$other_contacts = get_field('other_contacts', $post->ID);
 
 		if(is_array($other_contacts)) {
@@ -78,6 +80,8 @@ class SK_Post_Type_Contacts {
 				echo $this->get_page_contact($contact, false);
 			}
 		}
+
+		echo '</div>';
 
 		echo '</div>';
 
