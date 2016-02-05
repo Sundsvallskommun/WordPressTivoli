@@ -12,7 +12,7 @@ class SK_Page_Lead {
 
 	function __construct() {
 		add_filter('the_content', array(&$this, 'frontend_lead'));
-		add_action('admin_footer', array(&$this, 'admin_lead'));
+		add_action('mce_external_plugins', array(&$this, 'sk_register_page_lead_tinymce_js'));
 	}
 
 	/**
@@ -29,13 +29,11 @@ class SK_Page_Lead {
 	}
 
 	/**
-	* Visually show lead in tinyMCE editor.
-	*
-	* @author
-	*
-	* @todo Make it work as intended
+	* Load tinyMCE plugin that adds .lead class to first paragraph while editing.
 	* */
-	function admin_lead() {
+	function sk_register_page_lead_tinymce_js($plugin_array) {
+		$plugin_array['sk_page_lead'] = get_template_directory_uri().'/lib/sk-page-lead/sk-tinymce-lead.js';
+		return $plugin_array;
 	}
 
 }

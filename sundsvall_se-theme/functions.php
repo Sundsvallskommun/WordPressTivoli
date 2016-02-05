@@ -20,7 +20,7 @@ include_once 'lib/breadcrumbs.php';
 require_once locate_template( 'lib/class-sk-enqueues.php' );
 $sk_enqueues = new SK_Enqueues();
 
-require_once locate_template( 'lib/class-sk-page-lead.php' );
+require_once locate_template( 'lib/sk-page-lead/class-sk-page-lead.php' );
 $first_paragraph_lead = new SK_Page_Lead();
 
 require_once locate_template( 'lib/class-sk-comments.php' );
