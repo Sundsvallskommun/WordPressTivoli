@@ -47,3 +47,33 @@ function loadSvgSprites() {
 
 <?php
 }
+
+/**
+ * Format phone number with dash and spaces.
+ *
+ * @author Johan Linder <johan@flatmate.se>
+ */
+function format_phone($n) {
+	$n = preg_replace('/\D*/','',$n);
+
+	//$n = preg_replace('/(\d{3})(\d{3})(\d{2})(\d{2})/', '$1 $2 $3 $4 $5', $n);
+	if (strlen($n) % 2 == 0) {
+		$n = preg_replace('/(\d{3})?(\d{3})?(\d{2})?(\d{2})?(\d{2})?(\d{2})?/', '$1-$2 $3 $4 $5 $6', $n, 1);
+	} else if (strlen($n) % 2 == 1) {
+		$n = preg_replace('/(\d{3})?(\d{2})?(\d{2})?(\d{2})?(\d{2})?(\d{2})?/', '$1-$2 $3 $4 $5 $6', $n, 1);
+	}
+
+	return trim($n);
+}
+
+/**
+ * Returns a phone number anchor.
+ *
+ * @author Johan Linder <johan@flatmate.se>
+ */
+function get_phone_link($n) {
+	$n = format_phone($n);
+	return $n = sprintf('<a href="tel:%s">%s</a>', str_replace(' ', '-', $n), $n);
+}
+
+

@@ -19,19 +19,6 @@ class SK_Page_Contacts {
 		add_filter('the_title', array(&$this, 'contact_unique_admin_titles'), 10, 2);
 	}
 
-	function format_phone($n) {
-		$n = preg_replace('/\D*/','',$n);
-
-		//$n = preg_replace('/(\d{3})(\d{3})(\d{2})(\d{2})/', '$1 $2 $3 $4 $5', $n);
-		if (strlen($n) % 2 == 0) {
-			$n = preg_replace('/(\d{3})?(\d{3})?(\d{2})?(\d{2})?(\d{2})?(\d{2})?/', '$1-$2 $3 $4 $5 $6', $n, 1);
-		} else if (strlen($n) % 2 == 1) {
-			$n = preg_replace('/(\d{3})?(\d{2})?(\d{2})?(\d{2})?(\d{2})?(\d{2})?/', '$1-$2 $3 $4 $5 $6', $n, 1);
-		}
-
-		return trim($n);
-	}
-
 	/**
 	 * Add email to title in admin lists to be able to distinguish between
 	 * persons with the same name.
@@ -158,7 +145,7 @@ class SK_Page_Contacts {
 		$contact_name  = get_the_title($contact_id);
 		$contact_role  = get_field('role', $contact_id);
 		$contact_email = get_field('email', $contact_id);
-		$contact_phone = $this->format_phone(get_field('phone', $contact_id));
+		$contact_phone = get_field('phone', $contact_id);
 		$contact_address = get_field('address', $contact_id);
 		$contact_thumb = get_the_post_thumbnail($contact_id, 'thumbnail');
 
@@ -180,7 +167,8 @@ class SK_Page_Contacts {
 				$contact .= sprintf('<a href="mailto:%1$s">%1$s</a>', $contact_email);
 			}
 			if($contact_phone) {
-				$contact .= sprintf(' / <a href="tel:%1$s">%2$s</a>', str_replace(' ', '-', $contact_phone), $contact_phone);
+				$contact .= ' / ';
+				$contact .= get_phone_link($contact_phone);
 			}
 			$contact .= '</p>';
 
