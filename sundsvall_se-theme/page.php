@@ -13,13 +13,6 @@
 			<?php do_action('sk_page_helpmenu'); ?>
 		</ul>
 
-		<hr>
-
-		<ul>
-			<li><a href="#">Tumme upp</a></li>
-			<li><a href="#">Tumme ner</a></li>
-		</ul>
-
 	</aside>
 
 	<div class="single-post__content" id="post-content">
