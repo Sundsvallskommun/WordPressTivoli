@@ -1,6 +1,7 @@
 <?php
 /**
- * Contact persons post type. Used as contact person for pages.
+ * Contact persons post type and display functions. Used as contact persons for
+ * pages.
  *
  * @author Johan Linder <johan@flatmate.se>
  *
@@ -9,7 +10,7 @@
  * @package sundsvall_se
  */
 
-class SK_Post_Type_Contacts {
+class SK_Page_Contacts {
 
 	function __construct() {
 		add_action( 'init', array(&$this, 'register_post_type'));
@@ -54,6 +55,24 @@ class SK_Post_Type_Contacts {
 
 	}
 
+	/**
+	 * Recursive function to get the closest ancestor page that has page
+	 * contacts.
+	 */
+	function get_parent_contacts($page_id) {
+		$parent_id = wp_get_post_parent_id($page_id);
+		$parent_inherit = get_field('inherit_other_contacts', $parent_id);
+		$other_contacts = get_field('other_contacts', $parent_id);
+
+		if($parent_inherit && $parent_id) {
+			return $this->get_parent_contacts($parent_id);
+		} else if(!$parent_inherit){
+			return $other_contacts;
+		} else {
+			return false;
+		}
+	}
+
 	function output_page_contact() {
 		global $post;
 
@@ -72,6 +91,11 @@ class SK_Post_Type_Contacts {
 		echo $this->get_page_contact($contact_id);
 
 		$other_contacts = get_field('other_contacts', $post->ID);
+		$inherit_other_contacts = get_field('inherit_other_contacts', $post->ID);
+
+		if($inherit_other_contacts) {
+			$other_contacts = $this->get_parent_contacts($post->ID);
+		}
 
 		if(is_array($other_contacts)) {
 

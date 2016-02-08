@@ -139,13 +139,37 @@
                 "ui": 1
             },
             {
+                "key": "field_56b88a0f85952",
+                "label": "Arv",
+                "name": "inherit_other_contacts",
+                "type": "true_false",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "\u00c4rv \"Kontakter i verksamheten\" fr\u00e5n sidans f\u00f6r\u00e4lder.",
+                "default_value": 0
+            },
+            {
                 "key": "field_56b35dedec93b",
-                "label": "\u00d6vriga kontakter",
+                "label": "Kontakter i verksamheten",
                 "name": "other_contacts",
                 "type": "post_object",
                 "instructions": "",
                 "required": 0,
-                "conditional_logic": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_56b88a0f85952",
+                            "operator": "!=",
+                            "value": "1"
+                        }
+                    ]
+                ],
                 "wrapper": {
                     "width": "",
                     "class": "",
@@ -167,11 +191,6 @@
                     "param": "post_type",
                     "operator": "==",
                     "value": "page"
-                },
-                {
-                    "param": "page_template",
-                    "operator": "!=",
-                    "value": "templates\/page-navigation.php"
                 },
                 {
                     "param": "page_template",
@@ -220,7 +239,7 @@
                 "name": "email",
                 "type": "email",
                 "instructions": "Publik e-postadress (ex. f\u00f6rnamn.efternamn@sundsvall.se)",
-                "required": 1,
+                "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
                     "width": 50,
