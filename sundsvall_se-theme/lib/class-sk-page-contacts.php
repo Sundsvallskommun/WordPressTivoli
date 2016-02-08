@@ -15,6 +15,21 @@ class SK_Page_Contacts {
 	function __construct() {
 		add_action( 'init', array(&$this, 'register_post_type'));
 		add_action( 'sk_after_page_content', array(&$this, 'output_page_contact'), 10);
+
+		add_filter('the_title', array(&$this, 'contact_unique_admin_titles'), 10, 2);
+	}
+
+	/**
+	 * Add email to title in admin lists to be able to distinguish between
+	 * persons with the same name.
+	 */
+	function contact_unique_admin_titles($title, $id) {
+
+		if(!is_admin()) return $title;
+
+		if(get_post_type($id) !== 'contact_persons') return $title;
+
+		return $title . ' (' . get_field('email', $id) . ')';
 	}
 
 	function register_post_type() {
