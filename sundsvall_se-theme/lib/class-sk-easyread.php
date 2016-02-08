@@ -48,7 +48,7 @@ class SK_Easyread {
 				$url .= '?' . http_build_query($parsed);
 			}
 
-			echo '<li><a href="'.$url.'">'.__('Avsluta lättläst', 'sundsvall_se').'</a></li>';
+			echo '<li><a href="'.$url.'">'.__('Stäng lättläst', 'sundsvall_se').'</a></li>';
 
 			return;
 		}
