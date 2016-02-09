@@ -26,6 +26,9 @@ $first_paragraph_lead = new SK_Page_Lead();
 require_once locate_template( 'lib/class-sk-comments.php' );
 $sk_comments = new SK_Comments();
 
+require_once locate_template( 'lib/sk-eservices/class-sk-eservices.php' );
+$sk_eservices = new SK_EServices();
+
 require_once locate_template( 'lib/class-sk-page-contacts.php' );
 $sk_post_type_contacts = new SK_Page_Contacts();
 
