@@ -1,0 +1,34 @@
+$eservice-background: rgb(232, 255, 238);
+$eservice-color: rgb(38, 191, 76);
+
+/*
+ * Single E-service link. Displayed in content with shortcode.
+ */
+.eservice-single {
+	background: $eservice-background;
+	color: inherit;
+	display: block;
+	margin-bottom: 1.75rem;
+	position: relative;
+	min-height: 66px;
+	padding: 1.2em 1em 1.2em 65px;
+	&:focus,
+	&:hover {
+		color: inherit;
+		outline: 4px solid $eservice-color;
+	}
+
+	span {
+		display: inline-block;
+		margin-left: .5em;
+		line-height: 1.25;
+	}
+
+	img {
+		position: absolute;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+}

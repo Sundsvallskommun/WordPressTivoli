@@ -13,7 +13,8 @@
 						type: 'GET',
 						dataType: 'json',
 						data: {
-							action: 'eservice'
+							action: 'eservice',
+							call: 'get_all_services'
 						},
 						success: function(data) {
 
