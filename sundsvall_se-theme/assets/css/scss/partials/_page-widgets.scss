@@ -1,0 +1,50 @@
+.page-widgets {
+	margin-top: 5.5rem;
+	margin-bottom: 0;
+}
+
+.page-widget {
+
+	&__container {
+		@extend .container-fluid;
+		margin: auto;
+	}
+
+	&__title {
+		font-size: 1.0625rem;
+		font-weight: 600;
+		margin-top: 5em;
+		font-family: $font-family-sans-serif;
+	}
+
+	&__description {
+		color: $text-muted;
+		max-width: 15em;
+	}
+}
+
+.widget-map {
+	background: $gray-lightest;
+	overflow: auto;
+}
+
+.map-description {
+	width: percentage(1/3);
+	float: left;
+	padding: 2em;
+	padding-left: 5em;
+}
+
+.map-container {
+	width: percentage(2/3);
+	float: left;
+	height: 30em;
+	position: relative;
+	overflow: visible !important;
+
+	img {
+		max-width: inherit !important;
+	}
+}
+
+
