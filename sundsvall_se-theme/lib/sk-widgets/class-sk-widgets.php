@@ -32,6 +32,11 @@ class SK_Widgets {
 
 			<div class="page-widget__container">
 
+				<div class="map-description">
+					<h3 class="page-widget__title"><?php the_field('map_heading'); ?></h3>
+					<p class="page-widget__description"><?php the_field('map_description'); ?></p>
+				</div>
+
 				<div class="map-container acf-map">
 
 				<?php while ( have_rows('map_locations') ) : the_row(); 
@@ -44,11 +49,6 @@ class SK_Widgets {
 					</div>
 				<?php endwhile; ?>
 
-				</div>
-
-				<div class="map-description">
-					<h3 class="page-widget__title"><?php the_field('map_heading'); ?></h3>
-					<p class="page-widget__description"><?php the_field('map_description'); ?></p>
 				</div>
 
 			</div>
