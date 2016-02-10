@@ -8,6 +8,8 @@
 				image : '../wp-content/themes/sundsvall_se-theme/assets/images/admin/e-tjanst.png',
 				onclick : function() {
 
+					ed.setProgressState(true);
+
 					$.ajax({
 						url: ajaxurl,
 						type: 'GET',
@@ -16,7 +18,13 @@
 							action: 'eservice',
 							call: 'get_all_services'
 						},
+						error: function() {
+							ed.setProgressState(false);
+							ed.windowManager.alert('Hoppsan, det gick inte att ladda e-tjänster');
+						},
 						success: function(data) {
+
+							ed.setProgressState(false);
 
 							var services = data.map(function(s) {
 								return {text: s.Name, value: s.ID};
@@ -35,7 +43,6 @@
 									ed.selection.setContent('[etjanst id='+eServiceID+']');
 								}
 							})
-
 						}
 					});
 
@@ -47,6 +54,7 @@
 			return null;
 		},
 	});
-	/* Start the buttons */
+
 	tinymce.PluginManager.add( 'eservice_button', tinymce.plugins.MyButtons );
+
 })(jQuery);
