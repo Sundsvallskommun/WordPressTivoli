@@ -1,0 +1,89 @@
+.site-footer {
+
+	font-size: .9375em;
+	line-height: 1.2;
+	background: rgb(100, 186, 233);
+	color: #fff;
+	padding-top: 2.5em;
+	padding-bottom: 4.2em;
+	margin-top: 5.5rem;
+
+	a {
+		color: white;
+		text-decoration: underline;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
+	h2 {
+		margin-top: 1.5em;
+		margin-bottom: 1em;
+	}
+
+	.site-logo {
+		max-width: 9rem;
+		height: auto;
+		margin-bottom: 2em;
+	}
+
+	.footer-icon {
+		float: left;
+		background: $gray-dark;
+		fill: white;
+		width: 2.5rem;
+		height: 2.5rem;
+		min-width: 2.5rem;
+		min-height: 2.5rem;
+		display: inline-block;
+		border-radius: 50%;
+		vertical-align: middle;
+		position: relative;
+		margin-right: 2em;
+		clear: both;
+
+		.icon {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 50%;
+			height: 50%;
+		}
+	}
+
+	&__contact-block {
+
+		.contact-item {
+			margin-bottom: .5em;
+			display: flex;
+
+			align-items: center;
+			align-content: center;
+		}
+		p {
+			min-width: 0;
+			word-wrap: break-word;
+			margin: 0;
+		}
+
+		.extra-contacts {
+			margin-top: 2em;
+			font-size: .866em;
+		}
+	}
+
+	nav {
+		font-size: .933em;
+		li {
+			margin-bottom: .75em;
+		}
+	}
+
+	&__about-block {
+		p {
+			margin-bottom: 1em;
+		}
+	}
+}
