@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Make calls to Open ePlatform
+ *
+ * @author Johan Linder <johan@flatmate.se>
+ */
 class OEP {
 
 	const BASEURL = 'https://sundsvalltest.e-tjansteportalen.se/api/v1';
@@ -8,9 +12,9 @@ class OEP {
 	function __construct() {
 	}
 
-	private function make_call($url) {
+	private function make_json_call($url) {
 
-		$content = @file_get_contents($url);
+		$content = wp_remote_retrieve_body( wp_remote_get($url) );
 
 		$content = mb_convert_encoding($content, 'UTF-8',
 			mb_detect_encoding($content, 'UTF-8, ISO-8859-1', true));
@@ -37,7 +41,7 @@ class OEP {
 
 		$url = self::BASEURL.'/getflows/'.self::FORMAT;
 
-		$json = $this->make_call($url);
+		$json = $this->make_json_call($url);
 
 		if(!isset($json['Flows'])) {
 			return false;
@@ -63,7 +67,7 @@ class OEP {
 			return $transient;
 		}
 
-		$json = $this->make_call($url);
+		$json = $this->make_json_call($url);
 
 		if(!isset($json['Flows']) || !isset($json['Flows'][0])) {
 			return false;
@@ -73,7 +77,7 @@ class OEP {
 
 		set_transient( $transient_name, $output, HOUR_IN_SECONDS);
 
-		return $json['Flows'][0];
+		return $output;
 
 	}
 
