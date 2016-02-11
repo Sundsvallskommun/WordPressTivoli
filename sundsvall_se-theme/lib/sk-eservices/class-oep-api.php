@@ -55,6 +55,55 @@ class OEP {
 
 	}
 
+	public function get_all_categories() {
+
+		$transient_name = 'sk_eservice_categories_getall';
+
+		$transient = get_transient( $transient_name );
+
+		$url = self::BASEURL.'/getcategories/'.self::FORMAT;
+
+		if( ! empty( $transient ) ) {
+			return $transient;
+		}
+
+		$json = $this->make_json_call($url);
+
+		if(!isset($json['Categories'])) {
+			return false;
+		}
+
+		$output = $json['Categories'];
+
+		set_transient( $transient_name, $output, HOUR_IN_SECONDS);
+
+		return $output;
+	}
+
+	public function get_category($category_id) {
+		$transient_name = 'sk_category_'.$category_id;
+
+		$transient = get_transient( $transient_name );
+
+		$url = self::BASEURL.'/getflowsincategory/'.$category_id.'/'.self::FORMAT;
+
+		if( ! empty( $transient ) ) {
+			return $transient;
+		}
+
+		$json = $this->make_json_call($url);
+
+		if(!isset($json['Flows'])) {
+			return false;
+		}
+
+		$output = $json['Flows'];
+
+		set_transient( $transient_name, $output, HOUR_IN_SECONDS);
+
+		return $output;
+	}
+
 	public function get_service($service_id) {
 
 		$transient_name = 'sk_eservice_'.$service_id;
