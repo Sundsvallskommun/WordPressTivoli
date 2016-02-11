@@ -53,7 +53,16 @@
 		}
 	}
 
-	&__contact-block {
+	&__block {
+		@include make-col();
+		@include make-col-span(12);
+	}
+
+	&__block--contact {
+
+		@include media-breakpoint-up(md) {
+			@include make-col-span(4.44);
+		}
 
 		.contact-item {
 			margin-bottom: .5em;
@@ -81,9 +90,13 @@
 		}
 	}
 
-	&__about-block {
+	&__block--about {
 
-		@include media-breakpoint-down(md) {
+		@include media-breakpoint-up(md) {
+			@include make-col-span(3);
+		}
+
+		@include media-breakpoint-down(sm) {
 			margin-top: 3em;
 		}
 
@@ -92,7 +105,11 @@
 		}
 	}
 
-	&__social-block {
+	&__block--social {
+
+		@include media-breakpoint-up(md) {
+			@include make-col-span(4.56);
+		}
 		padding-top: 3em;
 		@include media-breakpoint-up(md) {
 			padding-top: 5.5em;
@@ -102,6 +119,10 @@
 			font-size: 1em;
 			font-weight: bold;
 			margin-bottom: .4em;
+		}
+
+		p {
+			font-size: .933em;
 		}
 	}
 }

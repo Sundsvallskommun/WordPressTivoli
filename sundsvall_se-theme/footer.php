@@ -6,7 +6,7 @@
 
 		<div class="row">
 
-			<div class="col-md-4 site-footer__contact-block">
+			<div class="site-footer__block site-footer__block--contact">
 
 				<div class="site-logo">
 					<img src="<?php bloginfo('template_directory')?>/assets/images/logo-white.svg" alt="<?php printf(__('%s logotyp, länk till startsidan.', 'sundsvall_se'), bloginfo('title')); ?>">
@@ -46,7 +46,7 @@
 
 			</div>
 
-			<div class="col-md-4 site-footer__about-block">
+			<div class="site-footer__block site-footer__block--about">
 
 				<h2>Om sundsvall.se</h2>
 
@@ -64,7 +64,7 @@
 
 			</div>
 
-			<div class="col-md-4 site-footer__social-block">
+			<div class="site-footer__block site-footer__block--social">
 
 				<h3>Har du frågor om webbplatsen?</h3>
 				<p><a href="#">erik.webbansvarig@sundsvall.se</a></p>
