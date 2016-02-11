@@ -27,6 +27,14 @@ class OEP {
 
 	public function get_all_services() {
 
+		$transient_name = 'sk_eservice_getall';
+
+		$transient = get_transient( $transient_name );
+
+		if( ! empty( $transient ) ) {
+			return $transient;
+		}
+
 		$url = self::BASEURL.'/getflows/'.self::FORMAT;
 
 		$json = $this->make_call($url);
@@ -35,19 +43,35 @@ class OEP {
 			return false;
 		}
 
-		return $json['Flows'];
+		$output = $json['Flows'];
+
+		set_transient( $transient_name, $output, HOUR_IN_SECONDS);
+
+		return $output;
 
 	}
 
 	public function get_service($service_id) {
 
+		$transient_name = 'sk_eservice_'.$service_id;
+
+		$transient = get_transient( $transient_name );
+
 		$url = self::BASEURL.'/getflow/'.$service_id.'/'.self::FORMAT;
+
+		if( ! empty( $transient ) ) {
+			return $transient;
+		}
 
 		$json = $this->make_call($url);
 
 		if(!isset($json['Flows']) || !isset($json['Flows'][0])) {
 			return false;
 		}
+
+		$output = $json['Flows'][0];
+
+		set_transient( $transient_name, $output, HOUR_IN_SECONDS);
 
 		return $json['Flows'][0];
 
