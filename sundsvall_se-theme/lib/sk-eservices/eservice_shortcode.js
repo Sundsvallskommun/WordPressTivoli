@@ -5,7 +5,7 @@
 
 			ed.addButton( 'eservice_button', {
 				title : 'Infoga E-tjänst',
-				image : '../wp-content/themes/sundsvall_se-theme/assets/images/admin/e-tjanst.png',
+				image : templateDir + '/assets/images/admin/e-tjanst.png',
 				onclick : function() {
 
 					ed.setProgressState(true);
