@@ -12,6 +12,8 @@
 					<img src="<?php bloginfo('template_directory')?>/assets/images/logo-white.svg" alt="<?php printf(__('%s logotyp, länk till startsidan.', 'sundsvall_se'), bloginfo('title')); ?>">
 				</div>
 
+				<h2 class="sr-only">Kontaktinformation</h2>
+
 				<div class="contact-item contact-item--address">
 					<span class="footer-icon">
 						<?php the_icon('home', array('alt' => 'Adress')); ?>
@@ -62,9 +64,13 @@
 
 			</div>
 
-			<div class="col-md-4">
+			<div class="col-md-4 site-footer__social-block">
 
-				<p>Har du frågor om webbplatsen?</p>
+				<h3>Har du frågor om webbplatsen?</h3>
+				<p><a href="#">erik.webbansvarig@sundsvall.se</a></p>
+
+				<h3>För de senaste nyheterna</h3>
+				<p>Följ Sundsvalls kommun i våra sociala kanaler</p>
 
 			</div>
 
