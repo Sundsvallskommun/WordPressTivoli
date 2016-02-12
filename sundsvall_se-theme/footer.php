@@ -1,5 +1,7 @@
 </main>
 
+<?php do_action('sk_page_widgets'); ?>
+
 <footer class="site-footer" role="contentinfo">
 
 	<div class="container-fluid">
