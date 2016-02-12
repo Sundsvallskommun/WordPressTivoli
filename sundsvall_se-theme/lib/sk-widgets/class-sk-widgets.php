@@ -22,7 +22,7 @@ class SK_Widgets {
 
 		if(!get_field('map_show')) return false;
 
-		if( have_rows('locations') ):
+		if( have_rows('map_locations') ):
 
 			wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?v=3.exp', false);
 
