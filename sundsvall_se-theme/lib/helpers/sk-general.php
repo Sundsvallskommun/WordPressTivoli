@@ -12,13 +12,28 @@ function the_icon($id, array $args = array()) {
 function get_icon($id, array $args = array()) {
 
 	$args = array_merge(array(
-		'alt' => ''
+		'alt' => '',
+		'width' => null,
+		'height' => null
 	), $args);
 
-	return '<svg class="icon icon-'.$id.'">
-		<title>'.$args['alt'].'</title>
-		<use xlink:href="#'.$id.'" />
-	</svg>';
+	$svg =  '<svg ';
+
+	if($args['width']) { $svg .= 'width="'.$args['width'].'"'; }
+
+	if($args['height']) { $svg .= 'height="'.$args['height'].'" '; }
+
+	if($args['height'] && $args['width']) { $svg .= 'viewBox="0 0 '. $args['width'] . ' ' . $args['height'] .'"'; }
+
+	$svg .= 'class="icon icon-'.$id.'"';
+	$svg .=  '>';
+
+	$svg .= '<title>'.$args['alt'].'</title>';
+	$svg .= '<use xlink:href="#'.$id.'" />';
+
+	$svg .= '</svg>';
+
+	return $svg;
 }
 
 /**

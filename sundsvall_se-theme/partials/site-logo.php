@@ -1,5 +1,11 @@
 <div class="site-logo">
 	<a href="<?php bloginfo('url'); ?>">
-		<img src="<?php bloginfo('template_directory')?>/assets/images/logo.svg" alt="<?php printf(__('%s logotyp, länk till startsidan.', 'sundsvall_se'), bloginfo('title')); ?>">
+
+	<?php the_icon('logo', array(
+		'height' => 110,
+		'width' => 276,
+		sprintf(__('%s logotyp, länk till startsidan.', 'sundsvall_se'), get_bloginfo('title'))
+	)); ?>
+
 	</a>
 </div>

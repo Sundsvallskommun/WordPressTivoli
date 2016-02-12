@@ -112,9 +112,9 @@
 }
 
 .site-logo {
-	img {
-		max-height: 100%;
-		max-width: 100%;
+	svg {
+		height: auto;
+		width: 100%;
 	}
 }
 

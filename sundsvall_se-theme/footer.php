@@ -11,7 +11,10 @@
 			<div class="site-footer__block site-footer__block--contact">
 
 				<div class="site-logo">
-					<img src="<?php bloginfo('template_directory')?>/assets/images/logo-white.svg" alt="<?php printf(__('%s logotyp, länk till startsidan.', 'sundsvall_se'), bloginfo('title')); ?>">
+					<?php the_icon('logo', array(
+						'height' => 110, 
+						'width' => 276
+					)); ?>
 				</div>
 
 				<h2 class="sr-only">Kontaktinformation</h2>
