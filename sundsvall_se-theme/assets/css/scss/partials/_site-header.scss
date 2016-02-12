@@ -27,7 +27,7 @@
 
 	@include media-breakpoint-down(sm) {
 		position: fixed;
-		top: 2.5em;
+		top: 4em;
 		width: 100%;
 		z-index: 99;
 		max-height: calc(100vh - 2.5em);
@@ -41,8 +41,33 @@
 
 .navbar-mobile {
 	background: rgba($sk-purple, .95);
+	color: white;
+	height: 4em;
+	padding: .5em;
+
+	button {
+		background: rgba(white, 0.1);
+		border-radius: 50%;
+		width: 2.25em;
+		height: 2.25em;
+	}
+
 	svg {
-		fill: currentColor;
+		fill: white;
+	}
+
+	.navbar-center {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.site-logo {
+		svg {
+			max-height: 2.2em;
+			width: auto;
+		}
 	}
 }
 
