@@ -77,6 +77,18 @@ class SK_EServices {
 
 		$service = $this->oep->get_service($service_id);
 
+		if(!$service) {
+
+			$widget  = '<div class="eservice-single eservice-single--notfound">';
+			$widget .= '<span>';
+			$widget .= 'Hoppsan, det gick inte att hitta e-tjänsten. Gå till <a href="https://e-tjanster.sundsvall.se">E-tjänsteportalen</a> eller titta tillbaka senare.';
+			$widget .= '</span>';
+			$widget .= '</div>';
+
+			return $widget;
+
+		}
+
 		$service_name = $service['Name'];
 		$service_url  = $service['URL'];
 		$service_icon = $service['Icon'];

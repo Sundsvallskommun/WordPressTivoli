@@ -4,6 +4,13 @@ $eservice-color: rgb(38, 191, 76);
 /*
  * Single E-service link. Displayed in content with shortcode.
  */
+a.eservice-single {
+	&:focus,
+	&:hover {
+		color: inherit;
+		outline: 4px solid $eservice-color;
+	}
+}
 .eservice-single {
 	background: $eservice-background;
 	color: inherit;
@@ -12,10 +19,9 @@ $eservice-color: rgb(38, 191, 76);
 	position: relative;
 	min-height: 66px;
 	padding: 1.2em 1em 1.2em 65px;
-	&:focus,
-	&:hover {
-		color: inherit;
-		outline: 4px solid $eservice-color;
+
+	&--notfound {
+		padding-left: 1em;
 	}
 
 	span {

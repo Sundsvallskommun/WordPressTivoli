@@ -13,7 +13,7 @@ class SK_Init {
 
 		add_theme_support( 'post-thumbnails' );
 
-		add_action('admin_head', array(&$this, template_dir_js_var));
+		add_action('admin_head', array(&$this, 'template_dir_js_var'));
 
 	}
 
