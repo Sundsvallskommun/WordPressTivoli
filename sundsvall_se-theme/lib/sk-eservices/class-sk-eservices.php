@@ -111,8 +111,14 @@ class SK_EServices {
 		switch($_REQUEST['call']) {
 
 			case 'get_all_services':
-				echo json_encode($this->oep->get_all_services());
+				$data = $this->oep->get_all_services();
 				break;
+		}
+		
+		if(!$data) {
+			echo 0;
+		} else {
+			echo json_encode($data);
 		}
 
 		wp_die();
