@@ -5,23 +5,25 @@
 .single-post {
 
 	&__row {
-		@include media-breakpoint-up(sm) {
-			display: flex;
-		}
+		@include make-row();
 	}
 
 	&__sidebar {
 		color: $gray-light;
 		font-size: .8125em;
-		min-width: 7rem;
-		width: 7rem;
-		margin-right: 2rem;
+
+		@include make-col();
+		@include make-col-span(12);
+
 		@include media-breakpoint-up(md) {
-			margin-right: 6rem;
+			@include make-col-span(2);
 		}
-		//@include make-col();
-		//@include make-col-span(2);
-		//
+
+		@include media-breakpoint-up(lg) {
+			width: 10rem;
+			margin-right: 3rem;
+		}
+
 		ul {
 			list-style: none;
 			padding: 0;
@@ -35,20 +37,36 @@
 	}
 
 	&__content {
-		//@include make-col();
-		//@include make-col-span(10);
-		width: 100%;
-		max-width: 48.125em;
+
+		@include make-col();
+		@include make-col-span(12);
+
+		@include media-breakpoint-up(md) {
+			@include make-col-span(10);
+		}
+		@include media-breakpoint-up(lg) {
+			max-width: 48.125em;
+		}
+
+		p {
+			color: $paragraph-color;
+		}
+
+		p.lead {
+			color: inherit;
+		}
 	}
 
 	&__title {
-		font-size: 3.25em;
-		margin-bottom: 1em;
-		font-weight: 300;
+		@include media-breakpoint-up(md) {
+			font-size: 3.5em;
+		}
+		margin-bottom: .8em;
 	}
 
 	&__date {
-		margin-bottom: 1rem;
+		font-size: .9375em;
+		margin-bottom: 1.2rem;
 	}
 
 }

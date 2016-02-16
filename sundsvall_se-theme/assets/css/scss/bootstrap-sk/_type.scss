@@ -1,3 +1,16 @@
 .lead {
 	line-height: 1.55;
+	margin-bottom: 2.2em;
 }
+
+p + h2,
+p + h3,
+p + h4,
+p + h5,
+p + .h2,
+p + .h3,
+p + .h4,
+p + .h5 {
+	margin-top: 1.9em;
+}
+

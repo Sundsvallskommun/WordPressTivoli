@@ -1,0 +1,26 @@
+.aligncenter {
+	display: block;
+	margin: 1em auto;
+}
+
+.alignleft {
+	float: left;
+	margin: .25em 2em 1em 0;
+}
+
+.alignright {
+	float: right;
+	margin: .25em 0 1em 2em;
+}
+
+.wp-caption {
+	max-width: 100%;
+	font-size: .8125em;
+
+	p.wp-caption-text {
+		font-style: italic;
+		padding: .75em 0;
+		color: #adb6bb;
+		line-height: 1.2;
+	}
+}
