@@ -14,3 +14,23 @@ p + .h5 {
 	margin-top: 1.9em;
 }
 
+.blockquote {
+
+	quotes: "\201C""\201D""\2018""\2019";
+
+	&:before {
+		content: open-quote;
+		color: $blockquote-border-color;
+		font-size: 4em;
+		line-height: 0.1em;
+		vertical-align: -0.4em;
+	}
+}
+
+blockquote {
+	@extend .blockquote;
+
+	p:last-child {
+		margin-bottom: 0;
+	}
+}
