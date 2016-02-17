@@ -11,15 +11,20 @@ get_header();
 
 <div class="col-xs-12">
 
-	<h1 class="page-title"><?php the_title(); ?></h1>
+	<header class="navigation-page__header">
+		<div class="page-icon"><?php the_icon(get_section_class_name()); ?></div>
 
-	<?php do_action('sk_before_page_content'); ?>
+		<h1 class="page-title"><?php the_title(); ?></h1>
 
-	<?php the_content(); ?>
+		<?php do_action('sk_before_page_content'); ?>
 
-	<?php do_action('sk_after_page_content'); ?>
+		<?php //the_content(); ?>
 
-	<div class="">
+		<?php do_action('sk_after_page_content'); ?>
+
+	</header>
+
+	<div class="row">
 <?php
 
 $children = get_children(array(
@@ -29,6 +34,10 @@ $children = get_children(array(
 	'orderby'     => 'title',
 	'order'       => 'ASC'
 ));
+
+function is_navigation($id) {
+	return strpos(get_page_template_slug($id), 'page-navigation.php');
+}
 
 foreach($children as $child) {
 
@@ -41,18 +50,31 @@ foreach($children as $child) {
 	$shortcut_url = sk_shortcut_url($child_id);
 
 ?>
-	<div class="card navigation-card col-sm-4 <?php echo $is_shortcut ? 'shortcut' : '' ; ?>">
-			<div class="card-block">
-				<h3 class="card-title">
-					<a href="<?php echo $is_shortcut ? $shortcut_url : $permalink ; ?>">
-						<?php echo $title; ?>
-					</a>
-				</h3>
-				<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-				adipiscing elit. Phasellus dictum, turpis et efficitur elementum, leo
-				libero iaculis justo, sed accumsan.</p>
-			</div>
-		</div>
+		<a href="<?php echo $is_shortcut ? $shortcut_url : $permalink ; ?>" class="navigation-card col-md-4 col-sm-6  <?php echo $is_shortcut ? 'shortcut' : '' ; ?>">
+			<h3 class="nav-card-title">
+					<?php echo $title; ?>
+			</h3>
+			<p class="nav-card-text">
+				<?php 
+					if(is_navigation($child_id)) {
+
+						$children = get_children(array('post_type' => 'page', 'post_parent' => $child_id));
+
+						$i = 0;
+						foreach($children as $child) {
+							if($i > 0) echo ', ';
+							echo $child->post_title;
+							$i += 1;
+						}
+
+					} else {
+
+						echo 'Amet doloremque ipsum quae sed doloribus deserunt ullam? Magnam veritatis nam deserunt reiciendis autem, dolorum aperiam.';
+
+					}
+				?>
+			</p>
+		</a>
 <?php
 }
 

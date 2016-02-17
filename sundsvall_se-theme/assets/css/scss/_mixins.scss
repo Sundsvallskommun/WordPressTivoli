@@ -1,7 +1,7 @@
-@mixin section-colors($attribute) {
+@mixin section-colors($attribute, $alpha: 1) {
 	@each $section, $color in $sk-section-colors {
 		.#{$section} & {
-			#{$attribute}: $color;
+			#{$attribute}: rgba($color, $alpha);
 		}
 	}
 }

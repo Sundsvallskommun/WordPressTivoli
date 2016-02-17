@@ -3,14 +3,22 @@
  * class is also present.
  * */
 
-.card.navigation-card {
+.navigation-card {
 	border: none;
+	color: inherit;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	margin-bottom: 2.5em;
 
-	.card-title a {
+	&:hover,
+	&:focus {
 		color: inherit;
+		text-decoration: inherit;
+		background: $gray-lightest;
+		outline: 1px solid;
 	}
 
-	.card-title a:before {
+	.nav-card-title:before {
 		content: "";
 		display: inline-block;
 		width: 1.25em;
@@ -21,7 +29,7 @@
 		background: $brand-primary;
 	}
 
-	.card-text {
+	.nav-card-text {
 		color: $text-muted;
 		font-size: .825em;
 	}
@@ -31,6 +39,11 @@
 			border-radius: 0;
 		}
 	}
+
+	p:last-child {
+		margin-bottom: 0;
+	}
+
 
 }
 

@@ -1,0 +1,42 @@
+.navigation-page__header {
+
+	margin-bottom: 3em;
+
+	@extend .clearfix;
+
+	.page-icon {
+		@include section-colors(background);
+		color: #fff;
+		fill: currentColor;
+		width: 8em;
+		height: 8em;
+		border-radius: 50%;
+		float: left;
+		position: relative;
+		margin-right: 2em;
+
+		.icon {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 60%;
+			height: 60%;
+		}
+	}
+
+	.page-title {
+		display: inline-block;
+		float: left;
+	}
+
+}
+
+.navigation-card .nav-card-title:before {
+	@include section-colors(background);
+}
+
+.navigation-card:hover {
+	@include section-colors(background, .05);
+	@include section-colors(outline-color);
+}

@@ -20,8 +20,3 @@ img {
 	padding: 3em;
 	min-height: 25em;
 }
-
-
-.card.navigation-card .card-title a:before {
-	@include section-colors(background);
-}
