@@ -15,7 +15,7 @@
 
 	<?php wp_head(); ?>
 </head>
-<body>
+<body <?php body_class(); ?>>
 
 <div id="skiplinks">
 	<a tabindex="1" href="#content" class="focus-only">Hoppa till innehåll.</a>

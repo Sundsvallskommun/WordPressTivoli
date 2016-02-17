@@ -1,0 +1,7 @@
+@mixin section-colors($attribute) {
+	@each $section, $color in $sk-section-colors {
+		.#{$section} & {
+			#{$attribute}: $color;
+		}
+	}
+}

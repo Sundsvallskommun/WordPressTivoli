@@ -12,12 +12,12 @@
 </nav>
 
 <?php
+
 	class Menu_Icons_Walker extends Walker_Nav_Menu {
 
 		function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 
-			$keyword = strtolower(preg_split("/\ |,\ */", trim($item->title))[0]);
-			$keyword = str_replace(array('å', 'ä', 'ö'), array('a', 'a', 'o'), $keyword);
+			$keyword = get_section_class_name($item);
 
 			if( is_array( $item->classes ) ) {
 				$class_names = join( ' ', $item->classes );

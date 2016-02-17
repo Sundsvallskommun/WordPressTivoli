@@ -17,6 +17,8 @@ class SK_Init {
 
 		add_filter('tiny_mce_before_init', array(&$this, 'tiny_mce_settings') );
 
+		add_filter('body_class', array(&$this, 'body_section_class'));
+
 	}
 
 	function template_dir_js_var() {
@@ -58,6 +60,18 @@ class SK_Init {
 
 		return $settings;
 
+	}
+
+	/**
+	 * Add class on body element about the current
+	 * section we are on.
+	 *
+	 * @author Johan Linder <johan@flatmate.se>
+	 */
+	function body_section_class($classes) {
+		$classes[] = get_section_class_name();
+
+		return $classes;
 	}
 
 }

@@ -91,4 +91,34 @@ function get_phone_link($n) {
 	return $n = sprintf('<a href="tel:%s">%s</a>', str_replace(' ', '-', $n), $n);
 }
 
+/**
+ * Return lowercase first word of top most parent page of current
+ * page or supplied page object. This is currently used to set
+ * css-classes to determine what section of the website we are on
+ * so we can use the correct color for theming.
+ *
+ * @author Johan Linder <johan@flatmate.se>
+ */
+function get_section_class_name($item = null) {
+	global $post;
+
+	if(!isset($item)) {
+		$item = $post;
+	}
+
+	$parent = array_reverse(get_post_ancestors($item->ID));
+
+	if(isset($parent[0])) {
+		$first_parent = get_page($parent[0]);
+	} else {
+		$first_parent = $item;
+	}
+
+	$title = isset($first_parent->title) ? $first_parent->title : $first_parent->post_title;
+
+	$keyword = strtolower(preg_split("/\ |,\ */", trim($title))[0]);
+	$keyword = str_replace(array('å', 'ä', 'ö'), array('a', 'a', 'o'), $keyword);
+
+	return $keyword;
+}
 
