@@ -9,8 +9,16 @@
 	}
 
 	&__sidebar {
-		color: $gray-light;
 		font-size: .8125em;
+		color: $gray-light;
+		fill: currentColor;
+		padding-top: 2em;
+
+		.icon {
+			font-size: 2.25em;
+			vertical-align: -.25em;
+			margin-right: .2em;
+		}
 
 		@include make-col();
 		@include make-col-span(12);
@@ -28,6 +36,15 @@
 			list-style: none;
 			padding: 0;
 		}
+
+		li {
+			@include media-breakpoint-down(md) {
+				display: inline-block;
+				margin-right: 1em;
+			}
+			margin: 0 0 1em 0;
+		}
+
 		hr {
 			margin: 2em 0;
 		}

@@ -48,7 +48,7 @@ class SK_Easyread {
 				$url .= '?' . http_build_query($parsed);
 			}
 
-			echo '<li><a href="'.$url.'">'.__('Stäng lättläst', 'sundsvall_se').'</a></li>';
+			echo SK_Helpmenu::helplink('listen', $url, __('Stäng lättläst', 'sundsvall_se'));
 
 			return;
 		}
@@ -59,7 +59,7 @@ class SK_Easyread {
 		$separator = (parse_url($url, PHP_URL_QUERY) == NULL) ? '?' : '&';
 		$url .= $separator . $query;
 
-		echo '<li><a href="'.$url.'">'.__('Lättläst', 'sundsvall_se').'</a></li>';
+		echo SK_Helpmenu::helplink('listen', $url, __('Lättläst', 'sundsvall_se'));
 
 	}
 

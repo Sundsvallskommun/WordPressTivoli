@@ -9,9 +9,7 @@
 
 		<a href="#post-content" class="focus-only"><?php _e('Hoppa över sidomeny', 'sundsvall_se'); ?></a>
 
-		<ul>
-			<?php do_action('sk_page_helpmenu'); ?>
-		</ul>
+		<?php do_action('sk_page_helpmenu'); ?>
 
 	</aside>
 
