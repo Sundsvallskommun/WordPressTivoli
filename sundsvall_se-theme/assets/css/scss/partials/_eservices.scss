@@ -4,14 +4,14 @@ $eservice-color: rgb(38, 191, 76);
 /*
  * Single E-service link. Displayed in content with shortcode.
  */
-a.eservice-single {
+a.eservice-single-block {
 	&:focus,
 	&:hover {
 		color: inherit;
 		outline: 4px solid $eservice-color;
 	}
 }
-.eservice-single {
+.eservice-single-block {
 	background: $eservice-background;
 	color: inherit;
 	display: block;
@@ -37,4 +37,42 @@ a.eservice-single {
 		transform: translateY(-50%);
 	}
 
+}
+
+/*
+ * Small inline e-service link
+ */
+.eservice-link {
+	background: $sk-eservice-bg;
+	color: $sk-eservice-fg;
+	font-size: .875em;
+	padding: 0em 3em 0em 2.25em;
+	border-radius: 1em;
+	position: relative;
+
+	display: inline-block;
+	overflow: hidden;
+	white-space: nowrap;
+	max-width: 100%;
+	text-overflow: ellipsis;
+
+	&:hover {
+		background: $sk-eservice-fg;
+		color: $sk-eservice-bg;
+		&:before {
+		}
+	}
+
+	&:before {
+		content: "";
+		color: $sk-eservice-bg;
+		display: block;
+		background: $sk-eservice-fg;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 1.65em;
+		height: 1.65em;
+		border-radius: 50%;
+	}
 }
