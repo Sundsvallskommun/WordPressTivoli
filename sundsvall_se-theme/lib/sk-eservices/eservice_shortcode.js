@@ -25,15 +25,16 @@
 						success: function(data) {
 							ed.setProgressState(false);
 
-							if(!services) {
-								return ed.windowManager.alert('Hoppsan, det gick inte att ladda e-tjänster');
-							}
-
 							try {
 
 								var services = data.map(function(s) {
 									return {text: s.Name, value: s.ID};
 								});
+
+								if(!services) {
+									return ed.windowManager.alert('Hoppsan, det gick inte att ladda e-tjänster');
+								}
+
 
 								ed.windowManager.open({
 									title: "Välj E-tjänst",
