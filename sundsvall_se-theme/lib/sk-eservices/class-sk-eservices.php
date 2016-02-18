@@ -51,64 +51,10 @@ class SK_EServices {
 	}
 
 	/**
-	 * E-service shortcode
+	 * Ajax endpoint for getting e-services with ajax.
 	 *
 	 * @author Johan Linder <johan@flatmate.se>
-	 *
-	 * @param array $atts
 	 */
-	function shortcode_eservice($atts) {
-
-		$a = shortcode_atts( array(
-			'id' => false
-		), $atts );
-
-		if(!$a['id']) return false;
-
-		return $this->widget_eservice($a['id']);
-	}
-
-	/**
-	 * E-service widget
-	 *
-	 * @author Johan Linder <johan@flatmate.se>
-	 *
-	 * @param int $service_id Id of service at Open ePlatform.
-	 */
-	function widget_eservice($service_id) {
-
-		$service = $this->oep->get_service($service_id);
-
-		if(!$service) {
-
-			$widget  = '<div class="eservice-single-block eservice-single-block--notfound">';
-			$widget .= '<span>';
-			$widget .= 'Hoppsan, det gick inte att hitta e-tjänsten. Gå till <a href="https://e-tjanster.sundsvall.se">E-tjänsteportalen</a> eller titta tillbaka senare.';
-			$widget .= '</span>';
-			$widget .= '</div>';
-
-			return $widget;
-
-		}
-
-		$service_name = $service['Name'];
-		$service_url  = $service['URL'];
-		$service_icon = $service['Icon'];
-		$service_description = $service['ShortDescription'];
-		$service_signing = $service['RequiresSigning'];
-
-
-
-		$widget  = '<a href="'.$service_url.'" class="eservice-single-block">';
-		$widget .= '<img src="'.$service_icon.'">';
-		$widget .= '<span>';
-		$widget .= $service_name;
-		$widget .= '</span>';
-		$widget .= '</a>';
-
-		return $widget;
-	}
-
 	function ajax_eservice() {
 		switch($_REQUEST['call']) {
 
@@ -124,6 +70,52 @@ class SK_EServices {
 		}
 
 		wp_die();
+	}
+
+	/**
+	 * E-service shortcode
+	 *
+	 * @author Johan Linder <johan@flatmate.se>
+	 *
+	 * @param array $atts
+	 */
+	function shortcode_eservice($atts) {
+
+		$a = shortcode_atts( array(
+			'id' => false
+		), $atts );
+
+		if(!$a['id']) return false;
+
+		return $this->widget_single_eservice_block($a['id']);
+	}
+
+	/**
+	 * Single E-service widget to be inserted in content.
+	 *
+	 * @author Johan Linder <johan@flatmate.se>
+	 *
+	 * @param int $service_id Id of service at Open ePlatform.
+	 */
+	function widget_single_eservice_block($service_id) {
+
+		$service = $this->oep->get_service($service_id);
+
+		if(!$service) {
+
+			$widget  = '<div class="eservice-single-block eservice-single-block--notfound">';
+			$widget .= '<a class="eservice-link" href="https://e-tjanster.sundsvall.se">Hoppsan, det gick inte att hitta e-tjänsten.</a>';
+			$widget .= '</div>';
+
+			return $widget;
+
+		}
+
+		$widget  = '<div class="eservice-single-block">';
+		$widget  .= $this->eservice_link($service);
+		$widget .= '</div>';
+
+		return $widget;
 	}
 
 	/**
@@ -177,10 +169,7 @@ class SK_EServices {
 		$links = '';
 
 		foreach($eservices as $eservice) {
-			$name = $eservice['Name'];
-			$url  = $eservice['URL'];
-
-			$link = apply_filters('sk_eservice_link', sprintf('<a class="eservice-link" href="%s">%s</a>', $url, $name), $url, $name);
+			$link = $this->eservice_link($eservice);
 
 			if(isset($linkwrap)) {
 				$links .= sprintf($linkwrap, $link);
@@ -191,6 +180,31 @@ class SK_EServices {
 
 		return $links;
 
+	}
+
+	/**
+	 * Return markup for a single eservice.
+	 *
+	 * @author Johan Linder <johan@flatmate.se>
+	 *
+	 * @param array $eservice
+	 */
+	function eservice_link($eservice) {
+		$name = $eservice['Name'];
+		$url  = $eservice['URL'];
+		$icon = $eservice['Icon'];
+
+		$link = apply_filters('sk_eservice_link', sprintf('<a class="eservice-link" href="%s">%s</a>', $url, $name), $url, $name);
+
+		$markup  = '
+			<a class="eservice-link" href="%s">
+				<span class="eservice-link__icon"><img src="%s"></span>
+				<span class="eservice-link__name">%s</span>
+			</a>';
+
+		$link = apply_filters('sk_eservice_link', sprintf($markup, $url, $icon, $name), $url, $icon, $name);
+
+		return $link;
 	}
 
 }

@@ -1,40 +1,15 @@
-$eservice-background: rgb(232, 255, 238);
-$eservice-color: rgb(38, 191, 76);
-
 /*
  * Single E-service link. Displayed in content with shortcode.
  */
-a.eservice-single-block {
-	&:focus,
-	&:hover {
-		color: inherit;
-		outline: 4px solid $eservice-color;
-	}
+.eservice-single-block > a{
 }
 .eservice-single-block {
-	background: $eservice-background;
-	color: inherit;
+
 	display: block;
-	margin-bottom: 1.75rem;
-	position: relative;
-	min-height: 66px;
-	padding: 1.2em 1em 1.2em 65px;
+	margin-bottom: 1.5rem;
 
-	&--notfound {
-		padding-left: 1em;
-	}
-
-	span {
-		display: inline-block;
-		margin-left: .5em;
-		line-height: 1.25;
-	}
-
-	img {
-		position: absolute;
-		left: 0;
-		top: 50%;
-		transform: translateY(-50%);
+	> a {
+		font-size: 1em;
 	}
 
 }
@@ -56,14 +31,14 @@ a.eservice-single-block {
 	max-width: 100%;
 	text-overflow: ellipsis;
 
+	&:focus,
 	&:hover {
-		background: $sk-eservice-fg;
 		color: $sk-eservice-bg;
-		&:before {
-		}
+		background: $sk-eservice-fg;
 	}
 
-	&:before {
+	&__icon {
+		overflow: hidden;
 		content: "";
 		color: $sk-eservice-bg;
 		display: block;
@@ -71,8 +46,16 @@ a.eservice-single-block {
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: 1.65em;
-		height: 1.65em;
+		width: 1.74em;
+		height: 1.74em;
 		border-radius: 50%;
+		img {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			filter: contrast(200%) saturate(0%) invert(100%) hue-rotate(-40deg);
+			mix-blend-mode: screen;
+		}
 	}
 }
