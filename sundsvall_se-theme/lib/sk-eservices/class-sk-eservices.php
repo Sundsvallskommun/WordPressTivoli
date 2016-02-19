@@ -139,7 +139,7 @@ class SK_EServices {
 
 		$cat = get_field('eservices_category', $post_id);
 
-		if(!isset($cat)) return;
+		if(!isset($cat) || $cat == 0) return;
 
 		$eservices = $this->oep->get_category($cat);
 

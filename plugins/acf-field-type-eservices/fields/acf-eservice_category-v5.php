@@ -147,6 +147,9 @@ class acf_field_eservice_category extends acf_field {
 		
 		?>
 		<select name="<?php echo esc_attr($field['name']) ?>">
+
+			<option value="0"></option>
+
 			<?php
 			if(class_exists('OEP')) {
 				$oep = new OEP();
@@ -162,9 +165,9 @@ class acf_field_eservice_category extends acf_field {
 
 
 		?>
-			<option value="<?php echo esc_attr($value)?>" <?php selected( $value, $field['value'] ) ?>><?php echo esc_attr($name)?></option>
+				<option value="<?php echo esc_attr($value)?>" <?php selected( $value, $field['value'] ) ?>><?php echo esc_attr($name)?></option>
 		<?php
-		}
+			}
 
 		?>
 		</select>
