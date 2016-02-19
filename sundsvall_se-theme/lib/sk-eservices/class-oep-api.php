@@ -16,6 +16,11 @@ class OEP {
 
 		$content = wp_remote_retrieve_body( wp_remote_get($url) );
 
+		// For some reason wp_remote_get failed to get e-tjänsteportalen locally in MAMP
+		if(!$content) {
+			$content = file_get_contents($url);
+		}
+
 		$content = mb_convert_encoding($content, 'UTF-8',
 			mb_detect_encoding($content, 'UTF-8, ISO-8859-1', true));
 
@@ -30,7 +35,6 @@ class OEP {
 	}
 
 	public function get_all_services() {
-
 		$transient_name = 'sk_eservice_getall';
 
 		$transient = get_transient( $transient_name );
