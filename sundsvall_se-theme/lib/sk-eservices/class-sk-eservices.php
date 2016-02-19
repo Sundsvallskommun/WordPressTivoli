@@ -103,17 +103,17 @@ class SK_EServices {
 
 		if(!$service) {
 
-			$widget  = '<div class="eservice-single-block eservice-single-block--notfound">';
+			$widget  = '<p class="eservice-single-block eservice-single-block--notfound">';
 			$widget .= '<a class="eservice-link" href="https://e-tjanster.sundsvall.se">Hoppsan, det gick inte att hitta e-tjänsten.</a>';
-			$widget .= '</div>';
+			$widget .= '</p>';
 
 			return $widget;
 
 		}
 
-		$widget  = '<div class="eservice-single-block">';
+		$widget  = '<p class="eservice-single-block">';
 		$widget  .= $this->eservice_link($service);
-		$widget .= '</div>';
+		$widget .= '</p>';
 
 		return $widget;
 	}

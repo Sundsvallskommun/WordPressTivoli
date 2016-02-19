@@ -6,7 +6,11 @@
 .eservice-single-block {
 
 	display: block;
-	margin-bottom: 1.5rem;
+	margin: 0;
+
+	+ p:not(.eservice-single-block) {
+		margin-top: 1.75rem;
+	}
 
 	> a {
 		font-size: 1em;
