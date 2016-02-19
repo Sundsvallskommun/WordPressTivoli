@@ -122,3 +122,31 @@ function get_section_class_name($item = null) {
 	return $keyword;
 }
 
+/**
+ * Recursive function to get the closest ancestor that has the correct
+ * field values.
+ *
+ * @author Johan Linder <johan@flatmate.se>
+ *
+ * @param $page_id Page to find ancestor of.
+ * @param array $fields fields and their expected value as $field => $value.
+ *
+ * @return bool|int returns page id if all fields have the expected value. Else false.
+ */
+function ancestor_field($page_id, array $fields) {
+
+	$parent_id = wp_get_post_parent_id($page_id);
+
+	if(!$parent_id) {
+		return false;
+	}
+
+	foreach($fields as $field => $value) {
+		if(get_field($field, $parent_id) != $value) {
+			return ancestor_field($parent_id, $fields);
+		}
+	}
+
+	return $parent_id;
+}
+

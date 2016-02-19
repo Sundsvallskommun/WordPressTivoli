@@ -127,7 +127,17 @@ class SK_EServices {
 
 		global $post;
 
-		$cat = get_field('eservices_category', $post->ID);
+		$post_id = $post->ID;
+
+		$inherit = get_field('eservices_inherit', $post_id);
+
+		if($inherit) {
+			$post_id = ancestor_field($post->ID, array('eservices_inherit' => 0));
+		}
+
+		if(!$post_id) return;
+
+		$cat = get_field('eservices_category', $post_id);
 
 		if(!isset($cat)) return;
 
