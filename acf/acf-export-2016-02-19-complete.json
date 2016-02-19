@@ -386,6 +386,85 @@
         "title": "Widgets",
         "fields": [
             {
+                "key": "field_56c470684208e",
+                "label": "E-tj\u00e4nster",
+                "name": "e-tjanster",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_56c6ca2222153",
+                "label": "\u00c4rv fr\u00e5n \u00f6verordnad",
+                "name": "eservices_inherit",
+                "type": "true_false",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "\u00c4rv",
+                "default_value": 1
+            },
+            {
+                "key": "field_56c6d5ae85d75",
+                "label": "\u00c4rver fr\u00e5n \u00f6verordnad",
+                "name": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_56c6ca2222153",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "Sidan \u00e4rver inst\u00e4llningar om e-tj\u00e4nstekategori fr\u00e5n \u00f6verordnat sida.\r\n\r\nBocka ur valet ovan f\u00f6r att ange en kategori specifikt f\u00f6r denna sida och eventuella undersidor som \u00e4rver fr\u00e5n denna.",
+                "new_lines": "wpautop",
+                "esc_html": 0
+            },
+            {
+                "key": "field_56c471054208f",
+                "label": "Kategori",
+                "name": "eservices_category",
+                "type": "eservice_category",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_56c6ca2222153",
+                            "operator": "!=",
+                            "value": "1"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                }
+            },
+            {
                 "key": "field_56bb00f10af51",
                 "label": "Karta",
                 "name": "karta",
