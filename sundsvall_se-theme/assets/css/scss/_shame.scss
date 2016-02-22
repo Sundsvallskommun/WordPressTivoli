@@ -20,3 +20,17 @@ img {
 	padding: 3em;
 	min-height: 25em;
 }
+
+.post-tags {
+	font-size: .8125em;
+	color: $paragraph-color;
+}
+
+a[rel="tag"] {
+	background: $gray-lighter;
+	display: inline-block;
+	padding: .55em 1.25em;
+	border-radius: .5em;
+	color: inherit;
+	margin-right: .25em;
+}
