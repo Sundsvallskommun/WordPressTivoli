@@ -1,4 +1,7 @@
 <?php
+/**
+ * Rename default post-type to "Nyheter"
+ */
 class SK_Rename_Default_Post_Type {
 
 	public function __construct() {

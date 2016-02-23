@@ -15,6 +15,8 @@ class SK_Init {
 
 		add_action('admin_head', array(&$this, 'template_dir_js_var'));
 
+		add_action( 'init', array(&$this, 'register_sk_menus' ));
+
 		add_filter('tiny_mce_before_init', array(&$this, 'tiny_mce_settings') );
 
 		add_filter('body_class', array(&$this, 'body_section_class'));
@@ -27,6 +29,14 @@ class SK_Init {
 			var templateDir = "<?php bloginfo('template_directory'); ?>";
 		</script>
 		<?php
+	}
+
+	function register_sk_menus() {
+		register_nav_menus(
+			array(
+				'main-menu' => __( 'Huvudmeny' )
+			)
+		);
 	}
 
 	/**
