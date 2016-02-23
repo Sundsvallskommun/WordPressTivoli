@@ -54,13 +54,13 @@ class SK_Init {
 		 * toolbar1 = 'bold,italic,strikethrough,bullist,numlist,blockquote,hr,alignleft,aligncenter,alignright,link,unlink,wp_more,spellchecker,fullscreen,wp_adv,eservice_button'
 		 * toolbar2 = 'formatselect,underline,alignjustify,forecolor,pastetext,removeformat,charmap,outdent,indent,undo,redo,wp_help'
 		 */
-		$settings['toolbar1'] = 'fullscreen, formatselect, bold, bullist, numlist, blockquote, link, unlink, spellchecker, eservice_button, wp_adv';
-		$settings['toolbar2'] = 'pastetext, removeformat, charmap, outdent, indent, undo, redo, wp_help';
+		$settings['toolbar1'] = 'formatselect, bold, link, unlink, blockquote, bullist, numlist, spellchecker, eservice_button';
+		$settings['toolbar2'] = 'pastetext, removeformat, charmap, undo, redo, wp_help';
 
 		/**
 		 * Always show toolbar 2
 		 */
-		//$settings['wordpress_adv_hidden'] = false;
+		$settings['wordpress_adv_hidden'] = false;
 
 		/**
 		 * Block formats to show in editor dropdown. We remove h1 as we set page
