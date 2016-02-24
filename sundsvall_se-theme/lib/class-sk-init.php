@@ -100,7 +100,7 @@ class SK_Init {
 	 * Add wrapper to oembeds to be able to make them responsive with css.
 	 */
 	function oembed_wrapper($html, $url, $attr, $post_ID) {
-		return '<div class="video-container">'.$html.'<div/>';
+		return '<div class="video-container">'.$html.'</div>';
 	}
 
 	function template_dir_js_var() {
