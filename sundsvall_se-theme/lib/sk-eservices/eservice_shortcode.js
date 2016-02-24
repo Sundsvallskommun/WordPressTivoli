@@ -1,6 +1,6 @@
 (function($) {
 
-	tinymce.create('tinymce.plugins.MyButtons', {
+	tinymce.create('tinymce.plugins.EserviceButton', {
 		init : function(ed, url) {
 
 			ed.addButton( 'eservice_button', {
@@ -66,6 +66,6 @@
 		},
 	});
 
-	tinymce.PluginManager.add( 'eservice_button', tinymce.plugins.MyButtons );
+	tinymce.PluginManager.add( 'eservice_button', tinymce.plugins.EserviceButton );
 
 })(jQuery);
