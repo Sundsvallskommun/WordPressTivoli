@@ -23,6 +23,8 @@ class SK_Init {
 
 		add_filter( 'wp_calculate_image_sizes', array(&$this, 'sk_content_image_sizes_attr'), 10, 2);
 
+		add_filter( 'embed_oembed_html', array(&$this, 'oembed_wrapper'), 10, 4);
+
 		add_action('admin_head', array(&$this, 'template_dir_js_var'));
 
 		add_action( 'init', array(&$this, 'register_sk_menus' ));
@@ -92,6 +94,13 @@ class SK_Init {
 		185 <= $width && $sizes = '(max-width: 544px) calc(100vw-1.875em), (max-width: 992px) calc(84vw / 4), 185px';
 
 		return $sizes;
+	}
+
+	/**
+	 * Add wrapper to oembeds to be able to make them responsive with css.
+	 */
+	function oembed_wrapper($html, $url, $attr, $post_ID) {
+		return '<div class="video-container">'.$html.'<div/>';
 	}
 
 	function template_dir_js_var() {
