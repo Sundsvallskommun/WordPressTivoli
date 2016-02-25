@@ -6,32 +6,34 @@
 tinymce.PluginManager.add('sk_page_lead', function(editor, url) {
 
 	editor.on('init', function() {
-		setLead();
+		setLead(editor);
 	});
 
 	editor.on('change keyup', function(e) {
-		setLead();
+		setLead(editor);
 	});
 
-	function setLead() {
+	function setLead(ed) {
 
 		// Reset lead class and color in case it is not relevant any more.
-		var oldLead = tinyMCE.activeEditor.dom.select('p.lead');
+		var oldLead = ed.dom.select('p.lead');
 		if(oldLead.length) {
-			tinyMCE.activeEditor.dom.removeClass(oldLead, 'lead');
-			tinyMCE.activeEditor.dom.setStyle(oldLead, 'background-color', '');
-			tinyMCE.activeEditor.dom.setStyle(oldLead, 'color', '');
+			ed.dom.removeClass(oldLead, 'lead');
+			ed.dom.setStyle(oldLead, 'background-color', '');
+			ed.dom.setStyle(oldLead, 'color', '');
 		}
 
 		// Add .lead class to first paragraph
-		var lead = tinyMCE.activeEditor.dom.select('p:first');
-		tinyMCE.activeEditor.dom.addClass(lead, 'lead');
+		var lead = ed.dom.select('p:first');
+		ed.dom.addClass(lead, 'lead');
 
 		// Add red/white colors to lead paragraph if it is longer than 200 characters.
 		var leadLength = lead[0].innerHTML.length;
+		console.log(leadLength);
 		if (leadLength > 200) {
-			tinyMCE.activeEditor.dom.setStyle(lead, 'background-color', 'rgb(221, 61, 54)');
-			tinyMCE.activeEditor.dom.setStyle(lead, 'color', 'white');
+			ed.dom.setStyle(lead, 'background-color', 'rgb(221, 61, 54)');
+			ed.dom.setStyle(lead, 'color', 'white');
+
 		}
 
 	}
