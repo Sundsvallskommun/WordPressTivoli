@@ -29,11 +29,9 @@ tinymce.PluginManager.add('sk_page_lead', function(editor, url) {
 
 		// Add red/white colors to lead paragraph if it is longer than 200 characters.
 		var leadLength = lead[0].innerHTML.length;
-		console.log(leadLength);
 		if (leadLength > 200) {
 			ed.dom.setStyle(lead, 'background-color', 'rgb(221, 61, 54)');
 			ed.dom.setStyle(lead, 'color', 'white');
-
 		}
 
 	}
