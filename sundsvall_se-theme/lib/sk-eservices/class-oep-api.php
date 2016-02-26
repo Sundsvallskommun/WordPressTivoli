@@ -12,13 +12,27 @@ class OEP {
 	function __construct() {
 	}
 
+	private function error_log($message, $url) {
+		if(!function_exists('sk_log')) {
+			error_log($message);
+			return;
+		}
+
+		sk_log($message, $url);
+	}
+
 	private function make_json_call($url) {
 
 		$content = wp_remote_retrieve_body( wp_remote_get($url) );
 
 		// For some reason wp_remote_get failed to get e-tjänsteportalen locally in MAMP
 		if(!$content) {
-			$content = file_get_contents($url);
+			$content = @file_get_contents($url);
+		}
+
+		if(!$content) {
+			$this->error_log('Unable to get data from Open ePlatform', $url);
+			return false;
 		}
 
 		$content = mb_convert_encoding($content, 'UTF-8',
