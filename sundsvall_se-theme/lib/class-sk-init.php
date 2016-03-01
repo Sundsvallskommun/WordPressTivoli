@@ -11,17 +11,7 @@ class SK_Init {
 
 	function __construct() {
 
-		add_theme_support( 'post-thumbnails' );
-
-		add_image_size( 'content-full', 740, 9000);
-		add_image_size( 'content-half', 370, 9000);
-		add_image_size( 'content-quarter',   185, 9000);
-
-		add_filter('img_caption_shortcode', array(&$this, 'img_caption_shortcode_size_class'), 10, 3);
-
-		add_filter('image_size_names_choose', array(&$this, 'sk_attachment_image_size_options'), 10, 1);
-
-		add_filter( 'wp_calculate_image_sizes', array(&$this, 'sk_content_image_sizes_attr'), 10, 2);
+		add_action('after_setup_theme', array(&$this, 'image_setup'));
 
 		add_filter( 'embed_oembed_html', array(&$this, 'oembed_wrapper'), 10, 4);
 
@@ -37,11 +27,25 @@ class SK_Init {
 
 	}
 
+	function image_setup() {
+		add_theme_support( 'post-thumbnails' );
+
+		add_image_size( 'content-full',    740, 9000);
+		add_image_size( 'content-half',    370, 9000);
+		add_image_size( 'content-quarter', 185, 9000);
+		add_image_size( 'portrait',        185, 9000);
+
+		update_option('image_default_size', 'content-half');
+
+		add_filter('img_caption_shortcode', array(&$this, 'img_caption_shortcode_size_class'), 10, 3);
+		add_filter('image_size_names_choose', array(&$this, 'sk_attachment_image_size_options'), 10, 1);
+		add_filter( 'wp_calculate_image_sizes', array(&$this, 'sk_content_image_sizes_attr'), 10, 2);
+	}
 
 	function sk_page_top_image() {
 		echo '<p>';
 			$img_id = get_field('top_image');
-			echo $img = wp_get_attachment_image( $img_id, 'content_full');
+			echo $img = wp_get_attachment_image( $img_id, 'content-full');
 		echo '</p>';
 	}
 
@@ -83,9 +87,11 @@ class SK_Init {
 	 */
 	function sk_attachment_image_size_options($sizes) {
 		$sizes = array(
+			'portrait' => __('Porträtt', 'sundsvall_se'),
 			'content-quarter' => __('Fjärdedel', 'sundsvall_se'),
 			'content-half' => __('Halvbredd', 'sundsvall_se'),
-			'content-full' => __('Helbredd', 'sundsvall_se')
+			'full' => __('Orginalstorlek', 'sundsvall_se'),
+			'content-full' => __('Helbredd', 'sundsvall_se'),
 		);
 
 		return $sizes;
