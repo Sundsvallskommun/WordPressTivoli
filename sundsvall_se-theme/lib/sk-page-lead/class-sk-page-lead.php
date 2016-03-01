@@ -13,6 +13,9 @@ class SK_Page_Lead {
 	function __construct() {
 		add_filter('the_content', array(&$this, 'frontend_lead'));
 		add_action('mce_external_plugins', array(&$this, 'sk_register_page_lead_tinymce_js'));
+
+		add_action('admin_head-post.php', array(&$this, 'lead_save_validation'));
+		add_action('admin_head-post-new.php', array(&$this, 'lead_save_validation'));
 	}
 
 	/**
@@ -34,6 +37,37 @@ class SK_Page_Lead {
 	function sk_register_page_lead_tinymce_js($plugin_array) {
 		$plugin_array['sk_page_lead'] = get_template_directory_uri().'/lib/sk-page-lead/sk-tinymce-lead.js';
 		return $plugin_array;
+	}
+
+	/**
+	 * Validate content before save so make sure lead is under 200 characters.
+	 */
+	function lead_save_validation() {
+		global $post;
+
+		if( is_admin() && $post->post_type == 'page' ) {
+			$this->lead_validation_js();
+		}
+	}
+
+	/**
+	 * JS used to check that lead is under 200 characters long before allowing
+	 * post submit.
+	 */
+	function lead_validation_js() {
+		?>
+			<script>
+				jQuery(document).ready(function($) {
+					$('#publish').on('click', function() {
+						var leadtext = tinyMCE.get('content').dom.select('p:first')[0].innerHTML;
+						if(leadtext.length > 200) {
+							alert('Ingressen är för lång, var vänlig korta ner den. Ingressen får max vara 200 tecken och är nu ' + leadtext.length + ' tecken lång.')
+							return false;
+						}
+					});
+				});
+			</script>
+		<?php
 	}
 
 }
