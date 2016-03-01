@@ -3,7 +3,7 @@
 	tinymce.create('tinymce.plugins.MiscButtons', {
 		init : function(ed, url) {
 			ed.addButton( 'youtube_button', {
-				title : 'Infoga YoutTube-video',
+				title : 'Infoga Video',
 				image : templateDir + '/assets/images/admin/film.png',
 				onclick : function() {
 

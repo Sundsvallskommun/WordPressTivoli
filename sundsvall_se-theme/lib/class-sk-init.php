@@ -151,7 +151,7 @@ class SK_Init {
 		 * toolbar2 = 'formatselect,underline,alignjustify,forecolor,pastetext,removeformat,charmap,outdent,indent,undo,redo,wp_help'
 		 */
 		$settings['toolbar1'] = 'formatselect, bold, link, unlink, blockquote, bullist, numlist, spellchecker, eservice_button, youtube_button';
-		$settings['toolbar2'] = 'pastetext, removeformat, charmap, undo, redo, wp_help';
+		$settings['toolbar2'] = 'pastetext, removeformat, charmap, undo, redo';
 
 		/**
 		 * Always show toolbar 2
