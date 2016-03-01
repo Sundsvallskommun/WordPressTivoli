@@ -33,6 +33,16 @@ class SK_Init {
 
 		add_filter('body_class', array(&$this, 'body_section_class'));
 
+		add_action('sk_after_page_title', array(&$this, 'sk_page_top_image'));
+
+	}
+
+
+	function sk_page_top_image() {
+		echo '<p>';
+			$img_id = get_field('top_image');
+			echo $img = wp_get_attachment_image( $img_id, 'content_full');
+		echo '</p>';
 	}
 
 	/**

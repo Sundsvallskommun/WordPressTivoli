@@ -11,6 +11,8 @@
  *
  * Body section class
  *   Sets a class to body depending on what menu structure you are visiting.
+ *
+ * Set top image after page title
  */
 require_once locate_template( 'lib/class-sk-init.php' );
 $sk_init = new SK_Init();
