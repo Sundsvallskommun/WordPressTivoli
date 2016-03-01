@@ -45,7 +45,7 @@ class SK_Page_Lead {
 	function lead_save_validation() {
 		global $post;
 
-		if( is_admin() && $post->post_type == 'page' ) {
+		if( is_admin() && ($post->post_type == 'page' || $post->post_type == 'post') ) {
 			$this->lead_validation_js();
 		}
 	}
