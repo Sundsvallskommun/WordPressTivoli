@@ -150,7 +150,7 @@ class SK_Init {
 		 * toolbar1 = 'bold,italic,strikethrough,bullist,numlist,blockquote,hr,alignleft,aligncenter,alignright,link,unlink,wp_more,spellchecker,fullscreen,wp_adv,eservice_button'
 		 * toolbar2 = 'formatselect,underline,alignjustify,forecolor,pastetext,removeformat,charmap,outdent,indent,undo,redo,wp_help'
 		 */
-		$settings['toolbar1'] = 'formatselect, bold, link, unlink, blockquote, bullist, numlist, spellchecker, eservice_button, youtube_button';
+		$settings['toolbar1'] = 'formatselect, bold, link, unlink, blockquote, bullist, numlist, spellchecker, eservice_button, youtube_button, sk_collapse';
 		$settings['toolbar2'] = 'pastetext, removeformat, charmap, undo, redo';
 
 		/**

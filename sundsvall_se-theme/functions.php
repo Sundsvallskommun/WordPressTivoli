@@ -130,7 +130,7 @@ $sk_widgets = new SK_Widgets();
 require_once locate_template( 'lib/sk-eservices/class-sk-eservices.php' );
 $sk_eservices = new SK_EServices();
 
-require_once locate_template( 'lib/class-sk-collapse.php' );
+require_once locate_template( 'lib/sk-collapse/class-sk-collapse.php' );
 $sk_collapse = new SK_Collapse();
 
 /**
