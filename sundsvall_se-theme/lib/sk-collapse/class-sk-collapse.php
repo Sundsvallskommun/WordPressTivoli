@@ -36,7 +36,7 @@ class SK_Collapse {
 
 		if(!$content) return;
 
-		$collapsName  = 'foobarbiz';
+		$collapsName  = $atts['title'];
 		$collapsTitle = $atts['title'];
 
 		if(isset($atts['tag'])) {

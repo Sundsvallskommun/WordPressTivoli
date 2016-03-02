@@ -28,6 +28,20 @@
                 },
 						],
 						onSubmit: function(e) {
+							var selected = tinyMCE.activeEditor.selection.getContent();
+
+							var tag = this.toJSON().tag;
+							var title = this.toJSON().title;
+
+							var content =  '<p>';
+							    content += '[collapse title="'+title+'" tag="'+tag+'"]';
+							    content += '</p>';
+							    content += selected;
+							    content += '<p>';
+							    content += '[/collapse]';
+							    content += '</p>';
+
+							ed.insertContent(content);
 
 						}
 					});
