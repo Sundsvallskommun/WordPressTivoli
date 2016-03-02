@@ -4,8 +4,7 @@
 		init : function(ed, url) {
 			ed.addButton( 'sk_collapse', {
 				title : 'Ihoppfällt innehåll',
-				//image : templateDir + '/assets/images/admin/film.png',
-				image : 'http://placehold.it/20x20',
+				image : templateDir + '/assets/images/admin/collapse.png',
 				onclick : function() {
 
 					ed.windowManager.open({

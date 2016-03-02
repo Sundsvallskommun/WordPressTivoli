@@ -73,10 +73,10 @@ class SK_Collapse {
 		} else if(isset($tag) && $tag == 'h4') {
 			$title = sprintf('<h4>%s</h4>', $link);
 		} else {
-			$title = sprintf('<h2 class="">%s</h2>', $link);
+			$title = sprintf('<h2>%s</h2>', $link);
 		}
 
-		$c  = '<div class="">';
+		$c  = '<div class="sk-collapse">';
 		$c .= $title;
 		$c .= '<div class="collapse" id="'.$collapseID.'">';
 		$c .= $content;

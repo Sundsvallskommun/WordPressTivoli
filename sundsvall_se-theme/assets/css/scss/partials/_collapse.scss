@@ -1,0 +1,26 @@
+.sk-collapse {
+
+	h2, h3, h4 {
+		a {
+			color: inherit;
+			display: block;
+			padding: 1rem 2rem 1rem 1rem;
+			background: $gray-lightest;
+			position: relative;
+
+			&:after {
+				content: "+";
+				font-size: 1.5rem;
+				position: absolute;
+				right: .75rem;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+
+			&[aria-expanded="true"]:after {
+				content: "-";
+			}
+		}
+	}
+
+}
