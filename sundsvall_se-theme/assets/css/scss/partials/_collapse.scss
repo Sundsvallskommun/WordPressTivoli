@@ -13,7 +13,7 @@
 		a {
 			color: inherit;
 			display: block;
-			padding: 1rem 2rem 1rem 1rem;
+			padding: 1rem 3rem 1rem 2rem;
 			background: $gray-lightest;
 			position: relative;
 
@@ -21,7 +21,7 @@
 				content: "+";
 				font-size: 1.5rem;
 				position: absolute;
-				right: .75rem;
+				right: 2rem;
 				top: 50%;
 				transform: translateY(-50%);
 			}
