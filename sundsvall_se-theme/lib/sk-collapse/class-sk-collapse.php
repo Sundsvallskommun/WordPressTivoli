@@ -36,14 +36,37 @@ class SK_Collapse {
 
 		if(!$content) return;
 
-		$collapsName  = $atts['title'];
+		global $sk_collapseIDs;
+
+		if(!is_array($sk_collapseIDs)) $sk_collapseIDs = array();
+
+		// Create "ID" from title (spaces to dashes and lowercase)
+		$collapseID = strtolower(str_replace(' ', '-', $atts['title']));
+
+		// Make sure we set a unique id of collapse.
+		if(in_array($collapseID, $sk_collapseIDs)) {
+
+			$i = 1;
+			$newID = $collapseID;
+
+			while(in_array($newID, $sk_collapseIDs)) {
+				$i += 1;
+				// Not unique, append "_num".
+				$newID = $collapseID.'_'.$i;
+			}
+
+			$collapseID = $newID;
+		}
+
+		array_push($sk_collapseIDs, $collapseID);
+
 		$collapsTitle = $atts['title'];
 
 		if(isset($atts['tag'])) {
 			$tag = $atts['tag'];
 		}
 
-		$link = '<a data-toggle="collapse" href="#'.$collapsName.'" aria-expanded="false" aria-controls="'.$collapsName.'">'.$collapsTitle.'</a>';
+		$link = '<a data-toggle="collapse" href="#'.$collapseID.'" aria-expanded="false" aria-controls="'.$collapseID.'">'.$collapsTitle.'</a>';
 
 		if(isset($tag) && $tag == 'h3') {
 			$title = sprintf('<h3>%s</h3>', $link);
@@ -53,10 +76,9 @@ class SK_Collapse {
 			$title = sprintf('<h2 class="">%s</h2>', $link);
 		}
 
-
 		$c  = '<div class="">';
 		$c .= $title;
-		$c .= '<div class="collapse" id="'.$collapsName.'">';
+		$c .= '<div class="collapse" id="'.$collapseID.'">';
 		$c .= $content;
 		$c .= '</div>';
 		$c .= '</div>';
