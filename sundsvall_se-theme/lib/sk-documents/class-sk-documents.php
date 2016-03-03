@@ -171,13 +171,17 @@ class SK_Documents {
 		$docs = $this->RML->get_documents_in_dir($id);
 
 		$docs = array_map(function($id) {
+
 			$meta = wp_get_attachment_metadata($id);
 			$url = wp_get_attachment_url($id);
 			$filetype = wp_check_filetype($url);
 			$name = basename($meta['file']);
+			$title = get_the_title($id);
 			$size = filesize(get_attached_file($id));
 
+
 			return array(
+				'title' => $title,
 				'url' => $url,
 				'filetype' => $filetype['ext'],
 				'name' => $name,
@@ -194,12 +198,12 @@ class SK_Documents {
 
 		$links = '';
 		foreach( $docs as $doc ) {
-			$links .= sprintf('<li><a href="%s">%s</a> (%s)</li>', $doc['url'], $doc['name'], $doc['filetype']);
+			$links .= sprintf('<li><a href="%s">%s</a> (%s)</li>', $doc['url'], $doc['title'], $doc['filetype']);
 		}
 
-		$doc_list = sprintf('<ul>%s</ul>', $links);
+		$doc_list = sprintf('<ul class="list-unstyled bg-faded p-a-2">%s</ul>', $links);
 
-		return $links;
+		return $doc_list;
 	}
 
 }
