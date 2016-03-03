@@ -57,6 +57,24 @@ class RML_helper {
 
 	}
 
+	public function get_documents_in_dir($id) {
+		$query = new WP_Query(array(
+			'post_status' => 'inherit',
+			'post_type' => 'attachment',
+			'posts_per_page' => -1,
+					/*'meta_query' => array(
+							array(
+									'key' => '_rml_folder',
+									'value' => $id,
+									'compare' => '='
+					)),*/
+			'rml_folder' => $id,
+			'fields' => 'ids'
+		));
+		$posts = $query->get_posts();
+		return $posts;
+	}
+
 }
 
 class SK_Documents {
@@ -67,7 +85,7 @@ class SK_Documents {
 
 		//echo $this->RML->get_select(4);
 
-		add_shortcode('documents_folder', array(&$this, 'shortcode_documents'));
+		add_shortcode('rml_dir', array(&$this, 'shortcode_documents'));
 
 		add_action('init', array(&$this, 'documents_shortcode_button_init'));
 
@@ -138,7 +156,7 @@ class SK_Documents {
 	 *
 	 * @param array $atts
 	 */
-	function shortcode_eservice($atts) {
+	function shortcode_documents($atts) {
 
 		$a = shortcode_atts( array(
 			'id' => false
@@ -146,7 +164,42 @@ class SK_Documents {
 
 		if(!$a['id']) return false;
 
-		//return $this->widget_single_eservice_block($a['id']);
+		return $this->widget_document_list($a['id']);
+	}
+
+	private function get_documents($id) {
+		$docs = $this->RML->get_documents_in_dir($id);
+
+		$docs = array_map(function($id) {
+			$meta = wp_get_attachment_metadata($id);
+			$url = wp_get_attachment_url($id);
+			$filetype = wp_check_filetype($url);
+			$name = basename($meta['file']);
+			$size = filesize(get_attached_file($id));
+
+			return array(
+				'url' => $url,
+				'filetype' => $filetype['ext'],
+				'name' => $name,
+				'size' => $size,
+			);
+
+		}, $docs);
+
+		return $docs;
+	}
+
+	function widget_document_list($id) {
+		$docs = $this->get_documents($id);
+
+		$links = '';
+		foreach( $docs as $doc ) {
+			$links .= sprintf('<li><a href="%s">%s</a> (%s)</li>', $doc['url'], $doc['name'], $doc['filetype']);
+		}
+
+		$doc_list = sprintf('<ul>%s</ul>', $links);
+
+		return $links;
 	}
 
 }
