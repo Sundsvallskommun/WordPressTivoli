@@ -17,7 +17,7 @@ class SK_Comments {
 		add_action( 'admin_menu', array( &$this, 'df_disable_comments_admin_menu' ) );
 		add_action( 'admin_init', array( &$this, 'df_disable_comments_admin_menu_redirect' ) );
 		add_action( 'admin_init', array( &$this, 'df_disable_comments_dashboard' ) );
-		add_action( 'init', array( &$this, 'df_disable_comments_admin_bar' ) );
+		add_action( 'wp_before_admin_bar_render', array(&$this, 'sk_disable_comments_admin_bar' ));
 	}
 
 	/**
@@ -106,9 +106,9 @@ class SK_Comments {
 	 *
 	 * @return null
 	 */
-	public function df_disable_comments_admin_bar() {
-		if ( is_admin_bar_showing() ) {
-			remove_action( 'admin_bar_menu', 'wp_admin_bar_comments_menu', 60 );
-		}
+	function sk_disable_comments_admin_bar() {
+			global $wp_admin_bar;
+			$wp_admin_bar->remove_menu('comments');
 	}
+
 }
