@@ -118,7 +118,7 @@
         "fields": [
             {
                 "key": "field_56a623e6f7481",
-                "label": "Sidansvarig",
+                "label": "Uppdateringsansvarig",
                 "name": "page-contact",
                 "type": "post_object",
                 "instructions": "",
@@ -382,6 +382,53 @@
         "description": ""
     },
     {
+        "key": "group_56d5589942b2c",
+        "title": "Toppbild",
+        "fields": [
+            {
+                "key": "field_56d558b14d6e1",
+                "label": "Bild",
+                "name": "top_image",
+                "type": "image",
+                "instructions": "Bilden placeras mellan rubrik och ingress.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "id",
+                "preview_size": "content-full",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "page"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "acf_after_title",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": 1,
+        "description": ""
+    },
+    {
         "key": "group_56bb00dc48bef",
         "title": "Widgets",
         "fields": [
@@ -446,7 +493,7 @@
                 "key": "field_56c471054208f",
                 "label": "Kategori",
                 "name": "eservices_category",
-                "type": "eservice_category",
+                "type": "rml_folder",
                 "instructions": "",
                 "required": 0,
                 "conditional_logic": [
