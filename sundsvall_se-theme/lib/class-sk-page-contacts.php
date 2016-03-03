@@ -41,7 +41,7 @@ class SK_Page_Contacts {
 		$labels = array(
 			'name'               => __( 'Kontakter', 'sundsvall_se' ),
 			'singular_name'      => __( 'Kontakt', 'sundsvall_se' ),
-			'menu_name'          => __( 'Kontakter', 'sundsvall_se' ),
+			'menu_name'          => __( 'Kontaktarkiv', 'sundsvall_se' ),
 			'name_admin_bar'     => __( 'Kontakt', 'sundsvall_se' ),
 			'add_new'            => __( 'Skapa ny', 'sundsvall_se' ),
 			'add_new_item'       => __( 'Skapa ny kontakt', 'sundsvall_se' ),
