@@ -3,9 +3,9 @@
 	margin-bottom: 1em;
 
 	> div {
+		padding: 0 $spacer-x * 1.5;
 		background: $gray-lightest;
 		overflow: hidden;
-		padding: 0 2rem;
 	}
 
 	h2, h3, h4 {
@@ -13,7 +13,8 @@
 		a {
 			color: inherit;
 			display: block;
-			padding: 1rem 3rem 1rem 2rem;
+			padding: $spacer-x * 1.5;
+			padding-right: $spacer-x * 3;
 			background: $gray-lightest;
 			position: relative;
 
@@ -21,7 +22,7 @@
 				content: "+";
 				font-size: 1.5rem;
 				position: absolute;
-				right: 2rem;
+				right: $spacer-x * 1.5;
 				top: 50%;
 				transform: translateY(-50%);
 			}
