@@ -15,6 +15,8 @@ class SK_Init {
 
 		add_filter( 'embed_oembed_html', array(&$this, 'oembed_wrapper'), 10, 4);
 
+		add_action('wp_dashboard_setup', array(&$this, 'sk_remove_dashboard_widgets'));
+
 		add_action('admin_head', array(&$this, 'template_dir_js_var'));
 
 		add_action( 'init', array(&$this, 'register_sk_menus' ));
@@ -25,6 +27,11 @@ class SK_Init {
 
 		add_action('sk_after_page_title', array(&$this, 'sk_page_top_image'));
 
+	}
+
+	function sk_remove_dashboard_widgets() {
+		remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
+		remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );
 	}
 
 	function image_setup() {
