@@ -46,9 +46,9 @@ get_header();
 			the_post();
 			echo '<li>';
 			echo '<a href="'.get_permalink().'">'.get_the_title().'</a>';
-			echo ' <mdall>(';
+			echo ' <small>(';
 			the_category(', ');
-			echo ')</mdall>';
+			echo ')</small>';
 			echo '</li>';
 		}
 	?>
