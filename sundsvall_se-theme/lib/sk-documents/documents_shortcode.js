@@ -20,7 +20,7 @@
 						},
 						error: function() {
 							ed.setProgressState(false);
-							ed.windowManager.alert('Hoppsan, det gick inte att ladda e-tjänster');
+							ed.windowManager.alert('Hoppsan, det gick inte att ladda mappstrukturen');
 						},
 						success: function(data) {
 							ed.setProgressState(false);
