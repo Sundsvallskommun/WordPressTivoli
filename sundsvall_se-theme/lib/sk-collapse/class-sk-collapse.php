@@ -79,7 +79,7 @@ class SK_Collapse {
 		$c  = '<div class="sk-collapse">';
 		$c .= $title;
 		$c .= '<div class="collapse" id="'.$collapseID.'">';
-		$c .= $content;
+		$c .= do_shortcode($content);
 		$c .= '</div>';
 		$c .= '</div>';
 
