@@ -3,12 +3,12 @@
 	tinymce.create('tinymce.plugins.CollapseButton', {
 		init : function(ed, url) {
 			ed.addButton( 'sk_collapse', {
-				title : 'Ihoppfällt innehåll',
+				title : 'Ihopfällt innehåll',
 				image : templateDir + '/assets/images/admin/collapse.png',
 				onclick : function() {
 
 					ed.windowManager.open({
-						title: "Ihoppfällt innehåll",
+						title: "Ihopfällt innehåll",
 						body: [
 							  {
                     type: 'textbox',
