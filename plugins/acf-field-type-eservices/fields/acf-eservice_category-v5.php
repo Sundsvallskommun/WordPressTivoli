@@ -148,7 +148,7 @@ class acf_field_eservice_category extends acf_field {
 		?>
 		<select name="<?php echo esc_attr($field['name']) ?>">
 
-			<option value="0"></option>
+			<option value="0">-- Visa ingen --</option>
 
 			<?php
 			if(class_exists('OEP')) {
