@@ -33,11 +33,11 @@
 							var title = this.toJSON().title;
 
 							var content =  '<p>';
-							    content += '[collapse title="'+title+'" tag="'+tag+'"]';
+							    content += '[utfallbar title="'+title+'" tag="'+tag+'"]';
 							    content += '</p>';
 							    content += selected;
 							    content += '<p>';
-							    content += '[/collapse]';
+							    content += '[/utfallbar]';
 							    content += '</p>';
 
 							ed.insertContent(content);

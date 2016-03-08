@@ -2,7 +2,7 @@
 class SK_Collapse {
 
 	function __construct() {
-		add_shortcode('collapse', array(&$this, 'collapse_shortcode'));
+		add_shortcode('utfallbar', array(&$this, 'collapse_shortcode'));
 
 		add_action('init', array(&$this, 'tinymce_collapse_button_init'));
 	}
