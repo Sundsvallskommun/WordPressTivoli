@@ -390,7 +390,7 @@
                 "label": "Bild",
                 "name": "top_image",
                 "type": "image",
-                "instructions": "Bilden placeras mellan rubrik och ingress.",
+                "instructions": "Bilden placeras mellan sidans titel och ingress.",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -493,7 +493,7 @@
                 "key": "field_56c471054208f",
                 "label": "Kategori",
                 "name": "eservices_category",
-                "type": "rml_folder",
+                "type": "eservice_category",
                 "instructions": "",
                 "required": 0,
                 "conditional_logic": [
