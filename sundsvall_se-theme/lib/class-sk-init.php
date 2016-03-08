@@ -27,6 +27,8 @@ class SK_Init {
 
 		add_action('sk_after_page_title', array(&$this, 'sk_page_top_image'));
 
+		add_filter( 'wp_trim_excerpt', array(&$this, 'sk_excerpt'), 10, 2 );
+
 	}
 
 	function sk_remove_dashboard_widgets() {
@@ -186,6 +188,18 @@ class SK_Init {
 		$classes[] = get_section_class_name();
 
 		return $classes;
+	}
+
+	/**
+	 * Use first paragraph as excerpt.
+	 */
+	function sk_excerpt($text, $raw_excerpt) {
+		if( !$raw_excerpt ) {
+			$content = apply_filters( 'the_content', strip_shortcodes( get_the_content() ) );
+			$text = substr( $content, 0, strpos($content, '</p>') + 4 );
+			$text = strip_tags($text);
+		}
+		return $text;
 	}
 
 }

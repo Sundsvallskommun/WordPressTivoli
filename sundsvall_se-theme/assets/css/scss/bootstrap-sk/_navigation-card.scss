@@ -12,10 +12,10 @@
 
 	&:hover,
 	&:focus {
+	}
+
+	.nav-card-title a {
 		color: inherit;
-		text-decoration: inherit;
-		background: $gray-lightest;
-		outline: 1px solid;
 	}
 
 	.nav-card-title:before {
@@ -32,6 +32,10 @@
 	.nav-card-text {
 		color: $text-muted;
 		font-size: .825em;
+
+		a {
+			color: inherit;
+		}
 	}
 
 	&.shortcut {

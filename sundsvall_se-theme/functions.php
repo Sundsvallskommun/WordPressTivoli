@@ -18,6 +18,8 @@
  *   Sets a class to body depending on what menu structure you are visiting.
  *
  * Set top image after page title
+ *
+ * Use first paragraph as excerpt
  */
 require_once locate_template( 'lib/class-sk-init.php' );
 $sk_init = new SK_Init();
@@ -45,6 +47,9 @@ require_once locate_template( 'lib/helpers/sk-logger.php' );
  *
  * ancestor_field
  *   Find closest ancestor that match supplied values.
+ *
+ * sk_get_excerpt
+ *   Get excerpt by post/page-id
  */
 require_once locate_template( 'lib/helpers/sk-general.php' );
 

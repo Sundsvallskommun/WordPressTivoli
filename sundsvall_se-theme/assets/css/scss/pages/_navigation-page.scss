@@ -37,6 +37,6 @@
 }
 
 .navigation-card:hover {
-	@include section-colors(background, .05);
-	@include section-colors(outline-color);
+	//@include section-colors(background, .05);
+	//@include section-colors(outline-color);
 }

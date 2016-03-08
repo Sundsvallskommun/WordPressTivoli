@@ -150,3 +150,21 @@ function ancestor_field($page_id, array $fields) {
 	return $parent_id;
 }
 
+/**
+ * Get excerpt by post/page-id
+ *
+ * @param int $post_id
+ *
+ * @return string
+ */
+function sk_get_excerpt($post_id = 0) {
+	global $post;
+	$save_post = $post;
+	$post = get_post( $post_id );
+	setup_postdata( $post );
+	$excerpt = get_the_excerpt();
+	$post = $save_post;
+	wp_reset_postdata( $post );
+	return $excerpt;
+}
+

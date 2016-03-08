@@ -49,10 +49,13 @@ foreach($children as $child) {
 	$is_shortcut  = sk_is_shortcut($child_id);
 	$shortcut_url = sk_shortcut_url($child_id);
 
+		/*<div href="<?php echo $is_shortcut ? $shortcut_url : $permalink ; ?>" class="navigation-card col-md-4 col-sm-6  <?php echo $is_shortcut ? 'shortcut' : '' ; ?>">*/
 ?>
-		<a href="<?php echo $is_shortcut ? $shortcut_url : $permalink ; ?>" class="navigation-card col-md-4 col-sm-6  <?php echo $is_shortcut ? 'shortcut' : '' ; ?>">
+		<div class="navigation-card col-md-4 col-sm-6  <?php echo $is_shortcut ? 'shortcut' : '' ; ?>">
 			<h3 class="nav-card-title">
+				<a href="<?php echo $is_shortcut ? $shortcut_url : $permalink ; ?>">
 					<?php echo $title; ?>
+				</a>
 			</h3>
 			<p class="nav-card-text">
 				<?php 
@@ -62,19 +65,23 @@ foreach($children as $child) {
 
 						$i = 0;
 						foreach($children as $child) {
-							if($i > 0) echo ', ';
-							echo $child->post_title;
+							if($i > 0) echo ' | ';
+							printf('<a href="%s">%s</a>', get_permalink($child->ID), $child->post_title);
 							$i += 1;
 						}
 
+						?>
+							| <a href="<?php echo $is_shortcut ? $shortcut_url : $permalink ; ?>">Visa alla &#187;</a>
+						<?php
+
 					} else {
 
-						echo 'Amet doloremque ipsum quae sed doloribus deserunt ullam? Magnam veritatis nam deserunt reiciendis autem, dolorum aperiam.';
+						echo sk_get_excerpt($child_id);
 
 					}
 				?>
 			</p>
-		</a>
+		</div>
 <?php
 }
 
