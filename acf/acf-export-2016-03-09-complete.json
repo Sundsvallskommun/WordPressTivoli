@@ -603,7 +603,7 @@
             },
             {
                 "key": "field_56bb0e7efefe9",
-                "label": "Platser",
+                "label": "Mark\u00f6rer",
                 "name": "map_locations",
                 "type": "repeater",
                 "instructions": "",
@@ -623,21 +623,21 @@
                     "id": ""
                 },
                 "collapsed": "",
-                "min": "",
+                "min": 1,
                 "max": "",
                 "layout": "block",
-                "button_label": "L\u00e4gg till plats",
+                "button_label": "Ut\u00f6ka med ytterligare en mark\u00f6r",
                 "sub_fields": [
                     {
                         "key": "field_56bb0f82835ce",
-                        "label": "Titel",
+                        "label": "Mark\u00f6rens titel",
                         "name": "location_title",
                         "type": "text",
                         "instructions": "",
                         "required": 1,
                         "conditional_logic": 0,
                         "wrapper": {
-                            "width": "",
+                            "width": 50,
                             "class": "",
                             "id": ""
                         },
@@ -651,14 +651,14 @@
                     },
                     {
                         "key": "field_56bb4579486f1",
-                        "label": "Beskrivning",
+                        "label": "Mark\u00f6rens beskrivning",
                         "name": "location_description",
                         "type": "text",
                         "instructions": "",
                         "required": 0,
                         "conditional_logic": 0,
                         "wrapper": {
-                            "width": "",
+                            "width": 50,
                             "class": "",
                             "id": ""
                         },
@@ -672,11 +672,11 @@
                     },
                     {
                         "key": "field_56bb0eacfefea",
-                        "label": "Position",
+                        "label": "Mark\u00f6rens Position",
                         "name": "location",
                         "type": "google_map",
                         "instructions": "",
-                        "required": 0,
+                        "required": 1,
                         "conditional_logic": 0,
                         "wrapper": {
                             "width": "",
