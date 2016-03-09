@@ -151,6 +151,15 @@ require_once locate_template( 'lib/class-sk-page-contacts.php' );
 $sk_post_type_contacts = new SK_Page_Contacts();
 
 /**
+ * SK_Boxes
+ * ========
+ *
+ * Boxes ("Puffar")
+ */
+require_once locate_template( 'lib/class-sk-boxes.php' );
+$sk_post_type_boxes = new SK_Boxes();
+
+/**
  * SK_Easyread
  * ===========
  *
