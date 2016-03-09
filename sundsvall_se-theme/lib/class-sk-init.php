@@ -21,6 +21,8 @@ class SK_Init {
 
 		add_action( 'init', array(&$this, 'register_sk_menus' ));
 
+		add_action('edit_form_after_title', array(&$this, 'sk_main_editor_heading') , 9000);
+
 		add_filter('tiny_mce_before_init', array(&$this, 'tiny_mce_settings') );
 
 		add_filter('body_class', array(&$this, 'body_section_class'));
@@ -143,6 +145,15 @@ class SK_Init {
 				'main-menu' => __( 'Huvudmeny' )
 			)
 		);
+	}
+
+	/**
+	 * Add heading to main content editor
+	 *
+	 * @author Johan Linder <johan@flatmate.se>
+	 */
+	function sk_main_editor_heading() {
+		echo '<div class="postbox" style="margin-top: 40px; margin-bottom: 0;"><h3>Innehållstext</h3></div>';
 	}
 
 	/**
