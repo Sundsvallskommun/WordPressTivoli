@@ -5,6 +5,8 @@
 
 tinymce.PluginManager.add('sk_page_lead', function(editor, url) {
 
+	if(editor.id !== 'content') return;
+
 	editor.on('init', function() {
 		setLead(editor);
 	});

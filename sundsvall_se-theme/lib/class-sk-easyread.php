@@ -89,3 +89,8 @@ class SK_Easyread {
 	}
 
 }
+
+function is_easyread() {
+	return isset($_REQUEST['lattlast']);
+}
+
