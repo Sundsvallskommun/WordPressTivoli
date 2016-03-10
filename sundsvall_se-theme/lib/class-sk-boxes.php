@@ -128,12 +128,14 @@ class SK_Boxes {
 		$box_type = get_field('box_type', $id);
 
 		if ($box_type === 'text') {
-			$box_title   = get_field('box_text_title', $id);
-			$box_content = get_field('box_text_content', $id);
+			$box_title     = get_field('box_text_title', $id);
+			$box_text_type = get_field('box_text_type', $id);
+			$box_content   = get_field('box_text_content', $id);
 		}
 
 		$box = array(
 			'type'    => $box_type,
+			'text_type' => $box_text_type,
 			'title'   => $box_title,
 			'content' => $box_content
 		);
@@ -145,7 +147,9 @@ class SK_Boxes {
 	function the_box($id) {
 		$box = $this->get_box_content($id);
 
-		return $box['content'];
+		$markup = '<div class="box box-%s">%s</div>';
+
+		return sprintf($markup, $box['text_type'], $box['content']);
 	}
 
 }

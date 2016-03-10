@@ -34,3 +34,20 @@ a[rel="tag"] {
 	color: inherit;
 	margin-right: .25em;
 }
+
+.box {
+	&-info {
+		background: $brand-info;
+		color: #fff;
+		padding-left: $spacer-x;
+		padding-right: $spacer-x;
+		p { color: inherit; }
+	}
+	&-warning {
+		background: $brand-warning;
+		color: #fff;
+		padding-left: $spacer-x;
+		padding-right: $spacer-x;
+		p { color: inherit; }
+	}
+}
