@@ -147,6 +147,7 @@ class SK_Page_Contacts {
 		$contact_email = get_field('email', $contact_id);
 		$contact_phone = get_field('phone', $contact_id);
 		$contact_address = get_field('address', $contact_id);
+		$contact_hours = get_field('hours', $contact_id);
 		$contact_thumb = get_the_post_thumbnail($contact_id, 'thumbnail');
 
 			$contact =  '<div class="page-contact">';
@@ -160,6 +161,10 @@ class SK_Page_Contacts {
 
 			if($contact_address) {
 				$contact .= sprintf('<div class="page-contact__address">%s</div>', $contact_address);
+			}
+
+			if($contact_hours) {
+				$contact .= sprintf('<div class="page-contact__hours">%s</div>', $contact_hours);
 			}
 
 			$contact .= '<p class="page-contact__email">';
