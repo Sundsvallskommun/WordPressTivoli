@@ -164,6 +164,7 @@ class SK_Page_Contacts {
 			}
 
 			if($contact_hours) {
+				$contact .= sprintf('<h4 class="page-contact__heading">%s</h4>', __('Öppettider', 'sundsvall_se'));
 				$contact .= sprintf('<div class="page-contact__hours">%s</div>', $contact_hours);
 			}
 
