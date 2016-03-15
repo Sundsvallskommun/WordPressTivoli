@@ -17,6 +17,23 @@ class SK_Page_Contacts {
 		add_action( 'sk_after_page_content', array(&$this, 'output_page_contact'), 10);
 
 		add_filter('the_title', array(&$this, 'contact_unique_admin_titles'), 10, 2);
+
+		add_filter( 'enter_title_here', array(&$this, 'contact_title_placeholder'));
+		add_action( 'edit_form_top', array( &$this, 'contact_title_heading') );
+	}
+
+	function contact_title_heading() {
+		$screen = get_current_screen();
+		if ( 'contact_persons' != $screen->post_type ) return;
+		echo '<h3 style="margin-bottom: 0;">För- och efternamn</h3>';
+	}
+
+	function contact_title_placeholder( $title ){
+			$screen = get_current_screen();
+			if ( 'contact_persons' == $screen->post_type ){
+					$title = 'Ange för- och efternamn';
+			}
+			return $title;
 	}
 
 	/**
