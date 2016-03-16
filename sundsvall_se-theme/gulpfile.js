@@ -23,7 +23,7 @@ var config = {
 	PROXY: 'sundsvall.dev'
 }
 
-gulp.task('styles', function() {
+gulp.task('styles', ['editor-styles'], function() {
 	gulp.src('./assets/css/scss/style.scss')
 		.pipe(sourcemaps.init())
 		.pipe(sass().on('error', sass.logError))
