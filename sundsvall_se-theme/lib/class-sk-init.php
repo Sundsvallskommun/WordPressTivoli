@@ -22,7 +22,8 @@ class SK_Init {
 		add_action( 'init', array(&$this, 'register_sk_menus' ));
 
 		add_filter('tiny_mce_before_init', array(&$this, 'tiny_mce_settings') );
-		add_filter('acf/fields/wysiwyg/toolbars', array(&$this, 'tiny_mce_settings') );
+
+		add_filter('acf/fields/wysiwyg/toolbars', array(&$this, 'acf_tiny_mce_settings') );
 
 		add_filter('body_class', array(&$this, 'body_section_class'));
 
@@ -146,6 +147,12 @@ class SK_Init {
 		);
 	}
 
+	private function get_tinymce_toolbar_items($toolbar = 1) {
+		if ( 1 === intval($toolbar) ) return 'formatselect, bold, link, unlink, blockquote, bullist, numlist, spellchecker, eservice_button, youtube_button, sk_collapse, rml_folder';
+		if ( 2 === intval($toolbar) ) return 'pastetext, removeformat, charmap, undo, redo';
+		return false;
+	}
+
 	/**
 	 * TinyMCE-settings
 	 *
@@ -161,8 +168,8 @@ class SK_Init {
 		 * toolbar1 = 'bold,italic,strikethrough,bullist,numlist,blockquote,hr,alignleft,aligncenter,alignright,link,unlink,wp_more,spellchecker,fullscreen,wp_adv,eservice_button'
 		 * toolbar2 = 'formatselect,underline,alignjustify,forecolor,pastetext,removeformat,charmap,outdent,indent,undo,redo,wp_help'
 		 */
-		$settings['toolbar1'] = 'formatselect, bold, link, unlink, blockquote, bullist, numlist, spellchecker, eservice_button, youtube_button, sk_collapse, rml_folder';
-		$settings['toolbar2'] = 'pastetext, removeformat, charmap, undo, redo';
+		$settings['toolbar1'] = $this->get_tinymce_toolbar_items(1);
+		$settings['toolbar2'] = $this->get_tinymce_toolbar_items(2);
 
 		/**
 		 * Always show toolbar 2
@@ -177,6 +184,14 @@ class SK_Init {
 
 		return $settings;
 
+	}
+
+	function acf_tiny_mce_settings($toolbars) {
+		$toolbars['Sundsvalls Kommun'] = array();
+		$toolbars['Sundsvalls Kommun'][1] = explode(',', $this->get_tinymce_toolbar_items(1));
+		$toolbars['Sundsvalls Kommun'][2] = explode(',', $this->get_tinymce_toolbar_items(2));
+
+		return $toolbars;
 	}
 
 	/**
