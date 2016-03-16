@@ -25,6 +25,15 @@ require_once locate_template( 'lib/class-sk-init.php' );
 $sk_init = new SK_Init();
 
 /**
+ * SK_Attachments
+ * ==============
+ *
+ * Add photographer field to attachments.
+ */
+require_once locate_template( 'lib/class-sk-attachments.php' );
+$sk_attachments = new SK_Attachments();
+
+/**
  * sk_log
  * ======
  *
