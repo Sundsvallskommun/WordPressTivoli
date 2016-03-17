@@ -11,6 +11,47 @@ class SK_Attachments {
 
 	function __construct() {
 		$this->attachment_fields();
+
+		add_action('admin_head', array(&$this, 'validate_media_javascript'));
+	}
+
+	/**
+	 * Don't allow insertion of images without alt.
+	 */
+	function validate_media_javascript() {
+?>
+		<script>
+
+		jQuery(function($){
+
+			$('.wp-media-buttons .add_media').on( 'click', function( event ){
+
+						var original_send = wp.media.editor.send.attachment;
+
+						wp.media.editor.send.attachment = function( props, attachment ) {
+
+							if('image' ==! attachment.type) {
+								return original_send.apply(this, arguments);
+							}
+
+							if( !attachment.alt ) {
+								alert('You need to specify an alt-text.');
+							} else {
+								return original_send.apply(this, arguments);
+							}
+
+						};
+
+				if ( typeof wp !== 'undefined' && wp.media && wp.media.editor ) {
+					wp.media.editor.open( 'content' );
+				}
+
+			});
+
+		});
+
+		</script>
+<?php
 	}
 
 	/**
