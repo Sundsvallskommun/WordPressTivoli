@@ -16,7 +16,7 @@ class SK_Attachments {
 	}
 
 	/**
-	 * Don't allow insertion of images without alt.
+	 * Don't allow insertion of images without alt and photographer.
 	 */
 	function validate_media_javascript() {
 ?>
@@ -24,21 +24,29 @@ class SK_Attachments {
 
 		jQuery(function($){
 
+			// Add media button
 			$('.wp-media-buttons .add_media').on( 'click', function( event ){
 
+						// Original send function to call if image should be inserted
 						var original_send = wp.media.editor.send.attachment;
 
+						// New send function where we validate alt and photographer
 						wp.media.editor.send.attachment = function( props, attachment ) {
 
+							// Only check imagees, if its any other attachment type, call
+							// original send function.
 							if('image' ==! attachment.type) {
 								return original_send.apply(this, arguments);
 							}
 
+							// Store all empty fields we care about
 							var missing = [];
 
 							!attachment.alt && missing.push('alt-text');
 							!attachment.photographer && missing.push('fotograf');
 
+							// Show error message if there is one, else call original send
+							// function.
 							if(missing.length) {
 
 								var error_message = 'Följande obligatoriska fält saknas: ';
@@ -56,6 +64,7 @@ class SK_Attachments {
 
 						};
 
+				// Show media modal
 				if ( typeof wp !== 'undefined' && wp.media && wp.media.editor ) {
 					wp.media.editor.open( 'content' );
 				}
