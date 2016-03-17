@@ -148,7 +148,7 @@ class SK_Init {
 	}
 
 	private function get_tinymce_toolbar_items($toolbar = 1) {
-		if ( 1 === intval($toolbar) ) return 'formatselect, bold, link, unlink, blockquote, bullist, numlist, spellchecker, eservice_button, youtube_button, sk_collapse, rml_folder';
+		if ( 1 === intval($toolbar) ) return 'formatselect, bold, link, unlink, blockquote, bullist, numlist, table, spellchecker, eservice_button, youtube_button, sk_collapse, rml_folder';
 		if ( 2 === intval($toolbar) ) return 'pastetext, removeformat, charmap, undo, redo';
 		return false;
 	}
