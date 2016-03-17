@@ -34,8 +34,22 @@ class SK_Attachments {
 								return original_send.apply(this, arguments);
 							}
 
-							if( !attachment.alt ) {
-								alert('You need to specify an alt-text.');
+							var missing = [];
+
+							!attachment.alt && missing.push('alt-text');
+							!attachment.photographer && missing.push('fotograf');
+
+							if(missing.length) {
+
+								var error_message = 'Följande obligatoriska fält saknas: ';
+
+								for(var i = 0; i < missing.length; i++) {
+									if(i > 0) error_message += ', ';
+									error_message += missing[i];
+								}
+
+								alert(error_message);
+
 							} else {
 								return original_send.apply(this, arguments);
 							}
@@ -63,6 +77,15 @@ class SK_Attachments {
 		add_filter( 'attachment_fields_to_edit', array(&$this, 'new_attachment_fields'), 9, 2 );
 		add_filter( 'attachment_fields_to_save', array(&$this, 'update_attachment_meta'), 4, 2);
 		add_action( 'wp_ajax_save-attachment-compat', array(&$this, 'media_extra_fields'), 0, 1 );
+		add_filter( 'wp_prepare_attachment_for_js', array(&$this, 'media_fields_attachment_js'), 10, 3);
+	}
+
+	function media_fields_attachment_js( $response, $attachment, $meta ) {
+
+		$photographer = get_post_meta($attachment->ID, 'media_photographer', true);
+
+		$response['photographer'] = $photographer;
+		return $response;
 	}
 
 	/**
