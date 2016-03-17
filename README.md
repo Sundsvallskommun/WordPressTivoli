@@ -3,6 +3,9 @@
 WordPress-plugins:
 
 * [ACF (Advanced Custom Fields) Pro](http://www.advancedcustomfields.com/pro/)
+* [TinyMCE Advanced](https://sv.wordpress.org/plugins/tinymce-advanced/)
+	(Används just nu endast för tabeller, som läggs till programmatiskt i
+	verktygsfältet. Aktivera pluginet och avaktivera alla inställningar.)
 
 # Installation
 
