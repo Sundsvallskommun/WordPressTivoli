@@ -25,13 +25,13 @@ class SK_Page_Contacts {
 	function contact_title_heading() {
 		$screen = get_current_screen();
 		if ( 'contact_persons' != $screen->post_type ) return;
-		echo '<h3 style="margin-bottom: 0;">För- och efternamn</h3>';
+		echo '<h3 style="margin-bottom: 0;">Namn</h3>';
 	}
 
 	function contact_title_placeholder( $title ){
 			$screen = get_current_screen();
 			if ( 'contact_persons' == $screen->post_type ){
-					$title = 'Ange för- och efternamn';
+					$title = 'Ange namn';
 			}
 			return $title;
 	}
