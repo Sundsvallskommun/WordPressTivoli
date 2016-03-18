@@ -46,7 +46,7 @@
 									}],
 									onSubmit: function(e) {
 										var dirID = this.toJSON().directory;
-										ed.selection.setContent('[rml_dir id='+dirID+']');
+										ed.selection.setContent('[mapp id='+dirID+']');
 									}
 								})
 

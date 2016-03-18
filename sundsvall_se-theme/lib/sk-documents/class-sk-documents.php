@@ -22,17 +22,6 @@ class RML_helper {
 			ORDER BY parent, ord
 		");
 
-		$tree = array();
-
-		foreach($result as $dir) {
-
-			if($dir->parent === '-1') {
-				$tree[$dir->id] = $dir;
-			} else {
-				$tree[$dir->parent]->children = $dir;
-			}
-		}
-
 		return $result;
 
 	}
@@ -85,7 +74,7 @@ class SK_Documents {
 
 		//echo $this->RML->get_select(4);
 
-		add_shortcode('rml_dir', array(&$this, 'shortcode_documents'));
+		add_shortcode('mapp', array(&$this, 'shortcode_documents'));
 
 		add_action('init', array(&$this, 'documents_shortcode_button_init'));
 
