@@ -31,7 +31,7 @@ $children = get_children(array(
 	'post_parent' => get_the_id(),
 	'post_type'   => 'page',
 	'post_status' => 'publish',
-	'orderby'     => 'title',
+	'orderby'     => 'menu_order title',
 	'order'       => 'ASC'
 ));
 
