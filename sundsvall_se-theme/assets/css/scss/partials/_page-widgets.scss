@@ -24,6 +24,19 @@
 		max-width: 15em;
 	}
 
+	&__columns {
+		width: 100%;
+		@include media-breakpoint-up(md) {
+			columns: 2;
+		}
+		max-width: 54em;
+	}
+
+	ul {
+		list-style: none;
+		padding: 0;
+	}
+
 	/**
 	 * Map specifics
 	 */
@@ -52,11 +65,5 @@
 	height: 30em;
 	position: relative;
 	overflow: visible !important;
-
-	ul {
-		list-style: none;
-		padding: 0;
-	}
-
 }
 
