@@ -16,7 +16,7 @@
 						dataType: 'json',
 						data: {
 							action: 'documents',
-							call: 'get_folder'
+							call: 'get_structure'
 						},
 						error: function() {
 							ed.setProgressState(false);
@@ -27,8 +27,12 @@
 
 							try {
 
-								var directories = data.map(function(s) {
-									return {text: s.name, value: s.id};
+								var directories = data.map(function(d) {
+									return {text: d.text.substring(2), value: d.value};
+								});
+
+								directories = directories.filter(function(d) {
+									return d.value != -1;
 								});
 
 								if(!directories) {

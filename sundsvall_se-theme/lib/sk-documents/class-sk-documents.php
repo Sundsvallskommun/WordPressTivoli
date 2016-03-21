@@ -26,6 +26,20 @@ class RML_helper {
 
 	}
 
+	/**
+	 * Returns a flat array with dashes in names to indicate structure
+	 */
+	public function structure_array() {
+		$rml_structure = new RML_Structure();
+		$structure = $rml_structure->namesSlugArray();
+
+		$return = array_map(function($title, $slug) {
+			return array('text' => $title, 'value' => $slug);
+		}, $structure['names'], $structure['slugs']);
+
+		return $return;
+	}
+
 	public function get_select($selected = false) {
 
 		$dirs = $this->get_all_directories();
@@ -124,8 +138,8 @@ class SK_Documents {
 	function ajax_documents() {
 		switch($_REQUEST['call']) {
 
-			case 'get_folder':
-				$data = $this->RML->get_all_directories();
+			case 'get_structure':
+				$data = $this->RML->structure_array();
 				break;
 		}
 		
