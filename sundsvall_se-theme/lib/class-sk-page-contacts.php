@@ -191,7 +191,7 @@ class SK_Page_Contacts {
 			}
 			if($contact_phone) {
 				$contact .= ' / ';
-				$contact .= get_phone_link($contact_phone);
+				$contact .= get_phone_links($contact_phone);
 			}
 			$contact .= '</p>';
 

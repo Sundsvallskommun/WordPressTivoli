@@ -46,7 +46,7 @@
             "label": "Telefonnummer",
             "name": "phone",
             "type": "text",
-            "instructions": "Publikt telefonnummer (ex. 070-123 45 67 eller 060-19 00 00)",
+            "instructions": "Publikt telefonnummer (ex. 070-123 45 67 eller 060-19 00 00). Flera telefonnummer separeras med kommatecken (ex. 070-123 45 67, 060-19 00 00)",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -122,5 +122,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1458117434
+    "modified": 1458565863
 }

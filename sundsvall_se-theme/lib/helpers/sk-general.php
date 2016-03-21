@@ -64,21 +64,31 @@ function loadSvgSprites() {
 }
 
 /**
- * Format phone number with dash and spaces.
+ * Format phone number/numbers with dash and spaces. Separate multiple numbers
+ * by comma.
  *
  * @author Johan Linder <johan@flatmate.se>
+ *
+ * @return array
  */
 function format_phone($n) {
-	$n = preg_replace('/\D*/','',$n);
+	$numbers = explode(',', $n);
 
-	//$n = preg_replace('/(\d{3})(\d{3})(\d{2})(\d{2})/', '$1 $2 $3 $4 $5', $n);
-	if (strlen($n) % 2 == 0) {
-		$n = preg_replace('/(\d{3})?(\d{3})?(\d{2})?(\d{2})?(\d{2})?(\d{2})?/', '$1-$2 $3 $4 $5 $6', $n, 1);
-	} else if (strlen($n) % 2 == 1) {
-		$n = preg_replace('/(\d{3})?(\d{2})?(\d{2})?(\d{2})?(\d{2})?(\d{2})?/', '$1-$2 $3 $4 $5 $6', $n, 1);
+	foreach($numbers as $key => $num) {
+
+		$num = preg_replace('/\D*/','',$num);
+
+		//$n = preg_replace('/(\d{3})(\d{3})(\d{2})(\d{2})/', '$1 $2 $3 $4 $5', $n);
+		if (strlen($num) % 2 == 0) {
+			$num = preg_replace('/(\d{3})?(\d{3})?(\d{2})?(\d{2})?(\d{2})?(\d{2})?/', '$1-$2 $3 $4 $5 $6', $num, 1);
+		} else if (strlen($num) % 2 == 1) {
+			$num = preg_replace('/(\d{3})?(\d{2})?(\d{2})?(\d{2})?(\d{2})?(\d{2})?/', '$1-$2 $3 $4 $5 $6', $num, 1);
+		}
+
+		$numbers[$key] = trim($num);
 	}
 
-	return trim($n);
+	return $numbers;
 }
 
 /**
@@ -86,9 +96,18 @@ function format_phone($n) {
  *
  * @author Johan Linder <johan@flatmate.se>
  */
-function get_phone_link($n) {
-	$n = format_phone($n);
-	return $n = sprintf('<a href="tel:%s">%s</a>', str_replace(' ', '-', $n), $n);
+function get_phone_links($n) {
+	$numbers = format_phone($n);
+	$str = '';
+	$i = 0;
+	foreach($numbers as $num) {
+		if($i > 0) {
+			$str .= ', ';
+		}
+		$str .= sprintf('<a href="tel:%s">%s</a>', str_replace(' ', '-', $num), $num);
+		$i += 1;
+	}
+	return $str;
 }
 
 /**
