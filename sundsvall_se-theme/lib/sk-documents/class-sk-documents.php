@@ -178,7 +178,6 @@ class SK_Documents {
 			$meta = wp_get_attachment_metadata($id);
 			$url = wp_get_attachment_url($id);
 			$filetype = wp_check_filetype($url);
-			$name = basename($meta['file']);
 			$title = get_the_title($id);
 			$size = filesize(get_attached_file($id));
 
@@ -187,7 +186,6 @@ class SK_Documents {
 				'title' => $title,
 				'url' => $url,
 				'filetype' => $filetype['ext'],
-				'name' => $name,
 				'size' => $size,
 			);
 
