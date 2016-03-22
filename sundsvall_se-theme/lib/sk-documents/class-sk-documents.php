@@ -179,7 +179,7 @@ class SK_Documents {
 			$url = wp_get_attachment_url($id);
 			$filetype = wp_check_filetype($url);
 			$title = get_the_title($id);
-			$size = filesize(get_attached_file($id));
+			$size = format_file_size(get_attached_file($id));
 
 
 			return array(
@@ -199,7 +199,7 @@ class SK_Documents {
 
 		$links = '';
 		foreach( $docs as $doc ) {
-			$links .= sprintf('<li><a href="%s">%s</a> (%s)</li>', $doc['url'], $doc['title'], $doc['filetype']);
+			$links .= sprintf('<li><a href="%s">%s</a> <small class="text-muted">(%s, %s)</small></li>', $doc['url'], $doc['title'], $doc['filetype'], $doc['size']);
 		}
 
 		$doc_list = sprintf('<ul class="list-unstyled bg-faded p-a-2">%s</ul>', $links);
