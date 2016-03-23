@@ -13,6 +13,8 @@ class SK_EServices {
 		add_action('wp_ajax_eservice', array(&$this, 'ajax_eservice'));
 
 		add_action('sk_page_widgets', array(&$this, 'widget_eservice_category'));
+
+		add_action('sk_popular_eservices', array(&$this, 'widget_popular_eservices'));
 	}
 
 	/**
