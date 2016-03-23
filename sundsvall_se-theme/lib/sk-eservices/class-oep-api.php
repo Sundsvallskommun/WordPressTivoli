@@ -6,7 +6,7 @@
  */
 class OEP {
 
-	const BASEURL = 'https://sundsvalltest.e-tjansteportalen.se/api/v1';
+	const BASEURL = 'https://e-tjanster.sundsvall.se/api/v1';
 	const FORMAT  = 'json';
 
 	function __construct() {
