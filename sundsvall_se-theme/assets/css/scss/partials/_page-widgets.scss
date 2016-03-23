@@ -7,6 +7,10 @@
 
 	background: $gray-lightest;
 
+	.front-page-section__eservices & {
+		background: transparent;
+	}
+
 	&__container {
 		@extend .container-fluid;
 		padding-top: 3.75em;

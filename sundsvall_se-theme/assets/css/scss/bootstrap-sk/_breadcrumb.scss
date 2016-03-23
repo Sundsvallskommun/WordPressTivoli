@@ -7,4 +7,8 @@
 			color: inherit;
 			font-weight: 600;
 		}
+
+		.home & {
+			display: none;
+		}
 	}

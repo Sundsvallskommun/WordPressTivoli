@@ -11,12 +11,13 @@
 		?>
 
 			<li class="">
-				<h3><a href="<?php the_permalink(); ?>">
-					<?php the_title(); ?>
-				</a></h3>
-				<?php the_post_thumbnail('thumb'); ?>
-				<?php the_excerpt(); ?>
-				<a href="<?php the_permalink(); ?>">Läs mer &#187;</a>
+				<a href="<?php the_permalink(); ?>">
+					<?php the_post_thumbnail('thumb'); ?>
+					<h3>
+						<?php the_title(); ?>
+					</h3>
+					<?php the_date('d F H:i'); ?>
+				</a>
 			</li>
 
 			<hr>
