@@ -118,6 +118,33 @@ class SK_EServices {
 		return $widget;
 	}
 
+	function widget_popular_eservices() {
+
+		$markup = apply_filters('sk_page_widget_markup', '
+			<div class="page-widget widget-eservices">
+				<div class="page-widget__container">
+					<div class="row">
+						<div class="col-xs-12">
+							<h3 class="page-widget__title">%s</h3>
+							%s
+						</div>
+					</div>
+				</div>
+			</div>');
+
+
+		$eservices = $this->oep->get_popular_services(15);
+		$title = __('Populära E-tjänster', 'sundsvall_se');
+
+		$eservice_links = '<div class="page-widget__columns">';
+		$eservice_links .= $this->eservice_links_by_category($eservices, '<li>%s</li>', '<ul>%s</ul>', '<h3>%s</h3>');
+		//$eservice_links .= $this->eservice_links($eservices, '<li>%s</li>');
+		$eservice_links .= '</div>';
+
+		printf($markup, $title, $eservice_links);
+
+	}
+
 	/**
 	 * Page widget listing all services in category if specified in page settings.
 	 *
@@ -190,6 +217,32 @@ class SK_EServices {
 
 		return $links;
 
+	}
+
+	function eservice_links_by_category($eservices, $linkwrap, $groupwrap, $headingwrap) {
+
+		$return = '';
+		$grouped = array();
+
+		foreach($eservices as $eservice) {
+
+			$category = $eservice['Category'];
+
+			if(!isset($grouped[$category])) {
+				$grouped[$category] = array();
+			}
+
+			array_push($grouped[$category], $eservice);
+		}
+
+		foreach($grouped as $category => $eservices) {
+			$links = $this->eservice_links($eservices, $linkwrap);
+
+			$return .= sprintf($headingwrap, $category);
+			$return .= sprintf($groupwrap, $links);
+		}
+
+		return $return;
 	}
 
 	/**

@@ -73,6 +73,32 @@ class OEP {
 
 	}
 
+	public function get_popular_services($limit = 5) {
+
+		$transient_name = 'sk_eservice_getpopular_'.$limit;
+
+		$transient = get_transient( $transient_name );
+
+		if( ! empty( $transient ) ) {
+			return $transient;
+		}
+
+		$url = self::BASEURL.'/getpopularflows/'.$limit.'/'.self::FORMAT;
+
+		$json = $this->make_json_call($url);
+
+		if(!isset($json['Flows'])) {
+			return false;
+		}
+
+		$output = $json['Flows'];
+
+		set_transient( $transient_name, $output, HOUR_IN_SECONDS);
+
+		return $output;
+
+	}
+
 	public function get_all_categories() {
 
 		$transient_name = 'sk_eservice_categories_getall';
