@@ -51,3 +51,41 @@ a[rel="tag"] {
 		p { color: inherit; }
 	}
 }
+
+
+/**
+ *
+ * Citybreak event calendar hacks
+ */
+.front-page-section__calendar {
+	background: $sk_pink;
+}
+
+#tblCalendarEventWidget {
+	display: none !important;
+}
+
+#Citybreak_CalendarEventWidget {
+	background: transparent !important;
+	border: none !important;
+	border-radius: 0 !important;
+	font-size: 2em;
+	width: 100% !important;
+	#cb_whathappenstoday_list {
+		li {
+			margin-bottom: .5em;
+		}
+	}
+	#cb_whathappenstoday {
+		background: transparent;
+		margin: 0;
+		.cb_whathappensheader,
+		.cb_daytitle {
+			display: none;
+		}
+		.cb_title {
+			font-size: 1em;
+		}
+	}
+
+}
