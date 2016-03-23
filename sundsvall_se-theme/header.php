@@ -48,5 +48,9 @@
 
 </header>
 
+<?php if(is_front_page()): ?>
 <main role="main" id="content">
+<?php else: ?>
+<main role="main" id="content" class="container-fluid">
+<?php endif; ?>
 

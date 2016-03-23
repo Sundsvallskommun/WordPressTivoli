@@ -1,6 +1,10 @@
 </main>
 
-<?php do_action('sk_page_widgets'); ?>
+<?php
+if(!is_front_page()) {
+	do_action('sk_page_widgets');
+}
+?>
 
 <footer class="site-footer" role="contentinfo">
 
