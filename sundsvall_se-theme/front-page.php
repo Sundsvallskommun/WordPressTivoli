@@ -4,11 +4,11 @@
 
 	<div class="row">
 
-		<div class="col-md-8">
+		<div class="eservices-col">
 			<?php get_template_part('partials/front-page/eservices'); ?>
 		</div>
 
-		<div class="col-md-4">
+		<div class="news-col">
 			<?php get_template_part('partials/front-page/news'); ?>
 		</div>
 

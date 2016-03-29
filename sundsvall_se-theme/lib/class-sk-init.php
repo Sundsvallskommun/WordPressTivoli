@@ -47,6 +47,8 @@ class SK_Init {
 		add_image_size( 'content-quarter', 185, 9000);
 		add_image_size( 'portrait',        185, 9000);
 
+		add_image_size( 'news-thumb',      132, 92, true);
+
 		update_option('image_default_size', 'content-half');
 
 		add_filter('img_caption_shortcode', array(&$this, 'img_caption_shortcode_size_class'), 10, 3);

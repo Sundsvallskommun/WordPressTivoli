@@ -1,8 +1,8 @@
 <section>
 
-	<h2>Nyheter</h2>
+	<h2 class="front-page__heading"><?php _e('Nyheter', 'sundsvall_se')?></h2>
 
-	<ul class="list-unstyled">
+	<ul class="list-unstyled widget-latest-news">
 
 	<?php
 	$latest_posts = get_posts( array( 'posts_per_page' => 3 ) );
@@ -10,18 +10,24 @@
 		foreach ($latest_posts as $post) : setup_postdata( $post );
 		?>
 
-			<li class="media">
+			<li class="media widget-latest-news__post">
 				<a href="<?php the_permalink(); ?>">
 					<?php if(has_post_thumbnail()): ?>
 						<div class="media-left">
-							<?php the_post_thumbnail('thumbnail'); ?>
+							<?php the_post_thumbnail('news-thumb'); ?>
+						</div>
+					<?php else: ?>
+						<div class="media-left">
+							<div class="img-placeholder"></div>
 						</div>
 					<?php endif; ?>
 					<div class="media-body">
 						<h3 class="media-heading">
 							<?php the_title(); ?>
 						</h3>
-						<?php the_date('d F H:i'); ?>
+						<div class="widget-latest-news__post__date">
+							<?php the_date('d F H:i'); ?>
+						</div>
 					</div>
 				</a>
 			</li>
@@ -33,6 +39,6 @@
 
 	</ul>
 
-	<a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>"> Alla nyheter </a>
+	<a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>"> Fler nyheter »</a>
 
 </section>

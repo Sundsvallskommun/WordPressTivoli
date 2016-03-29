@@ -1,0 +1,110 @@
+.home.page {
+
+	.site-header {
+		margin-bottom: 4.65rem;
+	}
+
+	.front-page__heading {
+		font-size: 2rem;
+		margin-top: 0;
+		margin-bottom: .75em;
+	}
+
+	.eservices-col,
+	.news-col {
+		@include make-col();
+	}
+
+	.eservices-col {
+
+		@include make-col-span(12);
+
+		@include media-breakpoint-up(md) {
+			@include make-col-span(6);
+		}
+
+		@include media-breakpoint-up(lg) {
+			@include make-col-span(7.5);
+		}
+	}
+
+	.news-col {
+
+		@include make-col-span(12);
+		
+		@include media-breakpoint-up(md) {
+			@include make-col-span(6);
+		}
+
+		@include media-breakpoint-up(lg) {
+			@include make-col-span(4.5);
+		}
+	}
+
+	.widget-eservices .front-page__heading {
+		margin-bottom: 1.875em;
+	}
+
+	// E-service container
+	.page-widget__container {
+		padding-top: 0;
+	}
+
+	.widget-eservices {
+		h3,h4 {
+			font-size: 1.125em;
+			margin-bottom: 1.125em;
+			margin-top: 2em;
+
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+	}
+
+}
+
+.widget-latest-news {
+	.media-left {
+		padding-right: $spacer-x*2;
+	}
+
+	.img-placeholder {
+		width: 132px;
+		height: 92px;
+		max-width: 100%;
+		background: $gray-lightest;
+	}
+
+	.media-body {
+		vertical-align: middle;
+		line-height: 1.5;
+		.media-heading {
+			line-height: inherit;
+		}
+	}
+
+	&__post {
+
+		margin-bottom: 1.5em;
+
+		&__date {
+			color: $gray-light;
+			font-size: .875em;
+		}
+	}
+
+	a {
+		color: inherit;
+
+		&:hover {
+			.media-body {
+				color: $gray-light;
+			}
+
+			.media-left {
+				opacity: .75;
+			}
+		}
+	}
+}

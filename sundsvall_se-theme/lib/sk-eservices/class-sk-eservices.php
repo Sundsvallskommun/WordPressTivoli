@@ -15,6 +15,8 @@ class SK_EServices {
 		add_action('sk_page_widgets', array(&$this, 'widget_eservice_category'));
 
 		add_action('sk_popular_eservices', array(&$this, 'widget_popular_eservices'));
+
+		add_filter('sk_page_widget_markup', array(&$this, 'eservice_frontpage_markup'));
 	}
 
 	/**
@@ -145,6 +147,22 @@ class SK_EServices {
 
 		printf($markup, $title, $eservice_links);
 
+	}
+
+	function eservice_frontpage_markup($markup) {
+		if(is_front_page()) {
+			return '<div class="page-widget widget-eservices">
+					<div class="page-widget__container">
+						<div class="row">
+							<div class="col-xs-12">
+								<h2 class="front-page__heading">%s</h2>
+								%s
+							</div>
+						</div>
+					</div>
+				</div>';
+		}
+		return $markup;
 	}
 
 	/**
