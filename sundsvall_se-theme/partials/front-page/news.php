@@ -10,17 +10,21 @@
 		foreach ($latest_posts as $post) : setup_postdata( $post );
 		?>
 
-			<li class="">
+			<li class="media">
 				<a href="<?php the_permalink(); ?>">
-					<?php the_post_thumbnail('thumb'); ?>
-					<h3>
-						<?php the_title(); ?>
-					</h3>
-					<?php the_date('d F H:i'); ?>
+					<?php if(has_post_thumbnail()): ?>
+						<div class="media-left">
+							<?php the_post_thumbnail('thumbnail'); ?>
+						</div>
+					<?php endif; ?>
+					<div class="media-body">
+						<h3 class="media-heading">
+							<?php the_title(); ?>
+						</h3>
+						<?php the_date('d F H:i'); ?>
+					</div>
 				</a>
 			</li>
-
-			<hr>
 
 		<?php
 		endforeach;
