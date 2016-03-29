@@ -54,12 +54,13 @@
 		height: 1.74em;
 		border-radius: 50%;
 		img {
+			// Temporarily hide icon until they are correct
+			// colors.
+			display: none;
 			position: absolute;
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
-			filter: contrast(200%) saturate(0%) invert(100%) hue-rotate(-40deg);
-			mix-blend-mode: screen;
 		}
 	}
 }
