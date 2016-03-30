@@ -137,7 +137,7 @@ class SK_EServices {
 			</div>');
 
 
-		$eservices = $this->oep->get_popular_services(18);
+		$eservices = $this->oep->get_popular_services(15);
 		$title = __('Våra mest populära e-tjänster just nu', 'sundsvall_se');
 
 		$eservice_links = '<div class="page-widget__columns">';
@@ -152,15 +152,9 @@ class SK_EServices {
 	function eservice_frontpage_markup($markup) {
 		if(is_front_page()) {
 			return '<div class="page-widget widget-eservices">
-					<div class="page-widget__container">
-						<div class="row">
-							<div class="col-xs-12">
 								<h2 class="front-page__heading">%s</h2>
 								%s
-							</div>
-						</div>
-					</div>
-				</div>';
+							</div>';
 		}
 		return $markup;
 	}

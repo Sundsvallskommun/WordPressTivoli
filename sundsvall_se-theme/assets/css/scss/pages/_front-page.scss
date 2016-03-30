@@ -13,6 +13,7 @@
 	.eservices-col,
 	.news-col {
 		@include make-col();
+		margin-bottom: $spacer-y * 1.5;
 	}
 
 	.eservices-col {

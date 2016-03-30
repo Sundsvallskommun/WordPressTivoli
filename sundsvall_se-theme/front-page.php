@@ -16,6 +16,26 @@
 
 </div>
 
+<div class="container-fluid container-fluid--full bg-faded">
+
+	<div class="row">
+
+		<div class="container-fluid">
+
+			<div class="row">
+
+				<div class="col-xs-12">
+					<h2 class="front-page__heading">Driftinformation</h2>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
 <div class="container-fluid container-fluid--full bg-primary">
 
 	<div class="row">
