@@ -13,27 +13,23 @@ function get_icon($id, array $args = array()) {
 
 	$args = array_merge(array(
 		'alt' => '',
-		'width' => null,
-		'height' => null
+		'width' => 1,
+		'height' => 1
 	), $args);
 
-	$svg =  '<svg ';
+	// We use a canvas to be able to keep aspect ratio. See
+	// http://nicolasgallagher.com/canvas-fix-svg-scaling-in-internet-explorer/
+	$markup = '
+	<div class="icon icon-%1$s" role="img" aria-label="%2$s">
+		<canvas class="icon-canvas" width="%3$s" height="%4$s"></canvas>
+		<svg class="icon-svg" width="%3$s" height="%4$s" viewBox="0 0 %3$s %4$s" >
+			<use xlink:href="#%1$s"/>
+		</svg>
+	</div>';
 
-	if($args['width']) { $svg .= 'width="'.$args['width'].'"'; }
+	$svg = sprintf($markup, $id, $args['alt'], $args['width'], $args['height']);
 
-	if($args['height']) { $svg .= 'height="'.$args['height'].'" '; }
-
-	if($args['height'] && $args['width']) { $svg .= 'viewBox="0 0 '. $args['width'] . ' ' . $args['height'] .'"'; }
-
-	$svg .= 'class="icon icon-'.$id.'"';
-	$svg .=  '>';
-
-	$svg .= '<title>'.$args['alt'].'</title>';
-	$svg .= '<use xlink:href="#'.$id.'" />';
-
-	$svg .= '</svg>';
-
-	return $svg;
+	return apply_filters('sk-svg-icon', $svg, $id, $args);
 }
 
 /**

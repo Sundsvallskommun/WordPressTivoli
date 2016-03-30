@@ -10,8 +10,24 @@ img {
 }
 
 .icon {
-	width: 1em;
-	height: 1em;
+	display: inline-block;
+	width: 1em; /* default icon width */
+	position: relative;
+	user-select: none;
+}
+
+.icon-canvas {
+	display: block;
+	width: 100%;
+	visibility: hidden;
+}
+
+.icon-svg {
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
 }
 
 .site-footer {
