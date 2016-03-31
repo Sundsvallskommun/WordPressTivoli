@@ -1,4 +1,9 @@
-<nav role="navigation" id="mainNavigation" class="site-navigation collapse">
+<nav role="navigation" id="mainNavigation" class="site-navigation offcanvas-fixed-sm">
+
+<div class="nav-header hidden-md-up">
+	<h2>Kategorier</h2>
+</div>
+
 <?php
 	$nav_args = array(
 		'theme_location'  => 'main-menu',

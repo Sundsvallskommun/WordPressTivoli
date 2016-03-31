@@ -1,4 +1,60 @@
+/**
+ * Off canvas navigation
+ */
+.offcanvas-fixed-sm {
+
+	@include media-breakpoint-down(sm) {
+		height: calc(100% - 64px);
+		position: fixed;
+		width: 100%;
+		background: white;
+		overflow: scroll;
+		top: 64px;
+		left: 0;
+		transform: translateX(-100%);
+		transition: transform .5s;
+		&.active {
+			left: 0%;
+			transform: translateX(0);
+		}
+
+	}
+
+}
+
+@include media-breakpoint-down(sm) {
+
+	main {
+		transition: transform .5s;
+	}
+	body.offcanvas-active,
+	body.offcanvas-animating {
+		overflow: hidden;
+	}
+
+	.offcanvas-active {
+		main {
+			transform: translateX(100%);
+		}
+	}
+
+}
+
+
 .site-navigation {
+
+	.nav-header {
+		display: block;
+		padding: 2em $spacer-x 1em;
+		background: $gray-lightest;
+		border-bottom: 1px solid $gray-lighter;
+
+		h2 {
+			margin: 0;
+			font-size: 1.35em;
+		}
+	}
+
 	@include media-breakpoint-up(md) {
 		border-bottom: 5px solid $gray-lighter;
 	}
@@ -10,6 +66,7 @@
 	}
 
 	ul {
+		margin-bottom: 0;
 		@include media-breakpoint-up(md) {
 			display: flex;
 			justify-content: space-between;
@@ -27,8 +84,12 @@
 		a {
 			width: 100%;
 			display: inline-block;
-			padding: 2em .5em 2em .5em;
-			border-bottom: 5px solid $gray-lighter;
+			padding: 1.75em $spacer-x 1.75em $spacer-x;
+			border-bottom: 1px solid $gray-lighter;
+			@include media-breakpoint-up(md) {
+				border-bottom: 5px solid $gray-lighter;
+				padding: 2em .5em 2em .5em;
+			}
 			color: inherit;
 		}
 
@@ -44,10 +105,16 @@
 			border-radius: 50%;
 			vertical-align: middle;
 			position: relative;
-			margin-right: .2em;
+			margin-right: $spacer-x/2;
 
-			width: 2rem;
-			height: 2rem;
+			width: 3rem;
+			height: 3rem;
+
+			@include media-breakpoint-up(md) {
+				margin-right: .2em;
+				width: 2rem;
+				height: 2rem;
+			}
 
 			@include media-breakpoint-up(xl) {
 				width: 3.5rem;
@@ -67,6 +134,9 @@
 		.menu-item-text {
 			display: inline-block;
 			vertical-align: middle;
+			@include media-breakpoint-down(md) {
+				font-family: $font-family-large;
+			}
 			@include media-breakpoint-up(md) {
 				max-width: 92px;
 			}
@@ -81,7 +151,9 @@
 			&:hover a,
 			&.current-menu-item a,
 			&.current-page-ancestor a {
-				border-bottom-color: $color;
+				@include media-breakpoint-up(md) {
+					border-bottom-color: $color;
+				}
 			}
 		}
 	}

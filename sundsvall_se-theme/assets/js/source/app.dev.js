@@ -35,6 +35,20 @@ require('./acf-map.js');
 				 }
 		});
 
+		/**
+		 * Toggle off canvas navigation
+		 */
+		$('[data-toggle="offcanvas"]').on('click', function () {
+			$('body').toggleClass('offcanvas-active');
+			$('body').addClass('offcanvas-animating');
+			$('.offcanvas-fixed-sm').toggleClass('active')
+
+			$('.offcanvas-fixed-sm').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
+				$('body').removeClass('offcanvas-animating');
+			});
+
+		});
+
 	});
 
 
