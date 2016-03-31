@@ -7,11 +7,7 @@ get_header();
 
 <?php while ( have_posts() ) : the_post(); ?>
 
-<div class="row">
-
-<div class="col-xs-12">
-
-	<header class="navigation-page__header">
+	<header class="navigation-page__header container-fluid">
 		<div class="page-icon"><?php the_icon(get_section_class_name()); ?></div>
 
 		<h1 class="page-title"><?php the_title(); ?></h1>
@@ -23,6 +19,11 @@ get_header();
 		<?php do_action('sk_after_page_content'); ?>
 
 	</header>
+
+<div class="container-fluid">
+<div class="row">
+
+<div class="col-xs-12">
 
 	<div class="row">
 <?php
@@ -51,7 +52,7 @@ foreach($children as $child) {
 
 		/*<div href="<?php echo $is_shortcut ? $shortcut_url : $permalink ; ?>" class="navigation-card col-md-4 col-sm-6  <?php echo $is_shortcut ? 'shortcut' : '' ; ?>">*/
 ?>
-		<div class="navigation-card col-md-4 col-sm-6  <?php echo $is_shortcut ? 'shortcut' : '' ; ?>">
+		<div class="navigation-card <?php echo $is_shortcut ? 'shortcut' : '' ; ?>">
 			<h3 class="nav-card-title">
 				<a href="<?php echo $is_shortcut ? $shortcut_url : $permalink ; ?>">
 					<?php echo $title; ?>
@@ -89,6 +90,7 @@ foreach($children as $child) {
 
 	</div>
 
+</div>
 </div>
 
 </div> <?php //.row ?>

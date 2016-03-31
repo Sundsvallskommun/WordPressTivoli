@@ -48,7 +48,7 @@
 
 </header>
 
-<?php if(is_front_page()): ?>
+<?php if(is_front_page() || is_page_template('templates/page-navigation.php')): ?>
 	<main role="main" id="content">
 <?php else: ?>
 	<main role="main" id="content" class="container-fluid">

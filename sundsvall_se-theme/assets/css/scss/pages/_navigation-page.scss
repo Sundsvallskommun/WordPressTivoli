@@ -1,4 +1,10 @@
 .navigation-page__header {
+	@include media-breakpoint-down(sm) {
+		padding: 1.75em $spacer-x 1em;
+		background: $gray-lightest;
+		border-bottom: 1px solid $gray-lighter;
+		margin: 0;
+	}
 
 	margin-bottom: 3em;
 
@@ -8,12 +14,17 @@
 		@include section-colors(background);
 		color: #fff;
 		fill: currentColor;
-		width: 8em;
-		height: 8em;
+		width: 3.25em;
+		height: 3.25em;
 		border-radius: 50%;
 		float: left;
 		position: relative;
 		margin-right: 2em;
+
+		@include media-breakpoint-up(md) {
+			width: 8em;
+			height: 8em;
+		}
 
 		.icon {
 			position: absolute;
@@ -28,6 +39,10 @@
 	.page-title {
 		display: inline-block;
 		float: left;
+		@include media-breakpoint-down(sm) {
+			margin: 0;
+			font-size: 1.5em;
+		}
 	}
 
 }
