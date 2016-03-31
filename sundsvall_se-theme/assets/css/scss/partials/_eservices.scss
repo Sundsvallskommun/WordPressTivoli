@@ -22,18 +22,27 @@
  * Small inline e-service link
  */
 .eservice-link {
+
 	background: $sk-eservice-bg;
 	color: $sk-eservice-fg;
-	font-size: .875em;
-	padding: 0em 3em 0em 2.25em;
-	border-radius: 1em;
+	padding: .75em 2.75em .75em 3.25em;
+	border-radius: 2em;
 	position: relative;
-
 	display: inline-block;
 	overflow: hidden;
 	white-space: nowrap;
 	max-width: 100%;
 	text-overflow: ellipsis;
+	width: 100%;
+	margin-bottom: .2em;
+
+	font-size: .875em;
+	@include media-breakpoint-up(sm) {
+		width: auto;
+		padding: 0em 3em 0em 2.25em;
+		border-radius: 1em;
+		margin-bottom: 0;
+	}
 
 	&:focus,
 	&:hover {
@@ -48,10 +57,17 @@
 		display: block;
 		background: $sk-eservice-fg;
 		position: absolute;
-		top: 0;
+		top: 50%;
 		left: 0;
-		width: 1.74em;
-		height: 1.74em;
+		width: 2em;
+		height: 2em;
+		transform: translate(.6em, -50%);
+		@include media-breakpoint-up(sm) {
+			top: 0;
+			transform: none;
+			width: 1.74em;
+			height: 1.74em;
+		}
 		border-radius: 50%;
 		img {
 			// Temporarily hide icon until they are correct
