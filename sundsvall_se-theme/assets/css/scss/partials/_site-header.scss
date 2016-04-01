@@ -45,6 +45,10 @@
 	height: 4em;
 	padding: .5em;
 
+	.admin-bar & {
+		margin-top: 46px;
+	}
+
 	button {
 		background: rgba(white, 0.1);
 		border-radius: 50%;

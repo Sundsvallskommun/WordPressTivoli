@@ -1,6 +1,6 @@
 <?php get_template_part('head'); ?>
 
-<nav class="hidden-md-up navbar navbar-light navbar-full navbar-mobile navbar-sticky-top">
+<nav class="hidden-md-up navbar navbar-light navbar-full navbar-mobile navbar-fixed-top">
 	<button class="navbar-toggler" type="button" data-toggle="offcanvas">
 		&#9776;
 	</button>

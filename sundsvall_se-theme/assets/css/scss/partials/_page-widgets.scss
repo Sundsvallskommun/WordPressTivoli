@@ -1,6 +1,8 @@
 .page-widgets {
-	margin-top: 5.5rem;
 	margin-bottom: 0;
+	@include media-breakpoint-up(md) {
+		margin-top: 5.5rem;
+	}
 }
 
 .page-widget {
