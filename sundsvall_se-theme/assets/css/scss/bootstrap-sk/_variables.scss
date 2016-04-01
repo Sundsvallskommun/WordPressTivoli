@@ -33,11 +33,12 @@
 // Colors
 
 // SK-colors
-$sk-pink: #da57a0;
+$sk-pink: rgb(169, 12, 119);
+//$sk-pink: #da57a0;
 $sk-purple: #5d2685;
 
-$sk-eservice-bg: #e1cef0;
-$sk-eservice-fg: $sk-purple;
+$sk-eservice-bg: rgb(205, 226, 185);
+$sk-eservice-fg: rgb(0, 120, 65);
 
 //
 // Grayscale and brand colors for use across Bootstrap.
