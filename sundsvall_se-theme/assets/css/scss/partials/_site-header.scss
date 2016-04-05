@@ -83,14 +83,36 @@
 	}
 }
 
+body {
+	@include media-breakpoint-down(sm) {
+		transition: margin $mobile-search-transition-duration;
+		&.search-active {
+			margin-top: 100px;
+		}
+	}
+}
 .search-container {
+	transition: height $mobile-search-transition-duration;
 	@include make-col();
 	@include media-breakpoint-up(md) {
 		padding-left: 3.25em;
 		display: block;
 	}
+
+	@include media-breakpoint-down(sm) {
+		position: fixed;
+		top: 64px;
+		width: 100%;
+		height: 0;
+	}
+
+	&.active {
+		height: 100px;
+	}
+
+	z-index: 4;
 	float: none;
-	overflow: auto;
+	overflow: hidden;
 
 	form {
 		@include media-breakpoint-up(md) {

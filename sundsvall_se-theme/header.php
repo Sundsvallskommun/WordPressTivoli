@@ -2,15 +2,15 @@
 
 <nav class="hidden-md-up navbar navbar-light navbar-full navbar-mobile navbar-fixed-top">
 
-	<a class="navbar-toggler btn" data-toggle="offcanvas" href="#mainNavigation"> &#9776; </a>
+	<a class="navbar-toggler btn" data-toggle="offcanvas-left" href="#mainNavigation"> &#9776; </a>
 
 	<div class="navbar-center">
 			<?php get_template_part('partials/site-logo'); ?>
 	</div>
 
 
-		<button type="button" class="navbar-toggler pull-xs-right btn"
-						data-toggle="collapse" data-target="#searchContainer"><?php the_icon('search'); ?></button>
+		<a class="navbar-toggler pull-xs-right btn" data-toggle="search"
+						href="#searchContainer"><?php the_icon('search'); ?></a>
 </nav>
 
 <header role="banner" class="site-header bg-faded">
@@ -27,7 +27,7 @@
 
 			</div>
 
-			<div id="searchContainer" class="search-container collapse">
+			<div id="searchContainer" class="search-container">
 
 				<?php get_search_form(); ?>
 

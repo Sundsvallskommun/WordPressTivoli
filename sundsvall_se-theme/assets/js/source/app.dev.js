@@ -35,26 +35,37 @@ require('./acf-map.js');
 				 }
 		});
 
+		$('[data-toggle="search"]').on('click', function (e) {
+			e.preventDefault();
+			var target = $(this).attr('href');
+			console.log(target);
+			$(target).toggleClass('active');
+			$('body').toggleClass('search-active');
+		});
+
 		/**
 		 * Toggle off canvas navigation
 		 */
-		$('[data-toggle="offcanvas"]').on('click', function (e) {
+		$('[data-toggle="offcanvas-left"]').on('click', function (e) {
 			e.preventDefault();
-
 			var target = $(this).attr('href');
+			offcanvas(target, 'left');
+		});
+
+		function offcanvas(target, dir) {
 
 			$(target).toggleClass('active');
-			$('body').toggleClass('offcanvas-active');
+			$('body').toggleClass('offcanvas-active-' + dir);
 
 			/**
 			 * Add class to body to indicate that offcanvas is animating in or out.
 			 */
-			$('body').addClass('offcanvas-animating');
+			$('body').addClass('offcanvas-animating-' + dir);
 			$(target).on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
-				$('body').removeClass('offcanvas-animating');
+				$('body').removeClass('offcanvas-animating-' + dir);
 			});
 
-		});
+		}
 
 	});
 
