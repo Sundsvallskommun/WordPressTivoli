@@ -1,4 +1,4 @@
-<nav role="navigation" id="mainNavigation" class="site-navigation offcanvas-fixed-sm">
+<nav role="navigation" id="mainNavigation" class="site-navigation offcanvas">
 
 <div class="nav-header hidden-md-up">
 	<h2>Kategorier</h2>

@@ -38,12 +38,19 @@ require('./acf-map.js');
 		/**
 		 * Toggle off canvas navigation
 		 */
-		$('[data-toggle="offcanvas"]').on('click', function () {
-			$('body').toggleClass('offcanvas-active');
-			$('body').addClass('offcanvas-animating');
-			$('.offcanvas-fixed-sm').toggleClass('active')
+		$('[data-toggle="offcanvas"]').on('click', function (e) {
+			e.preventDefault();
 
-			$('.offcanvas-fixed-sm').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
+			var target = $(this).attr('href');
+
+			$(target).toggleClass('active');
+			$('body').toggleClass('offcanvas-active');
+
+			/**
+			 * Add class to body to indicate that offcanvas is animating in or out.
+			 */
+			$('body').addClass('offcanvas-animating');
+			$(target).on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
 				$('body').removeClass('offcanvas-animating');
 			});
 

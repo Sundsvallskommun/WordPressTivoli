@@ -26,12 +26,7 @@
 	font-family: arial;
 
 	@include media-breakpoint-down(sm) {
-		position: fixed;
-		top: 4em;
-		width: 100%;
-		z-index: 99;
-		max-height: calc(100vh - 2.5em);
-		overflow: auto;
+		margin-bottom: 0;
 	}
 
 	.navbar {
@@ -49,11 +44,13 @@
 		margin-top: 46px;
 	}
 
-	button {
+	button,
+	.btn {
 		background: rgba(white, 0.1);
 		border-radius: 50%;
 		width: 2.25em;
 		height: 2.25em;
+		color: inherit;
 	}
 
 	svg {

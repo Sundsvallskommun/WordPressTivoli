@@ -1,3 +1,5 @@
+$transition-duration: .75s;
+
 body {
 	@include media-breakpoint-down(sm) {
 		padding-top: 4em;
@@ -7,49 +9,52 @@ body {
 /**
  * Off canvas navigation
  */
-.offcanvas-fixed-sm {
+.offcanvas {
 
 	@include media-breakpoint-down(sm) {
-		height: calc(100% - 64px);
-		height: 100%;
-		padding-top: 64px;
-		position: fixed;
-		width: 100%;
 		background: white;
-		overflow: scroll;
-		top: 64px;
+		position: fixed;
 		top: 0;
 		left: 0;
+		height: 100%;
+		width: 100%;
+		padding-top: 64px;
+		overflow: scroll;
 		transform: translateX(-100%);
-		transition: transform .5s;
-		&.active {
-			left: 0%;
+		transition: transform $transition-duration;
+		-webkit-overflow-scrollling: touch; // More standard scroll behaviour in iOS
+		z-index: 99;
+		&.active,
+		&:target {
 			transform: translateX(0);
 		}
-
 	}
 
 }
 
 @include media-breakpoint-down(sm) {
 
-	main {
-		transition: transform .5s;
+	.offcanvas-active .contentwrapper-outer,
+	.offcanvas-animating .contentwrapper-outer {
+		overflow: hidden;
+		height: 100%;
+		width: 100%;
 	}
 
+	.contentwrapper-inner {
+		transition: transform $transition-duration;
+	}
+
+	.offcanvas-active .contentwrapper-inner {
+		transform: translateX(100%);
+	}
 	body.offcanvas-active,
 	body.offcanvas-animating {
+		height: 100%;
 		overflow: hidden;
 	}
 
-	.offcanvas-active {
-		main {
-			transform: translateX(100%);
-		}
-	}
-
 }
-
 
 .site-navigation {
 

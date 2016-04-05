@@ -89,6 +89,9 @@ if(!is_front_page()) {
 
 </footer>
 
+</div> <?php // .contentwrapper-inner ?>
+</div> <?php // .contentwrapper-outer ?>
+
 <?php wp_footer(); ?>
 
 </body>

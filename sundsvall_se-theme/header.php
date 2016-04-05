@@ -1,9 +1,8 @@
 <?php get_template_part('head'); ?>
 
 <nav class="hidden-md-up navbar navbar-light navbar-full navbar-mobile navbar-fixed-top">
-	<button class="navbar-toggler" type="button" data-toggle="offcanvas">
-		&#9776;
-	</button>
+
+	<a class="navbar-toggler btn" data-toggle="offcanvas" href="#mainNavigation"> &#9776; </a>
 
 	<div class="navbar-center">
 			<?php get_template_part('partials/site-logo'); ?>
@@ -47,6 +46,9 @@
 	</div>
 
 </header>
+
+<div class="contentwrapper-outer"> <?php // Wrappers used by off-canvas mobile navigation ?>
+<div class="contentwrapper-inner"> <?php // Wrappers used by off-canvas mobile navigation ?>
 
 <?php if(is_front_page() || is_page_template('templates/page-navigation.php')): ?>
 	<main role="main" id="content">
