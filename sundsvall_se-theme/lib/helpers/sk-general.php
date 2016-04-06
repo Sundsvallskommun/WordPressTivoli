@@ -121,6 +121,10 @@ function get_section_class_name($item = null) {
 		$item = $post;
 	}
 
+	if(!isset($item)) {
+		return false;
+	}
+
 	$parent = array_reverse(get_post_ancestors($item->ID));
 
 	if(isset($parent[0])) {
