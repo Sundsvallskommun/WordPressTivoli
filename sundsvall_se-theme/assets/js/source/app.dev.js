@@ -67,6 +67,28 @@ require('./acf-map.js');
 
 		}
 
+		$('[data-append-button]').on('click', 'a', function(e) {
+			e.preventDefault();
+
+			var anchorParent = $(this).parents('[data-append-button]');
+			var appendContainerID = anchorParent.data('append-button');
+			var anchor = $(this);
+			var link = anchor.attr('href');
+			var count = parseInt($('.result-count').html());
+
+			anchor.html('Laddar …');
+			$.get(link, function(data){ 
+				anchor.remove();
+				$(data).find(appendContainerID + ' li').hide().appendTo(appendContainerID).fadeIn(1000);
+				$(data).find('[data-append-button] a').appendTo(anchorParent);
+
+				var newCount = parseInt($(data).find('.result-count').html());
+				console.log(newCount);
+				$('.result-count').html(count + newCount);
+			});
+
+		});
+
 	});
 
 
