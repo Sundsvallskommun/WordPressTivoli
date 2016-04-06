@@ -28,17 +28,56 @@
 
 							<?php while ( have_posts() ) : the_post(); ?>
 
+							<?php $post_type = get_post_type(); ?>
+
 							<?php // Search item ?>
-							<li class="search-module__item <?php printf('search-module__item--%s', get_post_type()); ?>">
+							<li class="search-module__item <?php printf('search-module__item--%s', $post_type); ?>">
 								<a href="<?php the_permalink(); ?>">
+
+								<?php if ('contact_persons' === $post_type): ?>
 									<div class="search-module__item__icon">
 										<?php if('contact_persons' === get_post_type()) {
 											the_post_thumbnail('thumbnail');
 										} ?>
 									</div>
+
 									<div>
 										<h3 class="search-module__item__title"> <?php the_title(); ?> </h3>
-										Uppdaterad <?php the_modified_date(); ?>
+										<span class="search-module__item__description">
+											<?php the_field('role'); ?>
+										</span>
+									</div>
+
+								<?php elseif ('page' === $post_type): ?>
+									<div class="search-module__item__icon">
+										<?php the_icon('alignleft') ?>
+									</div>
+
+									<div>
+										<h3 class="search-module__item__title"> <?php the_title(); ?> </h3>
+										<span class="search-module__item__description">
+											Sida - Uppdaterad <?php the_modified_date(); ?>
+										</span>
+									</div>
+
+								<?php elseif ('post' === $post_type): ?>
+									<div class="search-module__item__icon">
+										<?php the_icon('alignleft') ?>
+									</div>
+
+									<div>
+										<h3 class="search-module__item__title"> <?php the_title(); ?> </h3>
+										<span class="search-module__item__description">
+											Artikel - Uppdaterad <?php the_modified_date(); ?>
+										</span>
+									</div>
+
+								<?php else: ?>
+
+								<?php endif; ?>
+
+									<div class="search-module__item__read-icon">
+										<?php the_icon('arrow-right') ?>
 									</div>
 
 								</a>
