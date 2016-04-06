@@ -3,35 +3,66 @@
 
 	<?php if ( have_posts() ) : ?>
 
-		<h1 class="page-title"><?php printf( __( 'Sökresultat för: %s', 'sundsvall_se' ), '<span>' . esc_html( get_search_query() ) . '</span>' ); ?></h1>
+		<div class="container-fluid">
 
-			<?php
-			// Start the loop.
-			while ( have_posts() ) : the_post();
+			<h1 class="page-title hidden-xs-up"><?php printf( __( 'Visar alla resultat för: %s', 'sundsvall_se' ), '<span>' . esc_html( get_search_query() ) . '</span>' ); ?></h1>
 
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-?>
-				<div>
-					<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
-					<?php the_excerpt(); ?>
+			<div class="row">
+
+				<div class="col-md-8 col-md-push-2">
+
+					<div class="search-module">
+
+						<div class="search-module__header">
+							<h2 class="search-module__title">Sidor och artiklar</h2>
+						</div>
+
+						<?php // Search module ?>
+						<ol class="search-module__items">
+
+							<?php while ( have_posts() ) : the_post(); ?>
+
+							<?php // Search item ?>
+							<li class="search-module__item <?php printf('search-module__item--%s', get_post_type()); ?>"><a href="#">
+								<div class="search-module__item__icon">
+									<?php if('contact_persons' === get_post_type()) {
+										the_post_thumbnail('thumbnail');
+									} ?>
+								</div>
+								<div>
+									<h3 class="search-module__item__title"> <?php the_title(); ?> </h3>
+									Uppdaterad <?php the_modified_date(); ?>
+								</div>
+								</a>
+							</li>
+
+							<?php endwhile; ?>
+
+						</ol>
+
+						<div class="search-module__footer">
+							<a href="#">Alla artiklar</a>
+						</div>
+
+					</div>
+
 				</div>
+
 <?php
 
-		endwhile;
-
 		the_posts_pagination( array(
-			'prev_text'          => __( 'Previous page', 'twentysixteen' ),
-			'next_text'          => __( 'Next page', 'twentysixteen' ),
-			'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentysixteen' ) . ' </span>',
+			'prev_text'          => __( 'previous page', 'twentysixteen' ),
+			'next_text'          => __( 'next page', 'twentysixteen' ),
+			'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'page', 'twentysixteen' ) . ' </span>',
 		) );
 
+?>
+<?php
 	else :
-		//No posts found
+		echo 'No posts found';
 	endif;
 ?>
+			</div> <?php //.row ?>
+		</div> <?php //.container-fluid ?>
 
 <?php get_footer(); ?>
