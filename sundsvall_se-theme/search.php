@@ -40,6 +40,7 @@
 										<h3 class="search-module__item__title"> <?php the_title(); ?> </h3>
 										Uppdaterad <?php the_modified_date(); ?>
 									</div>
+
 								</a>
 							</li>
 
