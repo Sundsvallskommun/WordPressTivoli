@@ -1,6 +1,6 @@
 <?php
 /*
- * Template name: Sitemap
+ * Template name: Sitemap (Använd ej)
  * */
 get_header();
 ?>
