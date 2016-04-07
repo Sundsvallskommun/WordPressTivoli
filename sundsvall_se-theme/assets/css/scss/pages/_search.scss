@@ -1,3 +1,8 @@
+.search-modules-row {
+	margin-top: 5.5rem;
+	margin-bottom: 5.5rem;
+}
+
 .search-module {
 	margin-bottom: 4em;
 	border-bottom: $hr-border-width solid $hr-border-color;
@@ -12,16 +17,24 @@
 	}
 
 	&__header {
-		padding: 2em 2em 0;
+		padding: 2em 4em 0;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
 	}
 
 	&__title {
+		margin: 0;
 		font-size: 1.25rem;
+	}
+
+	.post-count {
+		font-size: 0.875em;
 	}
 
 	&__items {
 		list-style: none;
-		padding: 0 2em;
+		padding: 0 4em;
 	}
 
 	&__item {
@@ -30,7 +43,14 @@
 		+ .search-module__item:not(.search-module__item--contact_persons) {
 			border-top: $hr-border-width solid $hr-border-color;
 		}}
-	
+
+		&__container {
+			display: flex;
+			padding: 1.5em 0;
+			overflow: auto;
+			align-items: center;
+		}
+
 		&__title {
 			margin: 0;
 			font-size: 1em;
@@ -40,13 +60,6 @@
 
 		&__description {
 			font-size: .875em;
-		}
-
-		a {
-			display: flex;
-			padding: 1.5em 0;
-			overflow: auto;
-			align-items: center;
 		}
 
 		&__icon {
@@ -91,6 +104,7 @@
 
 			a {
 				padding: .5em 0;
+				padding-right: .75em;
 				margin: .5em 0;
 				background: mix(#78c0a0, white, 15);
 				border-left: 5px solid #78c0a0;
@@ -104,7 +118,7 @@
 
 		&__read-icon {
 			margin-left: auto;
-			margin-right: 1em;
+			margin-right: 0em;
 			width: 1.75em;
 			height: 1.75em;
 			opacity: .5;

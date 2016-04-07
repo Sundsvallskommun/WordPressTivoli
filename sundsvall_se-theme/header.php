@@ -50,7 +50,7 @@
 <div class="contentwrapper-outer"> <?php // Wrappers used by off-canvas mobile navigation ?>
 <div class="contentwrapper-inner"> <?php // Wrappers used by off-canvas mobile navigation ?>
 
-<?php if(is_front_page() || is_page_template('templates/page-navigation.php')): ?>
+<?php if(is_front_page() || is_page_template('templates/page-navigation.php') || is_search()): ?>
 	<main role="main" id="content">
 <?php else: ?>
 	<main role="main" id="content" class="container-fluid">

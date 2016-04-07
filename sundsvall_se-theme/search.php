@@ -3,24 +3,30 @@
 
 	<?php if ( have_posts() ) : ?>
 
+		<div class="alert alert-success" role="alert">
+			Visar alla resultat för: ”<?php echo esc_html( get_search_query() ); ?>”
+		</div>
+
 		<div class="container-fluid">
 
 			<h1 class="page-title hidden-xs-up"><?php printf( __( 'Visar alla resultat för: %s', 'sundsvall_se' ), '<span>' . esc_html( get_search_query() ) . '</span>' ); ?></h1>
 
-			<div class="row">
+			<div class="row search-modules-row">
 
-				<div class="col-md-8 col-md-push-2">
+				<div class="col-md-6">
 
 					<div class="search-module">
 
 						<div class="search-module__header">
-							<h2 class="search-module__title">Resultat</h2>
+							<h2 class="search-module__title">Sökresultat</h2>
+							<div class="post-count">
 							<?php 
 								$pagenum = $wp_query->query_vars['paged'] < 1 ? 1 : $wp_query->query_vars['paged'];
 								$posts_per_page = $wp_query->query_vars['posts_per_page'];
 								$count = $posts_per_page < $wp_query->post_count ? $posts_per_page : $wp_query->post_count;
-								printf('Visar <span class="result-count">%d</span> av <span class="result-total">%d</span>', $count, $wp_query->found_posts);
+								printf('Visar <span class="post-count__count">%d</span> av <span class="post-count__total">%d</span>', $count, $wp_query->found_posts);
 							?>
+							</div>
 						</div>
 
 						<?php // Search module ?>
@@ -32,7 +38,7 @@
 
 							<?php // Search item ?>
 							<li class="search-module__item <?php printf('search-module__item--%s', $post_type); ?>">
-								<a href="<?php the_permalink(); ?>">
+								<a class="search-module__item__container" href="<?php the_permalink(); ?>">
 
 								<?php if ('contact_persons' === $post_type): ?>
 									<div class="search-module__item__icon">
@@ -97,6 +103,46 @@
 
 				</div>
 
+				<div class="col-md-6">
+
+					<div class="search-module">
+
+						<div class="search-module__header">
+							<h2 class="search-module__title">E-tjänster</h2>
+							<div class="post-count">
+							<?php 
+								$pagenum = $wp_query->query_vars['paged'] < 1 ? 1 : $wp_query->query_vars['paged'];
+								$posts_per_page = 0;
+								$count = 0;
+								printf('Visar <span class="post-count__count">%d</span> av <span class="post-count__total">%d</span>', $count, 0);
+							?>
+							</div>
+						</div>
+
+						<?php // Search module ?>
+						<ol class="search-module__items" id="eserviceItems">
+
+							<li class="search-module__item <?php printf('search-module__item--%s', $post_type); ?>">
+								<div class="search-module__item__container" href="#">
+									<div>
+										<h3 class="search-module__item__title"> E-tjänster är inte implementerat i söken ännu.</h3>
+										<span class="search-module__item__description">
+											Men vi jobbar på det!
+										</span>
+									</div>
+								</div>
+							</li>
+
+						</ol>
+
+						<div class="search-module__footer">
+							<a href="http://e-tjanster.sundsvall.se/">Alla E-tjänster</a>
+						</div>
+
+					</div>
+
+				</div>
+
 <?php
 	else :
 		echo 'No posts found';
@@ -104,5 +150,4 @@
 ?>
 			</div> <?php //.row ?>
 		</div> <?php //.container-fluid ?>
-
 <?php get_footer(); ?>

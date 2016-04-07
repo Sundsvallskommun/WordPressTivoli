@@ -77,7 +77,7 @@ require('./acf-map.js');
 			var appendContainerID = anchorParent.data('append-button');
 			var anchor = $(this);
 			var link = anchor.attr('href');
-			var count = parseInt($('.result-count').html());
+			var count = parseInt($('.post-count__count').html());
 
 			anchor.html('Laddar …');
 			$.get(link, function(data){ 
@@ -85,9 +85,8 @@ require('./acf-map.js');
 				$(data).find(appendContainerID + ' li').hide().appendTo(appendContainerID).fadeIn(1000);
 				$(data).find('[data-append-button] a').appendTo(anchorParent);
 
-				var newCount = parseInt($(data).find('.result-count').html());
-				console.log(newCount);
-				$('.result-count').html(count + newCount);
+				var newCount = parseInt($(data).find('.post-count__count').html());
+				$('.post-count__count').html(count + newCount);
 			}).fail(function() {
 				anchor.html('Något gick fel, prova igen …');
 			});
