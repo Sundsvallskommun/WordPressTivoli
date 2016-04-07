@@ -67,6 +67,9 @@ require('./acf-map.js');
 
 		}
 
+		/**
+		 * Load more results with ajax
+		 */
 		$('[data-append-button]').on('click', 'a', function(e) {
 			e.preventDefault();
 
@@ -85,6 +88,8 @@ require('./acf-map.js');
 				var newCount = parseInt($(data).find('.result-count').html());
 				console.log(newCount);
 				$('.result-count').html(count + newCount);
+			}).fail(function() {
+				anchor.html('Något gick fel, prova igen …');
 			});
 
 		});
