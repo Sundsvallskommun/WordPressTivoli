@@ -19,9 +19,5 @@
 	</div>
 </div>
 
-<style>
-
-</style>
-
 </section>
 

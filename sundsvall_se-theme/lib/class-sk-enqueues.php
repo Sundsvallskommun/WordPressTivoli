@@ -29,7 +29,7 @@ class SK_Enqueues {
 	}
 
 	function sk_frontend_web_font() {
-		echo "<link href=".$this->sk_font_url." rel='stylesheet' type='text/css'>";
+		echo "<link href='".$this->sk_font_url."' rel='stylesheet' type='text/css'>";
 	}
 
 	function sk_add_editor_styles() {

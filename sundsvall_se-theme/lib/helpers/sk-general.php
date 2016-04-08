@@ -20,12 +20,12 @@ function get_icon($id, array $args = array()) {
 	// We use a canvas to be able to keep aspect ratio. See
 	// http://nicolasgallagher.com/canvas-fix-svg-scaling-in-internet-explorer/
 	$markup = '
-	<div class="icon icon-%1$s" role="img" aria-label="%2$s">
+	<span class="icon icon-%1$s" role="img" aria-label="%2$s">
 		<canvas class="icon-canvas" width="%3$s" height="%4$s"></canvas>
 		<svg class="icon-svg" width="%3$s" height="%4$s" viewBox="0 0 %3$s %4$s" >
 			<use xlink:href="#%1$s"/>
 		</svg>
-	</div>';
+	</span>';
 
 	$svg = sprintf($markup, $id, $args['alt'], $args['width'], $args['height']);
 

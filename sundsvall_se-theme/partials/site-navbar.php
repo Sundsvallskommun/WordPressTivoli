@@ -1,4 +1,4 @@
-<nav role="navigation" class="navbar navbar-full hidden-sm-down">
+<nav class="navbar navbar-full hidden-sm-down">
 	<div class="container-fluid">
 		<div class="nav navbar-nav pull-xs-right">
 			<a class="nav-item nav-link btn btn-purple btn-sm" href="https://e-tjanster.sundsvall.se/">Våra e-tjänster</a>

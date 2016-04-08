@@ -75,7 +75,7 @@ class SK_Widgets {
 
 				<div class="map-description">
 					<h3 class="page-widget__title"><?php the_field('map_heading'); ?></h3>
-					<p class="page-widget__description"><?php the_field('map_description'); ?></p>
+					<div class="page-widget__description"><?php the_field('map_description'); ?></div>
 				</div>
 
 

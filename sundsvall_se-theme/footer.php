@@ -6,7 +6,7 @@ if(!is_front_page() && !is_search()) {
 }
 ?>
 
-<footer class="site-footer" role="contentinfo">
+<footer class="site-footer">
 
 	<div class="container-fluid">
 

@@ -107,17 +107,17 @@ class SK_EServices {
 
 		if(!$service) {
 
-			$widget  = '<p class="eservice-single-block eservice-single-block--notfound">';
+			$widget  = '<span class="eservice-single-block eservice-single-block--notfound">';
 			$widget .= '<a class="eservice-link" href="https://e-tjanster.sundsvall.se">Hoppsan, det gick inte att hitta e-tjänsten.</a>';
-			$widget .= '</p>';
+			$widget .= '</span>';
 
 			return $widget;
 
 		}
 
-		$widget  = '<p class="eservice-single-block">';
+		$widget  = '<span class="eservice-single-block">';
 		$widget  .= $this->eservice_link($service);
-		$widget .= '</p>';
+		$widget .= '</span>';
 
 		return $widget;
 	}
@@ -275,11 +275,11 @@ class SK_EServices {
 
 		$markup  = '
 			<a class="eservice-link" href="%s">
-				<span class="eservice-link__icon"><img src="%s"></span>
+				<span class="eservice-link__icon"></span>
 				<span class="eservice-link__name">%s</span>
 			</a>';
 
-		$link = apply_filters('sk_eservice_link', sprintf($markup, $url, $icon, $name), $url, $icon, $name);
+		$link = apply_filters('sk_eservice_link', sprintf($markup, $url, $name), $url, $name);
 
 		return $link;
 	}
