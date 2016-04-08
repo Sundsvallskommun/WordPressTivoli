@@ -62,6 +62,7 @@
 // Customizations
 @import "reboot";
 @import "type";
+@import "grid";
 @import "buttons";
 
 @import "navbar";
@@ -70,11 +71,4 @@
 
 // New components
 @import "navigation-card";
-
-.container-fluid {
-	max-width: 75.125rem;
-	&--full {
-		max-width: 100%;
-	}
-}
 

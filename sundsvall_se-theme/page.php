@@ -2,6 +2,7 @@
 
 <?php while ( have_posts() ) : the_post(); ?>
 
+<div class="container-fluid">
 
 <div class="single-post__row">
 
@@ -34,6 +35,8 @@
 	</div>
 
 </div> <?php //.row ?>
+
+</div> <?php //.container-fluid ?>
 
 <?php endwhile; ?>
 

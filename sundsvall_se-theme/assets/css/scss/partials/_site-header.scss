@@ -167,3 +167,13 @@ body {
 	}
 }
 
+main > .container-fluid {
+	@include media-breakpoint-up(md) {
+		margin-top: 5.5rem;
+	}
+}
+
+main > .container-fluid ~ .container-fluid {
+	margin-top: 0;
+}
+
