@@ -116,12 +116,6 @@ class SK_Page_Contacts {
 				return;
 		}
 
-		$contact_id = get_field('page-contact', $post->ID);
-
-		echo '<div class="page-contacts">';
-
-		echo $this->get_page_contact($contact_id);
-
 		$other_contacts = get_field('other_contacts', $post->ID);
 		$inherit_other_contacts = get_field('inherit_other_contacts', $post->ID);
 
@@ -131,17 +125,14 @@ class SK_Page_Contacts {
 
 		if(is_array($other_contacts)) {
 
-			echo '<div class="other-page-contacts">';
+			echo '<div class="page-contacts">';
 
 			foreach($other_contacts as $contact) {
-				echo $this->get_page_contact($contact, false);
+				echo $this->get_page_contact($contact);
 			}
 
 			echo '</div>';
 		}
-
-		echo '</div>';
-
 
 	}
 
@@ -168,7 +159,7 @@ class SK_Page_Contacts {
 		$contact_thumb = get_the_post_thumbnail($contact_id, 'thumbnail');
 
 			$contact =  '<div class="page-contact">';
-			if($contact_thumb && $show_thumb) {
+			if($show_thumb) {
 				$contact .= sprintf('<div class="page-contact__image">%s</div>', $contact_thumb);
 			}
 			$contact .= '<div class="page-contact__block">';
@@ -188,9 +179,11 @@ class SK_Page_Contacts {
 			$contact .= '<p class="page-contact__email">';
 			if($contact_email) {
 				$contact .= sprintf('<a href="mailto:%1$s">%1$s</a>', $contact_email);
+				if($contact_phone) {
+					$contact .= ' / '; 
+				}
 			}
 			if($contact_phone) {
-				$contact .= ' / ';
 				$contact .= get_phone_links($contact_phone);
 			}
 			$contact .= '</p>';

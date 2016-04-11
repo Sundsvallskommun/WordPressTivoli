@@ -10,16 +10,25 @@
 
 .page-contact {
 
+	position: relative;
+	min-height: 3.125em;
+
+	+ .page-contact {
+		margin-top: 1em;
+	}
+
 	&__image {
-		max-width: 3.125em;
-		float: left;
+		height: 3.125em;
+		width: 3.125em;
+		background: $gray-lightest;
+		position: absolute;
 		margin-right: 1em;
-		img {
-			border-radius: 50%;
-		}
+		border-radius: 50%;
+		overflow: hidden;
 	}
 
 	&__block {
+		padding-left: 4.125em;
 	}
 
 	&__title {
@@ -58,24 +67,6 @@
 	&__heading {
 		font-size: .875em;
 		margin-top: 1.25em;
-	}
-
-}
-
-.other-page-contacts {
-
-	background: $gray-lightest;
-	padding: 2em 1.5em;
-	margin-top: 2em;
-
-	.page-contact {
-		.page-contact__title {
-			font-size: 1em;
-		}
-
-		+ .page-contact {
-			margin-top: 1em;
-		}
 	}
 
 }

@@ -3,28 +3,6 @@
     "title": "Kontakter",
     "fields": [
         {
-            "key": "field_56a623e6f7481",
-            "label": "Uppdateringsansvarig",
-            "name": "page-contact",
-            "type": "post_object",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "contact_persons"
-            ],
-            "taxonomy": [],
-            "allow_null": 0,
-            "multiple": 0,
-            "return_format": "id",
-            "ui": 1
-        },
-        {
             "key": "field_56b88a0f85952",
             "label": "Arv",
             "name": "inherit_other_contacts",
@@ -93,5 +71,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1458117920
+    "modified": 1460383821
 }
