@@ -73,6 +73,11 @@ foreach($children as $child) {
 
 						$i = 0;
 						foreach($children as $child) {
+
+							if($child_id == $child->ID) {
+								continue;
+							}
+
 							if($i > 0) echo ' |&nbsp;';
 							printf('<a href="%s">%s</a>', get_permalink($child->ID), $child->post_title);
 							$i += 1;
