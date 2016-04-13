@@ -21,33 +21,6 @@ class OEP {
 		sk_log($message, $url);
 	}
 
-	private function make_json_call($url) {
-
-		$content = wp_remote_retrieve_body( wp_remote_get($url) );
-
-		// For some reason wp_remote_get failed to get e-tjänsteportalen locally in MAMP
-		if(!$content) {
-			$content = @file_get_contents($url);
-		}
-
-		if(!$content) {
-			$this->error_log('Unable to get data from Open ePlatform', $url);
-			return false;
-		}
-
-		$content = mb_convert_encoding($content, 'UTF-8',
-			mb_detect_encoding($content, 'UTF-8, ISO-8859-1', true));
-
-		if($content === false) {
-			return false;
-		}
-
-		$json = json_decode( $content, true );
-
-		return $json;
-
-	}
-
 	public function get_all_services() {
 		$transient_name = 'sk_eservice_getall';
 
@@ -59,7 +32,7 @@ class OEP {
 
 		$url = self::BASEURL.'/getflows/'.self::FORMAT;
 
-		$json = $this->make_json_call($url);
+		$json = sk_get_json($url);
 
 		if(!isset($json['Flows'])) {
 			return false;
@@ -85,7 +58,7 @@ class OEP {
 
 		$url = self::BASEURL.'/getpopularflows/'.$limit.'/'.self::FORMAT;
 
-		$json = $this->make_json_call($url);
+		$json = sk_get_json($url);
 
 		if(!isset($json['Flows'])) {
 			return false;
@@ -111,7 +84,7 @@ class OEP {
 			return $transient;
 		}
 
-		$json = $this->make_json_call($url);
+		$json = sk_get_json($url);
 
 		if(!isset($json['Categories'])) {
 			return false;
@@ -135,7 +108,7 @@ class OEP {
 			return $transient;
 		}
 
-		$json = $this->make_json_call($url);
+		$json = sk_get_json($url);
 
 		if(!isset($json['Flows'])) {
 			return false;
@@ -160,7 +133,7 @@ class OEP {
 			return $transient;
 		}
 
-		$json = $this->make_json_call($url);
+		$json = sk_get_json($url);
 
 		if(!isset($json['Flows']) || !isset($json['Flows'][0])) {
 			return false;

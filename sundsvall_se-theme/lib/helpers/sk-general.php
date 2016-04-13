@@ -204,3 +204,31 @@ function format_file_size($path) {
 	return $bytes;
 }
 
+function sk_get_json($url) {
+
+	$content = wp_remote_retrieve_body( wp_remote_get($url) );
+
+	// For some reason wp_remote_get failed to get e-tjänsteportalen locally in MAMP
+	if(!$content) {
+		$content = @file_get_contents($url);
+	}
+
+	if(!$content) {
+		$this->error_log('Unable to get json', $url);
+		return false;
+	}
+
+	$content = mb_convert_encoding($content, 'UTF-8',
+		mb_detect_encoding($content, 'UTF-8, ISO-8859-1', true));
+
+	if($content === false) {
+		return false;
+	}
+
+	$json = json_decode( $content, true );
+
+	return $json;
+
+}
+
+
