@@ -45,7 +45,8 @@
 		color: inherit;
 	}
 
-	.nav-card-title:before {
+	.nav-card-title__icon {
+		@extend %circle-with-icon;
 		content: "";
 		display: inline-block;
 		border-radius: 50%;
@@ -53,6 +54,7 @@
 		width: .75em;
 		height: .75em;
 		margin-right: .25em;
+
 		@include media-breakpoint-up(md) {
 			margin-right: .5em;
 			vertical-align: -22%;

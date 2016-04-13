@@ -54,6 +54,11 @@ foreach($children as $child) {
 ?>
 		<div class="navigation-card <?php echo $is_shortcut ? 'shortcut' : '' ; ?>">
 			<h3 class="nav-card-title">
+				<span class="nav-card-title__icon">
+					<?php if($is_shortcut === 'external' ) {
+						the_icon('external');
+					} ?>
+				</span>
 				<a href="<?php echo $is_shortcut ? $shortcut_url : $permalink ; ?>">
 					<?php echo $title; ?>
 				</a>

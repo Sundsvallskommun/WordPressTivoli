@@ -42,9 +42,12 @@ function sk_shortcut_url($id) {
  *
  * @param int $id Page id
  *
- * @return bool
+ * @return string|bool shortcut type or false
  */
 function sk_is_shortcut($id) {
-	return strpos(get_page_template_slug($id), 'page-shortcut.php');
+	if (strpos(get_page_template_slug($id), 'page-shortcut.php')) {
+		return get_field('shortcut_type', $id);
+	}
+	return false;
 }
 
