@@ -59,7 +59,7 @@ foreach($children as $child) {
 						the_icon('external');
 					} ?>
 				</span>
-				<a href="<?php echo $is_shortcut ? $shortcut_url : $permalink ; ?>">
+				<a href="<?php echo $is_shortcut ? $shortcut_url : $permalink ; ?>"<?php echo $is_shortcut === 'external' ? 'target="_blank"' : '' ; ?>>
 					<?php echo $title; ?>
 				</a>
 			</h3>
