@@ -61,20 +61,21 @@ foreach($children as $child) {
 			<p class="nav-card-text">
 				<?php 
 					if(is_navigation($child_id)) {
-
-						$children = get_children(array('post_type' => 'page', 'post_parent' => $child_id));
+						$children = apply_filters('sk_navcard_children', $child_id);
+						if(!$children) {
+							$children = get_children(array('post_type' => 'page', 'post_parent' => $child_id));
+						}
 
 						$i = 0;
 						foreach($children as $child) {
-							if($i > 0) echo ' | ';
+							if($i > 0) echo ' |&nbsp;';
 							printf('<a href="%s">%s</a>', get_permalink($child->ID), $child->post_title);
 							$i += 1;
 						}
 
 						?>
-							| <a href="<?php echo $is_shortcut ? $shortcut_url : $permalink ; ?>">Visa alla &#187;</a>
+							| <a href="<?php echo $is_shortcut ? $shortcut_url : $permalink ; ?>">Visa&nbsp;alla&nbsp;&#187;</a>
 						<?php
-
 					} else {
 
 						echo sk_get_excerpt($child_id);

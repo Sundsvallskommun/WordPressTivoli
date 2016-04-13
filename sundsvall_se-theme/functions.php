@@ -186,3 +186,6 @@ $sk_easyread = new SK_Easyread();
 require_once locate_template( 'lib/class-sk-rename-post-types.php' );
 $sk_rename_default_post_type = new SK_Rename_Default_Post_Type();
 
+require_once locate_template( 'lib/sk-vizzit/class-sk-vizzit.php' );
+$sk_rename_default_post_type = new SK_Vizzit();
+
