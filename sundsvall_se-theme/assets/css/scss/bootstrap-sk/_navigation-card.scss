@@ -38,7 +38,7 @@
 	}
 
 	.nav-card-title {
-		font-size: 1em;
+		margin-bottom: .75em;
 	}
 
 	.nav-card-title a {
@@ -66,9 +66,9 @@
 	.nav-card-text {
 		color: $text-muted;
 		font-size: .75em;
-		line-height: 1.5;
+		line-height: 1.75;
 		@include media-breakpoint-up(md) {
-			font-size: .825em;
+			font-size: .875em;
 		}
 
 		a {
