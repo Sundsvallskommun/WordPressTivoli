@@ -90,6 +90,8 @@ foreach($children as $child) {
 
 						if('page' === $is_shortcut) {
 							echo sk_get_excerpt(get_field('page_link', $child_id)->ID);
+						} else if('external' === $is_shortcut) {
+							echo get_field('shortcut_description', $child_id);
 						} else {
 							$excerpt = sk_get_excerpt($child_id);
 						}
