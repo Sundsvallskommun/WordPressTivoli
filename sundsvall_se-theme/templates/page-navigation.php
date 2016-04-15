@@ -88,7 +88,11 @@ foreach($children as $child) {
 						<?php
 					} else {
 
-						echo sk_get_excerpt($child_id);
+						if('page' === $is_shortcut) {
+							echo sk_get_excerpt(get_field('page_link', $child_id)->ID);
+						} else {
+							$excerpt = sk_get_excerpt($child_id);
+						}
 
 					}
 				?>
