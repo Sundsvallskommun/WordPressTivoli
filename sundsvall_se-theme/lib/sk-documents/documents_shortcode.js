@@ -53,7 +53,7 @@
 										name: 'orderby',
 										label: 'Sortering',
 										values: [
-											{text: 'Datum (Senast först)', value: 'date_desc'},
+											{text: 'Datum (Nyast först)', value: 'date_desc'},
 											{text: 'Datum (Äldst först)', value: 'date_asc'},
 											{text: 'Namn (A-Ö)', value: 'title'}
 										]
