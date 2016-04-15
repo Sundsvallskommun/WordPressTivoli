@@ -62,7 +62,7 @@ class RML_helper {
 
 	public function get_documents_in_dir($id, $orderby) {
 
-		$order   = ($orderby == 'date_asc' || $orderby == 'name') ? 'ASC' : 'DESC';
+		$order   = ($orderby == 'date_desc' || $orderby == 'name') ? 'DESC' : 'ASC';
 		$orderby = ($orderby == 'date_asc' || $orderby == 'date_desc') ? 'date' : $orderby;
 
 		$query = new WP_Query(array(
