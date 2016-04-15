@@ -47,10 +47,21 @@
 										name: 'directory',
 										label: 'Mapp',
 										values: directories
+									},
+									{
+										type: 'listbox',
+										name: 'orderby',
+										label: 'Sortering',
+										values: [
+											{text: 'Datum (Senast först)', value: 'date_desc'},
+											{text: 'Datum (Äldst först)', value: 'date_asc'},
+											{text: 'Namn (A-Ö)', value: 'title'}
+										]
 									}],
 									onSubmit: function(e) {
 										var dirID = this.toJSON().directory;
-										ed.selection.setContent('[mapp id='+dirID+']');
+										var orderby = this.toJSON().orderby;
+										ed.selection.setContent('[mapp id='+dirID+' orderby='+orderby+']');
 									}
 								})
 

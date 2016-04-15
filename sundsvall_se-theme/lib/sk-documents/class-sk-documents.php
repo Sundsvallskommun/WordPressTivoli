@@ -60,11 +60,17 @@ class RML_helper {
 
 	}
 
-	public function get_documents_in_dir($id) {
+	public function get_documents_in_dir($id, $orderby) {
+
+		$order   = ($orderby == 'date_asc' || $orderby == 'name') ? 'ASC' : 'DESC';
+		$orderby = ($orderby == 'date_asc' || $orderby == 'date_desc') ? 'date' : $orderby;
+
 		$query = new WP_Query(array(
 			'post_status' => 'inherit',
 			'post_type' => 'attachment',
 			'posts_per_page' => -1,
+			'orderby' => $orderby,
+			'order' => $order,
 					/*'meta_query' => array(
 							array(
 									'key' => '_rml_folder',
@@ -162,16 +168,17 @@ class SK_Documents {
 	function shortcode_documents($atts) {
 
 		$a = shortcode_atts( array(
-			'id' => false
+			'id' => false,
+			'orderby' => 'date'
 		), $atts );
 
 		if(!$a['id']) return false;
 
-		return $this->widget_document_list($a['id']);
+		return $this->widget_document_list($a['id'], $a['orderby']);
 	}
 
-	private function get_documents($id) {
-		$docs = $this->RML->get_documents_in_dir($id);
+	private function get_documents($id, $orderby) {
+		$docs = $this->RML->get_documents_in_dir($id, $orderby);
 
 		$docs = array_map(function($id) {
 
@@ -194,8 +201,8 @@ class SK_Documents {
 		return $docs;
 	}
 
-	function widget_document_list($id) {
-		$docs = $this->get_documents($id);
+	function widget_document_list($id, $orderby) {
+		$docs = $this->get_documents($id, $orderby);
 
 		$links = '';
 		foreach( $docs as $doc ) {
