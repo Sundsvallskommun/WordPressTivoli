@@ -83,7 +83,7 @@
 								<?php endif; ?>
 
 									<div class="search-module__item__read-icon">
-										<?php the_icon('arrow-right') ?>
+										<?php the_icon('arrow-right-circle') ?>
 									</div>
 
 								</a>

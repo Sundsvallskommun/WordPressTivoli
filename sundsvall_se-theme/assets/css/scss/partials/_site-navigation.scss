@@ -60,6 +60,8 @@ body {
 
 .site-navigation {
 
+	line-height: 1.25;
+
 	.nav-header {
 		padding: 2em $spacer-x 1em;
 		background: $gray-lightest;
@@ -79,7 +81,6 @@ body {
 	@include media-breakpoint-up(md) {
 		border-bottom: 5px solid $gray-lighter;
 	}
-	line-height: 1.25;
 
 	@include media-breakpoint-up(md) {
 		display: block;
@@ -104,12 +105,20 @@ body {
 
 		a {
 			width: 100%;
-			display: inline-block;
+			display: inline-flex;
+			flex-wrap: wrap;
+			align-items: center;
 			padding: 1.75em $spacer-x 1.75em $spacer-x;
 			border-bottom: 1px solid $gray-lighter;
 			@include media-breakpoint-up(md) {
+				justify-content: center;
+				text-align: center;
 				border-bottom: 5px solid $gray-lighter;
 				padding: 2em .5em 2em .5em;
+			}
+			@include media-breakpoint-up(lg) {
+				text-align: left;
+				flex-wrap: nowrap;
 			}
 			color: inherit;
 		}
@@ -128,18 +137,22 @@ body {
 			position: relative;
 			margin-right: $spacer-x/2;
 
-			width: 3rem;
-			height: 3rem;
+			min-width: 3rem;
+			min-height: 3rem;
 
 			@include media-breakpoint-up(md) {
+				margin-bottom: .5em;
 				margin-right: .2em;
-				width: 2rem;
-				height: 2rem;
+			}
+
+			@include media-breakpoint-up(lg) {
+				margin-bottom: 0;
 			}
 
 			@include media-breakpoint-up(xl) {
-				width: 3.5rem;
-				height: 3.5rem;
+				margin-right: $spacer-x/2;
+				min-width: 3.5rem;
+				min-height: 3.5rem;
 			}
 
 			.icon {
@@ -155,11 +168,11 @@ body {
 		.menu-item-text {
 			display: inline-block;
 			vertical-align: middle;
-			@include media-breakpoint-down(md) {
+			@include media-breakpoint-down(sm) {
 				font-family: $font-family-large;
 			}
 			@include media-breakpoint-up(md) {
-				max-width: 92px;
+				min-height: 2.5em;
 			}
 		}
 	}

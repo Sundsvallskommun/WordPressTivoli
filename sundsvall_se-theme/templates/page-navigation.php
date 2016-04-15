@@ -54,7 +54,12 @@ foreach($children as $child) {
 ?>
 		<div class="navigation-card <?php echo $is_shortcut ? 'shortcut' : '' ; ?>">
 			<h3 class="nav-card-title">
-				<a href="<?php echo $is_shortcut ? $shortcut_url : $permalink ; ?>">
+				<span class="nav-card-title__icon">
+					<?php if($is_shortcut === 'external' ) {
+						the_icon('external');
+					} ?>
+				</span>
+				<a href="<?php echo $is_shortcut ? $shortcut_url : $permalink ; ?>"<?php echo $is_shortcut === 'external' ? 'target="_blank"' : '' ; ?>>
 					<?php echo $title; ?>
 				</a>
 			</h3>
@@ -68,6 +73,11 @@ foreach($children as $child) {
 
 						$i = 0;
 						foreach($children as $child) {
+
+							if($child_id == $child->ID) {
+								continue;
+							}
+
 							if($i > 0) echo ' |&nbsp;';
 							printf('<a href="%s">%s</a>', get_permalink($child->ID), $child->post_title);
 							$i += 1;

@@ -24,8 +24,8 @@
 
 			<div class="row">
 
-				<div class="col-xs-12">
-					<h2 class="front-page__heading">Driftinformation</h2>
+				<div class="service-messages-col">
+					<?php get_template_part('partials/front-page/service-messages'); ?>
 				</div>
 
 			</div>

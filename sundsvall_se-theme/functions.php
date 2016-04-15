@@ -160,6 +160,15 @@ require_once locate_template( 'lib/class-sk-page-contacts.php' );
 $sk_post_type_contacts = new SK_Page_Contacts();
 
 /**
+ * SK_Service_Status_Messages
+ * ================
+ *
+ * Service messages post type and display functions.
+ */
+require_once locate_template( 'lib/class-sk-service-status-messages.php' );
+$sk_service_status_messages = new SK_Service_Status_Messages();
+
+/**
  * SK_Boxes
  * ========
  *

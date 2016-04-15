@@ -1,4 +1,6 @@
 .navigation-page__header {
+	display: flex;
+	align-items: center;
 	@include media-breakpoint-down(sm) {
 		padding: 1.75em $spacer-x 1em;
 		background: $gray-lightest;
@@ -6,7 +8,7 @@
 		margin: 0;
 	}
 
-	margin-bottom: 3em;
+	margin-bottom: 4.75em;
 
 	@extend .clearfix;
 
@@ -39,19 +41,21 @@
 	.page-title {
 		display: inline-block;
 		float: left;
+		margin: 0;
 		@include media-breakpoint-down(sm) {
-			margin: 0;
 			font-size: 1.5em;
 		}
 	}
 
 }
 
-.navigation-card .nav-card-title:before {
+.navigation-card .nav-card-title__icon {
 	@include section-colors(background);
 }
 
+.navigation-card.shortcut .nav-card-title__icon {
+	background: $gray-light;
+}
+
 .navigation-card:hover {
-	//@include section-colors(background, .05);
-	//@include section-colors(outline-color);
 }

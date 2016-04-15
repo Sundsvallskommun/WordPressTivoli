@@ -104,7 +104,7 @@ class SK_Init {
 			'portrait' => __('Porträtt', 'sundsvall_se'),
 			'content-quarter' => __('Fjärdedel', 'sundsvall_se'),
 			'content-half' => __('Halvbredd', 'sundsvall_se'),
-			'full' => __('Orginalstorlek', 'sundsvall_se'),
+			//'full' => __('Orginalstorlek', 'sundsvall_se'),
 			'content-full' => __('Helbredd', 'sundsvall_se'),
 		);
 

@@ -38,14 +38,15 @@
 	}
 
 	.nav-card-title {
-		font-size: 1em;
+		margin-bottom: .75em;
 	}
 
 	.nav-card-title a {
 		color: inherit;
 	}
 
-	.nav-card-title:before {
+	.nav-card-title__icon {
+		@extend %circle-with-icon;
 		content: "";
 		display: inline-block;
 		border-radius: 50%;
@@ -53,6 +54,7 @@
 		width: .75em;
 		height: .75em;
 		margin-right: .25em;
+
 		@include media-breakpoint-up(md) {
 			margin-right: .5em;
 			vertical-align: -22%;
@@ -64,9 +66,9 @@
 	.nav-card-text {
 		color: $text-muted;
 		font-size: .75em;
-		line-height: 1.5;
+		line-height: 1.75;
 		@include media-breakpoint-up(md) {
-			font-size: .825em;
+			font-size: .875em;
 		}
 
 		a {
