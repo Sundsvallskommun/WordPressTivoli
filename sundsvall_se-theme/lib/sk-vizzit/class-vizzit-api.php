@@ -31,6 +31,13 @@ class Vizzit {
 	 */
 	public function get_popular_pages_by_node($node, $date, $numberofdays = 10, $limit = 8) {
 
+		$transient_name = 'sk_vizzit_node_'.$node;
+
+		$transient = get_transient( $transient_name );
+		if( ! empty( $transient ) ) {
+			return $transient;
+		}
+
 		$url  = self::BASEURL.'/popularpages/popularpages.json.php'.'?hash='.self::USERHASH;
 		$url .= "&dateofdataretrieval=$date";
 		$url .= "&numberofdays=$numberofdays";
@@ -39,6 +46,13 @@ class Vizzit {
 		$url .= "&limit=$limit";
 
 		$data = sk_get_json($url);
+
+		if(empty($data)) {
+			return false;
+		}
+
+		set_transient( $transient_name, $data, DAY_IN_SECONDS);
+
 		return $data;
 
 	}
