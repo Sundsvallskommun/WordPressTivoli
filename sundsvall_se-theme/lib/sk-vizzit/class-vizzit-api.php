@@ -6,8 +6,9 @@
  */
 class Vizzit {
 
-	const BASEURL    = 'http://www.vizzit.se/feeds';
-	const USERHASH   = '2c7c50503ddceb4dc94f2f1608086ca1';
+	const BASEURL        = 'http://www.vizzit.se/feeds';
+	const USERHASH       = '2c7c50503ddceb4dc94f2f1608086ca1';
+	const USE_TRANSIENTS = true;
 
 	function __construct() {
 	}
@@ -31,11 +32,17 @@ class Vizzit {
 	 */
 	public function get_popular_pages_by_node($node, $date, $numberofdays = 10, $limit = 8) {
 
-		$transient_name = 'sk_vizzit_node_'.$node;
+		$node = 16;
 
-		$transient = get_transient( $transient_name );
-		if( ! empty( $transient ) ) {
-			return $transient;
+		if(self::USE_TRANSIENTS) {
+
+			$transient_name = 'sk_vizzit_node_'.$node;
+
+			$transient = get_transient( $transient_name );
+			if( ! empty( $transient ) ) {
+				return $transient;
+			}
+
 		}
 
 		$url  = self::BASEURL.'/popularpages/popularpages.json.php'.'?hash='.self::USERHASH;
@@ -51,7 +58,9 @@ class Vizzit {
 			return false;
 		}
 
-		set_transient( $transient_name, $data, DAY_IN_SECONDS);
+		if(self::USE_TRANSIENTS) {
+			set_transient( $transient_name, $data, DAY_IN_SECONDS);
+		}
 
 		return $data;
 
