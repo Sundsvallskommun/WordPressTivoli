@@ -4,8 +4,8 @@
 
 	> div {
 		padding: 0 $spacer-x * 1.5;
-		background: $gray-lightest;
 		overflow: hidden;
+		border: 5px solid $gray-lightest;
 	}
 
 	h2, h3, h4 {
@@ -20,15 +20,24 @@
 
 			&:after {
 				content: "+";
-				font-size: 1.5rem;
+				font-size: 2rem;
 				position: absolute;
 				right: $spacer-x * 1.5;
 				top: 50%;
 				transform: translateY(-50%);
+
+				width: 2rem;
+				height: 2rem;
+				line-height: 1;
+				background: $sk-purple;
+				color: $gray-lightest;
+				text-align: center;
+				border-radius: 50%;
 			}
 
 			&[aria-expanded="true"]:after {
 				content: "-";
+				line-height: .82;
 			}
 		}
 	}
