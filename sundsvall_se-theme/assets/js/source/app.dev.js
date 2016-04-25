@@ -1,5 +1,6 @@
 require('./bootstrap/umd/collapse.js');
 require('./bootstrap/umd/dropdown.js');
+require('./bootstrap/umd/modal.js');
 require('./acf-map.js');
 
 (function($) {
