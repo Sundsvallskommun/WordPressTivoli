@@ -41,7 +41,7 @@ class SK_Collapse {
 		if(!is_array($sk_collapseIDs)) $sk_collapseIDs = array();
 
 		// Create "ID" from title (spaces to dashes and lowercase)
-		$collapseID = strtolower(preg_replace("/[^a-zA-Z0-9]+/", '', $atts['title']));
+		$collapseID = strtolower(preg_replace("/[^a-zA-Z]*[^a-zA-Z0-9]+/", '', $atts['title']));
 
 		// Make sure we set a unique id of collapse.
 		if(in_array($collapseID, $sk_collapseIDs)) {
