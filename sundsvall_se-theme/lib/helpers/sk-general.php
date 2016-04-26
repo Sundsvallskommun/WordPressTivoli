@@ -107,6 +107,26 @@ function get_phone_links($n) {
 }
 
 /**
+ * Returns anchors for one or more email addresses from a single string
+ *
+ * @author Johan Linder <johan@flatmate.se>
+ */
+function get_email_links($e) {
+$addresses = explode(',', $e);
+	$str = '';
+	$i = 0;
+	foreach($addresses as $address) {
+		$address = trim($address);
+		if($i > 0) {
+			$str .= ', ';
+		}
+		$str .= "<a href='mailto:$address'>$address</a>";
+		$i += 1;
+	}
+	return $str;
+}
+
+/**
  * Return lowercase first word of top most parent page of current
  * page or supplied page object. This is currently used to set
  * css-classes to determine what section of the website we are on

@@ -178,7 +178,7 @@ class SK_Page_Contacts {
 
 			$contact .= '<p class="page-contact__email">';
 			if($contact_email) {
-				$contact .= sprintf('<a href="mailto:%1$s">%1$s</a>', $contact_email);
+				$contact .= get_email_links($contact_email);
 				if($contact_phone) {
 					$contact .= ' / '; 
 				}
