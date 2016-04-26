@@ -39,6 +39,7 @@
 
 	</ul>
 
-	<a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>"> Fler nyheter »</a>
+	<a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>" class="btn btn-purple btn-sm"> Visa äldre nyheter </a>
+	<a href="http://www.mynewsdesk.com/se/sundsvalls_kommun" class="btn btn-primary btn-sm"> Pressmeddelanden </a>
 
 </section>
