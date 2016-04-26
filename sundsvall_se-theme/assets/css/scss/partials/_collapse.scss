@@ -7,7 +7,9 @@
 		overflow: hidden;
 		border: 5px solid $gray-lightest;
 		border-top: none;
-		padding-top: 1.75rem;
+		> :first-child {
+			margin-top: 1.75rem;
+		}
 	}
 
 	> h2,
