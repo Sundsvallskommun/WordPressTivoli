@@ -1,12 +1,13 @@
 .sk-collapse {
 
-	margin-bottom: 1em;
+	margin-bottom: 1.75rem;
 
 	> div {
 		padding: 0 $spacer-x * 1.5;
 		overflow: hidden;
 		border: 5px solid $gray-lightest;
 		border-top: none;
+		padding-top: 1.75rem;
 	}
 
 	> h2,

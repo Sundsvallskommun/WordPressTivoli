@@ -31,6 +31,8 @@ class SK_Init {
 
 		add_filter( 'wp_trim_excerpt', array(&$this, 'sk_excerpt'), 10, 2 );
 
+		add_filter( 'the_content', array(&$this, 'shortcode_remove_empty_paragraphs') );
+
 	}
 
 	function sk_remove_dashboard_widgets() {
@@ -218,6 +220,18 @@ class SK_Init {
 			$text = strip_tags($text);
 		}
 		return $text;
+	}
+
+	/**
+	 * Remove empty paragraphs or breaks caused by shortcodes.
+	 */
+	function shortcode_remove_empty_paragraphs( $content ) {
+		$array = array(
+			'<p>['    => '[',
+			']</p>'   => ']',
+			']<br />' => ']'
+		);
+		return strtr( $content, $array );
 	}
 
 }

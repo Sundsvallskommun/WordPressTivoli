@@ -1,9 +1,4 @@
 <?php
-
-//remove_filter( 'the_content', 'wpautop' );
-//add_filter( 'the_content', 'wpautop' , 12);
-
-
 /**
  * SK_Init
  * =======
@@ -20,6 +15,8 @@
  * Set top image after page title
  *
  * Use first paragraph as excerpt
+ *
+ * Remove empty paragraph and break tags caused by shortcodes.
  */
 require_once locate_template( 'lib/class-sk-init.php' );
 $sk_init = new SK_Init();
