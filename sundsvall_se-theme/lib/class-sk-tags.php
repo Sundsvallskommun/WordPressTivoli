@@ -26,7 +26,7 @@ class SK_Tags {
 
 	function display_tags() {
 		//echo 'Mer om …';
-		the_tags('<div class="post-tags">'.__('Mer om… ', 'sundsvall_se'), ' ', '</div>');
+		the_tags('<div class="post-tags">', ' ', '</div>');
 	}
 
 }
