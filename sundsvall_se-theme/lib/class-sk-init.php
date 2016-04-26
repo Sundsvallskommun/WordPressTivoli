@@ -191,6 +191,9 @@ class SK_Init {
 	}
 
 	function acf_tiny_mce_settings($toolbars) {
+		$toolbars['Minimal'] = array();
+		$toolbars['Minimal'][1] = array('link', 'unlink');
+
 		$toolbars['Sundsvalls Kommun'] = array();
 		$toolbars['Sundsvalls Kommun'][1] = explode(',', $this->get_tinymce_toolbar_items(1));
 		$toolbars['Sundsvalls Kommun'][2] = explode(',', $this->get_tinymce_toolbar_items(2));
