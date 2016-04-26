@@ -9,7 +9,9 @@
 		border-top: none;
 	}
 
-	h2, h3, h4 {
+	> h2,
+	> h3,
+	> h4 {
 		margin-bottom: 0;
 		a {
 			color: inherit;
