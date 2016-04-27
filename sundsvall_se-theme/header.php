@@ -13,7 +13,7 @@
 						href="#searchContainer"><?php the_icon('search'); ?></a>
 </nav>
 
-<header class="site-header bg-faded">
+<header class="site-header">
 
 <?php get_template_part('partials/site-navbar'); ?>
 
