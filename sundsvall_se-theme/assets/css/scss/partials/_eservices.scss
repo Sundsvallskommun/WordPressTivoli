@@ -25,7 +25,7 @@
 
 	background: $sk-eservice-bg;
 	color: $sk-eservice-fg;
-	padding: .75em 2.75em .75em 3.25em;
+	padding: .75em 1.5em .75em 3.25em;
 	border-radius: 2em;
 	position: relative;
 	display: inline-block;
@@ -36,12 +36,12 @@
 	width: 100%;
 	margin-bottom: .2em;
 
-	font-size: .875em;
+	font-size: .9375em;
 	@include media-breakpoint-up(sm) {
 		width: auto;
-		padding: 0em 3em 0em 2.25em;
+		padding: 0em 1.25em 0em 2.25em;
 		border-radius: 1em;
-		margin-bottom: 0;
+		margin-bottom: .25em;
 	}
 
 	&:focus,
