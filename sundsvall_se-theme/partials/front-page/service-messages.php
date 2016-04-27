@@ -7,15 +7,29 @@ $args = array(
 );
 $service_messages = new WP_Query( $args ); ?>
 
-<section>
-	<h2 class="front-page__heading"><?php _e('Driftinformation', 'sundsvall_se')?></h2>
+<section class="front-page-section front-page-section__service-messages">
+
+	<div class="row">
+
+	<h2 class="front-page__heading col-lg-3 col-md-12"><?php _e('Driftinformation', 'sundsvall_se')?></h2>
 	<?php if ( $service_messages->have_posts() ) : ?>
 
-	<ul class="">
+	<ul class="list-unstyled widget-service-messages col-lg-6 col-md-8">
 	<?php while ( $service_messages->have_posts() ) : $service_messages->the_post(); ?>
-		<li>
-			<?php the_modified_date('H:s j F ') ?>
-			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
+		<li class="widget-service-messages__post">
+			<a href="<?php the_permalink(); ?>">
+
+				<?php the_icon('exclamation-sign') ?>
+
+				<span class="widget-service-messages__post__date">
+					<?php the_modified_date('j/m H:s') ?>
+				</span>
+				-
+				<span class="widget-service-messages__post__title">
+					<?php the_title(); ?>
+				</span>
+
+			</a>
 		</li>
 	<?php endwhile; ?>
 	</ul>
@@ -24,7 +38,11 @@ $service_messages = new WP_Query( $args ); ?>
 	<p><?php _e( 'För närvarande finns det inga aktuella driftmeddelanden.' ); ?></p>
 	<?php endif; ?>
 
-	<a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>"> Alla driftmeddelanden »</a>
+	<div class="col-lg-2 col-md-3">
+		<a class="btn btn-secondary" href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>"> Alla driftmeddelanden »</a>
+	</div>
+
+	</div>
 
 </section>
 <?php

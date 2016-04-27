@@ -22,13 +22,7 @@
 
 		<div class="container-fluid">
 
-			<div class="row">
-
-				<div class="service-messages-col">
-					<?php get_template_part('partials/front-page/service-messages'); ?>
-				</div>
-
-			</div>
+			<?php get_template_part('partials/front-page/service-messages'); ?>
 
 		</div>
 

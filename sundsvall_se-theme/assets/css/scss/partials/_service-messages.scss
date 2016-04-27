@@ -1,0 +1,48 @@
+.front-page-section__service-messages {
+	margin-top: 3rem;
+	padding: 1.75rem 0;
+
+	.front-page__heading {
+	}
+
+	.widget-service-messages {
+
+		font-size: .875em;
+		@include media-breakpoint-up(sm) {
+			columns: 2;
+		}
+
+		li {
+			width: 100%;
+		}
+
+		a {
+			display: block;
+			width: 100%;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+
+			color: inherit;
+		}
+
+		&__post {
+
+			fill: $brand-warning;
+
+			&__date {
+
+				color: $brand-warning;
+
+			}
+
+			&__title {
+
+			}
+
+		}
+
+	}
+
+}
+
