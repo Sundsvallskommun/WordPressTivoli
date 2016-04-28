@@ -14,25 +14,30 @@ $service_messages = new WP_Query( $args ); ?>
 	<h2 class="front-page__heading col-lg-3 col-md-12"><?php _e('Driftinformation', 'sundsvall_se')?></h2>
 	<?php if ( $service_messages->have_posts() ) : ?>
 
-	<ul class="list-unstyled widget-service-messages col-lg-6 col-md-8">
-	<?php while ( $service_messages->have_posts() ) : $service_messages->the_post(); ?>
-		<li class="widget-service-messages__post">
-			<a href="<?php the_permalink(); ?>">
+	<div class="col-lg-6 col-md-8">
 
-				<?php the_icon('exclamation-sign') ?>
+		<ul class="list-unstyled widget-service-messages">
+		<?php while ( $service_messages->have_posts() ) : $service_messages->the_post(); ?>
+			<li class="widget-service-messages__post">
+				<a href="<?php the_permalink(); ?>">
 
-				<span class="widget-service-messages__post__date">
-					<?php the_modified_date('j/m H:s') ?>
-				</span>
-				-
-				<span class="widget-service-messages__post__title">
-					<?php the_title(); ?>
-				</span>
+					<?php the_icon('exclamation-sign') ?>
 
-			</a>
-		</li>
-	<?php endwhile; ?>
-	</ul>
+					<span class="widget-service-messages__post__date">
+						<?php the_modified_date('j/m H:s') ?>
+					</span>
+					-
+					<span class="widget-service-messages__post__title">
+						<?php the_title(); ?>
+					</span>
+
+				</a>
+			</li>
+		<?php endwhile; ?>
+		</ul>
+
+	</div>
+
 	<?php wp_reset_postdata(); ?>
 	<?php else : ?>
 	<p><?php _e( 'För närvarande finns det inga aktuella driftmeddelanden.' ); ?></p>
