@@ -1,15 +1,23 @@
+.home .front-page-section__service-messages .front-page__heading {
+	margin-top: .15em;
+
+	@include media-breakpoint-up(md) {
+		margin-bottom: 0;
+	}
+}
+
 .front-page-section__service-messages {
 	margin-top: 3rem;
 	padding: 1.75rem 0;
-
-	.front-page__heading {
-	}
 
 	.widget-service-messages {
 
 		font-size: .875em;
 		@include media-breakpoint-up(sm) {
 			columns: 2;
+		}
+		@include media-breakpoint-up(md) {
+			margin-bottom: 0;
 		}
 
 		li {

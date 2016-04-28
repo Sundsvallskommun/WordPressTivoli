@@ -44,7 +44,7 @@ $service_messages = new WP_Query( $args ); ?>
 	<?php endif; ?>
 
 	<div class="col-lg-2 col-md-3">
-		<a class="btn btn-secondary" href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>"> Alla driftmeddelanden »</a>
+		<a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>"> Alla driftmeddelanden »</a>
 	</div>
 
 	</div>
