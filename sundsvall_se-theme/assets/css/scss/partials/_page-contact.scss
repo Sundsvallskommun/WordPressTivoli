@@ -27,6 +27,11 @@
 		overflow: hidden;
 	}
 
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
 	&__block {
 		padding-left: 4.125em;
 	}
