@@ -275,8 +275,10 @@ class SK_EServices {
 
 		$markup  = '
 			<a class="eservice-link" href="%s">
-				<span class="eservice-link__icon">%s</span>
-				<span class="eservice-link__name">%s</span>
+				<span>
+					<span class="eservice-link__icon">%s</span>
+					<span class="eservice-link__name">%s</span>
+				</span>
 			</a>';
 
 		$link = apply_filters('sk_eservice_link', sprintf($markup, $url, get_icon('arrow-right'), $name), $url, $name);
