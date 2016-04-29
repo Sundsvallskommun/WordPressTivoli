@@ -168,6 +168,8 @@ class SK_EServices {
 
 		global $post;
 
+		if(NULL == $post) return false;
+
 		$post_id = $post->ID;
 
 		$inherit = get_field('eservices_inherit', $post_id);
