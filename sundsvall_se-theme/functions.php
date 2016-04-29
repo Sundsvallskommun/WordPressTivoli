@@ -192,6 +192,20 @@ $sk_easyread = new SK_Easyread();
 require_once locate_template( 'lib/class-sk-rename-post-types.php' );
 $sk_rename_default_post_type = new SK_Rename_Default_Post_Type();
 
+/**
+ * SK_Vizzit
+ * ===========================
+ *
+ * Vizzit api, show most popular nodes on navigational cards.
+ */
 require_once locate_template( 'lib/sk-vizzit/class-sk-vizzit.php' );
 $sk_rename_default_post_type = new SK_Vizzit();
 
+/**
+ * SK_ShortURL
+ * ===========================
+ *
+ * Allow short url shortcut to pages
+ */
+require_once locate_template( 'lib/class-sk-short-url.php' );
+$sk_shortURL = new SK_ShortURL();
