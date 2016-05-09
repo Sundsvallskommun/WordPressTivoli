@@ -16,3 +16,7 @@
 	</div>
 </div>
 
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#feedbackForm"
+style="position: fixed; top: 50%; right: 0; margin: 0; z-index: 900; transform: rotate(90deg) translateX(50%); transform-origin: top right;">
+Tyck till om webbplatsen
+</button>
