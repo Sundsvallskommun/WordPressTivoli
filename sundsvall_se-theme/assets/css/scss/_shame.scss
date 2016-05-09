@@ -99,3 +99,45 @@ a[rel="tag"] {
 	}
 
 }
+
+
+
+/**
+ * Gravity forms styled as bootstrap
+ */
+
+.gform_fields {
+    input, select, textarea {
+        @extend .form-control;
+    }
+}
+ 
+.gfield_description {
+    @extend .alert;
+}
+ 
+.validation_error {
+    @extend .alert-danger;
+}
+ 
+.validation_message {
+    @extend .alert-success;
+}
+ 
+.gform_button {
+    @extend .btn;
+    @extend .btn-primary;
+}
+ 
+.gfield_required {
+    color: $alert-danger-text;
+}
+ 
+.gform_wrapper ul.gfield_radio li {
+    @extend .radio
+}
+ 
+.gform_wrapper ul.gfield_checkbox li {
+    @extend .checkbox
+}
+
