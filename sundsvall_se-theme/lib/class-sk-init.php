@@ -13,6 +13,8 @@ class SK_Init {
 
 		add_action('after_setup_theme', array(&$this, 'image_setup'));
 
+		add_filter( 'init', array(&$this, 'options_page') );
+
 		add_filter( 'embed_oembed_html', array(&$this, 'oembed_wrapper'), 10, 4);
 
 		add_action('wp_dashboard_setup', array(&$this, 'sk_remove_dashboard_widgets'));
@@ -56,6 +58,31 @@ class SK_Init {
 		add_filter('img_caption_shortcode', array(&$this, 'img_caption_shortcode_size_class'), 10, 3);
 		add_filter('image_size_names_choose', array(&$this, 'sk_attachment_image_size_options'), 10, 1);
 		add_filter( 'wp_calculate_image_sizes', array(&$this, 'sk_content_image_sizes_attr'), 10, 2);
+	}
+
+	function options_page() {
+		if( function_exists('acf_add_options_page') ) {
+			acf_add_options_page(array(
+				'page_title' 	=> 'Webbplatsen',
+				'menu_title'	=> 'Webbplatsen',
+				'menu_slug' 	=> 'general-settings',
+				'capability'	=> 'manage_options',
+				'redirect'		=> true,
+				'position'		=> '59'
+			));
+
+			acf_add_options_sub_page(array(
+				'page_title'  => 'Allmänt',
+				'menu_title'  => 'Allmänt',
+				'parent_slug' => 'general-settings'
+			));
+
+			acf_add_options_sub_page(array(
+				'page_title'  => 'Sidfot',
+				'menu_title'  => 'Sidfot',
+				'parent_slug' => 'general-settings'
+			));
+		}
 	}
 
 	function sk_page_top_image() {
