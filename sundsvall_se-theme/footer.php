@@ -66,11 +66,6 @@ if(!is_front_page() && !is_search()) {
 						<li><a href="#">Om webbplatsen</a></li>
 						<li><a href="#">Om cookies</a></li>
 						<li><a href="#">Press- och informationsmaterial</a></li>
-						<li>
-							<button type="button" class="btn btn-link" data-toggle="modal" data-target="#feedbackForm">
-							Tyck till om webbplatsen
-							</button>
-						</li>
 						<li><a href="#">Våra RSS-flöden</a></li>
 					</ul>
 				</nav>
