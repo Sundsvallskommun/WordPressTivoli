@@ -209,3 +209,12 @@ $sk_rename_default_post_type = new SK_Vizzit();
  */
 require_once locate_template( 'lib/class-sk-short-url.php' );
 $sk_shortURL = new SK_ShortURL();
+
+/**
+ * SK_PageVote
+ * ===========================
+ *
+ * "Was this page helpful?"-function for pages.
+ */
+require_once locate_template( 'lib/class-sk-pagevote.php' );
+$sk_shortURL = new SK_PageVote();
