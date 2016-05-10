@@ -32,8 +32,6 @@ class Vizzit {
 	 */
 	public function get_popular_pages_by_node($node, $date, $numberofdays = 10, $limit = 8) {
 
-		$node = 16;
-
 		if(self::USE_TRANSIENTS) {
 
 			$transient_name = 'sk_vizzit_node_'.$node;
