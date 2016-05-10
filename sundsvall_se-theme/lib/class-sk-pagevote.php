@@ -25,8 +25,6 @@ class SK_PageVote {
 		$post_id = get_queried_object_id();
 		$percent = $this->get_upvote_percent($post_id);
 		$has_voted = $this->has_voted($post_id);
-
-		var_dump($has_voted);
 	?>
 		<hr>
 		<div class="vote-widget">
@@ -49,6 +47,14 @@ class SK_PageVote {
 				<span class="vote-percent"><?php echo $percent; ?></span>% som röstat blev hjälpt av sidan.
 
 			</p>
+
+			<div class="collapse" id="vote-form">
+				<div class="card card-block">
+					<?php $feedback_form_id = get_field('page_feedback_form_id', 'option'); ?>
+					<?php gravity_form( $feedback_form_id, $display_title = true, $display_description = true, $display_inactive = false, $field_values = null, $ajax = true, $tabindex = null, $echo = true ); ?>
+				</div>
+			</div>
+
 		</div>
 	<?php
 	}

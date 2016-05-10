@@ -102,6 +102,7 @@ require('./acf-map.js');
 			$buttons.prop("disabled", true);
 			var action = $(this).data('vote');
 			pageVote(action);
+			$('#vote-form').collapse('show');
 		});
 
 		function pageVote(voteType) {
