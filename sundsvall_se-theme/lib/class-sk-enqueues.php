@@ -11,7 +11,7 @@ class SK_Enqueues {
 
 	function __construct() {
 		add_action( 'wp_enqueue_scripts', array(&$this, 'sk_enqueue_styles') );
-		add_action( 'wp_enqueue_scripts', array(&$this, 'sk_enqueue_scripts') );
+		add_action( 'wp_enqueue_scripts', array(&$this, 'sk_enqueue_scripts'), 10 );
 
 		add_action('wp_head', array(&$this, 'sk_frontend_web_font'));
 
@@ -26,11 +26,6 @@ class SK_Enqueues {
 
 	function sk_enqueue_scripts() {
 		wp_enqueue_script( 'main', get_template_directory_uri().'/assets/js/app.js', ['jquery'] );
-		wp_localize_script( 'main', 'ajaxdata', array(
-			'ajax_url'    => admin_url('admin-ajax.php'),
-			'post_id'    => get_queried_object_id(),
-			'ajax_nonce' => wp_create_nonce( 'page-vote' )
-		) );
 	}
 
 	function sk_frontend_web_font() {

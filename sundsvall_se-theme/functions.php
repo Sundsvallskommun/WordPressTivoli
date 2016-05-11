@@ -1,18 +1,4 @@
 <?php
-add_action('wp_ajax_sk_load_gform', 'sk_ajax_gform', 10);
-add_action('wp_ajax_nopriv_sk_load_gform', 'sk_ajax_gform', 10);
-
-function sk_ajax_gform() {
-
-	$feedback_form_id = sanitize_text_field($_GET['form_id']);
-	$display_title = sanitize_text_field($_GET['display_title']) === 'true';
-	$display_description = sanitize_text_field($_GET['display_description']) === 'true';
-
-	gravity_form( $feedback_form_id, $display_title, $display_description, $display_inactive = false, $field_values = null, $ajax = true, $tabindex = null, $echo = true );
-
-	die();
-}
-
 /**
  * SK_Init
  * =======
@@ -31,9 +17,20 @@ function sk_ajax_gform() {
  * Use first paragraph as excerpt
  *
  * Remove empty paragraph and break tags caused by shortcodes.
+ *
+ * Add bootstrap classes to gravity forms
  */
 require_once locate_template( 'lib/class-sk-init.php' );
 $sk_init = new SK_Init();
+
+/**
+ * SK_Ajax
+ * ==============
+ *
+ * Theme ajax functions.
+ */
+require_once locate_template( 'lib/class-sk-ajax.php' );
+$sk_ajax = new SK_Ajax();
 
 /**
  * SK_Attachments
