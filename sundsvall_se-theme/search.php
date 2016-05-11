@@ -3,7 +3,7 @@
 
 	<?php if ( have_posts() ) : ?>
 
-		<div class="alert alert-success" role="alert">
+		<div class="alert alert-success alert-centered" role="alert">
 			Visar alla resultat för: ”<?php echo esc_html( get_search_query() ); ?>”
 		</div>
 
