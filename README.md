@@ -28,3 +28,13 @@ script efter sidladdning.
 Två hjälpfunktioner finns för att hämkta ut ikonerna: `the_icon()` och
 `get_icon()`. Dessa skapar ett svg-element som länkar in ikonen medd ett
 `<use>`-element.
+
+# Övrigt
+
+## "Blev du hjälp av sidan?"
+
+I admin under Webbplatsen->allmänt->Sidspecifikt formulär anges id-nummer till
+det Gravity Forms-formulär som ska visas när besökaren röstat på en sida.
+
+För att ett epostmeddelande ska skickas ut till författaren till sidan måste
+det finnas en notis för formuläret i Gravity Forms som heter "Författarnotis".

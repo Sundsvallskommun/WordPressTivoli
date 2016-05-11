@@ -1,6 +1,6 @@
 <?php
-$show_feedback_form = get_field('show_feedback_form', 'option');
-$feedback_form_id = get_field('feedback_form_id', 'option');
+$show_feedback_form = get_field('show_site_feedback_form', 'option');
+$feedback_form_id = get_field('site_feedback_form_id', 'option');
 
 if($show_feedback_form && $feedback_form_id):
 ?>

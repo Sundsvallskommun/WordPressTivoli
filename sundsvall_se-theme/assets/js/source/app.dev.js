@@ -94,6 +94,46 @@ require('./acf-map.js');
 
 		});
 
+		/**
+		 * Vote function for pages
+		 */
+		$('.vote-widget').on('click', '[data-vote]', function(e) {
+			var $buttons = $('.vote-widget [data-vote]');
+			$buttons.prop("disabled", true);
+			var action = $(this).data('vote');
+			pageVote(action);
+			$('#vote-form').collapse('show');
+		});
+
+		function pageVote(voteType) {
+
+			var $buttons = $('.vote-widget [data-vote]');
+
+			if(voteType !== 'up' && voteType !== 'down') {
+				return false;
+			}
+
+			$.ajax({
+				url: pagevote.ajaxurl,
+				type: 'POST',
+				dataType: 'json',
+				data: {
+					action: 'pagevote',
+					vote_type: voteType,
+					post_id: pagevote.post_id,
+					_ajax_nonce: pagevote.ajax_nonce,
+				}
+			}).done(function(data) {
+				if(data.status !== 'error') {
+					$buttons.hide();
+					$('.vote-status').html('<span class="text-success">Tack för din synpunkt!</span>');
+					$('.vote-percent').html(data.new_percent);
+				}
+			}).error(function(jqHXR, textStatus, errorThrown) {
+			});
+
+		}
+
 	});
 
 
