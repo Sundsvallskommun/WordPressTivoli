@@ -6,6 +6,7 @@ WordPress-plugins:
 * [TinyMCE Advanced](https://sv.wordpress.org/plugins/tinymce-advanced/)
 	(Används just nu endast för tabeller, som läggs till programmatiskt i
 	verktygsfältet. Aktivera pluginet och avaktivera alla inställningar.)
+* Gravity Forms
 
 # Installation
 
