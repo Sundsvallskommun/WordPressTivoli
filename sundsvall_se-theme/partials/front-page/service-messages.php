@@ -19,7 +19,7 @@ $service_messages = new WP_Query( $args ); ?>
 		<ul class="list-unstyled widget-service-messages">
 		<?php while ( $service_messages->have_posts() ) : $service_messages->the_post(); ?>
 			<li class="widget-service-messages__post">
-				<a href="<?php the_permalink(); ?>">
+				<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
 
 					<?php the_icon('exclamation-sign') ?>
 
