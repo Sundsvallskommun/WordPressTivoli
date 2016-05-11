@@ -38,3 +38,50 @@ det Gravity Forms-formulär som ska visas när besökaren röstat på en sida.
 
 För att ett epostmeddelande ska skickas ut till författaren till sidan måste
 det finnas en notis för formuläret i Gravity Forms som heter "Författarnotis".
+
+# Hjälpfunktioner
+
+Funktioner från `lib/helpers/`
+
+## the_icon och get_icon
+
+Skriv ut eller returnera en svg-ikon.
+
+## format_phone
+
+Formaterar telefonnummer med bindestreck och blanksteg. Flera telefonnummer
+separeras med kommatecken.
+
+## get_phone_links
+
+Formaterar telefonnummer och returnerar telefonlänkar för alla nummer.
+
+## get_email_links
+
+Formaterar telefonnummer och returnerar epostlänkar för alla adresser.
+
+## get_section_class_name
+
+Returnerar css-klassnamn baserat på den sektion av webbplatsen som sidan
+tillhör.
+
+## ancestor_field
+
+Returnerar den närmsta sidan uppåt i strukturen som har rätt värden i ACF-fält.
+Används för att ärva inställningar.
+
+## sk_get_excerpt
+
+Returnerar sidutdrag från post-id.
+
+## format_file_size
+
+Formaterar filstorlek i B, KB, MB eller GB.
+
+## sk_get_json
+
+Anropar url och returnerar json.
+
+## is_navigation
+
+Kollar om en sida är en navigationssida.
