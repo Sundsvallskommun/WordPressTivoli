@@ -26,8 +26,8 @@ class SK_Enqueues {
 
 	function sk_enqueue_scripts() {
 		wp_enqueue_script( 'main', get_template_directory_uri().'/assets/js/app.js', ['jquery'] );
-		wp_localize_script( 'main', 'pagevote', array(
-			'ajaxurl'    => admin_url('admin-ajax.php'),
+		wp_localize_script( 'main', 'ajaxdata', array(
+			'ajax_url'    => admin_url('admin-ajax.php'),
 			'post_id'    => get_queried_object_id(),
 			'ajax_nonce' => wp_create_nonce( 'page-vote' )
 		) );

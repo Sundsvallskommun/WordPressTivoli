@@ -5,7 +5,7 @@ $feedback_form_id = get_field('site_feedback_form_id', 'option');
 if($show_feedback_form && $feedback_form_id):
 ?>
 
-<div class="modal fade" id="feedbackForm">
+<div class="modal fade gform-async" id="feedbackForm">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -15,8 +15,8 @@ if($show_feedback_form && $feedback_form_id):
         <h4 class="modal-title" id="myModalLabel">Tyck till om webbplatsen</h4>
 			</div>
 
-			<div class="modal-body">
-				<?php gravity_form( $feedback_form_id, $display_title = false, $display_description = false, $display_inactive = false, $field_values = null, $ajax = true, $tabindex = null, $echo = true ); ?>
+			<div class="modal-body" data-gform="<?php echo $feedback_form_id?>" data-gform-display_description="false" data-gform-display_title="false">
+				<?php //gravity_form( $feedback_form_id, $display_title = false, $display_description = false, $display_inactive = false, $field_values = null, $ajax = true, $tabindex = null, $echo = true ); ?>
 			</div>
 
 		</div>

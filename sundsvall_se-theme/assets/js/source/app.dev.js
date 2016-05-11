@@ -114,14 +114,14 @@ require('./acf-map.js');
 			}
 
 			$.ajax({
-				url: pagevote.ajaxurl,
+				url: ajaxdata.ajax_url,
 				type: 'POST',
 				dataType: 'json',
 				data: {
 					action: 'pagevote',
 					vote_type: voteType,
-					post_id: pagevote.post_id,
-					_ajax_nonce: pagevote.ajax_nonce,
+					post_id: ajaxdata.post_id,
+					_ajax_nonce: ajaxdata.ajax_nonce,
 				}
 			}).done(function(data) {
 				if(data.status !== 'error') {
@@ -133,6 +133,36 @@ require('./acf-map.js');
 			});
 
 		}
+
+
+		/**
+		* Load Gravity Form with ajax
+		*/
+		$('.gform-async').on('show.bs.modal show.bs.collapse', function() {
+
+			var $gformContainer = $(this).find('[data-gform]');
+			var formID          = $gformContainer.data('gform');
+			var displayDescription = $gformContainer.data('gform-display_description');
+			var displayTitle       = $gformContainer.data('gform-display_title');
+
+			$.ajax({
+				url: ajaxdata.ajax_url,
+				type: 'GET',
+				dataType: 'text',
+				data: {
+					action: 'sk_load_gform',
+					form_id: formID,
+					_ajax_nonce: ajaxdata.ajax_nonce,
+					display_description: displayDescription,
+					display_title: displayTitle
+				}
+			}).done(function(data) {
+				$gformContainer.html(data);
+			}).error(function(jqHXR, textStatus, errorThrown) {
+				$gformContainer.html('Något gick fel, vänligen försök senare eller kontakta oss på ...');
+			});
+
+		});
 
 	});
 
