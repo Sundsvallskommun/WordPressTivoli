@@ -53,9 +53,26 @@ class SK_PageVote {
 
 		$total_votes = $post_upvotes + $post_downvotes;
 
-		if(0 >= $total_votes) return 0;
+		if(0 >= $total_votes) return false;
 
 		return round(100 * ($post_upvotes / $total_votes));
+	}
+
+	/**
+	 * Get text describing upvote percent.
+	 *
+	 * @param int $post_id
+	 */
+	private function get_upvote_percent_text($post_id) {
+
+		$percent = $this->get_upvote_percent($post_id);
+
+		if(false === $percent) {
+			return '';
+		}
+
+		return "$percent% som röstat blev hjälpt av sidan.";
+
 	}
 
 	/**
@@ -63,7 +80,7 @@ class SK_PageVote {
 	 */
 	function pagevote_buttons() {
 		$post_id = get_queried_object_id();
-		$percent = $this->get_upvote_percent($post_id);
+		$percent_text = $this->get_upvote_percent_text($post_id);
 		$has_voted = $this->has_voted($post_id);
 	?>
 		<hr>
@@ -84,7 +101,7 @@ class SK_PageVote {
 
 				</span>
 
-				<span class="vote-percent"><?php echo $percent; ?></span>% som röstat blev hjälpt av sidan.
+				<span class="vote-percent"><?php echo $percent_text; ?></span>
 
 			</p>
 
@@ -156,11 +173,11 @@ class SK_PageVote {
 
 		}
 
-		$percent = $this->get_upvote_percent($post_id);
+		$percent_text = $this->get_upvote_percent_text($post_id);
 
 		$response = array(
 			'status' => $status,
-			'new_percent' => $percent
+			'new_percent_text' => $percent_text
 		);
 
 		header('Content-type: application/json');
