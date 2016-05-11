@@ -251,4 +251,13 @@ function sk_get_json($url) {
 
 }
 
+function is_navigation($id = null) {
+
+	if(!isset($id)) {
+		$id = get_queried_object_id();
+	}
+
+	return strpos(get_page_template_slug($id), 'page-navigation.php');
+
+}
 

@@ -13,7 +13,6 @@ class SK_PageVote {
 	function __construct() {
 
 		add_action( 'sk_after_page_content', array(&$this, 'pagevote_buttons' ), 10);
-		add_action( 'wp_ajax_pagevote', array(&$this, 'ajax_vote' ));
 
 		// Field from ACF settings page.
 		$this->feedback_form_id = get_field('page_feedback_form_id', 'option');
@@ -82,6 +81,11 @@ class SK_PageVote {
 		$post_id = get_queried_object_id();
 		$percent_text = $this->get_upvote_percent_text($post_id);
 		$has_voted = $this->has_voted($post_id);
+
+		if(is_front_page() || is_search() || is_navigation()) {
+			return;
+		}
+
 	?>
 		<hr>
 		<div class="vote-widget">

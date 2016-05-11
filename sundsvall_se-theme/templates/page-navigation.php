@@ -36,10 +36,6 @@ $children = get_children(array(
 	'order'       => 'ASC'
 ));
 
-function is_navigation($id) {
-	return strpos(get_page_template_slug($id), 'page-navigation.php');
-}
-
 foreach($children as $child) {
 
 	$child_id     = $child->ID;
