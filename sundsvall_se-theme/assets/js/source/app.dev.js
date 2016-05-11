@@ -148,6 +148,8 @@ require('./acf-map.js');
 
 			if($.inArray(formID, loadedForms) > -1) return;
 
+			$gformContainer.html('Laddar formulär…');
+
 			$.ajax({
 				url: ajaxdata.ajax_url,
 				type: 'GET',
@@ -163,7 +165,7 @@ require('./acf-map.js');
 				$gformContainer.html(data);
 				loadedForms.push(formID);
 			}).error(function(jqHXR, textStatus, errorThrown) {
-				$gformContainer.html('Något gick fel, vänligen försök senare eller kontakta oss på ...');
+				$gformContainer.html('Något gick fel, det gick inte att ladda synpunktsformuläret.');
 			});
 
 		});
