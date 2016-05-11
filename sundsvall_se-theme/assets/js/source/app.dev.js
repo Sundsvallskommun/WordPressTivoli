@@ -138,12 +138,15 @@ require('./acf-map.js');
 		/**
 		* Load Gravity Form with ajax
 		*/
+		var loadedForms = [];
 		$('.gform-async').on('show.bs.modal show.bs.collapse', function() {
 
 			var $gformContainer = $(this).find('[data-gform]');
 			var formID          = $gformContainer.data('gform');
 			var displayDescription = $gformContainer.data('gform-display_description');
 			var displayTitle       = $gformContainer.data('gform-display_title');
+
+			if($.inArray(formID, loadedForms) > -1) return;
 
 			$.ajax({
 				url: ajaxdata.ajax_url,
@@ -158,6 +161,7 @@ require('./acf-map.js');
 				}
 			}).done(function(data) {
 				$gformContainer.html(data);
+				loadedForms.push(formID);
 			}).error(function(jqHXR, textStatus, errorThrown) {
 				$gformContainer.html('Något gick fel, vänligen försök senare eller kontakta oss på ...');
 			});
