@@ -171,10 +171,20 @@ $sk_post_type_contacts = new SK_Page_Contacts();
  * SK_Service_Status_Messages
  * ================
  *
- * Service messages post type and display functions.
+ * Service messages post type
  */
 require_once locate_template( 'lib/class-sk-service-status-messages.php' );
 $sk_service_status_messages = new SK_Service_Status_Messages();
+
+/**
+ * SK_Pinned_Posts
+ * ===============
+ *
+ * Display pinned service messages and news on pages.
+ */
+require_once locate_template( 'lib/class-sk-pinned-posts.php' );
+$sk_pinned_posts = new SK_Pinned_Posts();
+
 
 /**
  * SK_Boxes

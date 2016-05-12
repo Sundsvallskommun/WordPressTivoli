@@ -1,3 +1,8 @@
 .alert.alert-centered {
 	text-align: center;
 }
+
+.alert .icon {
+	fill: $brand-warning;
+	margin-right: .25em;
+}

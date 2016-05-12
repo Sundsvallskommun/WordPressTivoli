@@ -14,7 +14,6 @@ class SK_Service_Status_Messages {
 
 	function __construct() {
 		add_action( 'init', array(&$this, 'post_type_service_message'));
-		add_action( 'sk_before_page_title', array(&$this, 'get_service_messages'));
 	}
 
 	function post_type_service_message() {
@@ -48,40 +47,6 @@ class SK_Service_Status_Messages {
 
 		register_post_type('service_message', $args);
 
-		}
-
-
-	/**
-	 * Return service messages with markup
-	 *
-	 * @author Therese Persson
-	 *
-	 */
-		
-	function get_service_messages() {
-		global $post;
-		$args = array( 
-			'post_type' => 'service_message',
-			'orderby'   => 'modified',
-			'meta_query' => array(
-				array(
-					'key' => 'show_service_message_on',
-					'value' => '"' . get_the_ID() . '"',
-					'compare' => 'LIKE'
-				)
-			)
-		 );
-		$postslist = get_posts( $args );
-		foreach ( $postslist as $post ) :
-		  setup_postdata( $post ); ?> 
-			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-				<?php the_modified_date('H:s j F Y') ?>
-				<?php the_title(); ?>   
-				<?php the_content(); ?>
-			</a>
-		<?php
-		endforeach; 
-		wp_reset_postdata();
 	}
 
 }

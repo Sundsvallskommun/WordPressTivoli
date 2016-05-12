@@ -23,10 +23,6 @@ $service_messages = new WP_Query( $args ); ?>
 
 					<?php the_icon('exclamation-sign') ?>
 
-					<span class="widget-service-messages__post__date">
-						<?php the_modified_date('j/m H:s') ?>
-					</span>
-					-
 					<span class="widget-service-messages__post__title">
 						<?php the_title(); ?>
 					</span>

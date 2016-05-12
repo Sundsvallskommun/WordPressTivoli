@@ -1,13 +1,13 @@
 {
     "key": "group_570f79976b081",
-    "title": "Driftmeddelande",
+    "title": "Relaterade sidor",
     "fields": [
         {
             "key": "field_570f79a20b2da",
-            "label": "Visa driftmeddelande p\u00e5 sida",
-            "name": "show_service_message_on",
+            "label": "F\u00e4st p\u00e5 sidor",
+            "name": "pin_post_on",
             "type": "relationship",
-            "instructions": "V\u00e4lj en eller flera sidor som detta driftmeddelande ska visas p\u00e5.",
+            "instructions": "V\u00e4lj en eller flera sidor som detta inl\u00e4gg ska visas p\u00e5.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -35,6 +35,13 @@
                 "operator": "==",
                 "value": "service_message"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
         ]
     ],
     "menu_order": 0,
@@ -45,5 +52,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1460632680
+    "modified": 1463038908
 }
