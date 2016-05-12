@@ -100,6 +100,7 @@ class SK_Pinned_Posts {
 		endforeach;
 		echo '</div>';
 
+		wp_reset_postdata();
 	}
 
 }
