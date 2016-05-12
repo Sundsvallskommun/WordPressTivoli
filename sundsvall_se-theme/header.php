@@ -45,7 +45,8 @@
 
 	</div>
 
-<?php do_action('sk_pinned_posts_global'); ?>
+<?php do_action('sk_header_end'); ?>
+
 </header>
 
 <div class="contentwrapper-outer"> <?php // Wrappers used by off-canvas mobile navigation ?>

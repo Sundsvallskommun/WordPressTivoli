@@ -20,8 +20,6 @@
 
 		<h1 class="single-post__title"><?php the_title(); ?></h1>
 
-		<?php do_action('sk_pinned_posts'); ?>
-
 		<?php do_action('sk_after_page_title'); ?>
 
 		<div class="single-post__date">
