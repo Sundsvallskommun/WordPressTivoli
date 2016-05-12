@@ -1,6 +1,6 @@
 {
     "key": "group_570f79976b081",
-    "title": "Relaterade sidor",
+    "title": "Exponering",
     "fields": [
         {
             "key": "field_570f79a20b2da",
@@ -26,6 +26,22 @@
             "min": "",
             "max": "",
             "return_format": "id"
+        },
+        {
+            "key": "field_573448dfe86c5",
+            "label": "Visa p\u00e5 hela webbplatsen",
+            "name": "pin_post_global",
+            "type": "true_false",
+            "instructions": "Visas som en list under menyn p\u00e5 alla sidor p\u00e5 webbplatsen.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Ja, visa inl\u00e4gget f\u00f6r alla bes\u00f6kare.",
+            "default_value": 0
         }
     ],
     "location": [
@@ -52,5 +68,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1463038908
+    "modified": 1463051503
 }

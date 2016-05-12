@@ -16,7 +16,50 @@ class SK_Pinned_Posts {
 
 		$this->pinnable_post_types = array('post', 'service_message');
 
+		add_action( 'sk_pinned_posts_global', array(&$this, 'display_global_posts'));
 		add_action( 'sk_pinned_posts', array(&$this, 'display_pinned_posts'));
+	}
+
+	function display_global_posts() {
+
+		$args = array( 
+			'post_type' => $this->pinnable_post_types,
+			'orderby'   => 'modified',
+			'meta_query' => array(
+				array(
+					'key' => 'pin_post_global',
+					'value' => 1,
+					'compare' => 'LIKE'
+				)
+			)
+		);
+		echo '<div class="global-posts">';
+
+		global $post;
+		$posts = get_posts( $args );
+		foreach ( $posts as $post ) :
+			setup_postdata( $post );
+
+			$post_type = get_post_type( get_the_ID() );
+			$alert_type = $post_type === 'service_message' ? 'warning' : 'info';
+		?>
+
+		<a class="alert alert-centered <?php echo "alert-$alert_type"; ?>" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+			<span>
+			<?php
+				if($post_type === 'service_message') {
+					the_icon('exclamation-sign');
+				}
+				the_title();
+			?>
+			</span>
+		</a>
+
+		<?php
+		endforeach;
+
+		echo '</div>';
+
 	}
 
 	function display_pinned_posts() {
@@ -33,7 +76,7 @@ class SK_Pinned_Posts {
 			)
 		 );
 
-		echo '<div class="pineed-posts">';
+		echo '<div class="pinned-posts">';
 
 		global $post;
 		$posts = get_posts( $args );
@@ -44,16 +87,14 @@ class SK_Pinned_Posts {
 			$alert_type = $post_type === 'service_message' ? 'warning' : 'info';
 		?>
 
-		<div class="alert <?php echo "alert-$alert_type"; ?>">
-			<a class="alert-link" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+		<a class="alert <?php echo "alert-$alert_type"; ?>" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
 			<?php
 				if($post_type === 'service_message') {
 					the_icon('exclamation-sign');
 				}
 				the_title();
 			?>
-			</a>
-		</div>
+		</a>
 
 		<?php
 		endforeach;

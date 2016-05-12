@@ -45,10 +45,12 @@
 
 	</div>
 
+<?php do_action('sk_pinned_posts_global'); ?>
 </header>
 
 <div class="contentwrapper-outer"> <?php // Wrappers used by off-canvas mobile navigation ?>
 <div class="contentwrapper-inner"> <?php // Wrappers used by off-canvas mobile navigation ?>
+
 
 <main id="content">
 
