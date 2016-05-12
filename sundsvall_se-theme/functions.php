@@ -1,4 +1,10 @@
 <?php
+/*
+ * ==============================================
+ *                      MISC
+ * ==============================================
+ */
+
 /**
  * SK_Init
  * =======
@@ -25,9 +31,11 @@ $sk_init = new SK_Init();
 
 /**
  * SK_Ajax
- * ==============
+ * =======
  *
- * Theme ajax functions.
+ * Misc ajax functions.
+ *
+ * Load gravity form with ajax.
  */
 require_once locate_template( 'lib/class-sk-ajax.php' );
 $sk_ajax = new SK_Ajax();
@@ -40,6 +48,51 @@ $sk_ajax = new SK_Ajax();
  */
 require_once locate_template( 'lib/class-sk-attachments.php' );
 $sk_attachments = new SK_Attachments();
+
+/**
+ * Breadcrumbs
+ * ===========
+ *
+ * Function related to outputting breadcrumbs.
+ *
+ * the_breadcrumbs
+ *   echo or return breadcrumbs markup.
+ */
+require_once locate_template('lib/breadcrumbs.php');
+
+/**
+ * SK_Enqueues
+ * ===========
+ *
+ * Enqueues theme stylesheets and scripts.
+ */
+require_once locate_template( 'lib/class-sk-enqueues.php' );
+$sk_enqueues = new SK_Enqueues();
+
+/**
+ * SK_Comments
+ * ===========
+ *
+ * Disable comments support
+ */
+require_once locate_template( 'lib/class-sk-comments.php' );
+$sk_comments = new SK_Comments();
+
+/**
+ * SK_ShortURL
+ * ===========
+ *
+ * Allow short url shortcut to pages
+ */
+require_once locate_template( 'lib/class-sk-short-url.php' );
+$sk_shortURL = new SK_ShortURL();
+
+
+/*
+ * ==============================================
+ *               HELPER FUNCTIONS
+ * ==============================================
+ */
 
 /**
  * sk_log
@@ -70,42 +123,87 @@ require_once locate_template( 'lib/helpers/sk-logger.php' );
  */
 require_once locate_template( 'lib/helpers/sk-general.php' );
 
-/**
- * Breadcrumbs
- * ===========
- *
- * Function related to outputting breadcrumbs.
- *
- * the_breadcrumbs
- *   echo or return breadcrumbs markup.
+
+
+/*
+ * ==============================================
+ *                  POST TYPES
+ * ==============================================
  */
-require_once locate_template('lib/breadcrumbs.php');
+
+/**
+ * SK_Page_Contacts
+ * ================
+ *
+ * Contact persons post type and display functions.
+ */
+require_once locate_template( 'lib/class-sk-page-contacts.php' );
+$sk_post_type_contacts = new SK_Page_Contacts();
+
+/**
+ * SK_Service_Status_Messages
+ * ==========================
+ *
+ * Service messages post type
+ */
+require_once locate_template( 'lib/class-sk-service-messages.php' );
+$sk_service_messages = new SK_Service_Messages();
+
+/**
+ * SK_Boxes
+ * ========
+ *
+ * Boxes ("Puffar")
+ */
+require_once locate_template( 'lib/class-sk-boxes.php' );
+$sk_post_type_boxes = new SK_Boxes();
 
 /**
  * SK_Rename_Default_Post_Type
  * ===========================
  *
- * Functions related to shortcut page template
+ * Rename default post-type to "Nyheter"
+ */
+require_once locate_template( 'lib/class-sk-rename-post-types.php' );
+$sk_rename_default_post_type = new SK_Rename_Default_Post_Type();
+
+
+
+/*
+ * ==============================================
+ *               NAVIGATION PAGE
+ * ==============================================
+ */
+
+/**
+ * SK_Vizzit
+ * ===========================
+ *
+ * Vizzit api, show most popular nodes on navigational cards.
+ */
+require_once locate_template( 'lib/sk-vizzit/class-sk-vizzit.php' );
+$class_sk_vizzit = new SK_Vizzit();
+
+
+
+/*
+ * ==============================================
+ *                SHORTCUT PAGE
+ * ==============================================
+ */
+
+/**
+ * Helper functions related to shortcut page template
  */
 require_once locate_template( 'lib/sk-shortcut.php' );
 
-/**
- * SK_Enqueues
- * ===========
- *
- * Enqueues theme stylesheets and scripts.
- */
-require_once locate_template( 'lib/class-sk-enqueues.php' );
-$sk_enqueues = new SK_Enqueues();
 
-/**
- * SK_Helpmenu
- * ===========
- *
- * Functions related to page sidebar helpmenu.
+
+/*
+ * ==============================================
+ *                 LANDING PAGE
+ * ==============================================
  */
-require_once locate_template( 'lib/class-sk-helpmenu.php' );
-$sk_helpmenu = new SK_Helpmenu();
 
 /**
  * SK_Page_Lead
@@ -117,6 +215,42 @@ require_once locate_template( 'lib/sk-page-lead/class-sk-page-lead.php' );
 $first_paragraph_lead = new SK_Page_Lead();
 
 /**
+ * SK_Pinned_Posts
+ * ===============
+ *
+ * Display pinned service messages and news on pages.
+ */
+require_once locate_template( 'lib/class-sk-pinned-posts.php' );
+$sk_pinned_posts = new SK_Pinned_Posts();
+
+/**
+ * SK_PageVote
+ * ===========================
+ *
+ * "Was this page helpful?"-function for pages.
+ */
+require_once locate_template( 'lib/class-sk-pagevote.php' );
+$sk_shortURL = new SK_PageVote();
+
+/**
+ * SK_Helpmenu
+ * ===========
+ *
+ * Functions related to page sidebar helpmenu.
+ */
+require_once locate_template( 'lib/class-sk-helpmenu.php' );
+$sk_helpmenu = new SK_Helpmenu();
+
+/**
+ * SK_Easyread
+ * ===========
+ *
+ * Add link to sidebar of posts/pages to toggle easily readable content.
+ */
+require_once locate_template( 'lib/class-sk-easyread.php' );
+$sk_easyread = new SK_Easyread();
+
+/**
  * SK_Tags
  * =======
  *
@@ -125,20 +259,25 @@ $first_paragraph_lead = new SK_Page_Lead();
 require_once locate_template( 'lib/class-sk-tags.php' );
 $sk_tags = new SK_Tags();
 
-/**
- * SK_Comments
- * ===========
- *
- * Disable comments support
+
+
+/*
+ * ==============================================
+ *        PAGE WIDGETS AND TINYMCE-BUTTONS
+ * ==============================================
  */
-require_once locate_template( 'lib/class-sk-comments.php' );
-$sk_comments = new SK_Comments();
 
 /**
  * SK_Widgets
  * ==========
  *
+ * General/minor widgets and related functions
  *
+ * Page widgets wrapper
+ *
+ * TinyMCE buttons (youtube)
+ *
+ * Google maps page widget
  */
 require_once locate_template( 'lib/sk-widgets/class-sk-widgets.php' );
 $sk_widgets = new SK_Widgets();
@@ -152,90 +291,21 @@ $sk_widgets = new SK_Widgets();
 require_once locate_template( 'lib/sk-eservices/class-sk-eservices.php' );
 $sk_eservices = new SK_EServices();
 
+/**
+ * SK_Documents
+ * ============
+ *
+ * Insert Real Media Directory to post with shortcode button.
+ */
 require_once locate_template( 'lib/sk-documents/class-sk-documents.php' );
 $sk_documents = new SK_Documents();
 
+/**
+ * SK_Documents
+ * ============
+ *
+ * Create collapsed content with shortcode button.
+ */
 require_once locate_template( 'lib/sk-collapse/class-sk-collapse.php' );
 $sk_collapse = new SK_Collapse();
 
-/**
- * SK_Page_Contacts
- * ================
- *
- * Contact persons post type and display functions.
- */
-require_once locate_template( 'lib/class-sk-page-contacts.php' );
-$sk_post_type_contacts = new SK_Page_Contacts();
-
-/**
- * SK_Service_Status_Messages
- * ================
- *
- * Service messages post type
- */
-require_once locate_template( 'lib/class-sk-service-status-messages.php' );
-$sk_service_status_messages = new SK_Service_Status_Messages();
-
-/**
- * SK_Pinned_Posts
- * ===============
- *
- * Display pinned service messages and news on pages.
- */
-require_once locate_template( 'lib/class-sk-pinned-posts.php' );
-$sk_pinned_posts = new SK_Pinned_Posts();
-
-
-/**
- * SK_Boxes
- * ========
- *
- * Boxes ("Puffar")
- */
-require_once locate_template( 'lib/class-sk-boxes.php' );
-$sk_post_type_boxes = new SK_Boxes();
-
-/**
- * SK_Easyread
- * ===========
- *
- * Add link to sidebar of posts/pages to toggle easylu readable content.
- */
-require_once locate_template( 'lib/class-sk-easyread.php' );
-$sk_easyread = new SK_Easyread();
-
-/**
- * SK_Rename_Default_Post_Type
- * ===========================
- *
- * Rename default post-type to "Nyheter"
- */
-require_once locate_template( 'lib/class-sk-rename-post-types.php' );
-$sk_rename_default_post_type = new SK_Rename_Default_Post_Type();
-
-/**
- * SK_Vizzit
- * ===========================
- *
- * Vizzit api, show most popular nodes on navigational cards.
- */
-require_once locate_template( 'lib/sk-vizzit/class-sk-vizzit.php' );
-$sk_rename_default_post_type = new SK_Vizzit();
-
-/**
- * SK_ShortURL
- * ===========================
- *
- * Allow short url shortcut to pages
- */
-require_once locate_template( 'lib/class-sk-short-url.php' );
-$sk_shortURL = new SK_ShortURL();
-
-/**
- * SK_PageVote
- * ===========================
- *
- * "Was this page helpful?"-function for pages.
- */
-require_once locate_template( 'lib/class-sk-pagevote.php' );
-$sk_shortURL = new SK_PageVote();

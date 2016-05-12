@@ -10,7 +10,7 @@
  * @package sundsvall_se
  */
 
-class SK_Service_Status_Messages {
+class SK_Service_Messages {
 
 	function __construct() {
 		add_action( 'init', array(&$this, 'post_type_service_message'));
