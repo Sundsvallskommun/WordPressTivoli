@@ -86,3 +86,21 @@ Anropar url och returnerar json.
 ## is_navigation
 
 Kollar om en sida är en navigationssida.
+
+# Actions
+
+## sk_header_end
+
+## sk_before_page_title
+
+## sk_after_page_title
+
+## sk_before_page_content
+
+## sk_after_page_content
+
+## sk_page_helpmenu
+
+## sk_page_widgets
+
+## sk_popular_eservices
