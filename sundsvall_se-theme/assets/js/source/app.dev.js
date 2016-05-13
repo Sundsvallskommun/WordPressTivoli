@@ -124,7 +124,7 @@ require('./acf-map.js');
 					_ajax_nonce: ajaxdata.ajax_nonce,
 				}
 			}).done(function(data) {
-				if(data.status !== 'error') {
+				if(data.status == 'success') {
 					$buttons.hide();
 					$('.vote-status').html('<span class="text-success">Tack för din synpunkt!</span>');
 					$('.vote-percent').html(data.new_percent_text);

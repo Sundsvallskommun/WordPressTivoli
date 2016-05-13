@@ -14,6 +14,9 @@ class SK_PageVote {
 
 		add_action( 'sk_after_page_content', array(&$this, 'pagevote_buttons' ), 10);
 
+		add_action('wp_ajax_pagevote', array(&$this, 'ajax_vote'), 10);
+		add_action('wp_ajax_nopriv_pagevote', array(&$this, 'ajax_vote'), 10);
+
 		// Field from ACF settings page.
 		$this->feedback_form_id = get_field('page_feedback_form_id', 'option');
 
