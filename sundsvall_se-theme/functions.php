@@ -23,8 +23,6 @@
  * Use first paragraph as excerpt
  *
  * Remove empty paragraph and break tags caused by shortcodes.
- *
- * Add bootstrap classes to gravity forms
  */
 require_once locate_template( 'lib/class-sk-init.php' );
 $sk_init = new SK_Init();

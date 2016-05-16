@@ -106,38 +106,81 @@ a[rel="tag"] {
  * Gravity forms styled as bootstrap
  */
 
-.gform_fields {
-    input, select, textarea {
-        @extend .form-control;
-    }
+.gform_wrapper ul {
+	@extend .list-unstyled;
 }
- 
-.gfield_description {
-    @extend .alert;
+
+.gform_wrapper li {
+	@extend .form-group;
 }
- 
-.validation_error {
-    @extend .alert-danger;
+
+.gform_wrapper form {
+	margin-bottom: 0;
 }
- 
-.validation_message {
-    @extend .alert-success;
+
+.gform_wrapper .gfield_label {
+
 }
- 
+
+.gform_wrapper .gfield_required {
+	color: $alert-danger-text;
+}
+
+.ginput_container input,
+.ginput_container select,
+.ginput_container textarea, {
+	@extend .form-control;
+}
+
 .gform_button {
-    @extend .btn;
-    @extend .btn-primary;
+	@extend .btn;
+	@extend .btn-primary;
+}
+
+.gform_wrapper .gfield_error {
+
+	.gfield_label {
+		color: $alert-danger-text;
+	}
+
+	input,
+	select,
+	textarea {
+		border-color: $alert-danger-border;
+		background-color: $alert-danger-bg;
+		color: $alert-danger-text;
+	}
+
+}
+
+.validation_error {
+	@extend .alert;
+	@extend .alert-danger;
+}
+
+#gform_confirmation_message {
+	@extend .alert;
+}
+
+.gform_button {
+  @extend .btn;
+  @extend .btn-primary;
 }
  
 .gfield_required {
-    color: $alert-danger-text;
+  color: $alert-danger-text;
 }
  
 .gform_wrapper ul.gfield_radio li {
-    @extend .radio
+	@extend .radio;
+	input {
+		width: auto !important;
+		margin-left: 0 !important;
+		margin-top: .45em !important;
+	}
 }
- 
+
 .gform_wrapper ul.gfield_checkbox li {
-    @extend .checkbox
+	@extend .checkbox
 }
 
