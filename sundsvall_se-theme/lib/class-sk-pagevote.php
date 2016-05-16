@@ -116,7 +116,7 @@ class SK_PageVote {
 				<span class="vote-status">
 
 					<?php if($has_voted): ?>
-						<span class="text-success">Tack för din synpunkt!</span>
+						<span class="">Du har redan tyckt till om denna sida, tack för din synpunkt!</span>
 					<?php endif; ?>
 
 				</span>

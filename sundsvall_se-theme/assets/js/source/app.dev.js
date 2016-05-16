@@ -126,7 +126,6 @@ require('./acf-map.js');
 			}).done(function(data) {
 				if(data.status == 'success') {
 					$buttons.hide();
-					$('.vote-status').html('<span class="text-success">Tack för din synpunkt!</span>');
 					$('.vote-percent').html(data.new_percent_text);
 				}
 			}).error(function(jqHXR, textStatus, errorThrown) {
