@@ -12,7 +12,9 @@ class SK_PageVote {
 
 	function __construct() {
 
-		add_action( 'sk_after_page_content', array(&$this, 'pagevote_buttons' ), 10);
+		add_action('sk_page_helpmenu', array(&$this, 'display_vote_percent'), 40);
+
+		add_action( 'sk_after_page_content', array(&$this, 'pagevote_buttons' ), 20);
 
 		add_action('wp_ajax_pagevote', array(&$this, 'ajax_vote'), 10);
 		add_action('wp_ajax_nopriv_pagevote', array(&$this, 'ajax_vote'), 10);
@@ -73,8 +75,20 @@ class SK_PageVote {
 			return '';
 		}
 
-		return "$percent% som röstat blev hjälpt av sidan.";
+		return "$percent% blev hjälpt av den här sidan.";
 
+	}
+
+	function display_vote_percent() {
+		global $sk_helpmenu;
+		$post_id = get_queried_object_id();
+
+		$percentText = $this->get_upvote_percent_text($post_id);
+
+		if(!empty($percentText)) {
+			$linkContent = sprintf('<span class="vote-percent">%s</span>', $percentText);
+			echo $sk_helpmenu->helplink('exclamation-sign', '#pageVote', $linkContent);
+		}
 	}
 
 	/**
@@ -82,7 +96,6 @@ class SK_PageVote {
 	 */
 	function pagevote_buttons() {
 		$post_id = get_queried_object_id();
-		$percent_text = $this->get_upvote_percent_text($post_id);
 		$has_voted = $this->has_voted($post_id);
 
 		if(is_front_page() || is_search() || is_navigation()) {
@@ -91,8 +104,8 @@ class SK_PageVote {
 
 	?>
 		<hr>
-		<div class="vote-widget">
-			<h2>Blev du hjälpt av sidan?</h2>
+		<div id="pageVote" class="vote-widget">
+			<h2>Var sidan till hjälp?</h2>
 			<p>
 
 				<?php if(!$has_voted): ?>
@@ -107,8 +120,6 @@ class SK_PageVote {
 					<?php endif; ?>
 
 				</span>
-
-				<span class="vote-percent"><?php echo $percent_text; ?></span>
 
 			</p>
 
