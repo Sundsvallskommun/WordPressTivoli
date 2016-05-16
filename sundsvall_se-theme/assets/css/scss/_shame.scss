@@ -100,11 +100,13 @@ a[rel="tag"] {
 
 }
 
-
-
 /**
  * Gravity forms styled as bootstrap
  */
+
+.gform_heading {
+	margin-bottom: $spacer-y;
+}
 
 .gform_wrapper ul {
 	@extend .list-unstyled;
@@ -119,7 +121,7 @@ a[rel="tag"] {
 }
 
 .gform_wrapper .gfield_label {
-
+	font-weight: bolder;
 }
 
 .gform_wrapper .gfield_required {
