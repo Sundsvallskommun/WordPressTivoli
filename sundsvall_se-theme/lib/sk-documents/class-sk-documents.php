@@ -30,8 +30,11 @@ class RML_helper {
 	 * Returns a flat array with dashes in names to indicate structure
 	 */
 	public function structure_array() {
+
 		$rml_structure = new RML_Structure();
-		$structure = $rml_structure->namesSlugArray();
+		$rml_view = new RML_View($rml_structure);
+
+		$structure = $rml_view->namesSlugArray();
 
 		$return = array_map(function($title, $slug) {
 			return array('text' => $title, 'value' => $slug);
