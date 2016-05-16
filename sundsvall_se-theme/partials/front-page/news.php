@@ -26,7 +26,7 @@
 							<?php the_title(); ?>
 						</h3>
 						<div class="widget-latest-news__post__date">
-							<?php the_date('d F H:i'); ?>
+							<?php printf('%s, %s', get_the_date(), get_the_time()); ?>
 						</div>
 					</div>
 				</a>

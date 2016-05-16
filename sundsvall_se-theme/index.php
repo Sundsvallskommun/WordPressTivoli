@@ -13,7 +13,13 @@ get_header();
 			</a>
 		</h2>
 
-		<?php the_excerpt(); ?>
+		<div class="post__date">
+			<?php printf('%s, %s', get_the_date(), get_the_time()); ?>
+		</div>
+
+		<div class="post__excerpt">
+			<?php the_excerpt(); ?>
+		</div>
 
 	</div>
 
