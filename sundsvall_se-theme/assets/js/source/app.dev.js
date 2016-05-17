@@ -39,7 +39,6 @@ require('./acf-map.js');
 		$('[data-toggle="search"]').on('click', function (e) {
 			e.preventDefault();
 			var target = $(this).attr('href');
-			console.log(target);
 			$(target).toggleClass('active');
 			$('body').toggleClass('search-active');
 		});
