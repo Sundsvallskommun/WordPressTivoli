@@ -1,4 +1,5 @@
 a.alert {
+	fill: currentColor;
 	display: block;
 }
 
@@ -7,6 +8,5 @@ a.alert {
 }
 
 .alert .icon {
-	fill: $brand-warning;
 	margin-right: .25em;
 }
