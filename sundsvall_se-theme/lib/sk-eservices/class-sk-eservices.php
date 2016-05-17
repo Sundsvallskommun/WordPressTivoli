@@ -192,9 +192,13 @@ class SK_EServices {
 			<div class="page-widget widget-eservices">
 				<div class="page-widget__container">
 					<div class="row">
-						<div class="col-xs-12">
+						<div class="page-widget__main">
 							<h3 class="page-widget__title">%s</h3>
 							%s
+						</div>
+						<div class="page-widget__secondary">
+							<h3 class="page-widget__title">Logga in med <strong>e-legitimation</strong></h3>
+							<p> Sit animi quaerat repudiandae deleniti minus? Impedit corrupti pariatur nulla provident blanditiis at? Dolores quos quasi ullam aliquam alias magni amet possimus explicabo, iure maxime. Corporis maiores dolore laboriosam eveniet?  </p>
 						</div>
 					</div>
 				</div>
