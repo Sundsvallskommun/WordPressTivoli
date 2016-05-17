@@ -1,3 +1,6 @@
+// For some reason there is a problem if we do not specifically load this file
+// here.
+@import '../profile-colors';
 /*
  * Copy of the bootstrap variables file
  *
@@ -31,14 +34,8 @@
 
 
 // Colors
-
-// SK-colors
-$sk-pink: rgb(169, 12, 119);
-//$sk-pink: #da57a0;
-$sk-purple: #5d2685;
-
-$sk-eservice-bg: rgb(205, 226, 185);
-$sk-eservice-fg: rgb(0, 120, 65);
+$sk-eservice-bg: profile-color(grönsta, 3);
+$sk-eservice-fg: profile-color(grönsta, 2);
 
 //
 // Grayscale and brand colors for use across Bootstrap.
@@ -49,7 +46,7 @@ $gray-light:                #818a91 !default;
 $gray-lighter:              #e8e8ea;
 $gray-lightest:             #f9f9fa;
 
-$brand-primary:             $sk-pink;
+$brand-primary:             profile-color(björnstigen, 2);
 $brand-success:             #5cb85c !default;
 $brand-info:                #5bc0de !default;
 $brand-warning:             #f0ad4e !default;

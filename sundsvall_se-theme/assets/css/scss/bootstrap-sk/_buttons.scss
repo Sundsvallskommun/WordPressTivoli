@@ -6,5 +6,5 @@
 }
 
 .btn-purple {
-  @include button-variant($btn-primary-color, $sk-purple, $sk-purple);
+  @include button-variant($btn-primary-color, profile-color(björnstigen, 2), profile-color(björnstigen, 2));
 }

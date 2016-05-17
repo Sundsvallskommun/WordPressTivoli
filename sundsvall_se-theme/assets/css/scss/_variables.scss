@@ -1,13 +1,13 @@
 $offcanvas-transition-duration: .75s;
 $mobile-search-transition-duration: .5s;
 
-
 $sk-section-colors: (
-	utbildning: #f68b1f,
-	uppleva: #64bbe9,
-	omsorg: #ef4036,
-	bygga: #60bb46,
-	samhallsplanering: #42515a,
-	naringsliv: #006cb8,
-	kommun: #8d63ab,
+	utbildning: profile-color(solum),
+	uppleva: profile-color(vattjom),
+	omsorg: profile-color(rödön),
+	bygga: profile-color(grönsta),
+	samhallsplanering: profile-color(svartvik),
+	naringsliv: profile-color(vattjom, 2),
+	kommun: profile-color(björnstigen),
 );
+

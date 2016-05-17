@@ -1,0 +1,41 @@
+$sk-palette: (
+	rödön: (
+		1: rgb(229, 53, 45),
+		2: rgb(159, 41, 20),
+		3: rgb(248, 197, 174)
+	),
+	solum: (
+		1: rgb(240, 138, 0),
+		2: rgb(214, 76, 16),
+		3: rgb(252, 215, 174)
+	),
+	grönsta: (
+		1: rgb(106, 176, 35),
+		2: rgb(0, 115, 59),
+		3: rgb(206, 226, 185)
+	),
+	vattjom: (
+		1: rgb(119, 190, 229),
+		2: rgb(0, 100, 173),
+		3: rgb(212, 222, 239)
+	),
+	björnstigen: (
+		1: rgb(146, 96, 160),
+		2: rgb(91, 31, 120),
+		3: rgb(210, 197, 223)
+	),
+	juniskär: (
+		1: rgb(216, 81, 148),
+		2: rgb(169, 0, 116),
+		3: rgb(246, 189, 193)
+	),
+	svartvik: (
+		1: rgb(72, 82, 88),
+		2: rgb(112, 127, 135),
+		3: rgb(182, 192, 198)
+	)
+);
+
+@function profile-color($color, $variant: 1) {
+	@return map-get(map-get($sk-palette, $color), $variant);
+}

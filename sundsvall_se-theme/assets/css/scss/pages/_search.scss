@@ -91,9 +91,9 @@
 
 		&--page {
 			.search-module__item__icon {
-				background: $sk-purple;
+				background: profile-color(björnstigen);
 			}
-				fill: $sk-purple;
+				fill: profile-color(björnstigen);
 		}
 
 		&--contact_persons {

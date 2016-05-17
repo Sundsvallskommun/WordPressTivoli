@@ -36,7 +36,7 @@
 }
 
 .navbar-mobile {
-	background: rgba($sk-purple, .95);
+	background: rgba(profile-color(björnstigen), .95);
 	color: white;
 	height: 4em;
 	padding: .5em;
@@ -124,7 +124,7 @@ body {
 
 .search-container {
 	@include media-breakpoint-down(sm) {
-		background: rgba($sk-purple, .95);
+		background: rgba(profile-color(björnstigen), .95);
 	}
 }
 
