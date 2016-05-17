@@ -12,7 +12,11 @@
 
 class SK_Page_Contacts {
 
+
 	function __construct() {
+
+		$this->page_contacts = null;
+
 		add_action( 'init', array(&$this, 'register_post_type'));
 		add_action( 'sk_after_page_content', array(&$this, 'output_page_contact'), 40);
 
@@ -20,6 +24,40 @@ class SK_Page_Contacts {
 
 		add_filter( 'enter_title_here', array(&$this, 'contact_title_placeholder'));
 		add_action( 'edit_form_top', array( &$this, 'contact_title_heading') );
+
+		add_action( 'sk_page_helpmenu', array( &$this, 'contact_sidebar_link'), 10);
+
+	}
+
+	private function get_page_contacts() {
+
+		global $post;
+
+		if($this->page_contacts === null) {
+
+			$this->page_contacts = get_field('other_contacts', $post->ID);
+			$inherit_other_contacts = get_field('inherit_other_contacts', $post->ID);
+
+			if($inherit_other_contacts) {
+				$this->page_contacts = $this->get_parent_contacts($post->ID);
+			}
+
+		}
+
+		return $this->page_contacts;
+
+	}
+
+	function contact_sidebar_link() {
+
+		$page_contacts = $this->get_page_contacts();
+
+		if(is_array($page_contacts)) {
+
+			global $sk_helpmenu;
+			echo $sk_helpmenu->helplink('message', '#contact', 'Kontakt');
+
+		}
 	}
 
 	function contact_title_heading() {
@@ -116,20 +154,15 @@ class SK_Page_Contacts {
 				return;
 		}
 
-		$other_contacts = get_field('other_contacts', $post->ID);
-		$inherit_other_contacts = get_field('inherit_other_contacts', $post->ID);
+		$page_contacts = $this->get_page_contacts();
 
-		if($inherit_other_contacts) {
-			$other_contacts = $this->get_parent_contacts($post->ID);
-		}
+		if(is_array($page_contacts)) {
 
-		if(is_array($other_contacts)) {
-
-			echo '<div class="page-contacts">';
+			echo '<div id="contact" class="page-contacts">';
 
 			echo '<h2>Kontakt</h2>';
 
-			foreach($other_contacts as $contact) {
+			foreach($page_contacts as $contact) {
 				echo $this->get_page_contact($contact);
 			}
 
