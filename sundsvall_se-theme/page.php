@@ -22,11 +22,6 @@
 
 		<?php do_action('sk_after_page_title'); ?>
 
-		<div class="single-post__date">
-			<span class="text-muted"><?php _e('Senast ändrad', 'sundsvall_se'); ?>: </span>
-			<?php printf('%s, %s', get_the_modified_date(), get_the_modified_time()); ?>
-		</div>
-
 		<?php do_action('sk_before_page_content'); ?>
 
 		<?php the_content(); ?>

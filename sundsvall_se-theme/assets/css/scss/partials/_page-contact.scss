@@ -4,8 +4,12 @@
 
 .page-contacts {
 	border-top: 1px solid $hr-border-color;
-	padding-top: 2.5rem;
-	margin-top: 3rem;
+	margin-top: $spacer-y * 2;
+
+	h2 {
+		margin-top: $spacer-y * 2;
+		margin-bottom: $spacer-y * 2;
+	}
 }
 
 .page-contact {

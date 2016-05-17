@@ -14,7 +14,7 @@ class SK_Page_Contacts {
 
 	function __construct() {
 		add_action( 'init', array(&$this, 'register_post_type'));
-		add_action( 'sk_after_page_content', array(&$this, 'output_page_contact'), 10);
+		add_action( 'sk_after_page_content', array(&$this, 'output_page_contact'), 40);
 
 		add_filter('the_title', array(&$this, 'contact_unique_admin_titles'), 10, 2);
 
@@ -126,6 +126,8 @@ class SK_Page_Contacts {
 		if(is_array($other_contacts)) {
 
 			echo '<div class="page-contacts">';
+
+			echo '<h2>Kontakt</h2>';
 
 			foreach($other_contacts as $contact) {
 				echo $this->get_page_contact($contact);
