@@ -103,10 +103,10 @@ class SK_PageVote {
 		}
 
 	?>
-		<hr>
 		<div id="pageVote" class="vote-widget">
-			<h2>Var sidan till hjälp?</h2>
-			<p>
+			<h2 class="pull-xs-left vote-widget__heading">Var sidan till hjälp?</h2>
+
+			<p class="vote-widget__actions pull-xs-left">
 
 				<?php if(!$has_voted): ?>
 					<button data-vote="up"   class="btn btn-secondary" <?php disabled($has_voted, true); ?>>Ja</button>
@@ -123,6 +123,7 @@ class SK_PageVote {
 
 			</p>
 
+			<div class="clearfix"></div>
 			<div class="collapse" id="vote-form">
 				<div class="card card-block" data-gform="<?php echo $this->feedback_form_id; ?>">
 					<?php gravity_form( $this->feedback_form_id, $display_title = true, $display_description = true, $display_inactive = false, $field_values = null, $ajax = true, $tabindex = null, $echo = true ); ?>
