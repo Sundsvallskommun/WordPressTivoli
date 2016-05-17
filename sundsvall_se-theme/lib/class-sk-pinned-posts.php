@@ -47,9 +47,7 @@ class SK_Pinned_Posts {
 		<a class="alert alert-centered <?php echo "alert-$alert_type"; ?>" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
 			<span>
 			<?php
-				if($post_type === 'service_message') {
-					the_icon('exclamation-sign');
-				}
+				the_icon('exclamation-sign');
 				the_title();
 			?>
 			</span>
