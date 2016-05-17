@@ -1,6 +1,28 @@
 a.alert {
 	fill: currentColor;
 	display: block;
+
+	&:hover {
+
+		text-decoration: inherit;
+
+		&.alert-success {
+			background: darken($alert-success-text, 7%);
+			color: $alert-success-text;
+		}
+		&.alert-info {
+			background: darken($alert-info-bg, 7%);
+			color: $alert-info-text;
+		}
+		&.alert-warning {
+			background: darken($alert-warning-bg, 7%);
+			color: $alert-warning-text;
+		}
+		&.alert-danger {
+			background: darken($alert-danger-bg, 7%);
+			color: $alert-danger-text;
+		}
+	}
 }
 
 .alert.alert-centered {
