@@ -1,0 +1,52 @@
+.archive-title {
+	@include media-breakpoint-up(md) {
+		font-size: 2.5em;
+	}
+	margin-bottom: 1.875em;
+}
+
+.archive-post {
+	.media-left {
+		padding-right: $spacer-x*2;
+	}
+
+	.img-placeholder {
+		width: 132px;
+		height: 92px;
+		max-width: 100%;
+		background: $gray-lightest;
+	}
+
+	.media-body {
+		vertical-align: middle;
+		line-height: 1.5;
+		.media-heading {
+			line-height: inherit;
+		}
+	}
+
+		margin-bottom: 1.5em;
+
+		&__date {
+			color: $gray;
+			font-size: .875em;
+		}
+
+		&__excerpt {
+			margin-top: $spacer-y / 2;
+		}
+
+	a {
+		color: inherit;
+
+		&:hover {
+			.media-body {
+				color: $gray-light;
+			}
+
+			.media-left {
+				opacity: .75;
+			}
+		}
+	}
+}

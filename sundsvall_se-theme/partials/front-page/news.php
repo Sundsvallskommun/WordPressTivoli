@@ -10,7 +10,7 @@
 		foreach ($latest_posts as $post) : setup_postdata( $post );
 		?>
 
-			<li class="media widget-latest-news__post">
+			<li class="media widget-latest-news__post archive-post">
 				<a href="<?php the_permalink(); ?>">
 					<?php if(has_post_thumbnail()): ?>
 						<div class="media-left">
@@ -22,10 +22,10 @@
 						</div>
 					<?php endif; ?>
 					<div class="media-body">
-						<h3 class="media-heading">
+						<h3 class="media-heading archive-post__title">
 							<?php the_title(); ?>
 						</h3>
-						<div class="widget-latest-news__post__date">
+						<div class="archive-post__date">
 							<?php printf('%s, %s', get_the_date(), get_the_time()); ?>
 						</div>
 					</div>
