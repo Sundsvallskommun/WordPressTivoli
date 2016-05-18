@@ -191,14 +191,24 @@ class SK_EServices {
 		$markup = apply_filters('sk_page_widget_markup', '
 			<div class="page-widget widget-eservices">
 				<div class="page-widget__container">
-					<div class="row">
-						<div class="page-widget__main">
-							<h3 class="page-widget__title">%s</h3>
-							%s
-						</div>
-						<div class="page-widget__secondary">
-							<h3 class="page-widget__title">Logga in med <strong>e-legitimation</strong></h3>
-							<p> Sit animi quaerat repudiandae deleniti minus? Impedit corrupti pariatur nulla provident blanditiis at? Dolores quos quasi ullam aliquam alias magni amet possimus explicabo, iure maxime. Corporis maiores dolore laboriosam eveniet?  </p>
+					<div class="page-widget__main">
+						<h3 class="page-widget__title">%s</h3>
+						%s
+					</div>
+					<div class="page-widget__secondary">
+						<h3 class="page-widget__title">Logga in med <strong>e-legitimation</strong></h3>
+						<div class="page-widget__description">
+						<p class="">%s</p>
+<p>
+							Använd din personliga e-legitimation för att logga in i e-tjänster och fälja
+							ärenden via Mina sidor.  E-legitimation, t.ex. BankID eller Mobild BankD,
+							används för att kommunen ska vara säker på vem det är som använt e-tjänsten
+							samt att rätt person får tillgång till rätt ärenden via Mina sidor.
+</p>
+<p>
+Din e-legitimation använder du även vid kontakt med andra myndigheter, såsom
+Skatteverket och Försäkringskassan.
+</p>
 						</div>
 					</div>
 				</div>
@@ -206,11 +216,13 @@ class SK_EServices {
 
 		$title = __('Alla etjänster för ', 'sundsvall_se').'<strong>'.$eservices[0]['Category'].'</strong>';
 
+		$eIDLink = $this->eservice_link( array( 'Name' => 'Logga in', 'URL'  => 'https://e-tjanster.sundsvall.se/loggain', 'Icon' => get_icon('arrow-right') ) );
+
 		$eservice_links = '<div class="page-widget__columns"><ul>';
 		$eservice_links .= $this->eservice_links($eservices, '<li>%s</li>');
 		$eservice_links .= '</ul></div>';
 
-		printf($markup, $title, $eservice_links);
+		printf($markup, $title, $eservice_links, $eIDLink);
 
 	}
 

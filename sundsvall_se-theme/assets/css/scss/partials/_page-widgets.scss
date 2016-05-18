@@ -1,5 +1,9 @@
+$page-widget-bg1: #f2f2f3;
+$page-widget-bg2: #f7f7f9;
+
 .page-widgets {
 	margin-bottom: 0;
+	margin-top: 2rem;
 	@include media-breakpoint-up(md) {
 		margin-top: 5.5rem;
 	}
@@ -7,16 +11,55 @@
 
 .page-widget {
 
-	background: $gray-lightest;
-	background: linear-gradient(90deg, $gray-lightest 70%, $gray-lighter 70%);
+	background: $page-widget-bg2;
 
 	.front-page-section__eservices & {
-		background: transparent;
 	}
 
 	&__container {
 		@extend .container-fluid;
-		margin: auto;
+		@include media-breakpoint-up(md) {
+			display: flex;
+		}
+	}
+
+	&__main {
+		@include make-col();
+		background: $page-widget-bg1;
+		@include make-col-span(12);
+		@include media-breakpoint-up(md) {
+			@include make-col-span(8);
+		}
+		//width: percentage(2/3);
+		padding-top: 3.75em;
+		padding-bottom: 5em;
+		position: relative;
+		z-index: 1;
+		overflow: visible !important;
+
+		&:before {
+			content: '';
+			background: $page-widget-bg1;
+			z-index: -1;
+			position: absolute;
+			right: 100%;
+			width: 2000px;
+			top: 0;
+			bottom: 0;
+		}
+	}
+
+	&__secondary {
+		@include make-col();
+		@include make-col-span(12);
+		@include media-breakpoint-up(md) {
+			//width: percentage(1/3);
+			@include make-col-span(4);
+		}
+		background: $page-widget-bg2;
+		padding-left: $spacer-x*2;
+		padding-top: 3.75em;
+		padding-bottom: 3.75em;
 	}
 
 	&__title {
@@ -24,9 +67,18 @@
 		margin-bottom: 2em;
 	}
 
+	&__secondary .page-widget__title {
+		margin-bottom: .875em;
+	}
+
 	&__description {
 		color: $text-muted;
-		max-width: 15em;
+		font-size: .875em;
+
+		p {
+			margin-bottom: 1em;
+		}
+
 	}
 
 	&__columns {
@@ -53,55 +105,8 @@
 		padding: 0;
 	}
 
-	/**
-	 * Map specifics
-	 */
-	&.widget-map &__title {
-		margin-top: 5em;
-		margin-bottom: 0;
-	}
-
-	&.widget-map &__container {
-		padding-top: 0;
-		padding-bottom: 0;
-	}
-
 }
 
-.map-description {
-	width: percentage(1/3);
-	float: left;
-	padding: 2em;
-	padding-left: 5em;
+.widget-map .page-widget__main {
+	min-height: 27em;
 }
-
-.map-container {
-	width: percentage(2/3);
-	float: left;
-	height: 30em;
-	position: relative;
-	overflow: visible !important;
-}
-
-.page-widget__container .row {
-	display: flex;
-
-}
-
-.page-widget__main {
-	@include make-col();
-	width: percentage(2/3);
-	padding-top: 3.75em;
-	padding-bottom: 5em;
-}
-
-.page-widget__secondary {
-	@include make-col();
-	width: percentage(1/3);
-	background: $gray-lighter;
-	padding-left: $spacer-x*2;
-	padding-top: 3.75em;
-	padding-bottom: 5em;
-
-}
-

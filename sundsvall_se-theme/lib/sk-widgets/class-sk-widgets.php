@@ -59,7 +59,7 @@ class SK_Widgets {
 
 			<div class="page-widget__container">
 
-				<div class="map-container acf-map">
+				<div class="page-widget__main acf-map">
 
 				<?php while ( have_rows('map_locations') ) : the_row(); 
 					$location = get_sub_field('location');
@@ -73,11 +73,10 @@ class SK_Widgets {
 
 				</div>
 
-				<div class="map-description">
+				<div class="page-widget__secondary">
 					<h3 class="page-widget__title"><?php the_field('map_heading'); ?></h3>
 					<div class="page-widget__description"><?php the_field('map_description'); ?></div>
 				</div>
-
 
 			</div>
 
