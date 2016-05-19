@@ -1,8 +1,10 @@
+$footer_background: profile-color(björnstigen, 2);
+
 .site-footer {
 
 	font-size: .9375em;
 	line-height: 1.2;
-	background-color: profile-color(björnstigen, 2);
+	background-color: $footer_background;
 	color: #fff;
 	padding: 3em;
 	padding-top: 2.5em;
@@ -41,7 +43,7 @@
 
 	.footer-icon {
 		float: left;
-		background: $gray-dark;
+		background: darken($footer_background, 5%);
 		fill: white;
 		width: 2.5rem;
 		height: 2.5rem;
