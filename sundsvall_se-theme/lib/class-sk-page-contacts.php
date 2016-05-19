@@ -114,7 +114,7 @@ class SK_Page_Contacts {
 			'public'             => true,
 			'capability_type'    => 'post',
 			'has_archive'        => true,
-			'rewrite'            => array( 'slug' => 'kontakt' ),
+			'rewrite'            => array( 'slug' => 'kontakter' ),
 			'hierarchical'       => false,
 			'menu_position'      => null,
 			'menu_icon'          => 'dashicons-id',
