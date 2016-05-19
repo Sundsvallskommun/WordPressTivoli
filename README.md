@@ -81,6 +81,8 @@ Kollar om en sida är en navigationssida.
 
 ### sk_header_end
 
+### sk_before_main_content
+
 ### sk_before_page_title
 
 ### sk_after_page_title

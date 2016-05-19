@@ -16,7 +16,7 @@ class SK_Pinned_Posts {
 
 		$this->pinnable_post_types = array('post', 'service_message');
 
-		add_action( 'sk_header_end', array(&$this, 'display_global_posts'), 10);
+		add_action( 'sk_before_main_content', array(&$this, 'display_global_posts'), 10);
 		add_action( 'sk_after_page_title', array(&$this, 'display_pinned_posts'), 10);
 	}
 

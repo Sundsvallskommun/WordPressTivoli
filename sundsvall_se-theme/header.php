@@ -52,6 +52,7 @@
 <div class="contentwrapper-outer"> <?php // Wrappers used by off-canvas mobile navigation ?>
 <div class="contentwrapper-inner"> <?php // Wrappers used by off-canvas mobile navigation ?>
 
+<?php do_action('sk_before_main_content'); ?>
 
 <main id="content">
 
