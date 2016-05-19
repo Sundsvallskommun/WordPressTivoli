@@ -10,6 +10,7 @@ body {
 .offcanvas {
 
 	@include media-breakpoint-down(sm) {
+		z-index: 2;
 		background: white;
 		position: fixed;
 		top: 0;
