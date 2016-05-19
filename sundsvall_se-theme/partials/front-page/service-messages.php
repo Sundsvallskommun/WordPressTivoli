@@ -40,7 +40,7 @@ $service_messages = new WP_Query( $args ); ?>
 	<?php endif; ?>
 
 	<div class="col-lg-2 col-md-3">
-		<a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>"> Alla driftmeddelanden »</a>
+		<a href="<?php echo get_post_type_archive_link( 'service_message' ); ?>"> Alla driftmeddelanden »</a>
 	</div>
 
 	</div>
