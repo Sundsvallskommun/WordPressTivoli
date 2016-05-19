@@ -1,8 +1,28 @@
-.archive-title {
-	@include media-breakpoint-up(md) {
-		font-size: 2.5em;
+.archive {
+
+	&__row {
+		@include make-row();
 	}
-	margin-bottom: 1.875em;
+
+	&__content {
+
+		@include make-col();
+		@include make-col-span(12);
+
+		@include media-breakpoint-up(md) {
+			@include make-col-span(10);
+		}
+		@include media-breakpoint-up(lg) {
+			max-width: 48.125em;
+		}
+	}
+}
+
+.archive__title {
+	@include media-breakpoint-up(md) {
+		font-size: 3.5em;
+	}
+	margin-bottom: .8em;
 }
 
 .archive-post {

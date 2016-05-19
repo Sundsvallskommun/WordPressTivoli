@@ -4,14 +4,21 @@ get_header();
 
 <div class="container-fluid archive">
 
-<div class="row">
-	<div class="col-md-12">
-		<h1 class="archive-title"><?php single_post_title(); ?></h1>
-	</div>
-</div>
+<div class="archive__row">
 
-<div class="row">
-	<div class="col-md-12">
+	<div class="sk-sidebar">
+
+		<a href="#post-content" class="focus-only"><?php _e('Hoppa över sidomeny', 'sundsvall_se'); ?></a>
+
+		<ul>
+			<?php wp_get_archives(); ?>
+		</ul>
+
+	</div>
+
+	<div class="archive__content">
+
+		<h1 class="archive__title"><?php single_post_title(); ?></h1>
 
 		<?php if ( have_posts() ): while ( have_posts() ): the_post(); ?>
 

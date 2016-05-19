@@ -8,50 +8,6 @@
 		@include make-row();
 	}
 
-	&__sidebar {
-		font-size: .8125em;
-		color: $gray-light;
-		fill: currentColor;
-		padding-top: 2em;
-
-		.icon {
-			font-size: 2.25em;
-			vertical-align: -.25em;
-			margin-right: .2em;
-		}
-
-		@include make-col();
-		@include make-col-span(12);
-
-		@include media-breakpoint-up(md) {
-			@include make-col-span(2);
-		}
-
-		@include media-breakpoint-up(lg) {
-			width: 10rem;
-			margin-right: 3rem;
-		}
-
-		ul {
-			list-style: none;
-			padding: 0;
-		}
-
-		li {
-			@include media-breakpoint-down(md) {
-				display: inline-block;
-				margin-right: 1em;
-			}
-			margin: 0 0 1em 0;
-		}
-
-		hr {
-			margin: 2em 0;
-		}
-		a {
-			color: inherit;
-		}
-	}
 
 	&__content {
 

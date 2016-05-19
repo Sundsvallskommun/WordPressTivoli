@@ -6,7 +6,7 @@
 
 <div class="single-post__row">
 
-	<aside class="single-post__sidebar">
+	<aside class="sk-sidebar single-post__sidebar">
 
 		<a href="#post-content" class="focus-only"><?php _e('Hoppa över sidomeny', 'sundsvall_se'); ?></a>
 
