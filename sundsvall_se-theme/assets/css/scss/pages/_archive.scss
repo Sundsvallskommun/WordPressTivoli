@@ -34,7 +34,13 @@
 		width: 132px;
 		height: 92px;
 		max-width: 100%;
-		background: $gray-lightest;
+		background: profile-color(svartvik, 2);
+
+		.icon {
+			width: 100%;
+			height: 100%;
+			fill: white;
+		}
 	}
 
 	.media-body {

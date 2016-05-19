@@ -5,7 +5,9 @@
 			<?php if(has_post_thumbnail()): ?>
 					<?php the_post_thumbnail('news-thumb'); ?>
 			<?php else: ?>
-					<div class="img-placeholder"></div>
+					<div class="img-placeholder">
+						<?php echo the_icon('logo'); ?>
+					</div>
 			<?php endif; ?>
 		</div>
 

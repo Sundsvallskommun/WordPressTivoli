@@ -18,7 +18,9 @@
 						</div>
 					<?php else: ?>
 						<div class="media-left">
-							<div class="img-placeholder"></div>
+							<div class="img-placeholder">
+								<?php echo the_icon('logo'); ?>
+							</div>
 						</div>
 					<?php endif; ?>
 					<div class="media-body">
