@@ -137,7 +137,7 @@ class SK_EServices {
 			</div>');
 
 
-		$eservices = $this->oep->get_popular_services(15);
+		$eservices = $this->oep->get_popular_services(16);
 		$title = __('Våra mest populära e-tjänster just nu', 'sundsvall_se');
 
 		$eservice_links = '<div class="page-widget__columns">';
