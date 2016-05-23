@@ -13,7 +13,7 @@ class SK_Init {
 
 		add_action('after_setup_theme', array(&$this, 'image_setup'));
 
-		add_filter( 'init', array(&$this, 'options_page') );
+		add_filter( 'init', array(&$this, 'options_page'));
 
 		add_filter( 'embed_oembed_html', array(&$this, 'oembed_wrapper'), 10, 4);
 
@@ -34,6 +34,8 @@ class SK_Init {
 		add_filter( 'wp_trim_excerpt', array(&$this, 'sk_excerpt'), 10, 2 );
 
 		add_filter( 'the_content', array(&$this, 'shortcode_remove_empty_paragraphs') );
+
+		add_action( 'admin_init', array( &$this, 'admin_init' ));
 
 	}
 
@@ -264,5 +266,31 @@ class SK_Init {
 		return strtr( $content, $array );
 	}
 
+	/**
+	 * Give ditors access to Gravity fomrs.
+	 *
+	 * @author 
+	 * 
+	 * @return null
+	 */
+	public function admin_init() {
+		$capabilities = array(
+		    'gravityforms_edit_forms',
+		    'gravityforms_delete_forms',
+		    'gravityforms_create_form',
+		    'gravityforms_view_entries',
+		    'gravityforms_edit_entries',
+		    'gravityforms_delete_entries',
+		    'gravityforms_export_entries',
+		    'gravityforms_view_entry_notes',
+		    'gravityforms_edit_entry_notes',
+		    'gravityforms_preview_forms'
+		);
+		$role = get_role( 'editor' );
+
+		foreach ($capabilities as $cap) {
+			$role ->add_cap( $cap );
+		}
+	}
 }
 
