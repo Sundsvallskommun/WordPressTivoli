@@ -126,7 +126,7 @@ class SK_PageVote {
 			<div class="clearfix"></div>
 			<div class="collapse" id="vote-form">
 				<div class="card card-block" data-gform="<?php echo $this->feedback_form_id; ?>">
-					<?php gravity_form( $this->feedback_form_id, $display_title = true, $display_description = true, $display_inactive = false, $field_values = null, $ajax = true, $tabindex = null, $echo = true ); ?>
+					<?php gravity_form( $this->feedback_form_id, $display_title = false, $display_description = false, $display_inactive = false, $field_values = null, $ajax = true, $tabindex = null, $echo = true ); ?>
 				</div>
 			</div>
 
