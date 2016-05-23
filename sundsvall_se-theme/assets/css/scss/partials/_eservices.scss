@@ -18,11 +18,26 @@
 
 }
 
+.page-widget__columns h4 {
+	clear: left;
+}
+
+.page-widget__columns ul {
+	@extend .clearfix;
+}
+
+.page-widget__columns ul {
+	.eservice-link {
+		float: left; // Fix to make it a block element but with auto width
+		clear: left;
+	}
+}
+
+
 /*
  * Small inline e-service link
  */
 .eservice-link {
-
 	background: $sk-eservice-bg;
 	color: $sk-eservice-fg;
 	padding: .75em 1.5em .75em 3.25em;
