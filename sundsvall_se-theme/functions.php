@@ -5,6 +5,9 @@
  * ==============================================
  */
 
+require_once locate_template( 'lib/sk-search/class-sk-search.php' );
+$sk_init = new SK_Search();
+
 /**
  * SK_Init
  * =======

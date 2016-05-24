@@ -1,5 +1,41 @@
 <?php get_header(); ?>
 
+<?php 
+
+$searchItemMarkup = '
+<li class="search-module__item search-module__item--%s">
+
+	<a class="search-module__item__container" href="%s">
+
+	<div class="search-module__item__icon">
+		%s
+	</div>
+
+	<div>
+
+		<h3 class="search-module__item__title"> %s </h3>
+
+		<span class="search-module__item__description">
+			%s - Uppdaterad %s
+		</span>
+
+	</div>
+
+	<div class="search-module__item__read-icon">'
+		.get_icon('arrow-right-circle').
+	'</div>
+
+	</a>
+
+</li>';
+
+?>
+
+<script id="searchitem-template" type="text/x-handlebars-template">
+	<?php printf($searchItemMarkup, '{{type}}', '{{url}}', get_icon('alignleft'), '{{title}}', '{{type}}', '{{modified}}' ); ?>
+</script>
+
+
 
 	<?php if ( have_posts() ) : ?>
 
@@ -13,9 +49,13 @@
 
 			<div class="row search-modules-row">
 
+
+
+
 				<div class="col-md-6">
 
 					<div class="search-module">
+
 
 						<div class="search-module__header">
 							<h2 class="search-module__title">Sökresultat</h2>
@@ -93,7 +133,7 @@
 
 						</ol>
 
-						<div class="search-module__footer" data-append-button="#articleItems">
+						<div class="search-module__footer" data-load-more="main">
 							<?php if( get_next_posts_link() ) :
 								next_posts_link( 'Fler artiklar', 0 );
 							endif; ?>

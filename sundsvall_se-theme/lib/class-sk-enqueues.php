@@ -25,7 +25,8 @@ class SK_Enqueues {
 	}
 
 	function sk_enqueue_scripts() {
-		wp_enqueue_script( 'main', get_template_directory_uri().'/assets/js/app.js', ['jquery'] );
+		wp_enqueue_script( 'handlebars', 'https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js' );
+		wp_enqueue_script( 'main', get_template_directory_uri().'/assets/js/app.js', ['jquery', 'handlebars'] );
 	}
 
 	function sk_frontend_web_font() {

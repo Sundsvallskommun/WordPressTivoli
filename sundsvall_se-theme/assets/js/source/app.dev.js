@@ -168,6 +168,64 @@ require('./acf-map.js');
 
 		});
 
+		// Search
+		var search = function(term, page, callback) {
+
+			console.log(page);
+
+			$.ajax({
+
+				url: searchparams.ajax_url,
+				type: 'GET',
+				dataType: 'json',
+				data: {
+					action: 'sk_search_main',
+					s: term,
+					page: page
+				}
+
+			}).done( function(data) {
+
+				var items = '';
+
+				var source = $('#searchitem-template').html();
+				var template = Handlebars.compile(source);
+
+				data.items.forEach(function(item) {
+					items += template(item);
+				});
+
+				callback(items, data.queryInfo);
+
+			}).error(function(jqHXR, textStatus, errorThrown) {
+				console.log('Error searching', textStatus);
+			});
+
+		}
+
+		$('[data-load-more]').on('click', function(e) {
+
+			var $itemsContainer = $(this).closest('.search-module').find('ol');
+
+			console.log($itemsContainer);
+
+			e.preventDefault();
+
+			searchparams.currentPage_main = parseInt(searchparams.currentPage_main);
+			var page = searchparams.currentPage_main += 1;
+
+			search(searchparams.search_string, page, function(items, info) {
+
+				var $items = $(items).hide();
+
+				$itemsContainer.append($items);
+
+				$items.fadeIn();
+
+			});
+
+		});
+
 	});
 
 
