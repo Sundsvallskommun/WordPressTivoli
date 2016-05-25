@@ -29,6 +29,7 @@
 		float: left;
 		position: relative;
 		margin-right: 2em;
+		background: profile-color(svartvik);
 
 		@include media-breakpoint-up(md) {
 			width: 8em;
