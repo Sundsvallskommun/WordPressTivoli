@@ -195,7 +195,7 @@ require('./acf-map.js');
 					items += template(item);
 				});
 
-				callback(items, data.queryInfo);
+				callback(items, data.query);
 
 			}).error(function(jqHXR, textStatus, errorThrown) {
 				console.log('Error searching', textStatus);
@@ -205,7 +205,12 @@ require('./acf-map.js');
 
 		$('[data-load-more]').on('click', function(e) {
 
-			var $itemsContainer = $(this).closest('.search-module').find('ol');
+			var $button = $(this);
+
+			var $searchContainer = $(this).closest('.search-module');
+
+			var $itemsContainer = $searchContainer.find('ol');
+			var $currentCountCountainer = $searchContainer.find('.post-count__count');
 
 			console.log($itemsContainer);
 
@@ -214,13 +219,21 @@ require('./acf-map.js');
 			searchparams.currentPage_main = parseInt(searchparams.currentPage_main);
 			var page = searchparams.currentPage_main += 1;
 
-			search(searchparams.search_string, page, function(items, info) {
+			search(searchparams.search_string, page, function(items, query) {
 
+				// Update post count info "Visar x av x"
+				var displayedPosts = parseInt($currentCountCountainer.html());
+				$currentCountCountainer.html(displayedPosts += query.post_count);
+
+				// Fade in the new items
 				var $items = $(items).hide();
-
 				$itemsContainer.append($items);
-
 				$items.fadeIn();
+
+				// Hide button if we are on last page
+				if( query.max_num_pages <= searchparams.currentPage_main) {
+					$button.hide();
+				}
 
 			});
 

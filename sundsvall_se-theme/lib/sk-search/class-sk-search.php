@@ -3,8 +3,6 @@
  *
  *
  */
-header("Access-Control-Allow-Origin: *");
-
 class SK_Search {
 
 	function __construct() {
@@ -61,8 +59,14 @@ class SK_Search {
 
 		$posts = array_map( array( &$this, 'map_wp_posts' ), $query->posts);
 
+		$query_info = array(
+			'max_num_pages' => $query->max_num_pages,
+			'post_count'    => $query->post_count
+		);
+
 		$response = array(
-			'items' => $posts
+			'items' => $posts,
+			'query' => $query_info
 		);
 
 		echo json_encode($response);
