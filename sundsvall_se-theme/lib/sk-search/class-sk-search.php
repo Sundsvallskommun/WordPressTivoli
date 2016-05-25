@@ -38,10 +38,11 @@ class SK_Search {
 	private function map_wp_posts( $post ) {
 
 		return array(
-			'title'    => $post->post_title,
-			'type'     => $post->post_type,
-			'modified' => $post->post_modified,
-			'url'      => get_permalink($post->ID),
+			'title'      => $post->post_title,
+			'type'       => $post->post_type,
+			'type_label' => get_post_type_object( $post->post_type )->labels->singular_name,
+			'modified'   => date_i18n( get_option('date_format'), strtotime( $post->post_modified ) ),
+			'url'        => get_permalink($post->ID),
 		);
 
 	}

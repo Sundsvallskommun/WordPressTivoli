@@ -32,7 +32,7 @@ $searchItemMarkup = '
 ?>
 
 <script id="searchitem-template" type="text/x-handlebars-template">
-	<?php printf($searchItemMarkup, '{{type}}', '{{url}}', get_icon('alignleft'), '{{title}}', '{{type}}', '{{modified}}' ); ?>
+	<?php printf($searchItemMarkup, '{{type}}', '{{url}}', get_icon('alignleft'), '{{title}}', '{{type_label}}', '{{modified}}' ); ?>
 </script>
 
 
@@ -48,9 +48,6 @@ $searchItemMarkup = '
 			<h1 class="page-title hidden-xs-up"><?php printf( __( 'Visar alla resultat för: %s', 'sundsvall_se' ), '<span>' . esc_html( get_search_query() ) . '</span>' ); ?></h1>
 
 			<div class="row search-modules-row">
-
-
-
 
 				<div class="col-md-6">
 
@@ -74,11 +71,14 @@ $searchItemMarkup = '
 
 							<?php while ( have_posts() ) : the_post(); ?>
 
-							<?php $post_type = get_post_type(); ?>
+							<?php 
+								$post_type = get_post_type();
+								$post_type_label = get_post_type_object( $post_type )->labels->singular_name;
+							?>
+
+							<?php printf($searchItemMarkup, $post_type, '{{url}}', get_icon('alignleft'), get_the_title(), $post_type_label, get_the_modified_date()); ?>
 
 							<?php // Search item ?>
-							<li class="search-module__item <?php printf('search-module__item--%s', $post_type); ?>">
-								<a class="search-module__item__container" href="<?php the_permalink(); ?>">
 
 								<?php if ('contact_persons' === $post_type): ?>
 									<div class="search-module__item__icon">
@@ -94,40 +94,8 @@ $searchItemMarkup = '
 										</span>
 									</div>
 
-								<?php elseif ('page' === $post_type): ?>
-									<div class="search-module__item__icon">
-										<?php the_icon('alignleft') ?>
-									</div>
-
-									<div>
-										<h3 class="search-module__item__title"> <?php the_title(); ?> </h3>
-										<span class="search-module__item__description">
-											Sida - Uppdaterad <?php the_modified_date(); ?>
-										</span>
-									</div>
-
-								<?php elseif ('post' === $post_type): ?>
-									<div class="search-module__item__icon">
-										<?php the_icon('alignleft') ?>
-									</div>
-
-									<div>
-										<h3 class="search-module__item__title"> <?php the_title(); ?> </h3>
-										<span class="search-module__item__description">
-											Artikel - Uppdaterad <?php the_modified_date(); ?>
-										</span>
-									</div>
-
-								<?php else: ?>
-
 								<?php endif; ?>
 
-									<div class="search-module__item__read-icon">
-										<?php the_icon('arrow-right-circle') ?>
-									</div>
-
-								</a>
-							</li>
 
 							<?php endwhile; ?>
 
