@@ -96,11 +96,11 @@ $searchPostMarkup = '
 
 						if( 'contact_persons' == $post_type ) {
 
-							printf($searchPostMarkup, $post_type, '{{url}}', get_the_post_thumbnail('thumbnail'), get_the_title(), $post_type_label, get_the_modified_date());
+							printf($searchPostMarkup, $post_type, get_the_permalink(), get_the_post_thumbnail(), get_the_title(), $post_type_label, get_the_modified_date());
 
 						} else if( 'attachment' == $post_type ) {
 
-							printf($searchPostMarkup, $post_type, '{{url}}', get_icon('alignleft'), get_the_title(), $post_type_label, get_the_modified_date());
+							printf($searchPostMarkup, $post_type, get_the_permalink(), get_icon('alignleft'), get_the_title(), $post_type_label, get_the_modified_date());
 
 						} else {
 
@@ -116,7 +116,7 @@ $searchPostMarkup = '
 
 				<div class="search-module__footer" data-load-more="<?php echo $search_type; ?>">
 					<?php if( get_next_posts_link() ) :
-						next_posts_link( 'Fler artiklar', 0 );
+						next_posts_link( 'Visa fler', 0 );
 					endif; ?>
 				</div>
 
