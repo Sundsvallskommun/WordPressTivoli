@@ -23,6 +23,8 @@ class SK_Search {
 		add_action( 'wp_ajax_sk_search_eservices',        array( &$this, 'search_result_eservices' ) );
 		add_action( 'wp_ajax_nopriv_sk_search_eservices', array( &$this, 'search_result_eservices' ) );
 
+		add_filter( 'pre_get_posts', array(&$this, 'search_result_post_types' ) );
+
 	}
 
 	function ajax_search_variables() {
@@ -78,6 +80,18 @@ class SK_Search {
 	function search_result_contacts() {
 
 		echo '[Not implemented]';
+
+	}
+
+	function search_result_post_types($query) {
+
+		if ($query->is_search && !is_admin() ) {
+
+			$query->set('post_type',array('post','page'));
+
+		}
+
+		return $query;
 
 	}
 
