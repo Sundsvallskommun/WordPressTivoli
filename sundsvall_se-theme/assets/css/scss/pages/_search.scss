@@ -96,6 +96,13 @@
 				fill: profile-color(björnstigen);
 		}
 
+		&--attachment {
+			.search-module__item__icon {
+				background: profile-color(vattjom);
+			}
+				fill: profile-color(vattjom);
+		}
+
 		&--contact_persons {
 			.search-module__item__icon {
 				background: #78c0a0;

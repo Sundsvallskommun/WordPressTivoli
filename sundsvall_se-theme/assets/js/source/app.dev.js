@@ -169,9 +169,7 @@ require('./acf-map.js');
 		});
 
 		// Search
-		var search = function(term, page, callback) {
-
-			console.log(page);
+		var search = function(type, term, page, callback) {
 
 			$.ajax({
 
@@ -179,7 +177,7 @@ require('./acf-map.js');
 				type: 'GET',
 				dataType: 'json',
 				data: {
-					action: 'sk_search_main',
+					action: 'sk_search_' + type,
 					s: term,
 					page: page
 				}
@@ -188,7 +186,7 @@ require('./acf-map.js');
 
 				var items = '';
 
-				var source = $('#searchitem-template').html();
+				var source = $('#searchitem-template-'+type).html();
 				var template = Handlebars.compile(source);
 
 				data.items.forEach(function(item) {
@@ -203,23 +201,25 @@ require('./acf-map.js');
 
 		}
 
+		var currentPage = {};
+
 		$('[data-load-more]').on('click', function(e) {
 
 			var $button = $(this);
+
+			var searchType = $button.data('load-more');
 
 			var $searchContainer = $(this).closest('.search-module');
 
 			var $itemsContainer = $searchContainer.find('ol');
 			var $currentCountCountainer = $searchContainer.find('.post-count__count');
 
-			console.log($itemsContainer);
-
 			e.preventDefault();
 
-			searchparams.currentPage_main = parseInt(searchparams.currentPage_main);
-			var page = searchparams.currentPage_main += 1;
+			currentPage[searchType] = parseInt(currentPage[searchType] || searchparams.currentPage);
+			var page = currentPage[searchType] += 1;
 
-			search(searchparams.search_string, page, function(items, query) {
+			search(searchType, searchparams.search_string, page, function(items, query) {
 
 				// Update post count info "Visar x av x"
 				var displayedPosts = parseInt($currentCountCountainer.html());
@@ -231,7 +231,7 @@ require('./acf-map.js');
 				$items.fadeIn();
 
 				// Hide button if we are on last page
-				if( query.max_num_pages <= searchparams.currentPage_main) {
+				if( query.max_num_pages <= currentPage[searchType]) {
 					$button.hide();
 				}
 

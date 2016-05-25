@@ -12,16 +12,61 @@ class SK_Search {
 		$this->main_result_post_types = array( 'page', 'post' );
 		$this->page = sanitize_text_field( $_GET['page'] );
 
+		$this->queries = array(
+
+			'main' => array(
+
+				'title' => __( 'Sidor och nyheter', 'sundsvall_se' ),
+
+				'query_args' => array(
+					's' => $this->search_string,
+					'post_type' => $this->main_result_post_types,
+					'paged' => $this->page
+				),
+
+			),
+
+			'contacts' => array(
+
+				'title' => __( 'Kontakter', 'sundsvall_se' ),
+
+				'query_args' => array(
+					's' => $this->search_string,
+					'post_type' => $this->main_result_post_types,
+					'paged' => $this->page,
+					'post_type' => array('contact_persons'),
+				),
+
+			),
+
+			'attachments' => array(
+
+				'title' => __( 'Bilder och dokument', 'sundsvall_se' ),
+
+				'query_args' => array(
+					's' => $this->search_string,
+					'post_type' => $this->main_result_post_types,
+					'paged' => $this->page,
+					'post_type' => array('attachment'),
+					'post_status' => array( 'publish', 'inherit' )
+				),
+
+			)
+
+		);
+
 
 		add_action( 'wp_enqueue_scripts', array( &$this, 'ajax_search_variables' ), 50 );
 
-		add_action( 'wp_ajax_sk_search_main',             array( &$this, 'search_result_main' ) );
-		add_action( 'wp_ajax_nopriv_sk_search_main',      array( &$this, 'search_result_main' ) );
+		foreach( $this->queries as $search_type => $search_query ) {
+
+			add_action( "wp_ajax_sk_search_$search_type",             array( &$this, "ajax_search_$search_type" ) );
+			add_action( "wp_ajax_nopriv_sk_search_$search_type",      array( &$this, "ajax_search_$search_type" ) );
+
+		}
 
 		add_action( 'wp_ajax_sk_search_eservices',        array( &$this, 'search_result_eservices' ) );
 		add_action( 'wp_ajax_nopriv_sk_search_eservices', array( &$this, 'search_result_eservices' ) );
-
-		add_filter( 'pre_get_posts', array(&$this, 'search_result_post_types' ) );
 
 	}
 
@@ -30,7 +75,7 @@ class SK_Search {
 		wp_localize_script( 'main', 'searchparams', array(
 			'ajax_url'         => admin_url( 'admin-ajax.php' ),
 			'search_string'    => $this->search_string,
-			'currentPage_main' => 1
+			'currentPage' => (get_query_var('paged')) ? get_query_var('paged') : 1
 	 	) );
 
 	}
@@ -47,14 +92,7 @@ class SK_Search {
 
 	}
 
-
-	function search_result_main() {
-
-		$query_args = array( 
-			's' => $this->search_string,
-			'post_type' => $this->main_result_post_types,
-			'paged' => $this->page
-		);
+	private function ajax_search( $query_args ) {
 
 		$query = new WP_Query( $query_args );
 
@@ -70,7 +108,36 @@ class SK_Search {
 			'query' => $query_info
 		);
 
-		echo json_encode($response);
+		return json_encode($response);
+
+	}
+
+	function ajax_search_main() {
+
+		$query_args = $this->queries['main']['query_args'];
+
+		echo $this->ajax_search( $query_args );
+
+		die();
+
+	}
+
+	function ajax_search_contacts() {
+
+		$query_args = $this->queries['contacts']['query_args'];
+
+		echo $this->ajax_search( $query_args );
+
+		die();
+
+	}
+
+
+	function ajax_search_attachments() {
+
+		$query_args = $this->queries['attachments']['query_args'];
+
+		echo $this->ajax_search( $query_args );
 
 		die();
 
@@ -85,18 +152,6 @@ class SK_Search {
 	function search_result_contacts() {
 
 		echo '[Not implemented]';
-
-	}
-
-	function search_result_post_types($query) {
-
-		if ($query->is_search && !is_admin() ) {
-
-			$query->set('post_type',array('post','page'));
-
-		}
-
-		return $query;
 
 	}
 
