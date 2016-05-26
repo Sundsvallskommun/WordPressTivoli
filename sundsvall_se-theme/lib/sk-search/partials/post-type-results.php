@@ -29,8 +29,6 @@ global $sk_search, $searchPostMarkup;
 	$wp_query = new WP_Query( $query_args );
 ?>
 
-		<div class="col-md-6">
-
 			<div class="search-module">
 
 				<div class="search-module__header">
@@ -101,8 +99,6 @@ global $sk_search, $searchPostMarkup;
 
 
 			</div>
-
-		</div>
 
 <?php
 		$wp_query = $temp;

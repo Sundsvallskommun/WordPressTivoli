@@ -24,7 +24,10 @@ body.search-results main {
 	}
 
 	&__header {
-		padding: 2em 4em 0;
+		padding: 2em $spacer-x*2 0;
+		@include media-breakpoint-up(md)  {
+			padding: 2em 4em 0;
+		}
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -41,7 +44,11 @@ body.search-results main {
 
 	&__items {
 		list-style: none;
-		padding: 0 4em;
+
+		padding: 0 $spacer-x*2;
+		@include media-breakpoint-up(md)  {
+			padding: 0 4em;
+		}
 	}
 
 	&__item {

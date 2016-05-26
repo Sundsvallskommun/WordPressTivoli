@@ -30,9 +30,13 @@ $searchPostMarkup = '
 
 	<div class="row search-modules-row">
 
-	<?php get_template_part('lib/sk-search/partials/post-type-results'); ?>
+		<div class="col-lg-6">
+			<?php get_template_part('lib/sk-search/partials/post-type-results'); ?>
+		</div>
 
-	<?php get_template_part('lib/sk-search/partials/eservice-result'); ?>
+		<div class="col-lg-6">
+			<?php get_template_part('lib/sk-search/partials/eservice-result'); ?>
+		</div>
 
 	</div> <?php //.row ?>
 </div> <?php //.container-fluid ?>
