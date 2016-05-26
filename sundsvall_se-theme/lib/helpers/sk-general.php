@@ -234,7 +234,7 @@ function sk_get_json($url) {
 	}
 
 	if(!$content) {
-		$this->error_log('Unable to get json', $url);
+		sk_log('Unable to get json', $url);
 		return false;
 	}
 

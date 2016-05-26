@@ -48,6 +48,7 @@ class OEP {
 
 	public function search_services($search_term) {
 
+
 		$url = self::BASEURL.'/search/'.self::FORMAT.'?q='.urlencode($search_term);
 
 		$json = sk_get_json($url);
