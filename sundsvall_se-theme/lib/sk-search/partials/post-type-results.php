@@ -30,7 +30,7 @@ $searchPostMarkup = '
 </script>
 
 <script id="searchitem-template-contacts" type="text/x-handlebars-template">
-	<?php printf($searchPostMarkup, '{{type}}', '{{url}}', '{{thumbnail}}', '{{title}}', '{{type_label}}', '{{modified}}' ); ?>
+	<?php printf($searchPostMarkup, '{{type}}', '{{url}}', '{{{thumbnail}}}', '{{title}}', '{{type_label}}', '{{modified}}' ); ?>
 </script>
 
 <?php foreach( $sk_search->queries as $search_type => $search_query ): ?>
@@ -77,7 +77,7 @@ $searchPostMarkup = '
 
 						if( 'contact_persons' == $post_type ) {
 
-							printf($searchPostMarkup, $post_type, get_the_permalink(), get_the_post_thumbnail(), get_the_title(), $post_type_label, get_the_modified_date());
+							printf($searchPostMarkup, $post_type, get_the_permalink(), get_the_post_thumbnail(null, 'thumbnail'), get_the_title(), $post_type_label, get_the_modified_date());
 
 						} else if( 'attachment' == $post_type ) {
 

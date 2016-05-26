@@ -93,6 +93,7 @@ class SK_Search {
 			'type_label' => get_post_type_object( $post->post_type )->labels->singular_name,
 			'modified'   => date_i18n( get_option('date_format'), strtotime( $post->post_modified ) ),
 			'url'        => get_permalink($post->ID),
+			'thumbnail'  => get_the_post_thumbnail($post->ID, 'thumbnail'),
 		);
 
 	}
