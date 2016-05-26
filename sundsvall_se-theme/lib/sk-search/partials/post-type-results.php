@@ -5,15 +5,15 @@ global $sk_search, $searchPostMarkup;
 ?>
 
 <script id="searchitem-template-main" type="text/x-handlebars-template">
-	<?php printf($searchPostMarkup, '{{type}}', '{{url}}', get_icon('alignleft'), '{{title}}', '{{type_label}}', '{{modified}}' ); ?>
+	<?php printf($searchPostMarkup, '{{type}}', '{{url}}', get_icon('alignleft'), '{{title}}', '{{type_label}}', 'Uppdaterad {{modified}}' ); ?>
 </script>
 
 <script id="searchitem-template-attachments" type="text/x-handlebars-template">
-	<?php printf($searchPostMarkup, '{{type}}', '{{url}}', get_icon('alignleft'), '{{title}}', '{{type_label}}', '{{modified}}' ); ?>
+	<?php printf($searchPostMarkup, '{{type}}', '{{url}}', get_icon('alignleft'), '{{title}}', '{{file_type}}', 'Uppdaterad {{modified}}' ); ?>
 </script>
 
 <script id="searchitem-template-contacts" type="text/x-handlebars-template">
-	<?php printf($searchPostMarkup, '{{type}}', '{{url}}', '{{{thumbnail}}}', '{{title}}', '{{type_label}}', '{{modified}}' ); ?>
+	<?php printf($searchPostMarkup, '{{type}}', '{{url}}', '{{{thumbnail}}}', '{{title}}', '{{type_label}}', 'Uppdaterad {{modified}}' ); ?>
 </script>
 
 <?php foreach( $sk_search->queries as $search_type => $search_query ): ?>
@@ -54,6 +54,10 @@ global $sk_search, $searchPostMarkup;
 						<?php
 
 							$post_type = get_post_type();
+
+							$filepath = get_attached_file( get_the_ID() );
+							$file_type = wp_check_filetype( $filepath )['ext'];
+
 							$post_type_label = get_post_type_object( $post_type )->labels->singular_name;
 
 						if( 'contact_persons' == $post_type ) {
@@ -62,7 +66,7 @@ global $sk_search, $searchPostMarkup;
 
 						} else if( 'attachment' == $post_type ) {
 
-							printf($searchPostMarkup, $post_type, get_the_permalink(), get_icon('alignleft'), get_the_title(), $post_type_label,  'Uppdaterad '.get_the_modified_date());
+							printf($searchPostMarkup, $post_type, get_the_permalink(), get_icon('alignleft'), get_the_title(), $file_type,  'Uppdaterad '.get_the_modified_date());
 
 						} else {
 

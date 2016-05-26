@@ -87,6 +87,9 @@ class SK_Search {
 
 	private function map_wp_posts( $post ) {
 
+		$filepath = get_attached_file( $post->ID );
+		$file_type = wp_check_filetype( $filepath )['ext'];
+
 		return array(
 			'title'      => $post->post_title,
 			'type'       => $post->post_type,
@@ -94,6 +97,7 @@ class SK_Search {
 			'modified'   => date_i18n( get_option('date_format'), strtotime( $post->post_modified ) ),
 			'url'        => get_permalink($post->ID),
 			'thumbnail'  => get_the_post_thumbnail($post->ID, 'thumbnail'),
+			'file_type'  => $file_type
 		);
 
 	}
