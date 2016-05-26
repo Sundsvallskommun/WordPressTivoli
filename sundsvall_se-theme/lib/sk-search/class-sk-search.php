@@ -12,6 +12,8 @@ class SK_Search {
 		$this->main_result_post_types = array( 'page', 'post' );
 		$this->page = sanitize_text_field( $_GET['page'] );
 
+		$this->posts_per_page = 12;
+
 		$this->queries = array(
 
 			'main' => array(
@@ -21,6 +23,7 @@ class SK_Search {
 				'query_args' => array(
 					's' => $this->search_string,
 					'post_type' => $this->main_result_post_types,
+					'posts_per_page' => $this->posts_per_page,
 					'paged' => $this->page
 				),
 
@@ -33,6 +36,7 @@ class SK_Search {
 				'query_args' => array(
 					's' => $this->search_string,
 					'post_type' => $this->main_result_post_types,
+					'posts_per_page' => $this->posts_per_page,
 					'paged' => $this->page,
 					'post_type' => array('contact_persons'),
 				),
@@ -46,6 +50,7 @@ class SK_Search {
 				'query_args' => array(
 					's' => $this->search_string,
 					'post_type' => $this->main_result_post_types,
+					'posts_per_page' => $this->posts_per_page,
 					'paged' => $this->page,
 					'post_type' => array('attachment'),
 					'post_status' => array( 'publish', 'inherit' )
