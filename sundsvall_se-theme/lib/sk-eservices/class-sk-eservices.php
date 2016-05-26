@@ -122,6 +122,14 @@ class SK_EServices {
 		return $widget;
 	}
 
+	function search_eservices($search_term) {
+
+		$result = $this->oep->search_services($search_term);
+
+		return $result;
+
+	}
+
 	function widget_popular_eservices() {
 
 		$markup = apply_filters('sk_page_widget_markup', '

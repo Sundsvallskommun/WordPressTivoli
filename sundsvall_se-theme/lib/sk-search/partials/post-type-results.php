@@ -1,25 +1,8 @@
 <?php
 
-global $sk_search;
+global $sk_search, $searchPostMarkup;
 
-$searchPostMarkup = '
-<li class="search-module__item search-module__item--%s">
-	<a class="search-module__item__container" href="%s">
-		<div class="search-module__item__icon">
-			%s
-		</div>
-		<div>
-			<h3 class="search-module__item__title"> %s </h3>
-			<span class="search-module__item__description">
-				%s - Uppdaterad %s
-			</span>
-		</div>
-		<div class="search-module__item__read-icon">'
-			.get_icon('arrow-right-circle').
-		'</div>
-	</a>
-</li>'
-;?>
+?>
 
 <script id="searchitem-template-main" type="text/x-handlebars-template">
 	<?php printf($searchPostMarkup, '{{type}}', '{{url}}', get_icon('alignleft'), '{{title}}', '{{type_label}}', '{{modified}}' ); ?>
@@ -67,7 +50,7 @@ $searchPostMarkup = '
 				</div>
 
 				<?php if ( $wp_query->have_posts() ): ?>
-				<ol class="search-module__items" id="articleItems">
+				<ol class="search-module__items">
 					<?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 
 						<?php
@@ -77,15 +60,15 @@ $searchPostMarkup = '
 
 						if( 'contact_persons' == $post_type ) {
 
-							printf($searchPostMarkup, $post_type, get_the_permalink(), get_the_post_thumbnail(null, 'thumbnail'), get_the_title(), $post_type_label, get_the_modified_date());
+							printf($searchPostMarkup, $post_type, get_the_permalink(), get_the_post_thumbnail(null, 'thumbnail'), get_the_title(), $post_type_label, 'Uppdaterad '.get_the_modified_date());
 
 						} else if( 'attachment' == $post_type ) {
 
-							printf($searchPostMarkup, $post_type, get_the_permalink(), get_icon('alignleft'), get_the_title(), $post_type_label, get_the_modified_date());
+							printf($searchPostMarkup, $post_type, get_the_permalink(), get_icon('alignleft'), get_the_title(), $post_type_label,  'Uppdaterad '.get_the_modified_date());
 
 						} else {
 
-							printf($searchPostMarkup, $post_type, get_the_permalink(), get_icon('alignleft'), get_the_title(), $post_type_label, get_the_modified_date());
+							printf($searchPostMarkup, $post_type, get_the_permalink(), get_icon('alignleft'), get_the_title(), $post_type_label, 'Uppdaterad '.get_the_modified_date());
 
 						}
 

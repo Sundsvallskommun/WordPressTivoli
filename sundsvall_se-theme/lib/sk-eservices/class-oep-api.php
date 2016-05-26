@@ -46,6 +46,22 @@ class OEP {
 
 	}
 
+	public function search_services($search_term) {
+
+		$url = self::BASEURL.'/search/'.self::FORMAT.'?q='.$search_term;
+
+		$json = sk_get_json($url);
+
+		if(!isset($json['Flows'])) {
+			return false;
+		}
+
+		$output = $json['Flows'];
+
+		return $output;
+
+	}
+
 	public function get_popular_services($limit = 5) {
 
 		$transient_name = 'sk_eservice_getpopular_'.$limit;
