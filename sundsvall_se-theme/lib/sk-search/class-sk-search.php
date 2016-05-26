@@ -12,7 +12,7 @@ class SK_Search {
 		$this->main_result_post_types = array( 'page', 'post' );
 		$this->page = sanitize_text_field( $_GET['page'] );
 
-		$this->posts_per_page = 12;
+		$this->posts_per_page = 6;
 
 		$this->queries = array(
 
