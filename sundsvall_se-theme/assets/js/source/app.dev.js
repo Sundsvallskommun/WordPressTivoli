@@ -168,7 +168,9 @@ require('./acf-map.js');
 
 		});
 
-		// Search
+		/**
+		* Load more search results via ajax
+		*/
 		var search = function(type, term, page, callback) {
 
 			$.ajax({
@@ -238,6 +240,78 @@ require('./acf-map.js');
 			});
 
 		});
+
+
+		var mainResult = new Bloodhound({
+
+			datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
+			queryTokenizer: Bloodhound.tokenizers.whitespace,
+
+			remote: {
+				url: ajaxdata.ajax_url + '?action=search_suggestions&type=main&s=%QUERY',
+				wildcard: '%QUERY'
+			}
+
+		});
+
+		var contactResult = new Bloodhound({
+
+			datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
+			queryTokenizer: Bloodhound.tokenizers.whitespace,
+
+			remote: {
+				url: ajaxdata.ajax_url + '?action=search_suggestions&type=contacts&s=%QUERY',
+				wildcard: '%QUERY'
+			}
+
+		});
+
+		var mediaResult = new Bloodhound({
+
+			datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
+			queryTokenizer: Bloodhound.tokenizers.whitespace,
+
+			remote: {
+				url: ajaxdata.ajax_url + '?action=search_suggestions&type=attachments&s=%QUERY',
+				wildcard: '%QUERY'
+			}
+
+		});
+
+		/*
+		* Typeahead
+		*/
+		$( 'input[name="s"]' ).typeahead({
+		 minLength: 2,
+		 highlight: true
+	 },{
+		 name: 'main-result',
+		 display: 'title',
+		 source: mainResult,
+		 limit: Infinity, //Fix for bug causing only two results to show. See https://github.com/twitter/typeahead.js/issues/1232
+		 templates: {
+				header: '<h3 class="tt-heading">Sidor och nyheter</h3>',
+				suggestion: Handlebars.compile('<a href="{{url}}">{{title}}</a>')
+			}
+	 },{
+		 name: 'contacts-result',
+		 display: 'title',
+		 source: contactResult,
+		 limit: Infinity, //Fix for bug causing only two results to show. See https://github.com/twitter/typeahead.js/issues/1232
+		 templates: {
+				header: '<h3 class="tt-heading">Kontakter</h3>',
+				suggestion: Handlebars.compile('<a href="{{url}}">{{title}}</a>')
+			}
+	 },{
+		 name: 'media-result',
+		 display: 'title',
+		 source: mediaResult,
+		 limit: Infinity, //Fix for bug causing only two results to show. See https://github.com/twitter/typeahead.js/issues/1232
+		 templates: {
+				header: '<h3 class="tt-heading">Bilder och dokument</h3>',
+				suggestion: Handlebars.compile('<a href="{{url}}">{{title}}</a>')
+			}
+	 })
 
 	});
 

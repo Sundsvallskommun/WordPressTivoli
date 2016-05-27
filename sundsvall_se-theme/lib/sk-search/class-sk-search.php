@@ -73,6 +73,9 @@ class SK_Search {
 		add_action( 'wp_ajax_sk_search_eservices',        array( &$this, 'search_result_eservices' ) );
 		add_action( 'wp_ajax_nopriv_sk_search_eservices', array( &$this, 'search_result_eservices' ) );
 
+		add_action( 'wp_ajax_search_suggestions',        array( &$this, 'search_suggestions' ) );
+		add_action( 'wp_ajax_nopriv_search_suggestions', array( &$this, 'search_suggestions' ) );
+
 	}
 
 	function ajax_search_variables() {
@@ -162,6 +165,53 @@ class SK_Search {
 	function search_result_contacts() {
 
 		echo '[Not implemented]';
+
+	}
+
+	function search_suggestions() {
+
+		$type = sanitize_text_field( $_REQUEST['type'] );
+
+		if( 'main' == $type ) {
+
+			$query_args = array(
+				's' => sanitize_text_field($_REQUEST['s']),
+				'posts_per_page' => 6,
+				'post_type' => $this->main_result_post_types
+			);
+
+		} else if ( 'contacts' == $type ) {
+
+			$query_args = array(
+				's' => sanitize_text_field($_REQUEST['s']),
+				'posts_per_page' => 6,
+				'post_type' => 'contact_persons'
+			);
+
+		} else if ( 'attachments' == $type ) {
+;
+			$query_args = array(
+				's' => sanitize_text_field($_REQUEST['s']),
+				'posts_per_page' => 6,
+				'post_type' => array('attachment'),
+				'post_status' => array( 'publish', 'inherit' )
+			);
+
+		}
+
+
+		$query = new WP_Query( $query_args );
+
+
+		if($query->have_posts()) {
+			foreach($query->posts as $post) {
+				$result[] = array('title' => $post->post_title, 'url' => get_the_permalink($post->ID));
+			}
+		} else {
+			$result = array();
+		}
+		echo json_encode($result);
+		die();
 
 	}
 

@@ -19,7 +19,7 @@
 
 	<div class="container-fluid">
 
-		<div class="row">
+		<div class="row logo-search-row">
 
 			<div class="logo-container">
 

@@ -169,3 +169,37 @@ body.search-results main {
 		}
 	}
 }
+
+.twitter-typeahead {
+	position: static !important;
+	display: block !important;
+}
+
+.tt-menu {
+	background: #fff;
+	width: 100%;
+	border: 1px solid #CCC;
+	border-top: none;
+	padding: $spacer-y $spacer-x;
+	border-radius: 0 $border-radius;
+}
+
+.tt-input {
+	border-radius:  $border-radius 0 0 $border-radius !important;
+}
+
+.tt-heading:not(first-of-type) {
+}
+
+.tt-suggestion {
+	display: block;
+}
+
+.tt-dataset + .tt-dataset {
+	margin-top: $spacer-y;
+}
+
+.tt-cursor {
+	color: #fff;
+	background: #64BAE9;
+}

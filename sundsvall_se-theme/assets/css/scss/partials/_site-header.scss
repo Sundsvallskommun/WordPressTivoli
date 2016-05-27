@@ -76,7 +76,7 @@
 
 .logo-container {
 	max-width: 15.65rem;
-	float: left;
+	flex: 0 0 15.65rem;
 	display: none;
 	@include make-col();
 	@include media-breakpoint-up(md) {
@@ -92,10 +92,16 @@ body {
 		}
 	}
 }
+
+.logo-search-row {
+	display: flex;
+}
+
 .search-container {
 	transition: height $mobile-search-transition-duration;
 	@include make-col();
 	@include media-breakpoint-up(md) {
+		width: 100%;
 		padding-left: 3.25em;
 		display: block;
 	}
@@ -105,6 +111,9 @@ body {
 		top: 64px;
 		width: 100%;
 		height: 0;
+		float: none;
+		overflow: hidden;
+
 	}
 
 	&.active {
@@ -112,8 +121,6 @@ body {
 	}
 
 	z-index: 4;
-	float: none;
-	overflow: hidden;
 
 	form {
 		@include media-breakpoint-up(md) {
