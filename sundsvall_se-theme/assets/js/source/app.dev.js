@@ -282,7 +282,7 @@ require('./acf-map.js');
 		* Typeahead
 		*/
 		$( 'input[name="s"]' ).typeahead({
-		 minLength: 2,
+		 minLength: 3,
 		 highlight: true
 	 },{
 		 name: 'main-result',
