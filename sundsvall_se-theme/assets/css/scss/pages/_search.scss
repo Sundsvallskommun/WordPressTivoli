@@ -78,8 +78,8 @@ body.search-results main {
 		&__icon {
 			overflow: hidden;
 			border-radius: 4px;
-			height: 2.15em;
-			width: 2.15em;
+			min-height: 2.15em;
+			min-width: 2.15em;
 			margin-right: 1em;
 			position: relative;
 
@@ -154,8 +154,8 @@ body.search-results main {
 		&__read-icon {
 			margin-left: auto;
 			margin-right: 0em;
-			width: 1.75em;
-			height: 1.75em;
+			min-width: 1.75em;
+			min-height: 1.75em;
 			opacity: .5;
 
 			.icon {
