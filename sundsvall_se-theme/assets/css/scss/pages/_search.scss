@@ -93,34 +93,45 @@ body.search-results main {
 			}
 		}
 
-		stroke: white;
+		svg {
+			stroke: white;
+		}
+
 
 		&--post {
 			.search-module__item__icon {
 				background: profile-color(juniskär, 2);
 			}
-			fill: profile-color(juniskär, 2);
+			svg {
+				fill: profile-color(juniskär, 2);
+			}
 		}
 
 		&--page {
 			.search-module__item__icon {
 				background: profile-color(björnstigen, 2);
 			}
+			svg {
 				fill: profile-color(björnstigen, 2);
+			}
 		}
 
 		&--attachment {
 			.search-module__item__icon {
 				background: profile-color(vattjom, 2);
 			}
+			svg {
 				fill: profile-color(vattjom, 2);
+			}
 		}
 
 		&--contact_persons {
 			.search-module__item__icon {
 				background: profile-color(solum, 2);
 			}
+			svg {
 				fill: profile-color(solum, 2);
+			}
 
 				img {
 					max-width: 100%;
@@ -135,7 +146,9 @@ body.search-results main {
 				background: profile-color(grönsta, 2);
 				fill: profile-color(grönsta, 3);
 			}
-			fill: profile-color(grönsta, 2);
+			svg {
+				fill: profile-color(grönsta, 2);
+			}
 		}
 
 		&__read-icon {
