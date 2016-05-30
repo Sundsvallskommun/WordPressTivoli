@@ -37,10 +37,16 @@ if(!function_exists('sk_log')) {
 	 *
 	 * */
 
-		$log_path = get_template_directory().'/logs/';
 
 		if(defined('SK_LOG_PATH')) {
 			$log_path = SK_LOG_PATH;
+		} else {
+
+			$log_path = get_template_directory().'/logs/';
+			if ( !file_exists($log_path ) ) {
+				mkdir( $log_path, 0755, false);
+			}
+
 		}
 
 		if( !is_writable($log_path) ) {
