@@ -7,10 +7,10 @@ class SK_Search {
 
 	function __construct() {
 
-		$this->search_string = sanitize_text_field( $_GET['s'] );
+		$this->search_string = (isset($_GET['s'])) ? sanitize_text_field( $_GET['s'] ) : '';
 
 		$this->main_result_post_types = array( 'page', 'post' );
-		$this->page = sanitize_text_field( $_GET['page'] );
+		$this->page = (isset($_GET['page'])) ? sanitize_text_field( $_GET['page']) : 1;
 
 		$this->posts_per_page = 6;
 

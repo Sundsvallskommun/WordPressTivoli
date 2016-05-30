@@ -84,16 +84,7 @@ global $sk_search, $searchPostMarkup;
 					<?php if( get_next_posts_link() ) :
 						next_posts_link( 'Visa fler', 0 );
 						endif; 
-
-
-						$pag_args1 = array(
-                'format'  => '?main_page=%#%',
-                'current' => $sk_search->main_page,
-                'total'   => 99999,
-                'add_args' => array( 'paged2' => $paged2 )
-            );
-            //echo paginate_links( $pag_args1 );
-?>
+					?>
 
 				</div>
 
