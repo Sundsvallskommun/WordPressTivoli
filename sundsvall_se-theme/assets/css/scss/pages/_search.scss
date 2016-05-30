@@ -199,6 +199,14 @@ body.search-results main {
 	margin-top: $spacer-y;
 }
 
+.tt-dataset a {
+	color: $body-color;
+}
+
+.tt-hint {
+	color: $text-muted !important;
+}
+
 .tt-cursor {
 	color: #fff;
 	background: #64BAE9;
