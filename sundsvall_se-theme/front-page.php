@@ -30,6 +30,8 @@
 
 </div>
 
+<?php
+/*
 <div class="container-fluid container-fluid--full bg-primary">
 
 	<div class="row">
@@ -41,5 +43,6 @@
 	</div>
 
 </div>
+*/?>
 
 <?php get_footer(); ?>
