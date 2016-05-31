@@ -11,6 +11,16 @@
 
 	&__content {
 
+		a[target="_blank"]:after {
+			background: url('../images/external.png');
+			background-size: cover;
+			content: '';
+			display: inline-block;
+			height: .75em;
+			width: .75em;
+			margin-left: .25em;
+		}
+
 		img {
 			max-width: 100%;
 			height: auto;
