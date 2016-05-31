@@ -47,11 +47,36 @@
 
 	button,
 	.btn {
-		background: rgba(white, 0.1);
-		border-radius: 50%;
-		width: 2.25em;
-		height: 2.25em;
 		color: inherit;
+		height: 2.25em;
+		padding: 0;
+
+		> span {
+			vertical-align: middle;
+			font-size: .875em;
+
+			+ span {
+				margin-left: .5em;
+			}
+		}
+
+		.iconwrapper {
+			font-size: 1em;
+			display: inline-block;
+			background: rgba(white, 0.1);
+			border-radius: 50%;
+			position: relative;
+			width: 2.25em;
+			height: 2.25em;
+		}
+
+		.icon {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
 	}
 
 	svg {
