@@ -1,6 +1,10 @@
 .lead {
 	line-height: 1.55;
 	margin-bottom: 2.2em;
+
+	@include media-breakpoint-down(md) {
+		font-size: $font-size-base;
+	}
 }
 
 p + h2,
