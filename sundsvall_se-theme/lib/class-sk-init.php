@@ -88,7 +88,7 @@ class SK_Init {
 	}
 
 	function sk_page_top_image() {
-		echo '<p>';
+		echo '<p class="single-post__top-image">';
 			$img_id = get_field('top_image');
 			echo $img = wp_get_attachment_image( $img_id, 'content-full');
 		echo '</p>';

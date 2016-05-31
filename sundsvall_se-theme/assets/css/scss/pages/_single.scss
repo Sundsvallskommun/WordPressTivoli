@@ -11,6 +11,11 @@
 
 	&__content {
 
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+
 		@include make-col();
 		@include make-col-span(12);
 
