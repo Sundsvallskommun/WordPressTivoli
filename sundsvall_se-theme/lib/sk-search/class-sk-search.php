@@ -196,7 +196,7 @@ class SK_Search {
 
 			$query_args = array(
 				's' => sanitize_text_field($_REQUEST['s']),
-				'posts_per_page' => 6,
+				'posts_per_page' => 3,
 				'post_type' => $this->main_result_post_types
 			);
 
@@ -204,7 +204,7 @@ class SK_Search {
 
 			$query_args = array(
 				's' => sanitize_text_field($_REQUEST['s']),
-				'posts_per_page' => 6,
+				'posts_per_page' => 3,
 				'post_type' => 'contact_persons'
 			);
 
@@ -212,7 +212,7 @@ class SK_Search {
 ;
 			$query_args = array(
 				's' => sanitize_text_field($_REQUEST['s']),
-				'posts_per_page' => 6,
+				'posts_per_page' => 3,
 				'post_type' => array('attachment'),
 				'post_status' => array( 'publish', 'inherit' )
 			);
@@ -225,7 +225,7 @@ class SK_Search {
 
 		if($query->have_posts()) {
 			foreach($query->posts as $post) {
-				$result[] = array('title' => $post->post_title, 'url' => get_the_permalink($post->ID));
+				$result[] = $this->map_wp_posts($post);
 			}
 		} else {
 			$result = array();

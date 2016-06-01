@@ -288,6 +288,10 @@ require('./acf-map.js');
 		/*
 		* Typeahead
 		*/
+		var mainTemplate       = $('#searchitem-template-main').html();
+		var contactTemplate    = $('#searchitem-template-contacts').html();
+		var attachmentTemplate = $('#searchitem-template-attachments').html();
+
 		$( 'input[name="s"]' ).typeahead({
 		 minLength: 3,
 		 highlight: true
@@ -298,7 +302,7 @@ require('./acf-map.js');
 		 limit: Infinity, //Fix for bug causing only two results to show. See https://github.com/twitter/typeahead.js/issues/1232
 		 templates: {
 				header: '<h3 class="tt-heading">Sidor och nyheter</h3>',
-				suggestion: Handlebars.compile('<a href="{{url}}">{{title}}</a>')
+				suggestion: Handlebars.compile(mainTemplate)
 			}
 	 },{
 		 name: 'contacts-result',
@@ -307,7 +311,7 @@ require('./acf-map.js');
 		 limit: Infinity, //Fix for bug causing only two results to show. See https://github.com/twitter/typeahead.js/issues/1232
 		 templates: {
 				header: '<h3 class="tt-heading">Kontakter</h3>',
-				suggestion: Handlebars.compile('<a href="{{url}}">{{title}}</a>')
+				suggestion: Handlebars.compile(contactTemplate)
 			}
 	 },{
 		 name: 'media-result',
@@ -316,7 +320,7 @@ require('./acf-map.js');
 		 limit: Infinity, //Fix for bug causing only two results to show. See https://github.com/twitter/typeahead.js/issues/1232
 		 templates: {
 				header: '<h3 class="tt-heading">Bilder och dokument</h3>',
-				suggestion: Handlebars.compile('<a href="{{url}}">{{title}}</a>')
+				suggestion: Handlebars.compile(attachmentTemplate)
 			}
 	 })
 
