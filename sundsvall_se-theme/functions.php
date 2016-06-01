@@ -1,4 +1,41 @@
 <?php
+
+/*
+ * ==============================================
+ *               HELPER FUNCTIONS
+ * ==============================================
+ */
+
+/**
+ * sk_log
+ * ======
+ *
+ * Helper-function for logging to SK_LOG_PATH or template_directory/logs/
+ */
+require_once locate_template( 'lib/helpers/sk-logger.php' );
+
+/**
+ * Misc helper functions
+ * =====================
+ *
+ * the_icon, get_icon
+ *   Echo or return svg <use> with specified icon
+ *
+ * format_phone, get_phone_link
+ *   Formats a phone number. Returns phone number anchor.
+ *
+ * get_section_class_name
+ *   Return classname of current menu section. Also see class-sk-init.php
+ *
+ * ancestor_field
+ *   Find closest ancestor that match supplied values.
+ *
+ * sk_get_excerpt
+ *   Get excerpt by post/page-id
+ */
+require_once locate_template( 'lib/helpers/sk-general.php' );
+
+
 /*
  * ==============================================
  *                      MISC
@@ -87,43 +124,6 @@ $sk_comments = new SK_Comments();
  */
 require_once locate_template( 'lib/class-sk-short-url.php' );
 $sk_shortURL = new SK_ShortURL();
-
-
-/*
- * ==============================================
- *               HELPER FUNCTIONS
- * ==============================================
- */
-
-/**
- * sk_log
- * ======
- *
- * Helper-function for logging to SK_LOG_PATH or template_directory/logs/
- */
-require_once locate_template( 'lib/helpers/sk-logger.php' );
-
-/**
- * Misc helper functions
- * =====================
- *
- * the_icon, get_icon
- *   Echo or return svg <use> with specified icon
- *
- * format_phone, get_phone_link
- *   Formats a phone number. Returns phone number anchor.
- *
- * get_section_class_name
- *   Return classname of current menu section. Also see class-sk-init.php
- *
- * ancestor_field
- *   Find closest ancestor that match supplied values.
- *
- * sk_get_excerpt
- *   Get excerpt by post/page-id
- */
-require_once locate_template( 'lib/helpers/sk-general.php' );
-
 
 
 /*

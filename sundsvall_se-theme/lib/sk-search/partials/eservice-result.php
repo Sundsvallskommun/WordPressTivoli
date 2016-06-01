@@ -1,6 +1,6 @@
 <?php
 
-global $sk_eservices, $searchPostMarkup, $sk_search;
+global $sk_eservices, $sk_search;
 
 $eservices = $sk_eservices->search_eservices($sk_search->search_string);
 
@@ -24,7 +24,7 @@ $eservices = $sk_eservices->search_eservices($sk_search->search_string);
 
 				foreach( $eservices as $eservice) {
 
-					printf($searchPostMarkup, 'eservice', $eservice['URL'], get_icon('alignleft'), $eservice['Name'], 'E-tjänst', $eservice['Category']);
+					printf($sk_search->template, 'eservice', $eservice['URL'], get_icon('alignleft'), $eservice['Name'], 'E-tjänst', $eservice['Category']);
 
 				}
 

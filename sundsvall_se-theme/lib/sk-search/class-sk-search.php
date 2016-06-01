@@ -76,6 +76,26 @@ class SK_Search {
 		add_action( 'wp_ajax_search_suggestions',        array( &$this, 'search_suggestions' ) );
 		add_action( 'wp_ajax_nopriv_search_suggestions', array( &$this, 'search_suggestions' ) );
 
+		$this->template = '
+			<li class="search-module__item search-module__item--%s">
+				<a class="search-module__item__container" href="%s">
+					<div class="search-module__item__icon">
+						%s
+					</div>
+					<div>
+						<h3 class="search-module__item__title"> %s </h3>
+						<span class="search-module__item__description">
+							%s - %s
+						</span>
+					</div>
+					<div class="search-module__item__read-icon">'
+						.get_icon('arrow-right-circle').
+					'</div>
+				</a>
+			</li>';
+
+		add_action( 'wp_footer', array( &$this, 'handlebar_templates' ) );
+
 	}
 
 	function ajax_search_variables() {
@@ -213,6 +233,22 @@ class SK_Search {
 		echo json_encode($result);
 		die();
 
+	}
+
+	function handlebar_templates() {
+		?>
+			<script id="searchitem-template-main" type="text/x-handlebars-template">
+				<?php printf($this->template, '{{type}}', '{{url}}', get_icon('alignleft'), '{{title}}', '{{type_label}}', 'Uppdaterad {{modified}}' ); ?>
+			</script>
+
+			<script id="searchitem-template-attachments" type="text/x-handlebars-template">
+				<?php printf($this->template, '{{type}}', '{{url}}', get_icon('alignleft'), '{{title}}', '{{file_type}}', 'Uppdaterad {{modified}}' ); ?>
+			</script>
+
+			<script id="searchitem-template-contacts" type="text/x-handlebars-template">
+				<?php printf($this->template, '{{type}}', '{{url}}', '{{{thumbnail}}}', '{{title}}', '{{type_label}}', 'Uppdaterad {{modified}}' ); ?>
+			</script>
+		<?php
 	}
 
 }

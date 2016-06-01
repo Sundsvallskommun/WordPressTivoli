@@ -1,20 +1,8 @@
 <?php
 
-global $sk_search, $searchPostMarkup;
+global $sk_search;
 
 ?>
-
-<script id="searchitem-template-main" type="text/x-handlebars-template">
-	<?php printf($searchPostMarkup, '{{type}}', '{{url}}', get_icon('alignleft'), '{{title}}', '{{type_label}}', 'Uppdaterad {{modified}}' ); ?>
-</script>
-
-<script id="searchitem-template-attachments" type="text/x-handlebars-template">
-	<?php printf($searchPostMarkup, '{{type}}', '{{url}}', get_icon('alignleft'), '{{title}}', '{{file_type}}', 'Uppdaterad {{modified}}' ); ?>
-</script>
-
-<script id="searchitem-template-contacts" type="text/x-handlebars-template">
-	<?php printf($searchPostMarkup, '{{type}}', '{{url}}', '{{{thumbnail}}}', '{{title}}', '{{type_label}}', 'Uppdaterad {{modified}}' ); ?>
-</script>
 
 <?php foreach( $sk_search->queries as $search_type => $search_query ): ?>
 
@@ -62,15 +50,15 @@ global $sk_search, $searchPostMarkup;
 
 						if( 'contact_persons' == $post_type ) {
 
-							printf($searchPostMarkup, $post_type, get_the_permalink(), get_the_post_thumbnail(null, 'thumbnail'), get_the_title(), $post_type_label, 'Uppdaterad '.get_the_modified_date());
+							printf($sk_search->template, $post_type, get_the_permalink(), get_the_post_thumbnail(null, 'thumbnail'), get_the_title(), $post_type_label, 'Uppdaterad '.get_the_modified_date());
 
 						} else if( 'attachment' == $post_type ) {
 
-							printf($searchPostMarkup, $post_type, get_the_permalink(), get_icon('alignleft'), get_the_title(), $file_type,  'Uppdaterad '.get_the_modified_date());
+							printf($sk_search->template, $post_type, get_the_permalink(), get_icon('alignleft'), get_the_title(), $file_type,  'Uppdaterad '.get_the_modified_date());
 
 						} else {
 
-							printf($searchPostMarkup, $post_type, get_the_permalink(), get_icon('alignleft'), get_the_title(), $post_type_label, 'Uppdaterad '.get_the_modified_date());
+							printf($sk_search->template, $post_type, get_the_permalink(), get_icon('alignleft'), get_the_title(), $post_type_label, 'Uppdaterad '.get_the_modified_date());
 
 						}
 
