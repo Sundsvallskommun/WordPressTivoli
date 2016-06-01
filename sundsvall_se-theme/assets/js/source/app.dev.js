@@ -322,7 +322,12 @@ require('./acf-map.js');
 				header: '<h3 class="tt-heading">Bilder och dokument</h3>',
 				suggestion: Handlebars.compile(attachmentTemplate)
 			}
-	 })
+	 }).on('typeahead:asyncrequest', function() {
+			$(this).parents('.input-group').find('.input-group-btn').addClass('loading');
+		})
+		.on('typeahead:asynccancel typeahead:asyncreceive', function() {
+			$(this).parents('.input-group').find('.input-group-btn').removeClass('loading');
+		});
 
 	});
 

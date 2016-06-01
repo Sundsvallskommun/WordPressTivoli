@@ -191,6 +191,30 @@ body {
 	input {
 		color: inherit;
 	}
+
+	.loading {
+		position: relative;
+	}
+
+	.loading:after {
+		content: '';
+		display: block;
+		width: 1.25rem;
+		height: 1.25rem;
+		border: 5px solid transparent;
+		pointer-events: none;
+		border-right-color: profile-color(björnstigen, 1);
+		border-bottom-color: profile-color(juniskär, 1);
+		border-left-color: profile-color(grönsta, 1);
+		border-top-color: profile-color(vattjom, 1);
+		border-radius: 50%;
+		position: absolute;
+		z-index: 999;
+		left: 0%;
+		top: 50%;
+		transform: translate(50%, -50%);
+		animation: spin .75s linear infinite;
+	}
 }
 
 .site-logo {
@@ -210,3 +234,12 @@ main > .container-fluid ~ .container-fluid {
 	margin-top: 0;
 }
 
+
+@keyframes spin {
+	from {
+		transform: translate(-200%, -50%) rotate(0deg);
+	}
+	to {
+		transform: translate(-200%, -50%) rotate(359deg);
+	}
+}
