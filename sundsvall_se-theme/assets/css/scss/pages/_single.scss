@@ -21,6 +21,20 @@
 			margin-left: .25em;
 		}
 
+		.table-wrapper {
+			@extend .table-responsive;
+		}
+
+		table {
+			@extend .table;
+			@extend .table-hover;
+			//@extend .table-sm;
+			//@extend .table-striped;
+
+			thead {
+			}
+		}
+
 		img {
 			max-width: 100%;
 			height: auto;

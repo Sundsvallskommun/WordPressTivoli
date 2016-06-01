@@ -11,7 +11,14 @@ require('./acf-map.js');
 	 */
 	$('html').removeClass('no-js').addClass('js');
 
+
 	$(document).ready(function() {
+
+		/**
+		* Wrap tables in wrapper to make them responsive with bootstraps
+		* .table-responsive-class
+		*/
+		$('table').wrap('<div class="table-wrapper">');
 
 		/**
 		 *
