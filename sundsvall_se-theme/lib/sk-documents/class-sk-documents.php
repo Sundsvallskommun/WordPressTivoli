@@ -209,10 +209,10 @@ class SK_Documents {
 
 		$links = '';
 		foreach( $docs as $doc ) {
-			$links .= sprintf('<li><a href="%s">%s</a> <small class="text-muted">(%s, %s)</small></li>', $doc['url'], $doc['title'], $doc['filetype'], $doc['size']);
+			$links .= sprintf('<a class="list-group-item" href="%s"><span class="label label-default label-pill pull-xs-right">%s, %s</span> %s</a>', $doc['url'], $doc['filetype'], $doc['size'], $doc['title']);
 		}
 
-		$doc_list = sprintf('<ul class="list-unstyled bg-faded p-a-2">%s</ul>', $links);
+		$doc_list = sprintf('<div class="list-group m-b-2">%s</div>', $links);
 
 		return $doc_list;
 	}
