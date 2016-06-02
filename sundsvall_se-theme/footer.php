@@ -110,9 +110,9 @@ if(!is_front_page() && !is_search()) {
 				<h3>Följ oss i sociala medier</h3>
 				<nav>
 					<ul class="list-unstyled">
-						<li> <a href="#"><?php the_icon('exclamation-sign'); ?> Facebook, </a> </li>
-						<li> <a href="#"><?php the_icon('exclamation-sign'); ?> Twitter, </a> </li>
-						<li> <a href="#"><?php the_icon('exclamation-sign'); ?> LinkedIn</a> </li>
+						<li> <a href="#"><?php the_icon('facebook'); ?> Facebook, </a> </li>
+						<li> <a href="#"><?php the_icon('twitter'); ?> Twitter, </a> </li>
+						<li> <a href="#"><?php the_icon('linkedin'); ?> LinkedIn</a> </li>
 					</ul>
 				</nav>
 
