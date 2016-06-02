@@ -4,15 +4,16 @@
 
 			<div class="nav-item dropdown">
 
-				<button class="btn btn-purple btn-sm nav-link dropdown-toggle" lang="en" type="button" id="languageMenuButton" aria-haspopup="true" aria-expanded="false">
+				<button class="btn btn-purple btn-sm nav-link dropdown-toggle" data-toggle="dropdown" type="button" id="loginMenuButton" aria-haspopup="true" aria-expanded="false">
 					Logga in
 				</button>
 
-				<div class="dropdown-menu" aria-labelledby="languageMenuButton">
+				<div class="dropdown-menu" aria-labelledby="loginMenuButton">
 					<a class="dropdown-item" href="#">Elev</a>
 					<a class="dropdown-item" href="#">Medborgare</a>
 					<a class="dropdown-item" href="#">Medarbetare</a>
 				</div>
+
 			</div>
 
 			<?php get_template_part('./partials/google-translate'); ?>
