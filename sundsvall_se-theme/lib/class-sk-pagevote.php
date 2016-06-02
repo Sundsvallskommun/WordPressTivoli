@@ -75,7 +75,7 @@ class SK_PageVote {
 			return '';
 		}
 
-		return "$percent% blev hjälpt av den här sidan.";
+		return "<strong>$percent%</strong> blev hjälpt av den här sidan.";
 
 	}
 
@@ -87,7 +87,7 @@ class SK_PageVote {
 
 		if(!empty($percentText)) {
 			$linkContent = sprintf('<span class="vote-percent">%s</span>', $percentText);
-			echo $sk_helpmenu->helplink('exclamation-sign', '#pageVote', $linkContent);
+			echo $sk_helpmenu->helplink('percent', '#pageVote', $linkContent);
 		}
 	}
 
