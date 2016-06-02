@@ -33,7 +33,7 @@ class SK_Helpmenu {
 	static function helplink($icon, $href, $text) {
 
 		$link   = '<li>';
-		$link  .= sprintf('<a href="%2$s">%1$s %3$s</a>', get_icon($icon), $href, $text);
+		$link  .= sprintf('<a href="%2$s"><span class="link-icon">%1$s</span> <span class="link-text">%3$s</span></a>', get_icon($icon), $href, $text);
 		$link  .= '</li>';
 
 		return $link;

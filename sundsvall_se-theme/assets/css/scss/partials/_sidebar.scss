@@ -40,5 +40,12 @@
 	}
 	a {
 		color: inherit;
+		display: inline;
+		display: inline-flex;
+		align-items: flex-start;
+		.link-text {
+			margin-top: .35em;
+		}
 	}
 }
+
