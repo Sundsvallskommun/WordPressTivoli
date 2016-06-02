@@ -107,8 +107,10 @@ class SK_EServices {
 
 		if(!$service) {
 
+			$error_text = "Hoppsan, det gick inte att hitta e-tjänsten.";
+
 			$widget  = '<span class="eservice-single-block eservice-single-block--notfound">';
-			$widget .= '<a class="eservice-link" href="https://e-tjanster.sundsvall.se">Hoppsan, det gick inte att hitta e-tjänsten.</a>';
+			$widget .= '<a class="eservice-link" title="'.$error_text.'" href="https://e-tjanster.sundsvall.se"></a>';
 			$widget .= '</span>';
 
 			return $widget;
@@ -297,10 +299,8 @@ Skatteverket och Försäkringskassan.
 		$url  = $eservice['URL'];
 		$icon = $eservice['Icon'];
 
-		$link = apply_filters('sk_eservice_link', sprintf('<a class="eservice-link" href="%s">%s</a>', $url, $name), $url, $name);
-
 		$markup  = '
-			<a class="eservice-link" href="%s">
+			<a class="eservice-link" href="%s" title="%3$s">
 				<span>
 					<span class="eservice-link__icon">%s</span>
 					<span class="eservice-link__name">%s</span>
