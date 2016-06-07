@@ -1,10 +1,12 @@
 "use strict";
 
 var gulp         = require('gulp'),
+    util         = require('gulp-util'),
     watch        = require('gulp-watch'),
     sourcemaps   = require('gulp-sourcemaps'),
 
     sass         = require('gulp-sass'),
+    cssmin       = require('gulp-cssmin'),
     autoprefixer = require('gulp-autoprefixer'),
     critical     = require('critical'),
 
@@ -23,18 +25,19 @@ var config = {
 	/* Local address of wordpress install. Used by browsersync  */
 	PROXY: 'sundsvall.dev',
 
-	template_directory: './'
+	production: !!util.env.production
 }
 
 gulp.task('styles', ['editor-styles'], function() {
 	gulp.src('./assets/css/scss/style.scss')
-		.pipe(sourcemaps.init())
+		.pipe(config.production ? sourcemaps.init() : util.noop())
 		.pipe(sass().on('error', sass.logError))
 		.pipe(autoprefixer({
 			browsers: ['last 2 versions'],
 			cascade: false
 		}))
-		.pipe(sourcemaps.write('.'))
+		.pipe(config.production ? sourcemaps.write('.') : util.noop())
+		.pipe(config.production ? cssmin() : util.noop())
 		.pipe(gulp.dest('./assets/css'))
 		.pipe(browserSync.stream({match: '**/*.css'}));
 });

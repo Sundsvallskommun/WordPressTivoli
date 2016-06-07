@@ -17,6 +17,9 @@ WordPress-plugins:
 
 # Utveckling
 
+Gulp används som byggprocess. Använd flaggan --production för att bygga för
+produktion, som att t.ex. minifiera css.
+
 ## JavaScript
 
 ## Ikoner
