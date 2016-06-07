@@ -85,6 +85,14 @@ gulp.task('critical', ['default'], function() {
 		height: critHeight
 	});
 
+	critical.generate({
+		src: 'http://' + config.PROXY+'/utbildning-och-forskola/testsida/',
+		dest: critDest + 'single.css',
+		minify: critMinify,
+		width: critWidth,
+		height: critHeight
+	});
+
 });
 
 gulp.task('scripts', function() {

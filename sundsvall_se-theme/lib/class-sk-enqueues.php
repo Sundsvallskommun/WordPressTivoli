@@ -56,8 +56,10 @@ class SK_Enqueues {
 			include_once(get_template_directory().'/partials/critical/searchresult.css');
 		} else if ( is_navigation() ) {
 			include_once(get_template_directory().'/partials/critical/navpage.css');
-		} else {
+		} else if ( is_front_page() ) {
 			include_once(get_template_directory().'/partials/critical/index.css');
+		} else {
+			include_once(get_template_directory().'/partials/critical/single.css');
 		}
 
 
