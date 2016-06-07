@@ -17,6 +17,7 @@ class SK_Enqueues {
 		add_action( 'wp_print_styles', array(&$this, 'sk_dequeue_scripts_and_styles') );
 		add_action( 'init', array(&$this, 'sk_disable_emojis') );
 
+		add_action( 'wp_head', array(&$this, 'sk_critical_css') );
 		add_action( 'wp_enqueue_scripts', array(&$this, 'sk_enqueue_styles') );
 		add_action( 'wp_enqueue_scripts', array(&$this, 'sk_enqueue_scripts'), 10 );
 
@@ -48,6 +49,12 @@ class SK_Enqueues {
 		remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );	
 		remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
 
+	}
+
+	function sk_critical_css() {
+		echo '<style type="text/css">';
+		include_once(get_template_directory().'/partials/critical/index.css');
+		echo '</style>';
 	}
 
 	function sk_enqueue_styles() {

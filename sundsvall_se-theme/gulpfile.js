@@ -6,6 +6,7 @@ var gulp         = require('gulp'),
 
     sass         = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
+    critical     = require('critical'),
 
     concat       = require('gulp-concat'),
     rename       = require('gulp-rename'),
@@ -20,7 +21,9 @@ var gulp         = require('gulp'),
 
 var config = {
 	/* Local address of wordpress install. Used by browsersync  */
-	PROXY: 'sundsvall.dev'
+	PROXY: 'sundsvall.dev',
+
+	template_directory: './'
 }
 
 gulp.task('styles', ['editor-styles'], function() {
@@ -46,6 +49,20 @@ gulp.task('editor-styles', function() {
 		}))
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('./assets/css'));
+});
+
+gulp.task('critical', ['default'], function() {
+
+	console.log('http://' + config.PROXY+'/');
+
+	critical.generate({
+		src: 'http://' + config.PROXY+'/',
+		dest: 'partials/critical/index.css',
+		minify: true,
+		width: 1140,
+		height: 720
+	});
+
 });
 
 gulp.task('scripts', function() {
