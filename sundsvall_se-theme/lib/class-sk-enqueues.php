@@ -31,11 +31,9 @@ class SK_Enqueues {
 
 	function sk_dequeue_scripts_and_styles() {
 
-		wp_deregister_style( 'dashicons' );
-		wp_deregister_style( 'thickbox' );
-
-		wp_deregister_style('thickbox');
-		wp_deregister_script('thickbox');
+		if (!is_user_logged_in()) {
+			wp_deregister_style( 'dashicons' );
+		}
 
 	}
 
