@@ -53,7 +53,17 @@ class SK_Enqueues {
 
 	function sk_critical_css() {
 		echo '<style type="text/css">';
-		include_once(get_template_directory().'/partials/critical/index.css');
+
+		if( is_search() ) {
+			include_once(get_template_directory().'/partials/critical/searchresult.css');
+		} else if ( is_navigation() ) {
+			include_once(get_template_directory().'/partials/critical/navpage.css');
+		} else {
+			include_once(get_template_directory().'/partials/critical/index.css');
+		}
+
+
+
 		echo '</style>';
 	}
 

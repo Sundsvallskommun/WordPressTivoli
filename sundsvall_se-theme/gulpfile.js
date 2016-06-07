@@ -56,10 +56,8 @@ gulp.task('editor-styles', function() {
 
 gulp.task('critical', ['default'], function() {
 
-	console.log('http://' + config.PROXY+'/');
-
-	var critHeight = 1140,
-			critWidth  = 820,
+	var critWidth  = 1200,
+			critHeight = 1020,
 			critMinify = true,
 			critDest   = 'partials/critical/';
 
