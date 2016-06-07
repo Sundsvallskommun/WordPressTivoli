@@ -55,12 +55,33 @@ gulp.task('critical', ['default'], function() {
 
 	console.log('http://' + config.PROXY+'/');
 
+	var critHeight = 1140,
+			critWidth  = 820,
+			critMinify = true,
+			critDest   = 'partials/critical/';
+
 	critical.generate({
 		src: 'http://' + config.PROXY+'/',
-		dest: 'partials/critical/index.css',
-		minify: true,
-		width: 1140,
-		height: 720
+		dest: critDest + 'index.css',
+		minify: critMinify,
+		width: critWidth,
+		height: critHeight
+	});
+
+	critical.generate({
+		src: 'http://' + config.PROXY+'/utbildning-och-forskola/',
+		dest: critDest + 'navpage.css',
+		minify: critMinify,
+		width: critWidth,
+		height: critHeight
+	});
+
+	critical.generate({
+		src: 'http://' + config.PROXY+'/?s=e',
+		dest: critDest + 'searchresult.css',
+		minify: critMinify,
+		width: critWidth,
+		height: critHeight
 	});
 
 });
