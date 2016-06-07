@@ -74,7 +74,7 @@ gulp.task('critical', ['default'], function() {
 		dest: critDest + 'navpage.css',
 		minify: critMinify,
 		width: critWidth,
-		height: critHeight
+		height: critHeight+200
 	});
 
 	critical.generate({
