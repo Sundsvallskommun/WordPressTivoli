@@ -13,6 +13,8 @@ class SK_Enqueues {
 		add_action( 'wp_enqueue_scripts', array(&$this, 'sk_enqueue_styles') );
 		add_action( 'wp_enqueue_scripts', array(&$this, 'sk_enqueue_scripts'), 10 );
 
+		add_action( 'wp_enqueue_scripts', array(&$this, 'scripts_to_footer') );
+
 		add_action('wp_head', array(&$this, 'sk_frontend_web_font'));
 
 -		add_action( 'admin_init', array(&$this, 'sk_add_editor_styles') );
@@ -39,4 +41,17 @@ class SK_Enqueues {
 		add_editor_style( './assets/css/editor-styles.css' );
 	}
 
+	/**
+	 * Enqueue all scripts in footer instead of head to prevent them from
+	 * blocking rendering above the fold.
+	 */
+	function scripts_to_footer() {
+		remove_action('wp_head', 'wp_print_scripts');
+		remove_action('wp_head', 'wp_print_head_scripts', 9);
+		remove_action('wp_head', 'wp_enqueue_scripts', 1);
+
+		add_action('wp_footer', 'wp_print_scripts', 5);
+		add_action('wp_footer', 'wp_enqueue_scripts', 5);
+		add_action('wp_footer', 'wp_print_head_scripts', 5);
+	}
 }
