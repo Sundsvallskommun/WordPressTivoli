@@ -74,7 +74,6 @@ class SK_Enqueues {
 	function sk_deferred_styles() {
 		echo '<noscript id="deferred-styles">';
 		foreach ($this->deferred_styles as $url) {
-			error_log($url);
 			echo "<link href='".$url."' rel='stylesheet' type='text/css'>";
 		}
 		echo '</noscript>';
