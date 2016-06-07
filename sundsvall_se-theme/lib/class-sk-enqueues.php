@@ -10,6 +10,9 @@
 class SK_Enqueues {
 
 	function __construct() {
+		add_action( 'wp_print_styles', array(&$this, 'sk_dequeue_scripts_and_styles') );
+		add_action( 'init', array(&$this, 'sk_disable_emojis') );
+
 		add_action( 'wp_enqueue_scripts', array(&$this, 'sk_enqueue_styles') );
 		add_action( 'wp_enqueue_scripts', array(&$this, 'sk_enqueue_scripts'), 10 );
 
@@ -20,6 +23,28 @@ class SK_Enqueues {
 -		add_action( 'admin_init', array(&$this, 'sk_add_editor_styles') );
 
 		$this->sk_font_url = str_replace( ',', '%2C', 'https://fonts.googleapis.com/css?family=Raleway:400,700,500,300');
+	}
+
+	function sk_dequeue_scripts_and_styles() {
+
+		wp_deregister_style( 'dashicons' );
+		wp_deregister_style( 'thickbox' );
+
+		wp_deregister_style('thickbox');
+		wp_deregister_script('thickbox');
+
+	}
+
+	function sk_disable_emojis() {
+
+		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+		remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+		remove_action( 'wp_print_styles', 'print_emoji_styles' );
+		remove_action( 'admin_print_styles', 'print_emoji_styles' );	
+		remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+		remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );	
+		remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+
 	}
 
 	function sk_enqueue_styles() {
