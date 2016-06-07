@@ -10,6 +10,10 @@
 class SK_Enqueues {
 
 	function __construct() {
+
+		$this->deferred_styles = array();
+		$this->sk_font_url = str_replace( ',', '%2C', 'https://fonts.googleapis.com/css?family=Raleway:400,700,500,300');
+
 		add_action( 'wp_print_styles', array(&$this, 'sk_dequeue_scripts_and_styles') );
 		add_action( 'init', array(&$this, 'sk_disable_emojis') );
 
@@ -18,11 +22,10 @@ class SK_Enqueues {
 
 		add_action( 'wp_enqueue_scripts', array(&$this, 'scripts_to_footer') );
 
-		add_action('wp_head', array(&$this, 'sk_frontend_web_font'));
+		add_action('wp_footer', array(&$this, 'sk_deferred_styles'));
 
--		add_action( 'admin_init', array(&$this, 'sk_add_editor_styles') );
+		add_action( 'admin_init', array(&$this, 'sk_add_editor_styles') );
 
-		$this->sk_font_url = str_replace( ',', '%2C', 'https://fonts.googleapis.com/css?family=Raleway:400,700,500,300');
 	}
 
 	function sk_dequeue_scripts_and_styles() {
@@ -48,7 +51,8 @@ class SK_Enqueues {
 	}
 
 	function sk_enqueue_styles() {
-		wp_enqueue_style( 'main', get_template_directory_uri().'/assets/css/style.css' );
+		$this->add_deferred_style( 'main',   get_template_directory_uri().'/assets/css/style.css' );
+		$this->add_deferred_style( 'gfonts', $this->sk_font_url );
 	}
 
 	function sk_enqueue_scripts() {
@@ -57,8 +61,40 @@ class SK_Enqueues {
 		wp_enqueue_script( 'main', get_template_directory_uri().'/assets/js/app.js', ['jquery', 'handlebars', 'typeahead'] );
 	}
 
-	function sk_frontend_web_font() {
-		echo "<link href='".$this->sk_font_url."' rel='stylesheet' type='text/css'>";
+	function add_deferred_style( $handle, $url) {
+		$this->deferred_styles[$handle] = $url;
+	}
+
+	/**
+	 * If JavaScript is active, we load scripts added with add_deferred_style
+	 * asynchronously after page load.
+	 *
+	 * See https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery
+	 */
+	function sk_deferred_styles() {
+		echo '<noscript id="deferred-styles">';
+		foreach ($this->deferred_styles as $url) {
+			error_log($url);
+			echo "<link href='".$url."' rel='stylesheet' type='text/css'>";
+		}
+		echo '</noscript>';
+
+		?>
+		<script>
+			var loadDeferredStyles = function() {
+				var addStylesNode = document.getElementById("deferred-styles");
+				var replacement = document.createElement("div");
+				replacement.innerHTML = addStylesNode.textContent;
+				document.body.appendChild(replacement)
+				addStylesNode.parentElement.removeChild(addStylesNode);
+			};
+			var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+					webkitRequestAnimationFrame || msRequestAnimationFrame;
+			if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+			else window.addEventListener('load', loadDeferredStyles);
+    </script>
+		<?php
+
 	}
 
 	function sk_add_editor_styles() {
