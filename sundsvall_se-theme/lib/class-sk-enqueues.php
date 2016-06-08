@@ -22,6 +22,7 @@ class SK_Enqueues {
 		add_action( 'wp_enqueue_scripts', array(&$this, 'sk_enqueue_scripts'), 10 );
 
 		add_action( 'wp_enqueue_scripts', array(&$this, 'scripts_to_footer') );
+		add_action( 'after_setup_theme', array(&$this, 'jquery_to_header') );
 
 		add_action('wp_footer', array(&$this, 'sk_deferred_styles'));
 
@@ -123,6 +124,7 @@ class SK_Enqueues {
 	 * blocking rendering above the fold.
 	 */
 	function scripts_to_footer() {
+
 		remove_action('wp_head', 'wp_print_scripts');
 		remove_action('wp_head', 'wp_print_head_scripts', 9);
 		remove_action('wp_head', 'wp_enqueue_scripts', 1);
@@ -131,4 +133,25 @@ class SK_Enqueues {
 		add_action('wp_footer', 'wp_enqueue_scripts', 5);
 		add_action('wp_footer', 'wp_print_head_scripts', 5);
 	}
+
+
+	/**
+	 * Gravity form with ajax enabled inlines script that depends on jQuery,
+	 * which break when we move scripts to footer, because of that we will add it
+	 * to the header instead.
+	 *
+	 * We also load from google CDN with local fallback.
+	 */
+	function jquery_to_header() {
+		wp_deregister_script('jquery');
+		add_action('wp_head', function() {
+			// Google CDN
+			echo '<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>';
+			// Local fallback
+			echo '<script>if (!window.jQuery) { document.write(\'<script src="'. get_stylesheet_directory_uri() .'/assets/js/source/vendor/jquery-2.2.4.min.js'.'"><\/script>\'); }</script>';
+		}, 10);
+
+	}
+
+
 }
