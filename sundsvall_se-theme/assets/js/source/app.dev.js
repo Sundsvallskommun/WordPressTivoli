@@ -331,7 +331,8 @@ require('./acf-map.js');
 
 
 		/**
-		 * Voice controls for pages. Activated by #responsivevoice button.
+		* Voice controls for pages. Activated by #responsivevoice button.
+		* ===============================================================
 		*/
 		var voiceActive = false;
 		var pauseLabel = 'Pausa lyssning';
@@ -348,6 +349,9 @@ require('./acf-map.js');
 			}
 		})
 
+		/**
+		* Show voice-over playback controls (pause/resume and stop)
+		*/
 		function playbackControls() {
 			$controlContainer = $('<div class="bg-info p-a-2"></div>').css({'position': 'fixed', 'bottom': 0, 'right': 0, 'z-index': 9999});
 			var pauseButton = $('<button class="btn btn-lg btn-secondary m-r-1" id="voicePause">' + pauseLabel + '</button>').on('click', pauseControl);
@@ -359,6 +363,9 @@ require('./acf-map.js');
 			$('body').append($controlContainer);
 		}
 
+		/**
+		* Start voice-over on post content text.
+		*/
 		function readContent() {
 			stopReading();
 			var voice = 'Swedish Female';
@@ -366,16 +373,24 @@ require('./acf-map.js');
 			responsiveVoice.speak(voiceText, voice, { onstart: playbackControls });
 		}
 
+		/**
+		* Stop voice-over and remove control overlay.
+		*/
 		function stopReading() {
-			if(!voiceActive) return;
-			responsiveVoice.cancel();
-			$controlContainer.remove();
+			if(voiceActive) {
+				responsiveVoice.cancel();
+			}
+			if($controlContainer instanceof jQuery) {
+				$controlContainer.remove();
+			}
 			voiceActive = false;
 		}
 
+		/**
+		* Toggle voice-over pause/resume
+		*/
 		function pauseControl() {
 			voiceActive = !voiceActive;
-
 			if(!voiceActive) {
 				responsiveVoice.pause();
 				$(this).text(resumeLabel);
