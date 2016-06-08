@@ -9,6 +9,7 @@ class SK_Helpmenu {
 		add_action('sk_page_helpmenu', array(&$this, 'sk_helpmenu_start'), 1);
 		add_action('sk_page_helpmenu', array(&$this, 'sk_helpmenu_end'), 10000);
 
+		add_action('sk_page_helpmenu', array(&$this, 'listen_button'), 10);
 		//add_action('sk_page_helpmenu', array(&$this, 'share_link'), 10);
 		add_action('sk_page_helpmenu', array(&$this, 'print_link'), 30);
 	}
@@ -25,15 +26,28 @@ class SK_Helpmenu {
 		echo $this->helplink('share', '#', __('Dela', 'sundsvall_se'));
 	}
 
+	function listen_button() {
+		echo $this->helplink('listen', '#', __('Lyssna', 'sundsvall_se'), array('type' => 'button', 'id' => 'responsivevoice' ));
+	}
+
 	function print_link() {
 		$link = '';
 		echo $this->helplink('print', 'javascript:window.print()', __('Skriv ut', 'sundsvall_se'));
 	}
 
-	static function helplink($icon, $href, $text) {
+	static function helplink($icon, $href, $label, $arguments) {
+
+		$type = (isset($arguments['type']) && $arguments['type'] == 'button') ? 'button' : 'link';
+		$id   = isset($arguments['id']) ? 'id="'.$arguments['id'].'"' : '';
 
 		$link   = '<li>';
-		$link  .= sprintf('<a href="%2$s"><span class="link-icon">%1$s</span> <span class="link-text">%3$s</span></a>', get_icon($icon), $href, $text);
+
+		if('button' == $type) {
+			$link  .= sprintf('<button href="%2$s" %4$s><span class="link-icon">%1$s</span> <span class="link-text">%3$s</span></button>', get_icon($icon), $href, $label, $id);
+		} else {
+			$link  .= sprintf('<a href="%2$s" %4$s><span class="link-icon">%1$s</span> <span class="link-text">%3$s</span></a>', get_icon($icon), $href, $label, $id);
+		}
+
 		$link  .= '</li>';
 
 		return $link;

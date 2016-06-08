@@ -10,6 +10,12 @@
 		margin-right: .2em;
 	}
 
+	button {
+		background: transparent;
+		padding: 0;
+		border: none;
+	}
+
 	@include make-col();
 	@include make-col-span(12);
 

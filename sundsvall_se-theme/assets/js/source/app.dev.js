@@ -329,6 +329,62 @@ require('./acf-map.js');
 			$(this).parents('.input-group').find('.input-group-btn').removeClass('loading');
 		});
 
+
+		/**
+		 * Voice controls for pages. Activated by #responsivevoice button.
+		*/
+		var voiceActive = false;
+		var pauseLabel = 'Pausa lyssning';
+		var resumeLabel = 'Fortsätt lyssna';
+		var $controlContainer;
+
+		$('#responsivevoice').on('click', function() {
+			if(!voiceActive) {
+				readContent();
+				voiceActive = true;
+			} else {
+				stopReading();
+				voiceActive = false;
+			}
+		})
+
+		function playbackControls() {
+			$controlContainer = $('<div class="bg-info p-a-2"></div>').css({'position': 'fixed', 'bottom': 0, 'right': 0, 'z-index': 9999});
+			var pauseButton = $('<button class="btn btn-lg btn-secondary m-r-1" id="voicePause">' + pauseLabel + '</button>').on('click', pauseControl);
+			var stopButton = $('<button class="btn btn-lg btn-danger" id="voiceStop">Sluta lyssna</button>').on('click', stopReading);
+
+			$controlContainer.append(pauseButton);
+			$controlContainer.append(stopButton);
+
+			$('body').append($controlContainer);
+		}
+
+		function readContent() {
+			stopReading();
+			var voice = 'Swedish Female';
+			var voiceText = $('.single-post__content').find('h1,h2,h3,h4,h5,h6,p,ul,ol').text();
+			responsiveVoice.speak(voiceText, voice, { onstart: playbackControls });
+		}
+
+		function stopReading() {
+			if(!voiceActive) return;
+			responsiveVoice.cancel();
+			$controlContainer.remove();
+			voiceActive = false;
+		}
+
+		function pauseControl() {
+			voiceActive = !voiceActive;
+
+			if(!voiceActive) {
+				responsiveVoice.pause();
+				$(this).text(resumeLabel);
+			} else {
+				responsiveVoice.resume();
+				$(this).text(pauseLabel);
+			}
+		}
+
 	});
 
 
