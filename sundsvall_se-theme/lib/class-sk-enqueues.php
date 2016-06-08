@@ -143,7 +143,11 @@ class SK_Enqueues {
 	 * We also load from google CDN with local fallback.
 	 */
 	function jquery_to_header() {
-		wp_deregister_script('jquery');
+
+		add_action('wp_enqueue_script', function() {
+			wp_deregister_script('jquery');
+		});
+
 		add_action('wp_head', function() {
 			// Google CDN
 			echo '<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>';
