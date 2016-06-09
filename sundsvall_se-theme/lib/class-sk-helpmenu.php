@@ -35,7 +35,7 @@ class SK_Helpmenu {
 		echo $this->helplink('print', 'javascript:window.print()', __('Skriv ut', 'sundsvall_se'));
 	}
 
-	static function helplink($icon, $href, $label, $arguments) {
+	static function helplink($icon, $href, $label, $arguments = array()) {
 
 		$type = (isset($arguments['type']) && $arguments['type'] == 'button') ? 'button' : 'link';
 		$id   = isset($arguments['id']) ? 'id="'.$arguments['id'].'"' : '';
