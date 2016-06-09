@@ -26,6 +26,8 @@
 
 		<?php the_content(); ?>
 
+		<div class="clearfix"></div>
+
 		<?php do_action('sk_after_page_content'); ?>
 
 	</div>
