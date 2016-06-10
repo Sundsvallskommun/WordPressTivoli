@@ -30,21 +30,112 @@ if(!is_front_page() && !is_search()) {
 								<p><?php the_sub_field( 'footer_module_description' )?></p>
 							<?php endif; ?>
 
-							<nav>
-								<ul class="list-unstyled">
+							<?php if( 'contact_info' == get_row_layout() ): ?>
 
-									<?php while ( have_rows( 'links' ) ) : the_row(); ?>
+								<div class="site-logo">
+									<?php the_icon('logo', array(
+										'height' => 110,
+										'width' => 276
+									)); ?>
+								</div>
 
-									<li>
-										<a href="<?php the_sub_field('link_url')?>">
-											<?php the_sub_field('link_title')?>
-										</a>
-									</li>
+								<h2 class="sr-only">Kontaktinformation</h2>
 
-									<?php endwhile; ?>
 
-								</ul>
-							</nav>
+								<?php if( get_sub_field('address') ): ?>
+
+									<div class="contact-item contact-item--address">
+										<span class="footer-icon">
+											<?php the_icon('home', array('alt' => 'Adress')); ?>
+										</span>
+										<p>
+											<?php the_sub_field( 'address' ); ?>
+										</p>
+									</div>
+
+								<?php endif; ?>
+
+								<?php if( get_sub_field('phone') ): ?>
+
+									<div class="contact-item contact-item--phone">
+										<span class="footer-icon">
+											<?php the_icon('telephone', array('alt' => 'Telefon')); ?>
+										</span>
+										<p>
+											<?php echo get_phone_links(get_sub_field('phone')); ?>
+										</p>
+									</div>
+
+								<?php endif; ?>
+
+								<?php if( get_sub_field('email') ): ?>
+
+									<div class="contact-item contact-item--email">
+										<span class="footer-icon">
+											<?php the_icon('message', array('alt' => 'E-post')); ?>
+										</span>
+										<p>
+											<?php echo get_email_links(get_sub_field('email')); ?>
+										</p>
+									</div>
+
+								<?php endif; ?>
+
+								<?php if( get_sub_field('political_links') ): ?>
+
+									<div class="contact-item contact-item--political-contact">
+										<span class="footer-icon">
+											<?php the_icon('kommun'); ?>
+										</span>
+										<p>
+										<?php
+												$pi = 0;
+												foreach(get_sub_field('political_links') as $page) {
+													if($pi > 0) { echo '<br>'; }
+													printf('<a href="%s">%s</a>', get_the_permalink($page->ID), $page->post_title);
+													$pi += 1;
+												}
+											?>
+										</p>
+									</div>
+
+								<?php endif; ?>
+
+								<?php if( get_sub_field('error_report_page') ): ?>
+
+									<div class="contact-item contact-item--error-report">
+										<span class="footer-icon">
+											<?php the_icon('exclamation-sign', array('alt' => 'Felanmälan')); ?>
+										</span>
+										<p>
+											<a href="<?php the_sub_field('error_report_page'); ?>">Felanmälan</a>
+										</p>
+									</div>
+
+								<?php endif; ?>
+
+
+							<?php elseif( 'links' == get_row_layout() ): ?>
+
+								<nav>
+
+									<ul class="list-unstyled">
+
+										<?php while ( have_rows( 'links' ) ) : the_row(); ?>
+
+										<li>
+											<a href="<?php the_sub_field('link_url')?>">
+												<?php the_sub_field('link_title')?>
+											</a>
+										</li>
+
+										<?php endwhile; ?>
+
+									</ul>
+
+								</nav>
+
+							<?php endif; ?>
 
 						</div>
 
@@ -56,9 +147,13 @@ if(!is_front_page() && !is_search()) {
 
 		<?php else : ?>
 
-		<div class="row">
+		<div class="row site-footer__columns site-footer__columns--1">
 
-		<p>&copy; Copyright <?php echo date( 'Y' ); ?></p>
+			<div class="site-footer__column">
+
+				<p>&copy; Copyright <?php echo date( 'Y' ); ?></p>
+
+			</div>
 
 		<?php endif; ?>
 

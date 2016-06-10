@@ -85,7 +85,7 @@ $footer_background: profile-color(björnstigen, 2);
 		@include make-col-span(3);
 	}
 
-	&__module--contact {
+	&__module--contact_info {
 
 		.contact-item {
 			margin-bottom: .5em;
