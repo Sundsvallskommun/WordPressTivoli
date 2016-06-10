@@ -135,6 +135,22 @@ if(!is_front_page() && !is_search()) {
 
 								</nav>
 
+							<?php elseif( 'social_media' == get_row_layout() ): ?>
+
+								<nav>
+									<ul class="list-unstyled">
+										<?php
+												$social_medias = array('Facebook', 'Twitter', 'LinkedIn');
+												foreach( $social_medias as $social_media) {
+													$keyword = strtolower($social_media);
+													if( get_sub_field($keyword) ) {
+														printf('<li><a href="%s">%s</a></li>', get_sub_field($keyword), get_icon($keyword) . ' ' . $social_media);
+													}
+												}
+										?>
+									</ul>
+								</nav>
+
 							<?php endif; ?>
 
 						</div>
