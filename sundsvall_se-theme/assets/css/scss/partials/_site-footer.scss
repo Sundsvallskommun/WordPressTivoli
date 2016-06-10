@@ -65,16 +65,27 @@ $footer_background: profile-color(björnstigen, 2);
 		}
 	}
 
-	&__block {
+	&__column {
 		@include make-col();
+	}
+
+	&__columns--1 .site-footer__column {
 		@include make-col-span(12);
 	}
 
-	&__block--contact {
+	&__columns--2 .site-footer__column {
+		@include make-col-span(6);
+	}
 
-		@include media-breakpoint-up(md) {
-			@include make-col-span(4.44);
-		}
+	&__columns--3 .site-footer__column {
+		@include make-col-span(4);
+	}
+
+	&__columns--4 .site-footer__column {
+		@include make-col-span(3);
+	}
+
+	&__module--contact {
 
 		.contact-item {
 			margin-bottom: .5em;
@@ -102,10 +113,9 @@ $footer_background: profile-color(björnstigen, 2);
 		}
 	}
 
-	&__block--about {
+	&__module--links {
 
 		@include media-breakpoint-up(md) {
-			@include make-col-span(3.56);
 		}
 
 		@include media-breakpoint-down(sm) {
@@ -117,11 +127,8 @@ $footer_background: profile-color(björnstigen, 2);
 		}
 	}
 
-	&__block--social {
+	&__module--social {
 
-		@include media-breakpoint-up(md) {
-			@include make-col-span(4);
-		}
 		padding-top: 3em;
 		@include media-breakpoint-up(md) {
 			padding-top: 5.5em;
@@ -138,13 +145,10 @@ $footer_background: profile-color(björnstigen, 2);
 		}
 	}
 
-	&__block--news {
+	&__module--news {
 
 		fill: white;
 
-		@include media-breakpoint-up(md) {
-			@include make-col-span(4);
-		}
 		p {
 			font-size: .933em;
 		}

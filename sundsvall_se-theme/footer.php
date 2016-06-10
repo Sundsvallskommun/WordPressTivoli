@@ -10,124 +10,57 @@ if(!is_front_page() && !is_search()) {
 
 	<div class="container-fluid">
 
+		<?php if ( have_rows ( 'footer_columns', 'option' ) ) : ?>
+
+		<div class="row site-footer__columns site-footer__columns--<?php echo count( get_field( 'footer_columns', 'option' ) ); ?>">
+
+			<?php while ( have_rows( 'footer_columns', 'option' ) ) : the_row(); ?>
+
+				<div class="site-footer__column">
+
+					<?php while ( have_rows( 'footer_modules' ) ) : the_row(); ?>
+
+						<div class="site-footer__module site-footer__module--<?php echo get_row_layout(); ?>">
+
+							<?php if( get_sub_field( 'footer_module_title' )): ?>
+								<h2><?php the_sub_field( 'footer_module_title' ); ?></h2>
+							<?php endif; ?>
+
+							<?php if( get_sub_field( 'footer_module_description' )): ?>
+								<p><?php the_sub_field( 'footer_module_description' )?></p>
+							<?php endif; ?>
+
+							<nav>
+								<ul class="list-unstyled">
+
+									<?php while ( have_rows( 'links' ) ) : the_row(); ?>
+
+									<li>
+										<a href="<?php the_sub_field('link_url')?>">
+											<?php the_sub_field('link_title')?>
+										</a>
+									</li>
+
+									<?php endwhile; ?>
+
+								</ul>
+							</nav>
+
+						</div>
+
+					<?php endwhile; ?>
+
+				</div>
+
+			<?php endwhile; ?>
+
+		<?php else : ?>
+
 		<div class="row">
 
-			<div class="site-footer__block site-footer__block--contact">
+		<p>&copy; Copyright <?php echo date( 'Y' ); ?></p>
 
-				<div class="site-logo">
-					<?php the_icon('logo', array(
-						'height' => 110,
-						'width' => 276
-					)); ?>
-				</div>
-
-				<h2 class="sr-only">Kontaktinformation</h2>
-
-				<div class="contact-item contact-item--address">
-					<span class="footer-icon">
-						<?php the_icon('home', array('alt' => 'Adress')); ?>
-					</span>
-					<p>
-						Sundsvalls Kommun <br>
-						Norrmalmsgatan 4, 851 85 Sundsvall <br>
-						<a href="">Kommunhuset - öppettider och karta</a> <br>
-						Organisationsnummer: 212000-2411
-					</p>
-				</div>
-
-				<div class="contact-item contact-item--phone">
-					<span class="footer-icon">
-						<?php the_icon('telephone', array('alt' => 'Telefon')); ?>
-					</span>
-					<p>
-						<a href="tel:060191000">060-19 10 00</a>
-					</p>
-				</div>
-
-				<div class="contact-item contact-item--email">
-					<span class="footer-icon">
-						<?php the_icon('message', array('alt' => 'E-post')); ?>
-					</span>
-					<p>
-						<a href="mailto:sundsvalls.kommun@sundsvall.se">sundsvalls.kommun@sundsvall.se</a>
-					</p>
-				</div>
-
-				<div class="contact-item contact-item--political-contact">
-					<span class="footer-icon">
-						<?php the_icon('kommun'); ?>
-					</span>
-					<p>
-						<a href="mailto:sundsvalls.kommun@sundsvall.se">Kontakta politiker</a> <br>
-						<a href="mailto:sundsvalls.kommun@sundsvall.se">Förtroendemannaregister</a>
-					</p>
-				</div>
-
-				<div class="contact-item contact-item--error-report">
-					<span class="footer-icon">
-						<?php the_icon('exclamation-sign', array('alt' => 'Felanmälan')); ?>
-					</span>
-					<p>
-						<a href="mailto:sundsvalls.kommun@sundsvall.se">Felanmälan</a>
-					</p>
-				</div>
-
-			</div>
-
-			<div class="site-footer__block site-footer__block--about">
-
-				<h2>Om sundsvall.se</h2>
-
-				<p>Sundsvall.se är Sundsvalls kommuns offentliga webbplats.</p>
-
-				<nav>
-					<ul class="list-unstyled">
-						<li><a href="#">Webbplatsöversikt</a></li>
-						<li><a href="#">Om webbplatsen</a></li>
-						<li><a href="#">Cookies (kakor)</a></li>
-						<li><a href="#">Tyck till om webbplatsen</a></li>
-					</ul>
-				</nav>
-
-				<h2>Om Sundsvall</h2>
-
-				<nav>
-					<ul class="list-unstyled">
-						<li><a href="#">Kartor</a></li>
-						<li><a href="#">Youtube</a></li>
-						<li><a href="#">Webbkameror</a></li>
-						<li><a href="#">Press- och informationsmaterial</a></li>
-						<li><a href="#">Turistbyrån, visit sundsvall</a></li>
-					</ul>
-				</nav>
-
-			</div>
-
-			<div class="site-footer__block site-footer__block--news">
-
-				<h2>Senaste nytt från oss</h2>
-
-				<h3>Följ oss i sociala medier</h3>
-				<nav>
-					<ul class="list-unstyled">
-						<li> <a href="#"><?php the_icon('facebook'); ?> Facebook, </a> </li>
-						<li> <a href="#"><?php the_icon('twitter'); ?> Twitter, </a> </li>
-						<li> <a href="#"><?php the_icon('linkedin'); ?> LinkedIn</a> </li>
-					</ul>
-				</nav>
-
-				<h3>För de senaste nyheterna</h3>
-
-				<nav>
-					<ul class="list-unstyled">
-						<li><a href="#">Nyheter</a></li>
-						<li><a href="#">Pressmeddelanden</a></li>
-						<li><a href="#">Rss-flöden</a></li>
-						<li><a href="#">Möten, protokoll och ärendelistor</a></li>
-					</ul>
-				</nav>
-
-			</div>
+		<?php endif; ?>
 
 		</div>
 
