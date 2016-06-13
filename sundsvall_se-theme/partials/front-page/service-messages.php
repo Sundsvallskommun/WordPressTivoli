@@ -21,7 +21,7 @@ $service_messages = new WP_Query( $args ); ?>
 			<li class="widget-service-messages__post">
 				<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
 
-					<?php the_icon('exclamation-sign') ?>
+					<?php the_icon('error') ?>
 
 					<span class="widget-service-messages__post__title">
 						<?php the_title(); ?>

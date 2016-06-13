@@ -87,7 +87,7 @@ class SK_PageVote {
 
 		if(!empty($percentText)) {
 			$linkContent = sprintf('<span class="vote-percent">%s</span>', $percentText);
-			echo $sk_helpmenu->helplink('percent', '#pageVote', $linkContent);
+			echo $sk_helpmenu->helplink('poll', '#pageVote', $linkContent);
 		}
 	}
 

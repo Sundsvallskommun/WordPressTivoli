@@ -105,7 +105,7 @@ if(!is_front_page() && !is_search()) {
 
 									<div class="contact-item contact-item--error-report">
 										<span class="footer-icon">
-											<?php the_icon('exclamation-sign', array('alt' => 'Felanmälan')); ?>
+											<?php the_icon('error', array('alt' => 'Felanmälan')); ?>
 										</span>
 										<p>
 											<a href="<?php the_sub_field('error_report_page'); ?>">Felanmälan</a>

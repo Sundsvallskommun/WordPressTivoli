@@ -46,7 +46,7 @@ class SK_Pinned_Posts {
 
 		<a class="alert alert-centered <?php echo "alert-$alert_type"; ?>" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
 			<span>
-				<?php the_icon('exclamation-sign'); ?>
+				<?php the_icon('error'); ?>
 				<strong><?php the_title(); ?>.</strong>
 				<?php echo sk_get_excerpt(); ?> »
 			</span>
@@ -86,7 +86,7 @@ class SK_Pinned_Posts {
 
 		<a class="alert <?php echo "alert-$alert_type"; ?>" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
 			<span>
-				<?php the_icon('exclamation-sign'); ?>
+				<?php the_icon('error'); ?>
 				<strong><?php the_title(); ?>.</strong>
 				<?php echo sk_get_excerpt(); ?> »
 			</span>
