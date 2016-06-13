@@ -96,13 +96,14 @@ $footer_background: profile-color(björnstigen, 2);
 			margin-bottom: .5em;
 			display: flex;
 
-			align-items: center;
-			align-content: center;
+			align-items: flex-start;
+			align-content: flex-start;
 		}
 		p {
 			min-width: 0;
 			word-wrap: break-word;
 			margin: 0;
+			margin-top: .5em;
 		}
 
 		.extra-contacts {
@@ -134,6 +135,15 @@ $footer_background: profile-color(björnstigen, 2);
 
 	&__module--social_media {
 		fill: white;
+
+		a {
+			margin-bottom: .5em;
+			display: flex;
+
+			align-items: center;
+			align-content: center;
+		}
+
 		h3 {
 			font-family: $font-family-sans-serif;
 			font-size: 1em;

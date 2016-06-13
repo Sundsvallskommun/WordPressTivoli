@@ -144,7 +144,7 @@ if(!is_front_page() && !is_search()) {
 												foreach( $social_medias as $social_media) {
 													$keyword = strtolower($social_media);
 													if( get_sub_field($keyword) ) {
-														printf('<li><a href="%s">%s</a></li>', get_sub_field($keyword), get_icon($keyword) . ' ' . $social_media);
+														printf('<li><a href="%s"><span class="footer-icon">%s</span>%s</a></li>', get_sub_field($keyword), get_icon($keyword), $social_media);
 													}
 												}
 										?>
