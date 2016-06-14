@@ -12,8 +12,8 @@
 		</div>
 
 	<div class="sk-collapse sk-collapse--fullwidth">
-		<h2><a data-toggle="collapse" href="#mobile-nav" aria-expanded="false" aria-controls="mobile-nav">Meny</a></h2>
-		<div class="collapse" id="mobile-nav">
+		<h2><a data-toggle="collapse" href="#mobile-nav" aria-expanded="true" aria-controls="mobile-nav">Meny</a></h2>
+		<div class="collapse in" id="mobile-nav">
 			<?php get_template_part('partials/site-navigation', 'standard'); ?>
 		</div>
 	</div>
