@@ -32,24 +32,16 @@ if(!is_front_page() && !is_search()) {
 
 							<?php if( 'contact_info' == get_row_layout() ): ?>
 
-								<div class="site-logo">
-									<?php the_icon('logo', array(
-										'height' => 110,
-										'width' => 276
-									)); ?>
-								</div>
+								<h2>Kontakta oss</h2>
 
-								<h2 class="sr-only">Kontaktinformation</h2>
+								<?php if( get_sub_field('email') ): ?>
 
-
-								<?php if( get_sub_field('address') ): ?>
-
-									<div class="contact-item contact-item--address">
+									<div class="contact-item contact-item--email">
 										<span class="footer-icon">
-											<?php the_icon('home', array('alt' => 'Adress')); ?>
+											<?php the_icon('message', array('alt' => 'E-post')); ?>
 										</span>
 										<p>
-											<?php the_sub_field( 'address' ); ?>
+											<?php echo get_email_links(get_sub_field('email')); ?>
 										</p>
 									</div>
 
@@ -68,14 +60,14 @@ if(!is_front_page() && !is_search()) {
 
 								<?php endif; ?>
 
-								<?php if( get_sub_field('email') ): ?>
+								<?php if( get_sub_field('address') ): ?>
 
-									<div class="contact-item contact-item--email">
+									<div class="contact-item contact-item--address">
 										<span class="footer-icon">
-											<?php the_icon('message', array('alt' => 'E-post')); ?>
+											<?php the_icon('home', array('alt' => 'Adress')); ?>
 										</span>
 										<p>
-											<?php echo get_email_links(get_sub_field('email')); ?>
+											<?php the_sub_field( 'address' ); ?>
 										</p>
 									</div>
 
@@ -124,9 +116,17 @@ if(!is_front_page() && !is_search()) {
 										<?php while ( have_rows( 'links' ) ) : the_row(); ?>
 
 										<li>
-											<a href="<?php the_sub_field('link_url')?>">
-												<?php the_sub_field('link_title')?>
-											</a>
+
+											<?php if( get_sub_field( 'linktype' ) == 'internal' ): ?>
+												<a href="<?php the_sub_field('internal_link_url')?>">
+													<?php the_sub_field('link_title')?>
+												</a>
+											<?php elseif( get_sub_field( 'linktype' ) == 'external' ): ?>
+												<a href="<?php the_sub_field('external_link_url')?>">
+													<?php the_sub_field('link_title')?>
+												</a>
+											<?php endif; ?>
+
 										</li>
 
 										<?php endwhile; ?>
@@ -140,7 +140,7 @@ if(!is_front_page() && !is_search()) {
 								<nav>
 									<ul class="list-unstyled">
 										<?php
-												$social_medias = array('Facebook', 'Twitter', 'LinkedIn');
+												$social_medias = array('Facebook', 'Instagram', 'Twitter', 'LinkedIn');
 												foreach( $social_medias as $social_media) {
 													$keyword = strtolower($social_media);
 													if( get_sub_field($keyword) ) {

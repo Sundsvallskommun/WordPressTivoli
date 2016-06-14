@@ -210,9 +210,32 @@
                                     "collapsed": "",
                                     "min": "",
                                     "max": "",
-                                    "layout": "table",
-                                    "button_label": "L\u00e4gg till rad",
+                                    "layout": "block",
+                                    "button_label": "L\u00e4gg till l\u00e4nk",
                                     "sub_fields": [
+                                        {
+                                            "key": "field_575fa2cf44e31",
+                                            "label": "L\u00e4nktyp",
+                                            "name": "linktype",
+                                            "type": "radio",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": 20,
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "choices": {
+                                                "internal": "Intern",
+                                                "external": "Extern"
+                                            },
+                                            "allow_null": 0,
+                                            "other_choice": 0,
+                                            "save_other_choice": 0,
+                                            "default_value": "",
+                                            "layout": "vertical"
+                                        },
                                         {
                                             "key": "field_575a80adc9d27",
                                             "label": "Titel",
@@ -222,7 +245,7 @@
                                             "required": 0,
                                             "conditional_logic": 0,
                                             "wrapper": {
-                                                "width": "",
+                                                "width": 40,
                                                 "class": "",
                                                 "id": ""
                                             },
@@ -237,13 +260,21 @@
                                         {
                                             "key": "field_575a7f5913082",
                                             "label": "Sida",
-                                            "name": "link_url",
+                                            "name": "internal_link_url",
                                             "type": "page_link",
                                             "instructions": "",
                                             "required": 0,
-                                            "conditional_logic": 0,
+                                            "conditional_logic": [
+                                                [
+                                                    {
+                                                        "field": "field_575fa2cf44e31",
+                                                        "operator": "==",
+                                                        "value": "internal"
+                                                    }
+                                                ]
+                                            ],
                                             "wrapper": {
-                                                "width": "",
+                                                "width": 40,
                                                 "class": "",
                                                 "id": ""
                                             },
@@ -251,6 +282,35 @@
                                             "taxonomy": [],
                                             "allow_null": 0,
                                             "multiple": 0
+                                        },
+                                        {
+                                            "key": "field_575fa2b344e30",
+                                            "label": "Url",
+                                            "name": "external_link_url",
+                                            "type": "text",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": [
+                                                [
+                                                    {
+                                                        "field": "field_575fa2cf44e31",
+                                                        "operator": "==",
+                                                        "value": "external"
+                                                    }
+                                                ]
+                                            ],
+                                            "wrapper": {
+                                                "width": 40,
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "placeholder": "",
+                                            "prepend": "",
+                                            "append": "",
+                                            "maxlength": "",
+                                            "readonly": 0,
+                                            "disabled": 0
                                         }
                                     ]
                                 }
@@ -323,6 +383,22 @@
                                     "placeholder": ""
                                 },
                                 {
+                                    "key": "field_575ec8554b8b5",
+                                    "label": "Instagram",
+                                    "name": "instagram",
+                                    "type": "url",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": ""
+                                },
+                                {
                                     "key": "field_575ab8c0dc8ba",
                                     "label": "Twitter",
                                     "name": "twitter",
@@ -380,5 +456,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1465563758
+    "modified": 1465886004
 }

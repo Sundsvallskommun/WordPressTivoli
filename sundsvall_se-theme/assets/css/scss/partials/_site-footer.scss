@@ -7,7 +7,7 @@ $footer_background: profile-color(björnstigen, 2);
 	background-color: $footer_background;
 	color: #fff;
 	padding-top: 2.5em;
-	padding-bottom: 4.2em;
+	padding-bottom: 2.2em;
 
 	a,
 	.btn-link {
@@ -90,6 +90,10 @@ $footer_background: profile-color(björnstigen, 2);
 
 	}
 
+	&__module {
+		margin-bottom: 2em;
+	}
+
 	&__module--contact_info {
 
 		.contact-item {
@@ -104,6 +108,7 @@ $footer_background: profile-color(björnstigen, 2);
 			word-wrap: break-word;
 			margin: 0;
 			margin-top: .5em;
+			margin-bottom: .75em;
 		}
 
 		.extra-contacts {
