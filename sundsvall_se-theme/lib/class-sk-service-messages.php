@@ -14,7 +14,7 @@ class SK_Service_Messages {
 
 	function __construct() {
 		add_action( 'init', array(&$this, 'post_type_service_message'));
-		add_filter('the_title' , array( &$this, 'add_update_status' ) );
+		//add_filter('the_title' , array( &$this, 'add_update_status' ) );
 	}
 
 	function post_type_service_message() {
