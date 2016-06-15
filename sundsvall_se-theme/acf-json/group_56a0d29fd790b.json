@@ -55,6 +55,16 @@
                 "param": "page_template",
                 "operator": "!=",
                 "value": "templates\/page-shortcut.php"
+            },
+            {
+                "param": "page_type",
+                "operator": "!=",
+                "value": "front_page"
+            },
+            {
+                "param": "page_template",
+                "operator": "!=",
+                "value": "templates\/page-navigation.php"
             }
         ]
     ],
@@ -66,5 +76,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1458132947
+    "modified": 1465979675
 }
