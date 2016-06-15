@@ -2,6 +2,10 @@
 
 <div class="container-fluid">
 
+	<div class="image-boxes">
+		<?php get_template_part('partials/front-page/boxes'); ?>
+	</div>
+
 	<div class="row">
 
 		<div class="eservices-col">

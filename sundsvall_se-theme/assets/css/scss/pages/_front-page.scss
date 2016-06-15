@@ -7,6 +7,10 @@
 		}
 	}
 
+	.image-boxes {
+		margin-bottom: $spacer-y*4;
+	}
+
 	.front-page__heading {
 		font-size: 1.375rem;
 		@include media-breakpoint-up(md) {
