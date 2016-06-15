@@ -34,7 +34,7 @@ if( have_rows('image_boxes') ):
 				srcset="<?php echo $box_image['sizes']['image-box-half']; ?>" />
 			<source media="(max-width: 768px)"
 				srcset="<?php echo $box_image['sizes']['image-box-full']; ?>" />
-			<img src="<?php echo get_sub_field( 'box_image' )['sizes'][$img_size]; ?>" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure.">
+				<img src="<?php echo get_sub_field( 'box_image' )['sizes'][$img_size]; ?>" class="figure-img img-fluid" alt="<?php echo $box_image['alt']; ?>">
 		</picture>
 	<?php if(get_sub_field( 'box_title' )): ?>
 		<figcaption class="figure-caption"><?php the_sub_field( 'box_title' ); ?></figcaption>
