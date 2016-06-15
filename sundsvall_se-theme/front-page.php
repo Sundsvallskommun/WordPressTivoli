@@ -1,6 +1,15 @@
 <?php get_header(); ?>
 
 <?php // Mobile only ?>
+
+<div class="container-fluid">
+
+	<div class="image-boxes">
+		<?php get_template_part('partials/front-page/boxes'); ?>
+	</div>
+
+</div>
+
 <div class="hidden-md-up">
 
 
@@ -66,10 +75,6 @@
 </div>
 
 <div class="container-fluid hidden-sm-down">
-
-	<div class="image-boxes">
-		<?php get_template_part('partials/front-page/boxes'); ?>
-	</div>
 
 	<div class="row">
 
