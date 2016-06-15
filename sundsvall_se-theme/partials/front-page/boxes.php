@@ -1,6 +1,5 @@
 <?php
-
-
+wp_reset_postdata();
 if( have_rows('image_boxes') ):
 ?>
 <div class="row">
