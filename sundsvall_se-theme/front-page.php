@@ -4,13 +4,16 @@
 <div class="hidden-md-up">
 
 
-		<div class="container-fluid m-b-2">
-			<h2 class="front-page__heading"><?php _e('Logga in', 'sundsvall_se')?></h2>
-			<a class="btn btn-secondary">Elev</a>
-			<a class="btn btn-secondary">Medborgare</a>
-			<a class="btn btn-secondary">Medarbetare</a>
-		</div>
 
+	<?php // Mobile log-in buttons ?>
+	<div class="container-fluid m-b-2">
+		<h2 class="front-page__heading"><?php _e('Logga in', 'sundsvall_se')?></h2>
+		<a class="btn btn-secondary">Elev</a>
+		<a class="btn btn-secondary">Medborgare</a>
+		<a class="btn btn-secondary">Medarbetare</a>
+	</div>
+
+	<?php // Mobile expanded navigation ?>
 	<div class="sk-collapse sk-collapse--fullwidth">
 		<h2><a data-toggle="collapse" href="#mobile-nav" aria-expanded="true" aria-controls="mobile-nav">Meny</a></h2>
 		<div class="collapse in" id="mobile-nav">
@@ -18,11 +21,12 @@
 		</div>
 	</div>
 
+	<?php // Mobile block-buster pages ?>
 	<div class="sk-collapse">
 		<h2><a data-toggle="collapse" href="#blockbusters" aria-expanded="false" aria-controls="blockbusters">Kioskvältarsidor</a></h2>
 		<div class="collapse" id="blockbusters">
 
-		<ul class="list-unstyled">
+		<ul class="list-unstyled m-b-2">
 			<li> <a href="#">Lediga jobb »</a> </li>
 			<li> <a href="#">Bad »</a> </li>
 			<li> <a href="#">Evenemang »</a> </li>
@@ -32,6 +36,7 @@
 		</div>
 	</div>
 
+	<?php // Mobile news and service-messages ?>
 	<div class="sk-collapse">
 		<h2><a data-toggle="collapse" href="#news" aria-expanded="false" aria-controls="news">Aktuellt</a></h2>
 		<div class="collapse" id="news">
@@ -41,6 +46,21 @@
 			<?php get_template_part('partials/front-page/service-messages'); ?>
 
 		</div>
+	</div>
+
+	<?php // Mobile log-in buttons ?>
+	<div class="container-fluid m-b-1">
+
+		<a class="btn btn-action btn-warning">
+			<?php the_icon('arrow-right-circle')?>
+			<span>Felanmälan</span>
+		</a>
+
+		<a class="btn btn-action btn-eservice">
+			<?php the_icon('arrow-right-circle')?>
+			<span>E-tjänster</span>
+		</a>
+
 	</div>
 
 </div>
@@ -77,7 +97,7 @@
 
 <?php
 /*
-<div class="container-fluid container-fluid--full bg-primary">
+<div class="container-fluid container-fluid--full bg-primary hidden-sm-down">
 
 	<div class="row">
 
