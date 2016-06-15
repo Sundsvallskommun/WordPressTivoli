@@ -1,22 +1,5 @@
-<nav id="mainNavigation" class="site-navigation offcanvas">
-
-<div class="nav-header hidden-md-up">
-	<h2>Kategorier</h2>
-</div>
-
 <?php
-	$nav_args = array(
-		'theme_location'  => 'main-menu',
-		'container'       => false,
-		'menu_class'      => 'menu-container list-inline',
-		'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-		'walker'          => new Menu_Icons_Walker()
-	);
-	wp_nav_menu( $nav_args );
-?>
-</nav>
-
-<?php
+if(!class_exists('Menu_Icons_Walker')) {
 
 	class Menu_Icons_Walker extends Walker_Nav_Menu {
 
@@ -45,3 +28,16 @@
 
 	}
 
+}
+?>
+
+<?php
+	$nav_args = array(
+		'theme_location'  => 'main-menu',
+		'container'       => false,
+		'menu_class'      => 'menu-container list-inline',
+		'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+		'walker'          => new Menu_Icons_Walker()
+	);
+	wp_nav_menu( $nav_args );
+?>

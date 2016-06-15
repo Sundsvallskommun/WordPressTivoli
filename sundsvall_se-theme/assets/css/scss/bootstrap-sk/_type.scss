@@ -2,7 +2,7 @@
 	line-height: 1.55;
 	margin-bottom: 2.2em;
 
-	@include media-breakpoint-down(md) {
+	@include media-breakpoint-down(sm) {
 		font-size: $font-size-base;
 	}
 }

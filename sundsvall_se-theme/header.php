@@ -37,7 +37,7 @@
 
 	</div>
 
-	<?php get_template_part('partials/site-navigation'); ?>
+	<?php get_template_part('partials/site-navigation', 'offcanvas'); ?>
 
 	<div class="container-fluid hidden-md-down">
 

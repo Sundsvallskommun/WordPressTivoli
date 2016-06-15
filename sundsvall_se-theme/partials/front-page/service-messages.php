@@ -1,11 +1,19 @@
 <?php
+global $service_messages;
 
-$args = array( 
-    'post_type' => 'service_message', 
+$args = array(
+    'post_type' => 'service_message',
     'posts_per_page' => 4,
     'orderby' => 'modified'
 );
-$service_messages = new WP_Query( $args ); ?>
+
+if( !($service_messages instanceof WP_Query) ) {
+	$service_messages = new WP_Query( $args );
+}
+?>
+
+
+
 
 <section class="front-page-section front-page-section__service-messages">
 
@@ -34,10 +42,10 @@ $service_messages = new WP_Query( $args ); ?>
 
 	</div>
 
-	<?php wp_reset_postdata(); ?>
 	<?php else : ?>
 	<p><?php _e( 'För närvarande finns det inga aktuella driftmeddelanden.' ); ?></p>
 	<?php endif; ?>
+	<?php $service_messages->rewind_posts(); ?>
 
 	<div class="col-lg-2 col-md-3">
 		<a href="<?php echo get_post_type_archive_link( 'service_message' ); ?>"> Alla driftmeddelanden »</a>
@@ -46,33 +54,3 @@ $service_messages = new WP_Query( $args ); ?>
 	</div>
 
 </section>
-<?php
-add_filter('the_title' , 'add_update_status');
-function add_update_status($html) {
-
-	//Instantiates the different date objects
-	$created = new DateTime( get_the_date('Y-m-d g:i:s') );
-	$updated = new DateTime( get_the_modified_date('Y-m-d g:i:s') );
-	$current = new DateTime( date('Y-m-d g:i:s') );
-
-	//Creates the date_diff objects from dates
-	$created_to_updated = date_diff($created , $updated);
-	$updated_to_today = date_diff($updated, $current);
-
-	//Checks if the post has been updated since its creation
-	$has_been_updated = ( $created_to_updated -> s > 0 || $created_to_updated -> i > 0 ) ? true : false;
-
-	echo $has_been_updated;
-
-	//Checks if the last update is less than n days old. (replace n by your own value)
-	$has_recent_update = ( $has_been_updated && $updated_to_today -> days < 1 ) ? true : false;
-
-	echo $has_recent_update;
-
-	//Adds HTML after the title
-	$recent_update = $has_recent_update ? '<span class="label label-warning">Recently updated</span>' : '';
-
-	//Returns the modified title
-	return $html.'&nbsp;'.$recent_update;
-}
-?>
