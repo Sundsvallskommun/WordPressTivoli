@@ -12,7 +12,7 @@ if($show_feedback_form && $feedback_form_id):
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="myModalLabel">Tyck till om webbplatsen</h4>
+        <h2 class="modal-title" id="myModalLabel">Tyck till om webbplatsen</h2>
 			</div>
 
 			<div class="modal-body" data-gform="<?php echo $feedback_form_id?>" data-gform-display_description="false" data-gform-display_title="false">

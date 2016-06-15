@@ -5,7 +5,8 @@
 	</button>
 	<div class="dropdown-menu" aria-labelledby="languageMenuButton">
 
-		<h6 class="dropdown-header" lang="en">Translate</h6>
+		<p class="dropdown-header m-b-0" lang="en">Translate</p>
+
 		<p class="dropdown-item" lang="en" style="white-space: normal;"><small>Use Google to translate the web site. We take no responsibility for the accuracy of the translation.</small></p>
 
 		<div class="dropdown-item" id="google_translate_element"></div>	</div>

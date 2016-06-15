@@ -139,7 +139,7 @@ class SK_EServices {
 				<div class="page-widget__container">
 					<div class="row">
 						<div class="col-xs-12">
-							<h3 class="page-widget__title">%s</h3>
+							<h2 class="page-widget__title">%s</h2>
 							%s
 						</div>
 					</div>
@@ -151,7 +151,7 @@ class SK_EServices {
 		$title = __('Våra mest populära e-tjänster just nu', 'sundsvall_se');
 
 		$eservice_links = '<div class="page-widget__columns">';
-		$eservice_links .= $this->eservice_links_by_category($eservices, '<li>%s</li>', '<ul>%s</ul>', '<h4>%s</h4>');
+		$eservice_links .= $this->eservice_links_by_category($eservices, '<li>%s</li>', '<ul>%s</ul>', '<h3>%s</h3>');
 		//$eservice_links .= $this->eservice_links($eservices, '<li>%s</li>');
 		$eservice_links .= '</div>';
 
@@ -202,7 +202,7 @@ class SK_EServices {
 			<div class="page-widget widget-eservices">
 				<div class="page-widget__container">
 					<div class="page-widget__main">
-						<h3 class="page-widget__title">%s</h3>
+						<h2 class="page-widget__title">%s</h2>
 						%s
 					</div>
 					<div class="page-widget__secondary">

@@ -23,7 +23,7 @@
 
 			<div class="logo-container">
 
-				<?php get_template_part('partials/site-logo'); ?>
+				<h1><?php get_template_part('partials/site-logo'); ?></h1>
 
 			</div>
 
