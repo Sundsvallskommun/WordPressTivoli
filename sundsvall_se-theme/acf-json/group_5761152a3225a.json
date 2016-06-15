@@ -17,7 +17,7 @@
             },
             "collapsed": "",
             "min": "",
-            "max": "",
+            "max": 3,
             "layout": "table",
             "button_label": "L\u00e4gg till puff",
             "sub_fields": [
@@ -104,5 +104,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1465983603
+    "modified": 1465995015
 }
