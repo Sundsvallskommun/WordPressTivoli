@@ -137,8 +137,8 @@ body {
 		width: 100%;
 		height: 0;
 		float: none;
-		overflow: hidden;
-
+		overflow: visible;
+		background: rgba(profile-color(björnstigen, 2), .95);
 	}
 
 	&.active {
@@ -156,7 +156,6 @@ body {
 
 .search-container {
 	@include media-breakpoint-down(sm) {
-		background: rgba(profile-color(björnstigen), .95);
 	}
 }
 

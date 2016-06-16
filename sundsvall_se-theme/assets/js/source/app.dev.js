@@ -43,7 +43,33 @@ require('./acf-map.js');
 				 }
 		});
 
+
+		/**
+		* Show mobile search on page load and hide it when scrolling the page
+		*/
+		var searchBox = $($('[data-toggle="search"]').attr('href')).addClass('active');
+		$('body').addClass('search-active');
+
+		var searchHiddenByUser = false;
+
+		function hideScroll() {
+
+			if ( $(this).scrollTop() > 80 ) {
+
+				$(this).off('scroll', hideScroll);
+
+				if(searchHiddenByUser) return;
+
+				$('body').removeClass('search-active');
+				searchBox.removeClass('active');
+			}
+
+		}
+
+		$(window).on('scroll', hideScroll);
+
 		$('[data-toggle="search"]').on('click', function (e) {
+			searchHiddenByUser = true;
 			e.preventDefault();
 			var target = $(this).attr('href');
 			$(target).toggleClass('active');

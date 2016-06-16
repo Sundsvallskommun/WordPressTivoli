@@ -193,6 +193,9 @@ body.search-results main {
 }
 
 .tt-menu {
+	overflow: scroll !important;
+	max-height: calc(100vh - 150px) !important;
+
 	background: #fff;
 	width: 100%;
 	border: 1px solid #CCC;
