@@ -342,13 +342,29 @@ require('./acf-map.js');
 		 limit: Infinity, //Fix for bug causing only two results to show. See https://github.com/twitter/typeahead.js/issues/1232
 		 templates: {
 				header: '<h3 class="tt-heading">E-tjänster</h3>',
-				suggestion: Handlebars.compile(eserviceTemplate)
+				suggestion: Handlebars.compile(eserviceTemplate),
+				empty : [
+				    '<div class="search-module__footer">',
+				      '<a href="/?s=%QUERY" class="tt-loadmore">Visa fler</a>',
+				    '<div>'
+				  ].join('\n'),
+				footer : [
+				    '<div class="search-module__footer">',
+				      '<a href="/?s=%QUERY" class="tt-loadmore">Visa fler</a>',
+				    '<div>'
+				  ].join('\n')
 			}
 	 }).on('typeahead:asyncrequest', function() {
 			$(this).parents('.input-group').find('.input-group-btn').addClass('loading');
 		})
 		.on('typeahead:asynccancel typeahead:asyncreceive', function() {
 			$(this).parents('.input-group').find('.input-group-btn').removeClass('loading');
+		});
+
+		$(document).on('click', '.tt-loadmore', function() {
+			var $this = $(this),
+					query = $('#s').val();
+			$this.attr('href', $this.attr('href').replace('%QUERY', query));
 		});
 
 

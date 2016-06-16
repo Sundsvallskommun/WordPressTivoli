@@ -197,8 +197,13 @@ body.search-results main {
 	width: 100%;
 	border: 1px solid #CCC;
 	border-top: none;
-	padding: $spacer-y $spacer-x*2;
+	padding: $spacer-y 0 0;
+	//padding: $spacer-y $spacer-x*2;
 	border-radius: 0 $border-radius;
+
+	.tt-loadmore {
+		margin-top: $spacer-y;
+	}
 }
 
 .tt-input {
@@ -206,12 +211,14 @@ body.search-results main {
 }
 
 .tt-heading {
+	padding: 0 $spacer-x*2;
 	margin: 1em 0 0;
 	font-size: 1.25rem;
 }
 
 .tt-suggestion {
 	list-style: none;
+	padding: 0 $spacer-x*2;
 }
 
 .tt-dataset + .tt-dataset {
