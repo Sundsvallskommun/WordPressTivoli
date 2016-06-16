@@ -3,9 +3,14 @@
  *
  *
  */
+
+require_once __DIR__.'/../sk-eservices/class-oep-api.php';
+
 class SK_Search {
 
 	function __construct() {
+
+		$this->oep = new OEP();
 
 		$this->search_string = (isset($_GET['s'])) ? sanitize_text_field( $_GET['s'] ) : '';
 
@@ -69,9 +74,6 @@ class SK_Search {
 			add_action( "wp_ajax_nopriv_sk_search_$search_type",      array( &$this, "ajax_search_$search_type" ) );
 
 		}
-
-		add_action( 'wp_ajax_sk_search_eservices',        array( &$this, 'search_result_eservices' ) );
-		add_action( 'wp_ajax_nopriv_sk_search_eservices', array( &$this, 'search_result_eservices' ) );
 
 		add_action( 'wp_ajax_search_suggestions',        array( &$this, 'search_suggestions' ) );
 		add_action( 'wp_ajax_nopriv_search_suggestions', array( &$this, 'search_suggestions' ) );
@@ -165,7 +167,6 @@ class SK_Search {
 
 	}
 
-
 	function ajax_search_attachments() {
 
 		$query_args = $this->queries['attachments']['query_args'];
@@ -176,22 +177,36 @@ class SK_Search {
 
 	}
 
-	function search_result_eservices() {
-
-		echo '[Not implemented]';
-
-	}
-
-	function search_result_contacts() {
-
-		echo '[Not implemented]';
-
-	}
-
+	/**
+	 * Search results for typeahead suggestions via ajax.
+	 */
 	function search_suggestions() {
 
 		$type = sanitize_text_field( $_REQUEST['type'] );
+		$term = isset($_REQUEST['s']) ? sanitize_text_field( $_REQUEST['s'] ) : '';
 
+		// E-service results
+		if( 'eservice' == $type ) {
+			$result = $this->oep->search_services($term);
+			$map = array_map(
+				function($flow) { 
+					return array(
+						'title'      => $flow['Name'],
+						'type'       => 'eservice',
+						'type_label' => 'E-tjänst',
+						'category'   => $flow['Category'],
+						'url'        => $flow['URL'],
+					);
+				},
+				$result
+			);
+
+			echo json_encode( array_slice( $map, 0, 3 ) );
+
+			die();
+		}
+
+		// Post and page results
 		if( 'main' == $type ) {
 
 			$query_args = array(
@@ -200,6 +215,7 @@ class SK_Search {
 				'post_type' => $this->main_result_post_types
 			);
 
+		// Contact search results
 		} else if ( 'contacts' == $type ) {
 
 			$query_args = array(
@@ -208,8 +224,9 @@ class SK_Search {
 				'post_type' => 'contact_persons'
 			);
 
+		// Attachments search results
 		} else if ( 'attachments' == $type ) {
-;
+
 			$query_args = array(
 				's' => sanitize_text_field($_REQUEST['s']),
 				'posts_per_page' => 3,
@@ -219,9 +236,7 @@ class SK_Search {
 
 		}
 
-
 		$query = new WP_Query( $query_args );
-
 
 		if($query->have_posts()) {
 			foreach($query->posts as $post) {
@@ -247,6 +262,10 @@ class SK_Search {
 
 			<script id="searchitem-template-contacts" type="text/x-handlebars-template">
 				<?php printf($this->template, '{{type}}', '{{url}}', '{{{thumbnail}}}', '{{title}}', '{{type_label}}', 'Uppdaterad {{modified}}' ); ?>
+			</script>
+
+			<script id="searchitem-template-eservice" type="text/x-handlebars-template">
+				<?php printf($this->template, '{{type}}', '{{url}}', get_icon('alignleft'), '{{title}}', '{{type_label}}', '{{category}}' ); ?>
 			</script>
 		<?php
 	}

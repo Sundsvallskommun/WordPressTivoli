@@ -285,12 +285,25 @@ require('./acf-map.js');
 
 		});
 
+		var eserviceResult = new Bloodhound({
+
+			datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
+			queryTokenizer: Bloodhound.tokenizers.whitespace,
+
+			remote: {
+				url: ajaxdata.ajax_url + '?action=search_suggestions&type=eservice&s=%QUERY',
+				wildcard: '%QUERY'
+			}
+
+		});
+
 		/*
 		* Typeahead
 		*/
 		var mainTemplate       = $('#searchitem-template-main').html();
 		var contactTemplate    = $('#searchitem-template-contacts').html();
 		var attachmentTemplate = $('#searchitem-template-attachments').html();
+		var eserviceTemplate   = $('#searchitem-template-eservice').html();
 
 		$( 'input[name="s"]' ).typeahead({
 		 minLength: 3,
@@ -321,6 +334,15 @@ require('./acf-map.js');
 		 templates: {
 				header: '<h3 class="tt-heading">Bilder och dokument</h3>',
 				suggestion: Handlebars.compile(attachmentTemplate)
+			}
+	 },{
+		 name: 'eservice-result',
+		 display: 'title',
+		 source: eserviceResult,
+		 limit: Infinity, //Fix for bug causing only two results to show. See https://github.com/twitter/typeahead.js/issues/1232
+		 templates: {
+				header: '<h3 class="tt-heading">E-tjänster</h3>',
+				suggestion: Handlebars.compile(eserviceTemplate)
 			}
 	 }).on('typeahead:asyncrequest', function() {
 			$(this).parents('.input-group').find('.input-group-btn').addClass('loading');
