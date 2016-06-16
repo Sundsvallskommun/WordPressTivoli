@@ -61,7 +61,12 @@
 									onSubmit: function(e) {
 										var dirID = this.toJSON().directory;
 										var orderby = this.toJSON().orderby;
-										ed.selection.setContent('[mapp id='+dirID+' orderby='+orderby+']');
+
+										var directory = jQuery.grep(directories, function(directory) {
+											return directory.value == dirID;
+										});
+										var directoryName = directory[0].text.replace(/[^A-Za-z]*/, "");
+										ed.selection.setContent('[mapp name="'+directoryName+'" id='+dirID+' orderby='+orderby+']');
 									}
 								})
 
