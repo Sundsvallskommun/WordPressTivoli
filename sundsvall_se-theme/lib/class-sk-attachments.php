@@ -35,7 +35,7 @@ class SK_Attachments {
 
 							// Only check imagees, if its any other attachment type, call
 							// original send function.
-							if('image' ==! attachment.type) {
+							if('image' !== attachment.type) {
 								return original_send.apply(this, arguments);
 							}
 
