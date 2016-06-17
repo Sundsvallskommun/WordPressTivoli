@@ -100,15 +100,21 @@ class SK_Attachments {
 	/**
 	 * Add custom fields
 	 */
-	function new_attachment_fields( $fields, $post ) {
+	function new_attachment_fields( $form_fields, $post ) {
+
+		if ( !( strpos( $post->post_mime_type, 'image' ) !== false ) ) {
+			return $form_fields;
+		}
+
 		$meta = get_post_meta($post->ID, 'media_photographer', true);
-		$fields['media_photographer'] = array(
-			'label' => 'Fotograf',
+		$form_fields['media_photographer'] = array(
+			'label' => 'Fotograf <i style="color: red">*</i>',
 			'input' => 'text',
 			'value' => $meta,
 			'show_in_edit' => true,
 		);
-		return $fields;
+
+		return $form_fields;
 	}
 
 	/**
