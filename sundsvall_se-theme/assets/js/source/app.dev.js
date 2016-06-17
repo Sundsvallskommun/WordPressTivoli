@@ -74,6 +74,12 @@ require('./acf-map.js');
 			var target = $(this).attr('href');
 			$(target).toggleClass('active');
 			$('body').toggleClass('search-active');
+
+			$(target).addClass('animating');
+			setTimeout(function() {
+				$(target).removeClass('animating');
+			}, 500);
+
 		});
 
 		/**
