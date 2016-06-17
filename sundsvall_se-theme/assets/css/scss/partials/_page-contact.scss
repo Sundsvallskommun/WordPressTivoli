@@ -22,9 +22,11 @@
 	}
 
 	&__image {
+		@extend %circle-with-icon;
+
 		height: 3.125em;
 		width: 3.125em;
-		background: $gray-lightest;
+		background: profile-color('svartvik');
 		position: absolute;
 		margin-right: 1em;
 		border-radius: 50%;

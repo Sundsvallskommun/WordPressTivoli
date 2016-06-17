@@ -195,6 +195,9 @@ class SK_Page_Contacts {
 
 			$contact =  '<div class="page-contact">';
 			if($show_thumb) {
+				if(!$contact_thumb) {
+					$contact_thumb = get_icon('person');
+				}
 				$contact .= sprintf('<div class="page-contact__image">%s</div>', $contact_thumb);
 			}
 			$contact .= '<div class="page-contact__block">';
