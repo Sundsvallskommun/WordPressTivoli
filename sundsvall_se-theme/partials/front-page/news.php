@@ -1,4 +1,4 @@
-<section>
+<section class="news">
 
 	<h2 class="front-page__heading"><?php _e('Nyheter', 'sundsvall_se')?></h2>
 
