@@ -30,21 +30,6 @@
 		</div>
 	</div>
 
-	<?php // Mobile block-buster pages ?>
-	<div class="sk-collapse">
-		<h2><a data-toggle="collapse" href="#blockbusters" aria-expanded="false" aria-controls="blockbusters">Kioskvältarsidor</a></h2>
-		<div class="collapse" id="blockbusters">
-
-		<ul class="list-unstyled m-b-2">
-			<li> <a href="#">Lediga jobb »</a> </li>
-			<li> <a href="#">Bad »</a> </li>
-			<li> <a href="#">Evenemang »</a> </li>
-			<li> <a href="#">Bibliotek »</a> </li>
-		</ul>
-
-		</div>
-	</div>
-
 	<?php // Mobile news and service-messages ?>
 	<div class="sk-collapse">
 		<h2><a data-toggle="collapse" href="#news" aria-expanded="false" aria-controls="news">Aktuellt</a></h2>
