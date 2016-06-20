@@ -30,7 +30,7 @@ class Vizzit {
 	 * @param int $numberofdays (optional) number of days to calculate visits
 	 * @param int $limit (optional) number of pages to retrieve
 	 */
-	public function get_popular_pages_by_node($node, $date, $numberofdays = 10, $limit = 8) {
+	public function get_popular_pages_by_node($node, $date, $numberofdays = 10, $limit = 5) {
 
 		if(self::USE_TRANSIENTS) {
 

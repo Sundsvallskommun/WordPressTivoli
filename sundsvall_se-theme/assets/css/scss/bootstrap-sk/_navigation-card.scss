@@ -66,8 +66,8 @@
 
 	.nav-card-text {
 		color: $text-muted;
-		font-size: .75em;
 		line-height: 1.75;
+		font-size: 1em;
 		@include media-breakpoint-up(md) {
 			font-size: .875em;
 		}
