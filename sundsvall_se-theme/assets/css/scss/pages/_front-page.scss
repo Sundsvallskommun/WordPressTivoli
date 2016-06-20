@@ -2,15 +2,18 @@
 
 	.site-header {
 		margin-bottom: 1.25rem;
-		@include media-breakpoint-up(sm) {
-			margin-bottom: 4.65rem;
-		}
+	}
+
+	main > .container-fluid {
+		margin-top: 0;
 	}
 
 	.image-boxes {
+		margin-top: $spacer-y;
 		margin-bottom: $spacer-y;
 		@include media-breakpoint-up(md) {
-			margin-bottom: $spacer-y*4;
+			margin-top: $spacer-y*3;
+			margin-bottom: $spacer-y*2;
 		}
 	}
 
