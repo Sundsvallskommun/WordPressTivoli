@@ -193,8 +193,11 @@ body.search-results main {
 }
 
 .tt-menu {
-	overflow: scroll !important;
-	max-height: calc(100vh - 150px) !important;
+
+	@include media-breakpoint-down(sm) {
+		overflow: scroll !important;
+		max-height: calc(100vh - 150px) !important;
+	}
 
 	background: #fff;
 	width: 100%;
