@@ -140,6 +140,8 @@ body {
 		background: rgba(profile-color(björnstigen, 2), .95);
 	}
 
+	overflow: hidden;
+
 	&.active {
 		height: 100px;
 	}
