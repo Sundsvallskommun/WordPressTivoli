@@ -132,6 +132,7 @@ body {
 	}
 
 	@include media-breakpoint-down(sm) {
+		overflow: hidden;
 		position: fixed;
 		top: 64px;
 		width: 100%;
@@ -140,7 +141,6 @@ body {
 		background: rgba(profile-color(björnstigen, 2), .95);
 	}
 
-	overflow: hidden;
 
 	&.active {
 		height: 100px;
