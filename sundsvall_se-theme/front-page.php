@@ -32,8 +32,8 @@
 
 	<?php // Mobile news and service-messages ?>
 	<div class="sk-collapse">
-		<h2><a data-toggle="collapse" href="#news" aria-expanded="false" aria-controls="news">Nyheter</a></h2>
-		<div class="collapse mobile-news" id="news">
+		<h2><a data-toggle="collapse" href="#news" aria-expanded="true" aria-controls="news">Nyheter</a></h2>
+		<div class="collapse in mobile-news" id="news">
 
 			<?php get_template_part('partials/front-page/news'); ?>
 
