@@ -1,13 +1,18 @@
-<nav class="hidden-md-up navbar navbar-light navbar-full navbar-mobile navbar-fixed-top">
+<nav class="hidden-md-up navbar navbar-light navbar-full navbar-mobile navbar-fixed-bottom">
 
-	<a class="navbar-toggler btn" data-toggle="search"
-	href="#searchContainer"><span class="iconwrapper"><?php the_icon('search'); ?></span></a>
-
-	<div class="navbar-center">
-			<?php get_template_part('partials/site-logo'); ?>
+	<div class="pull-xs-left">
+		<?php get_template_part('partials/site-logo'); ?>
 	</div>
 
-	<a class="navbar-toggler pull-xs-right btn" data-toggle="offcanvas-left" aria-hidden="true" href="#mainNavigation"><span>Meny</span><span class="iconwrapper"><?php the_icon('menu'); ?></span></a>
+	<div class="navbar-center">
+		<a class="navbar-toggler btn" data-toggle="offcanvas-left" aria-hidden="true" href="#mainNavigation">
+			<span class="iconwrapper"><?php the_icon('menu'); ?></span>
+			<span class="icon-label">Meny</span>
+		</a>
+	</div>
+
+	<a class="navbar-toggler btn pull-xs-right" data-toggle="search"
+	href="#searchContainer"><span class="iconwrapper"><?php the_icon('search'); ?></span></a>
 
 </nav>
 

@@ -9,6 +9,10 @@ $footer_background: profile-color(björnstigen, 2);
 	padding-top: 2.5em;
 	padding-bottom: 2.2em;
 
+	@include media-breakpoint-down(sm) {
+		padding-bottom: 84px;
+	}
+
 	a,
 	.btn-link {
 		font-size: 1em;
