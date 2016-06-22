@@ -1,3 +1,7 @@
+<nav class="hidden-md-up navbar navbar-light navbar-full navbar-mobile not-fixed">
+	<?php get_template_part('partials/site-logo'); ?>
+</nav>
+
 <nav class="hidden-md-up navbar navbar-light navbar-full navbar-mobile navbar-fixed-bottom">
 
 	<div class="pull-xs-left">
