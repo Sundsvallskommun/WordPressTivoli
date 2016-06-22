@@ -2,6 +2,15 @@
 
 <?php // Mobile only ?>
 
+<div class="hidden-md-up">
+	<div class="container-fluid m-b-2">
+		<h2 class="front-page__heading"><?php _e('Logga in', 'sundsvall_se')?></h2>
+		<a class="btn btn-secondary">Elev</a>
+		<a class="btn btn-secondary">Medborgare</a>
+		<a class="btn btn-secondary">Medarbetare</a>
+	</div>
+</div>
+
 <div class="container-fluid">
 
 	<div class="image-boxes">
@@ -12,16 +21,7 @@
 
 <div class="hidden-md-up">
 
-
-
 	<?php // Mobile log-in buttons ?>
-	<div class="container-fluid m-b-2">
-		<h2 class="front-page__heading"><?php _e('Logga in', 'sundsvall_se')?></h2>
-		<a class="btn btn-secondary">Elev</a>
-		<a class="btn btn-secondary">Medborgare</a>
-		<a class="btn btn-secondary">Medarbetare</a>
-	</div>
-
 	<?php // Mobile expanded navigation ?>
 	<div class="sk-collapse sk-collapse--fullwidth">
 		<h2><a data-toggle="collapse" href="#mobile-nav" aria-expanded="true" aria-controls="mobile-nav">Meny</a></h2>

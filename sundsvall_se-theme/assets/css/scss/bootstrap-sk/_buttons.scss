@@ -87,3 +87,6 @@
 	@include button-action($sk-eservice-fg, $sk-eservice-bg);
 }
 
+.btn-action.btn-purple {
+	@include button-action(profile-color(björnstigen, 2), profile-color(björnstigen, 3));
+}
