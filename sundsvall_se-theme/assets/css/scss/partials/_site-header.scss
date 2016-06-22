@@ -94,6 +94,8 @@
 		}
 
 		.icon-label {
+			text-transform: uppercase;
+			font-size: .75em;
 			position: absolute;
 			bottom: -1.25em;
 			right: 0;
@@ -148,10 +150,6 @@
 
 	&.active {
 		height: 100px;
-	}
-
-	&.active:not(.animating) {
-		overflow: visible;
 	}
 
 	z-index: 4;

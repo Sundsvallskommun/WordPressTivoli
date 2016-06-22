@@ -49,12 +49,6 @@ require('./acf-map.js');
 			var target = $(this).attr('href');
 			$(target).toggleClass('active');
 			$('body').toggleClass('search-active');
-
-			$(target).addClass('animating');
-			setTimeout(function() {
-				$(target).removeClass('animating');
-			}, 500);
-
 		});
 
 		/**
@@ -312,67 +306,95 @@ require('./acf-map.js');
 		var attachmentTemplate = $('#searchitem-template-attachments').html();
 		var eserviceTemplate   = $('#searchitem-template-eservice').html();
 
-		$( 'input[name="s"]' ).typeahead({
-		 minLength: 3,
-		 highlight: true
-	 },{
-		 name: 'main-result',
-		 display: 'title',
-		 source: mainResult,
-		 limit: Infinity, //Fix for bug causing only two results to show. See https://github.com/twitter/typeahead.js/issues/1232
-		 templates: {
-				header: '<h3 class="tt-heading">Sidor och nyheter</h3>',
-				suggestion: Handlebars.compile(mainTemplate)
-			}
-	 },{
-		 name: 'contacts-result',
-		 display: 'title',
-		 source: contactResult,
-		 limit: Infinity, //Fix for bug causing only two results to show. See https://github.com/twitter/typeahead.js/issues/1232
-		 templates: {
-				header: '<h3 class="tt-heading">Kontakter</h3>',
-				suggestion: Handlebars.compile(contactTemplate)
-			}
-	 },{
-		 name: 'media-result',
-		 display: 'title',
-		 source: mediaResult,
-		 limit: Infinity, //Fix for bug causing only two results to show. See https://github.com/twitter/typeahead.js/issues/1232
-		 templates: {
-				header: '<h3 class="tt-heading">Bilder och dokument</h3>',
-				suggestion: Handlebars.compile(attachmentTemplate)
-			}
-	 },{
-		 name: 'eservice-result',
-		 display: 'title',
-		 source: eserviceResult,
-		 limit: Infinity, //Fix for bug causing only two results to show. See https://github.com/twitter/typeahead.js/issues/1232
-		 templates: {
-				header: '<h3 class="tt-heading">E-tjänster</h3>',
-				suggestion: Handlebars.compile(eserviceTemplate),
-				empty : [
-				    '<div class="search-module__footer">',
-				      '<a href="/?s=%QUERY" class="tt-loadmore">Visa fler</a>',
-				    '<div>'
-				  ].join('\n'),
-				footer : [
-				    '<div class="search-module__footer">',
-				      '<a href="/?s=%QUERY" class="tt-loadmore">Visa fler</a>',
-				    '<div>'
-				  ].join('\n')
-			}
-	 }).on('typeahead:asyncrequest', function() {
-			$(this).parents('.input-group').find('.input-group-btn').addClass('loading');
-		})
-		.on('typeahead:asynccancel typeahead:asyncreceive', function() {
-			$(this).parents('.input-group').find('.input-group-btn').removeClass('loading');
-		});
+		function initTypeahead() {
 
-		$(document).on('click', '.tt-loadmore', function() {
-			var $this = $(this),
-					query = $('#s').val();
-			$this.attr('href', $this.attr('href').replace('%QUERY', query));
-		});
+			$( 'input[name="s"]' ).typeahead({
+			 minLength: 3,
+			 highlight: true
+		 },{
+			 name: 'main-result',
+			 display: 'title',
+			 source: mainResult,
+			 limit: Infinity, //Fix for bug causing only two results to show. See https://github.com/twitter/typeahead.js/issues/1232
+			 templates: {
+					header: '<h3 class="tt-heading">Sidor och nyheter</h3>',
+					suggestion: Handlebars.compile(mainTemplate)
+				}
+		 },{
+			 name: 'contacts-result',
+			 display: 'title',
+			 source: contactResult,
+			 limit: Infinity, //Fix for bug causing only two results to show. See https://github.com/twitter/typeahead.js/issues/1232
+			 templates: {
+					header: '<h3 class="tt-heading">Kontakter</h3>',
+					suggestion: Handlebars.compile(contactTemplate)
+				}
+		 },{
+			 name: 'media-result',
+			 display: 'title',
+			 source: mediaResult,
+			 limit: Infinity, //Fix for bug causing only two results to show. See https://github.com/twitter/typeahead.js/issues/1232
+			 templates: {
+					header: '<h3 class="tt-heading">Bilder och dokument</h3>',
+					suggestion: Handlebars.compile(attachmentTemplate)
+				}
+		 },{
+			 name: 'eservice-result',
+			 display: 'title',
+			 source: eserviceResult,
+			 limit: Infinity, //Fix for bug causing only two results to show. See https://github.com/twitter/typeahead.js/issues/1232
+			 templates: {
+					header: '<h3 class="tt-heading">E-tjänster</h3>',
+					suggestion: Handlebars.compile(eserviceTemplate),
+					empty : [
+							'<div class="search-module__footer">',
+								'<a href="/?s=%QUERY" class="tt-loadmore">Visa fler</a>',
+							'<div>'
+						].join('\n'),
+					footer : [
+							'<div class="search-module__footer">',
+								'<a href="/?s=%QUERY" class="tt-loadmore">Visa fler</a>',
+							'<div>'
+						].join('\n')
+				}
+		 }).on('typeahead:asyncrequest', function() {
+				$(this).parents('.input-group').find('.input-group-btn').addClass('loading');
+			})
+			.on('typeahead:asynccancel typeahead:asyncreceive', function() {
+				$(this).parents('.input-group').find('.input-group-btn').removeClass('loading');
+			});
+
+			$(document).on('click', '.tt-loadmore', function() {
+				var $this = $(this),
+						query = $('#s').val();
+				$this.attr('href', $this.attr('href').replace('%QUERY', query));
+			});
+
+		}
+
+		if( $(window).width() > 720 ) {
+			initTypeahead();
+		}
+
+		function addTypeaheadInDesktop() {
+			if( $(this).width() > 720 ) {
+				console.log('add');
+				initTypeahead();
+				$(this).off('resize', addTypeaheadInDesktop);
+				$(this).on('resize', removeTypeaheadInMobile);
+			}
+		}
+
+		function removeTypeaheadInMobile() {
+			if( $(this).width() <= 720 ) {
+				console.log('remove');
+				$( 'input[name="s"]' ).typeahead('destroy');
+				$(this).off('resize', removeTypeaheadInMobile);
+				$(this).on('resize', addTypeaheadInDesktop);
+			}
+		}
+
+		$(window).on('resize', removeTypeaheadInMobile);
 
 
 		/**
