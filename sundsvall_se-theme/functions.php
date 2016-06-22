@@ -1,5 +1,17 @@
 <?php
 
+function sk_header() {
+
+	if(is_advanced_template_child()) {
+		return get_template_part('page-advanced/header');
+	} else {
+		get_header();
+	}
+
+}
+
+require_once locate_template( 'lib/page-advanced.php' );
+
 /*
  * ==============================================
  *               HELPER FUNCTIONS

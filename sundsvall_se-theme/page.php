@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php sk_header(); ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
 
