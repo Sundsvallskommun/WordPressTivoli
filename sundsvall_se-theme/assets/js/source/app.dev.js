@@ -188,23 +188,27 @@ require('./sk_vacancies_list.js');
 				type: 'GET',
 				dataType: 'json',
 				data: {
-					action: 'sk_search_' + type,
+					action: 'sk_search',
+					type: type,
 					s: term,
 					page: page
 				}
 
 			}).done( function(data) {
 
+				data = data[type];
+
 				var items = '';
 
 				var source = $('#searchitem-template-'+type).html();
 				var template = Handlebars.compile(source);
 
-				data.items.forEach(function(item) {
+				data.posts.forEach(function(item) {
+					console.log(item);
 					items += template(item);
 				});
 
-				callback(items, data.query);
+				callback(items, data);
 
 			}).error(function(jqHXR, textStatus, errorThrown) {
 				console.log('Error searching', textStatus);
@@ -230,11 +234,11 @@ require('./sk_vacancies_list.js');
 			currentPage[searchType] = parseInt(currentPage[searchType] || searchparams.currentPage);
 			var page = currentPage[searchType] += 1;
 
-			search(searchType, searchparams.search_string, page, function(items, query) {
+			search(searchType, searchparams.search_string, page, function(items, result) {
 
 				// Update post count info "Visar x av x"
 				var displayedPosts = parseInt($currentCountCountainer.html());
-				$currentCountCountainer.html(displayedPosts += query.post_count);
+				$currentCountCountainer.html(displayedPosts += result.posts.length);
 
 				// Fade in the new items
 				var $items = $(items).hide();
@@ -242,7 +246,7 @@ require('./sk_vacancies_list.js');
 				$items.fadeIn();
 
 				// Hide button if we are on last page
-				if( query.max_num_pages <= currentPage[searchType]) {
+				if( result.max_num_pages <= currentPage[searchType]) {
 					$button.hide();
 				}
 
@@ -250,6 +254,9 @@ require('./sk_vacancies_list.js');
 
 		});
 
+		var parentParam = '&parent='+searchparams.post_parent
+
+		console.log(parentParam);
 
 		var mainResult = new Bloodhound({
 
@@ -257,8 +264,9 @@ require('./sk_vacancies_list.js');
 			queryTokenizer: Bloodhound.tokenizers.whitespace,
 
 			remote: {
-				url: ajaxdata.ajax_url + '?action=search_suggestions&type=main&s=%QUERY',
-				wildcard: '%QUERY'
+				url: ajaxdata.ajax_url + '?action=search_suggestions&type=main&s=%QUERY'+parentParam,
+				wildcard: '%QUERY',
+				transform: function(response) { return response.main.posts.slice(0, 3); }
 			}
 
 		});
@@ -269,8 +277,9 @@ require('./sk_vacancies_list.js');
 			queryTokenizer: Bloodhound.tokenizers.whitespace,
 
 			remote: {
-				url: ajaxdata.ajax_url + '?action=search_suggestions&type=contacts&s=%QUERY',
-				wildcard: '%QUERY'
+				url: ajaxdata.ajax_url + '?action=search_suggestions&type=contacts&s=%QUERY'+parentParam,
+				wildcard: '%QUERY',
+				transform: function(response) { return response.contacts.posts.slice(0, 3); }
 			}
 
 		});
@@ -281,8 +290,9 @@ require('./sk_vacancies_list.js');
 			queryTokenizer: Bloodhound.tokenizers.whitespace,
 
 			remote: {
-				url: ajaxdata.ajax_url + '?action=search_suggestions&type=attachments&s=%QUERY',
-				wildcard: '%QUERY'
+				url: ajaxdata.ajax_url + '?action=search_suggestions&type=attachments&s=%QUERY'+parentParam,
+				wildcard: '%QUERY',
+				transform: function(response) { return response.media.posts.slice(0, 3); }
 			}
 
 		});
@@ -293,8 +303,9 @@ require('./sk_vacancies_list.js');
 			queryTokenizer: Bloodhound.tokenizers.whitespace,
 
 			remote: {
-				url: ajaxdata.ajax_url + '?action=search_suggestions&type=eservice&s=%QUERY',
-				wildcard: '%QUERY'
+				url: ajaxdata.ajax_url + '?action=search_suggestions&type=eservice&s=%QUERY'+parentParam,
+				wildcard: '%QUERY',
+				transform: function(response) { return response.eservices.posts.slice(0, 3); }
 			}
 
 		});

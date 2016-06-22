@@ -2,89 +2,100 @@
 
 global $sk_search;
 
+$results = $sk_search->get_search_results();
+$pagenum = get_query_var('paged', 1);
+
+$module_i = 0;
+$module_count = count($results);
+
+echo '<div class="col-lg-6">';
+
+foreach ($results as $type => $result): ?>
+
+<?php 
+
+	$module_i += 1;
+
+	if($module_i == ceil($module_count / 2) + 1) {
+		echo '</div>';
+		echo '<div class="col-lg-6">';
+	}
+
+
 ?>
 
-<?php foreach( $sk_search->queries as $search_type => $search_query ): ?>
+	<div class="search-module">
+
+		<div class="search-module__header">
+		<h2 class="search-module__title"><?php echo $result['title']; ?></h2>
+			<div class="post-count">
+			<?php
+				$posts_per_page = $sk_search->posts_per_page;
+				$count = $posts_per_page < count($result['posts']) ? $posts_per_page : $wp_query->post_count;
+
+				$count = count($result['posts']);
+
+				if($pagenum > 1 && $wp_query->found_posts >= $posts_per_page * $pagenum - $posts_per_page) {
+					$startnum = $count * ( $pagenum - 1 ) + 1;
+					$count = $startnum.'-'.($startnum + $count-1);
+				}
+				printf('Visar <span class="post-count__count">%s</span> av <span class="post-count__total">%d</span>', $count, $result['found_posts']);
+			?>
+			</div>
+		</div>
+
+		<?php if ( count($result['posts']) ): ?>
+
+		<ol class="search-module__items">
+
+		<?php foreach ($result['posts'] as $post): ?>
 
 <?php
-	wp_reset_query();
 
-	$pagenum = get_query_var('paged', 1);
+				if( 'contact_persons' == $post['type'] ) {
 
-	$query_args = $search_query['query_args'];
-	$query_args['paged'] = $pagenum;
-	$temp = $wp_query;
-	$wp_query = new WP_Query( $query_args );
-?>
+					printf($sk_search->item_template(), $post['type'], $post['url'], get_the_post_thumbnail($post['id'], 'thumbnail'), $post['title'], $post['type_label'], 'Uppdaterad '.$post['modified']);
 
-			<div class="search-module">
+				} else if( 'attachment' == $post['type'] ) {
 
-				<div class="search-module__header">
-				<h2 class="search-module__title"><?php echo $search_query['title']; ?></h2>
-					<div class="post-count">
-					<?php
-						$posts_per_page = $wp_query->query_vars['posts_per_page'];
-						$count = $posts_per_page < $wp_query->post_count ? $posts_per_page : $wp_query->post_count;
+					printf($sk_search->item_template(), $post['type'], $post['url'], get_icon('alignleft'), $post['title'], $post['file_type'],  'Uppdaterad '.$post['modified']);
 
-						if($pagenum > 1 && $wp_query->found_posts >= $posts_per_page * $pagenum - $posts_per_page) {
-							$startnum = $count * ( $pagenum - 1 ) + 1;
-							$count = $startnum.'-'.($startnum + $count-1);
-						}
-						printf('Visar <span class="post-count__count">%s</span> av <span class="post-count__total">%d</span>', $count, $wp_query->found_posts);
-					?>
-					</div>
-				</div>
+				} else if( 'eservice' == $post['type'] ) {
 
-				<?php if ( $wp_query->have_posts() ): ?>
-				<ol class="search-module__items">
-					<?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
+					printf($sk_search->item_template(), 'eservice', $post['url'], get_icon('alignleft'), $post['title'], 'E-tjänst', $post['category']);
 
-						<?php
+				} else {
 
-							$post_type = get_post_type();
+					printf($sk_search->item_template(), $post['type'], $post['url'], get_icon('alignleft'), $post['title'], $post['type_label'], 'Uppdaterad '.$post['modified']);
 
-							$filepath = get_attached_file( get_the_ID() );
-							$file_type = wp_check_filetype( $filepath )['ext'];
+				}
 
-							$post_type_label = get_post_type_object( $post_type )->labels->singular_name;
+				?>
 
-						if( 'contact_persons' == $post_type ) {
+		<?php endforeach; ?>
 
-							printf($sk_search->template, $post_type, get_the_permalink(), get_the_post_thumbnail(null, 'thumbnail'), get_the_title(), $post_type_label, 'Uppdaterad '.get_the_modified_date());
+		</ol>
 
-						} else if( 'attachment' == $post_type ) {
-
-							printf($sk_search->template, $post_type, get_the_permalink(), get_icon('alignleft'), get_the_title(), $file_type,  'Uppdaterad '.get_the_modified_date());
-
-						} else {
-
-							printf($sk_search->template, $post_type, get_the_permalink(), get_icon('alignleft'), get_the_title(), $post_type_label, 'Uppdaterad '.get_the_modified_date());
-
-						}
-
-						?>
-
-
-					<?php endwhile; ?>
-				</ol>
-
-				<div class="search-module__footer" data-load-more="<?php echo $search_type; ?>">
-					<?php if( get_next_posts_link() ) :
-						next_posts_link( 'Visa fler', 0 );
-						endif; 
-					?>
-
-				</div>
-
-				<?php else: ?>
-					<p class="m-t-2 text-xs-center text-muted">Inget resultat för <?php echo $search_query['title']; ?></p>
-				<?php endif; ?>
-
-
+			<div class="search-module__footer" data-load-more="<?php echo $type; ?>">
+				<?php if( $result['found_posts'] > $count ) :
+				next_posts_link( 'Visa fler', 0 );
+				endif;
+			?>
 			</div>
 
-<?php
-		$wp_query = $temp;
-		wp_reset_postdata();
-		endforeach;
-?>
+			<?php if( 'eservices' == $type ): ?>
+			<div class="search-module__footer">
+				<a href="//e-tjanster.sundsvall.se/">Alla e-tjänster</a>
+			</div>
+			<?php endif; ?>
+
+
+		<?php else: ?>
+			<p class="m-t-2 text-xs-center text-muted">Inget resultat för <?php echo $result['title']; ?></p>
+		<?php endif; ?>
+
+	</div>
+
+<?php endforeach; ?>
+
+<?php echo '</div>'; ?>

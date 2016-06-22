@@ -35,3 +35,9 @@ function is_advanced_template_child() {
 	return false;
 }
 
+add_filter( 'sk_search_post_parent',  'advanced_template_search_post_parent', 10, 1 );
+
+function advanced_template_search_post_parent($post_parent) {
+	return (isset($_REQUEST['parent'])) ? sanitize_text_field( $_REQUEST['parent'] ) : $post_parent;
+}
+
