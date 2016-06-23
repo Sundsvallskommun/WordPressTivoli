@@ -48,7 +48,7 @@ if( !($service_messages instanceof WP_Query) ) {
 	<?php $service_messages->rewind_posts(); ?>
 
 	<div class="col-lg-2 col-md-3">
-		<a href="<?php echo get_post_type_archive_link( 'service_message' ); ?>"> Alla driftmeddelanden »</a>
+		<a href="<?php echo get_post_type_archive_link( 'service_message' ); ?>" class="btn btn-warning btn-action"> <?php the_icon('arrow-right-circle'); ?> Alla driftmeddelanden</a>
 	</div>
 
 	</div>

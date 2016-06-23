@@ -13,8 +13,12 @@
 }
 
 .front-page-section__service-messages {
-	margin-top: 3rem;
 	padding: 1.75rem 0;
+	margin-top: 0;
+
+	@include media-breakpoint-up(sm) {
+		margin-top: 3rem;
+	}
 
 	.widget-service-messages {
 
