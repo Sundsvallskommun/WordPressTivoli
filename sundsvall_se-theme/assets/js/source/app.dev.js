@@ -467,6 +467,14 @@ require('./acf-map.js');
 			}
 		}
 
+
+		$('#news .widget-latest-news').slick({
+			speed: 750,
+			adaptiveHeight: true,
+			prevArrow: $('#prevslide'),
+			nextArrow: $('#nextslide')
+		});
+
 	});
 
 

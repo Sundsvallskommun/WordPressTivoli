@@ -71,6 +71,7 @@ class SK_Enqueues {
 	function sk_enqueue_styles() {
 		$this->add_deferred_style( 'main',   get_template_directory_uri().'/assets/css/style.css' );
 		$this->add_deferred_style( 'gfonts', $this->sk_font_url );
+		$this->add_deferred_style( 'slick', '//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css' );
 	}
 
 	function sk_enqueue_scripts() {
@@ -78,6 +79,7 @@ class SK_Enqueues {
 		wp_enqueue_script( 'typeahead', 'https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js', ['jquery'] );
 		wp_enqueue_script( 'responsivevoice', 'https://code.responsivevoice.org/responsivevoice.js' );
 		wp_enqueue_script( 'main', get_template_directory_uri().'/assets/js/app.js', ['jquery', 'handlebars', 'typeahead'] );
+		wp_enqueue_script( 'slick', '//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js' );
 	}
 
 	function add_deferred_style( $handle, $url) {

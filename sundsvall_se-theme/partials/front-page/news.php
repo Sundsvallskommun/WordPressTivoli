@@ -2,6 +2,7 @@
 
 	<h2 class="front-page__heading"><?php _e('Nyheter', 'sundsvall_se')?></h2>
 
+	<div class="news-slider">
 	<ul class="list-unstyled widget-latest-news">
 
 	<?php
@@ -30,6 +31,9 @@
 						<div class="archive-post__date">
 							<?php printf('%s, %s', get_the_date(), get_the_time()); ?>
 						</div>
+						<div class="archive-post__excerpt hidden-sm-up">
+						<?php echo sk_get_excerpt(); ?>
+						</div>
 					</div>
 				</a>
 			</li>
@@ -40,6 +44,13 @@
 		?>
 
 	</ul>
+
+	<div class="slider-controls hidden-md-up">
+		<button id="prevslide" class="btn btn-link"><?php the_icon('arrow-right-circle')?></button>
+		<button id="nextslide" class="btn btn-link"><?php the_icon('arrow-right-circle')?></button>
+	</div>
+	</div>
+
 
 	<a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>" class="btn btn-purple btn-action"><?php the_icon('arrow-right-circle'); ?> Alla nyheter </a>
 
