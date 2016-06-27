@@ -5,8 +5,17 @@
 	<div class="news-slider">
 	<ul class="list-unstyled widget-latest-news">
 
-	<?php
-	$latest_posts = get_posts( array( 'posts_per_page' => 3 ) );
+<?php
+		if(is_front_page()) {
+			$posts_category = get_field( 'news_category', get_option( 'page_on_front' ) );
+		} else {
+			$posts_category = get_field( 'news_category' );
+		}
+
+		$latest_posts = get_posts( array(
+			'posts_per_page' => 3,
+			'category' => $posts_category
+		) );
 
 		foreach ($latest_posts as $post) : setup_postdata( $post );
 		?>

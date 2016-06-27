@@ -29,7 +29,7 @@
 		<h2><a data-toggle="collapse" href="#news" aria-expanded="true" aria-controls="news">Nyheter</a></h2>
 		<div class="collapse in mobile-news" id="news">
 
-			<?php get_template_part('partials/front-page/news'); ?>
+			<?php get_template_part('partials/latest-news'); ?>
 
 			<?php get_template_part('partials/front-page/service-messages'); ?>
 
@@ -62,7 +62,7 @@
 		</div>
 
 		<div class="news-col">
-			<?php get_template_part('partials/front-page/news'); ?>
+			<?php get_template_part('partials/latest-news'); ?>
 		</div>
 
 	</div>
