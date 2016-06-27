@@ -319,3 +319,18 @@ function display_modified_date() {
 	</div>
 <?php
 }
+
+/*
+ * ==============================================
+ *            PAGE AND POST LANGUAGE
+ * ==============================================
+ */
+
+/**
+ * SK_Language
+ * ==========
+ *
+ * Updating post author when original post has been updated
+ */
+require_once locate_template( 'lib/sk-language/class-sk-language.php' );
+$sk_language = new SK_Language();
