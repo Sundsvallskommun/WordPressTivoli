@@ -65,28 +65,48 @@ class SK_Language {
 	public function translated_version_button() {
 		global $post;
 
-		// Return if it's not a swedish post.
-		if ( !$this->is_swedish_post( $post->ID ) )
-			return;
+		if ( $this->is_swedish_post( $post->ID ) ) {
+			// Check if there are any translated versions.
+			$translated_posts = $this->get_translated_posts( $post->ID );
+			if ( $translated_posts ) {
+				// Holds all translated links so we have something
+				// to compare against so two languages won't get printed
+				// more than once.
+				$added_languages_links = array();
 
-		// Check if there are any translated versions.
-		$translated_posts = $this->get_translated_posts( $post->ID );
-		if ( $translated_posts ) {
-			foreach ( $translated_posts as $translated_post ) {
-				$lang_code = get_field( 'lang', $translated_post->ID );
-				echo SK_Helpmenu::helplink( 'listen', get_permalink( $translated_post->ID ), sprintf( __( 'Läs på %s', 'sundsvall_se' ), $this->get_full_name( $lang_code ) ) );
+				foreach ( $translated_posts as $translated_post ) {
+					$lang_code = get_field( 'sk_lang', $translated_post->ID );
+
+					// Skip if for some reason a link to a page with the same
+					// language has already been added.
+					if ( in_array( $lang_code, $added_languages_links ) )
+						continue;
+
+					// Add link.
+					echo SK_Helpmenu::helplink( 'listen', get_permalink( $translated_post->ID ), sprintf( __( 'Läs på %s', 'sundsvall_se' ), $this->get_full_name( $lang_code ) ) );
+
+					// Add to array.
+					$added_languages_links[] = $lang_code;
+				}
 			}
+		}
+
+		else {
+			$permalink = get_permalink( get_post_meta( $post->ID, 'sk_original_post', true ) );
+			echo SK_Helpmenu::helplink( 'listen', $permalink, sprintf( __( 'Läs på %s', 'sundsvall_se' ), $this->get_full_name( 'sv' ) ) );
 		}
 	}
 
 	/**
 	 * Checks ACF if post is swedish or not.
+	 * If lang is not saved on post we can assume it's an older post
+	 * that was written in Swedish.
 	 * @param  integer ID of post
 	 * @return boolean
 	 */
 	private function is_swedish_post( $post_id ) {
 
-		return get_field( 'lang', $post_id ) === 'sv';
+		return ( get_field( 'sk_lang', $post_id ) !== null ) ? get_field( 'sk_lang', $post_id ) === 'sv' : true;
 
 	}
 
@@ -99,7 +119,7 @@ class SK_Language {
 
 		// Query WP for translated posts.
 		$args = array(
-			'meta_key'		=> 'original_post',
+			'meta_key'		=> 'sk_original_post',
 			'meta_value'	=> (int) $post_id,
 			'nopaging'		=> true,
 			'post_type'		=> array( 'post', 'page' ),
@@ -145,6 +165,6 @@ class SK_Language {
 function sk_lang_attr() {
 	global $post;
 	if ( $post ) {
-		printf( 'lang="%s"', get_field( 'lang', $post->ID ) );
+		printf( 'lang="%s"', get_field( 'sk_lang', $post->ID ) );
 	}
 }
