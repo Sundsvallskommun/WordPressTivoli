@@ -15,7 +15,7 @@ class SK_Language {
 	 */
 	function __construct() {
 		// Update author on post save.
-		add_action( 'save_post', array( $this, 'update_author_on_update' ) );
+		add_action( 'save_post', array( $this, 'notify_author_on_update' ) );
 
 		// Add link to finnish translation.
 		add_action( 'sk_page_helpmenu', array( $this, 'translated_version_button' ), 11 );
