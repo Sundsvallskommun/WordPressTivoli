@@ -47,6 +47,9 @@ $children = get_children(array(
 
 foreach($children as $child) {
 
+	// Skip child if lang is set to fin.
+	if ( get_field( 'lang', $child->ID ) === 'fi' ) continue;
+
 	$child_id     = $child->ID;
 	$title        = $child->post_title;
 	$modified     = $child->post_modified;
