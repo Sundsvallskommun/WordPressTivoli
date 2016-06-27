@@ -2,7 +2,7 @@
 
 <?php get_template_part('partials/navbar', 'mobile'); ?>
 
-<header class="site-header">
+<header class="site-header advanced-template-header">
 
 <?php get_template_part('partials/site-navbar'); ?>
 
@@ -12,16 +12,17 @@
 
 			<div class="logo-container">
 
+				<a href="<?php bloginfo('url'); ?>">
+					<?php the_icon('dragon', array(
+						'width' => 118,
+						'height' => 216,
+						'alt' => sprintf(__('%s logotyp, länk till startsidan, sundsvall.se.', 'sundsvall_se'), get_bloginfo('title'))
+					)); ?>
+				</a>
+				<span class="logo-divider">
+					|
+				</span>
 				<h1>
-
-					<a href="<?php bloginfo('url'); ?>">
-						<?php the_icon('logo', array(
-							'height' => 110,
-							'width' => 276,
-							'alt' => sprintf(__('%s logotyp, länk till startsidan, sundsvall.se.', 'sundsvall_se'), get_bloginfo('title'))
-						)); ?>
-					</a>
-						|
 						<?php $ancestor_id = advanced_template_top_ancestor(); ?>
 					<a href="<?php the_permalink($ancestor_id); ?>"><?php echo get_the_title($ancestor_id); ?></a>
 

@@ -1,0 +1,43 @@
+// Webb-i-webb
+
+.advanced-template-header {
+  .logo-container {
+
+    margin-top: .5em;
+    max-width: 100%;
+    white-space: nowrap;
+
+    > * {
+      vertical-align: middle;
+    }
+
+    a {
+      display: inline-block;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    .logo-divider {
+      font-size: 3em;
+      vertical-align: 0;
+    }
+
+    .icon {
+      max-width: 1.75em;
+      margin-right: .3em;
+    }
+
+  }
+
+  h1 {
+    display: inline-block;
+  }
+  .logo-container a {
+    color: inherit;
+    font-weight: 500;
+    font-size: 3rem;
+  }
+
+}
+
