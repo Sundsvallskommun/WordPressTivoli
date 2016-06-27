@@ -11,13 +11,7 @@
 	</div>
 </div>
 
-<div class="container-fluid">
-
-	<div class="image-boxes">
-		<?php get_template_part('partials/front-page/boxes'); ?>
-	</div>
-
-</div>
+<?php get_template_part('partials/boxes'); ?>
 
 <div class="hidden-md-up">
 

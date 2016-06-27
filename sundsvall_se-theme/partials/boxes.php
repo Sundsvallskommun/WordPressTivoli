@@ -1,3 +1,7 @@
+<div class="container-fluid">
+
+<div class="image-boxes">
+
 <?php
 wp_reset_postdata();
 if( have_rows('image_boxes') ):
@@ -60,3 +64,7 @@ else :
 endif;
 
 ?>
+
+</div> <?php //.image-boxes ?>
+
+</div> <?php //.container-fluid ?>
