@@ -25,7 +25,7 @@ class SK_Language {
 	 * @param  integer ID of updated/saved post
 	 * @return void
 	 */
-	public function update_author_on_update( $post_id ) {
+	public function notify_author_on_update( $post_id ) {
 
 		// Don't update author if this is a revision or
 		// if this isn't a swedish post.
