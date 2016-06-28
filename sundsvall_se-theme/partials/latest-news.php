@@ -24,7 +24,12 @@
 				<a href="<?php the_permalink(); ?>">
 					<?php if(has_post_thumbnail()): ?>
 						<div class="media-left">
-							<?php the_post_thumbnail('news-thumb'); ?>
+							<div class="large">
+								<?php the_post_thumbnail('content-half'); ?>
+							</div>
+							<div class="small">
+								<?php the_post_thumbnail('news-thumb'); ?>
+							</div>
 						</div>
 					<?php else: ?>
 						<div class="media-left">
