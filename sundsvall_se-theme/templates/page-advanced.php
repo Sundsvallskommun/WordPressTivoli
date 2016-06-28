@@ -10,11 +10,11 @@
 
 <?php get_template_part('partials/navigation-cards'); ?>
 
-<div class="container-fluid hidden-sm-down">
+<div class="container-fluid">
 
 	<div class="row">
 
-		<div class="news-col">
+		<div class="news-col" id="news">
 			<?php get_template_part('partials/latest-news'); ?>
 		</div>
 

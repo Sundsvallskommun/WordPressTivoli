@@ -378,7 +378,6 @@ require('./acf-map.js');
 
 		function addTypeaheadInDesktop() {
 			if( $(this).width() > 720 ) {
-				console.log('add');
 				initTypeahead();
 				$(this).off('resize', addTypeaheadInDesktop);
 				$(this).on('resize', removeTypeaheadInMobile);
@@ -387,7 +386,6 @@ require('./acf-map.js');
 
 		function removeTypeaheadInMobile() {
 			if( $(this).width() <= 720 ) {
-				console.log('remove');
 				$( 'input[name="s"]' ).typeahead('destroy');
 				$(this).off('resize', removeTypeaheadInMobile);
 				$(this).on('resize', addTypeaheadInDesktop);
@@ -468,12 +466,36 @@ require('./acf-map.js');
 		}
 
 
-		$('#news .widget-latest-news').slick({
-			speed: 750,
-			adaptiveHeight: true,
-			prevArrow: $('#prevslide'),
-			nextArrow: $('#nextslide')
-		});
+		function initNewsSlider() {
+			$('#news .widget-latest-news').slick({
+				speed: 750,
+				adaptiveHeight: true,
+				prevArrow: $('#prevslide'),
+				nextArrow: $('#nextslide')
+			});
+		}
+
+		if( $(window).width() <= 720 ) {
+			initNewsSlider();
+		}
+
+		function removeSliderInDesktop() {
+			if( $(this).width() > 720 ) {
+				$( '#news .widget-latest-news' ).slick( 'unslick' );
+				$(this).on('resize', addSliderInMobile);
+				$(this).off('resize', removeSliderInDesktop);
+			}
+		}
+
+		function addSliderInMobile() {
+			if( $(this).width() <= 720 ) {
+				initNewsSlider();
+				$(this).on('resize', removeSliderInDesktop);
+				$(this).off('resize', addSliderInMobile);
+			}
+		}
+
+		$(window).on( 'resize', addSliderInMobile);
 
 	});
 
