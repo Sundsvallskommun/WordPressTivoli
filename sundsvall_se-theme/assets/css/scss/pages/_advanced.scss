@@ -3,6 +3,7 @@
 .advanced-template-header {
   .logo-container {
 
+    display: block;
     margin-top: .5em;
     max-width: 100%;
     white-space: nowrap;
@@ -19,7 +20,10 @@
     }
 
     .logo-divider {
-      font-size: 3em;
+      font-size: 1.5em;
+      @include media-breakpoint-up(md) {
+        font-size: 3em;
+      }
       vertical-align: 0;
     }
 
@@ -33,10 +37,14 @@
   h1 {
     display: inline-block;
   }
+
   .logo-container a {
     color: inherit;
     font-weight: 500;
-    font-size: 3rem;
+    font-size: 1.25rem;
+    @include media-breakpoint-up(md) {
+      font-size: 3rem;
+    }
   }
 
 }

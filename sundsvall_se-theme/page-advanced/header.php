@@ -19,6 +19,7 @@
 						'alt' => sprintf(__('%s logotyp, länk till startsidan, sundsvall.se.', 'sundsvall_se'), get_bloginfo('title'))
 					)); ?>
 				</a>
+
 				<span class="logo-divider">
 					|
 				</span>

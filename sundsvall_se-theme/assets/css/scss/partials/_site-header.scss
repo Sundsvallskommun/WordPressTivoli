@@ -44,7 +44,7 @@
 	background: rgba(profile-color(björnstigen, 2), .95);
 	color: white;
 	height: 4em;
-	padding: .5em;
+	padding: .5em $spacer-x;
 	z-index: 1;
 
 	&.navbar-fixed-bottom {
