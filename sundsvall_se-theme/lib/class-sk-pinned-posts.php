@@ -47,8 +47,35 @@ class SK_Pinned_Posts {
 		<a class="alert alert-centered <?php echo "alert-$alert_type"; ?>" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
 			<span>
 				<?php the_icon('error'); ?>
-				<strong><?php the_title(); ?>.</strong>
-				<?php echo sk_get_excerpt(); ?> »
+				<?php
+				/**
+				 * Limit title and excerpt to 130 characters in pinned posts
+				 */
+				$maxlength = 130;
+
+				$original_title   = get_the_title();
+
+				$title_length = strlen($original_title);
+
+				// Limit length of title
+				$title = substr($original_title, 0, $maxlength);
+
+				// Add ellipsis at the end of title if it has been limited.
+				$title .= ($title !== $original_title) ? '…' : '.';
+
+				$remaining_limit = $maxlength - $title_length;
+
+				$original_excerpt = sk_get_excerpt();
+
+				// Limit length of excerpt based on remaining limit after title.
+				$excerpt = ($remaining_limit > 0) ? substr($original_excerpt, 0, $remaining_limit) : '';
+
+				// Add ellipsis at the end of excerpt if it has been limited.
+				$excerpt .= ($excerpt !== $original_excerpt && strlen($excerpt)) ? '…' : '';
+
+				?>
+				<strong><?php echo $title; ?></strong>
+				<?php echo $excerpt; ?> »
 			</span>
 		</a>
 
