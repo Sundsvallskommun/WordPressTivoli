@@ -74,6 +74,8 @@ class SK_Vacancy {
 		$html = '';
 
 		// Add a order dropdown.
+		$orderby_title_link = add_query_arg( 'orderby', 'title' );
+		$orderby_dateend_link = add_query_arg( 'orderby', 'dateend' );
 		$html .= <<<XYZ
 		<div class="btn-group">
 			<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -81,8 +83,8 @@ class SK_Vacancy {
 			</button>
 
 			<div class="dropdown-menu">
-				<a class="dropdown-item order-option" data-orderby="title" href="?orderby=title">Rubrik</a>
-				<a class="dropdown-item order-option" data-orderby="date_end" href="?orderby=date_end">Sista datum</a>
+				<a class="dropdown-item order-option" data-orderby="title" href="{$orderby_title_link}">Rubrik</a>
+				<a class="dropdown-item order-option" data-orderby="date_end" href="{$orderby_dateend_link}">Sista datum</a>
 			</div>
 		</div>
 XYZ;
