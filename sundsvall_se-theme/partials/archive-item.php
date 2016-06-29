@@ -1,18 +1,19 @@
-<div class="archive-post media">
+<div class="archive-post">
 	<a href="<?php the_permalink(); ?>">
 
-		<div class="media-left">
+		<div class="archive-post__thumbnail">
 			<?php if(has_post_thumbnail()): ?>
-					<?php the_post_thumbnail('news-thumb'); ?>
+					<?php the_post_thumbnail('news-thumb-medium'); ?>
 			<?php else: ?>
 					<div class="img-placeholder">
-						<?php echo the_icon('logo'); ?>
+						<?php echo the_icon('dragon'); ?>
 					</div>
 			<?php endif; ?>
 		</div>
 
-		<div class="media-body">
-			<h2 class="media-heading archive-post__title">
+		<div class="archive-post__content">
+
+			<h2 class="archive-post__title">
 				<?php the_title(); ?>
 			</h2>
 

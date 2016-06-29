@@ -28,13 +28,13 @@
 								<?php the_post_thumbnail('content-half'); ?>
 							</div>
 							<div class="small">
-								<?php the_post_thumbnail('news-thumb'); ?>
+								<?php the_post_thumbnail('news-thumb-small'); ?>
 							</div>
 						</div>
 					<?php else: ?>
 						<div class="media-left">
 							<div class="img-placeholder">
-								<?php echo the_icon('logo'); ?>
+								<?php echo the_icon('dragon'); ?>
 							</div>
 						</div>
 					<?php endif; ?>
