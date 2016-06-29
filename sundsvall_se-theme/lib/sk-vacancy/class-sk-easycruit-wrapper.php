@@ -98,7 +98,7 @@ class SK_Easycruit_Wrapper {
 		// Check if all is good.
 		if ( $xml ) {
 			// Return as StdClass.
-			return $this->convert_xml_to_obj( $xml );
+			return $this->convert_xml_to_obj( $xml, true );
 		}
 	}
 
@@ -132,14 +132,51 @@ class SK_Easycruit_Wrapper {
 	 * @param  SimpleXMLElement
 	 * @return StdClass
 	 */
-	private function convert_xml_to_obj( SimpleXMLElement $xml ) {
-		return (object) array(
+	private function convert_xml_to_obj( SimpleXMLElement $xml, $detailed = false ) {
+		$ret = array(
 			'id'			=> (int) $xml->attributes()->id,
 			'date_start'	=> (string) $xml->attributes()->date_start,
 			'date_end'		=> (string) $xml->attributes()->date_end,
 			'title'			=> (string) $xml->Versions->Version->Title,
 			'description'	=> (string) $xml->Versions->Version->TitleHeading
 		);
+
+		// Add some more info if XML is detailed.
+		if ( $detailed ) {
+			// Add some more information.
+			$ret['description']		= (string) $xml->Versions->Version->Description;
+			$ret['sub-title']		= (string) $xml->Versions->Version->TitleHeading;
+
+			// Save contact persons in an array.
+			$ret['contact_persons']	= array();
+
+			// Add contact persons.
+			$c = 0;
+			foreach ( $xml->Departments->Department->ContactPersons->ContactPerson as $contact ) {
+				$ret['contact_persons'][ $c ] = array(
+					'name'			=> (string) $contact->CommonName,
+					'phonenumbers'	=> array()
+				);
+
+				// Loop through telephone numbers and add them.
+				foreach ( $contact->Telephone as $phone ) {
+					$phone_type = (string) $phone->attributes()->type;
+					$index = sprintf( '%s_phone', $phone_type );
+					$ret['contact_persons'][ $c ]['phonenumbers'][ $index ] = (string) $phone;
+				}
+
+				// Convert to object.
+				$ret['contact_persons'][ $c ] = (object) $ret['contact_persons'][ $c ];
+
+				$c++;
+			}
+
+			// Add link.
+			$ret['apply_link'] 		= $xml->Departments->Department->ApplicationURL;
+		}
+
+		// Return it as an object.
+		return (object) $ret;
 	}
 
 	/**
