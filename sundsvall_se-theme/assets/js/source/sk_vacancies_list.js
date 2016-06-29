@@ -24,6 +24,9 @@
 			// Don't go to link.
 			e.preventDefault();
 
+			// Reload $vacancies.
+			// $vacancies = $('.vacancies .vacancy');
+
 			// First, detach from DOM.
 			$vacancies.detach();
 
@@ -43,8 +46,10 @@
 				case 'date_end':
 				if ( $vacancies.data( 'orderby' ) === 'date_end' ) break;
 					$vacancies.sort(function(a, b) {
-						var dateA = Date.parse( $(a).find('.last-application-date').text() ),
-							dateB = Date.parse( $(b).find('.last-application-date').text() );
+						var dateA = $(a).find( '.last-application-date' ).text().match(/([\d-].*)$/),
+							dateB = $(b).find( '.last-application-date' ).text().match(/([\d-].*)$/),
+							dateA = Date.parse( dateA[1] ),
+							dateB = Date.parse( dateB[1] );
 						return ( dateA - dateB );
 					});
 					$vacancies.data( 'orderby', 'date_end' );
