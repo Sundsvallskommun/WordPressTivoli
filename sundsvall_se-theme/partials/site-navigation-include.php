@@ -11,8 +11,8 @@ if(!class_exists('Menu_Icons_Walker')) {
 				$class_names = join( ' ', $item->classes );
 			}
 
-			$output .= sprintf( "\n<li class='nav-%s %s'>
-				<a href='%s'%s>
+			$output .= sprintf( "\n
+				<a class='nav-%s %s' href='%s'%s>
 					<span class='menu-item-icon'>%s</span>
 					<span class='menu-item-text'>%s</span>
 				</a>
@@ -26,6 +26,9 @@ if(!class_exists('Menu_Icons_Walker')) {
 			);
 		}
 
+		function end_el( &$output, $object, $depth = 0, $args = array() ) {
+		}
+
 	}
 
 }
@@ -36,7 +39,7 @@ if(!class_exists('Menu_Icons_Walker')) {
 		'theme_location'  => 'main-menu',
 		'container'       => false,
 		'menu_class'      => 'menu-container list-inline',
-		'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+		'items_wrap'      => '<nav id="%1$s" class="%2$s">%3$s</nav>',
 		'walker'          => new Menu_Icons_Walker()
 	);
 	wp_nav_menu( $nav_args );
