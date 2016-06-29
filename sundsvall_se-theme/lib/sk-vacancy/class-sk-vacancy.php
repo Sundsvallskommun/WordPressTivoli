@@ -97,8 +97,9 @@ XYZ;
 							// Loop through all phone numbers contact currently has and add them.
 							foreach ( $contact->phonenumbers as $type => $phone ) {
 								$type_name = ( $type === 'cellular_phone' ) ? 'Mobil' : 'Telefon';
+								$phone_number = get_phone_links( $phone );
 								$html .= <<<XYZ
-								<span class="{$type}">{$type_name}: {$phone}</span>
+								<span class="{$type}">{$type_name}: {$phone_number}</span>
 XYZ;
 							}
 
