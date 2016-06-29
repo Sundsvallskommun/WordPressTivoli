@@ -186,7 +186,9 @@ XYZ;
 add_filter( 'the_title', array( SK_Vacancy::get_instance(), 'filter_the_title' ), 10, 2 );
 
 // Register our shortcode.
+// Alternative 'ledigajobb' for swedish.
 add_shortcode( 'sk-vacancy', array( SK_Vacancy::get_instance(), 'sc_vacancy_func' ) );
+add_shortcode( 'ledigajobb', array( SK_Vacancy::get_instance(), 'sc_vacancy_func' ) );
 
 /**
  * Register our query var with WP so it's easier to retrieve it later.
