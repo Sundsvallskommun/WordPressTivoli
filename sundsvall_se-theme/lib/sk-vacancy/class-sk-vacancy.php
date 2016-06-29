@@ -110,6 +110,22 @@ XYZ;
 			// Enqueue our JS.
 			// wp_enqueue_script( 'sk-vacancies-list' );
 
+			// Add a order dropdown.
+			$orderby_title_link = add_query_arg( 'orderby', 'title' );
+			$orderby_dateend_link = add_query_arg( 'orderby', 'dateend' );
+			$html .= <<<XYZ
+			<div class="btn-group">
+				<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Sortera efter
+				</button>
+
+				<div class="dropdown-menu">
+					<a class="dropdown-item order-option" data-orderby="title" href="{$orderby_title_link}">Rubrik</a>
+					<a class="dropdown-item order-option" data-orderby="date_end" href="{$orderby_dateend_link}">Ansökningsdatum</a>
+				</div>
+			</div>
+XYZ;
+
 			// Get all vacancies.
 			$vacancies = $this->api_w->get_all_vacancies( $this->get_orderby() );
 			if ( $vacancies ) {
