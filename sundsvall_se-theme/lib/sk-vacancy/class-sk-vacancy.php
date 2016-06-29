@@ -76,32 +76,45 @@ class SK_Vacancy {
 		// $html will be returned at end of func.
 		$html = '';
 
-		// Add a order dropdown.
-		$orderby_title_link = add_query_arg( 'orderby', 'title' );
-		$orderby_dateend_link = add_query_arg( 'orderby', 'dateend' );
-		$html .= <<<XYZ
-		<div class="btn-group">
-			<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Sortera efter
-			</button>
-
-			<div class="dropdown-menu">
-				<a class="dropdown-item order-option" data-orderby="title" href="{$orderby_title_link}">Rubrik</a>
-				<a class="dropdown-item order-option" data-orderby="date_end" href="{$orderby_dateend_link}">Sista datum</a>
-			</div>
-		</div>
-XYZ;
-
 		// First, check if we're showing single...
 		if ( $this->is_single() ) {
 			$vacancy = $this->api_w->get_single( $this->get_vacancy_id() );
 			if ( $vacancy ) {
 				$html .= <<<XYZ
 				<div class="vacancy">
-					<p>{$vacancy->description}</h3>
-					<span class="last-application-date">Sista ansökningsdagen: {$vacancy->date_end}</span>
-				</div>
+					<p>{$vacancy->{'sub-title'}}</p>
+					{$vacancy->description}
+
+					<div class="contact-persons">
 XYZ;
+
+				// Loop through all contact persons add them.
+				foreach ( $vacancy->contact_persons as $contact ) {
+					$html .= <<<XYZ
+						<div class="contact">
+							<h3>{$contact->name}</h3>
+XYZ;
+							// Loop through all phone numbers contact currently has and add them.
+							foreach ( $contact->phonenumbers as $type => $phone ) {
+								$type_name = ( $type === 'cellular_phone' ) ? 'Mobil' : 'Telefon';
+								$html .= <<<XYZ
+								<span class="{$type}">{$type_name}: {$phone}</span>
+XYZ;
+							}
+
+						// Close div.contact
+						$html .= '</div>';
+				}
+
+				$html .= <<<XYZ
+				<div class="apply">
+					<a class="btn btn-success" href="{$vacancy->apply_link}">Sök jobbet</a>
+				</div>
+				<span class="last-application-date">Sista ansökningsdagen: {$vacancy->date_end}</span>
+XYZ;
+
+				// Close div.vacancy
+				$html .= '</div>';
 			}
 		}
 
