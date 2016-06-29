@@ -93,10 +93,12 @@ XYZ;
 		if ( $this->is_single() ) {
 			$vacancy = $this->api_w->get_single( $this->get_vacancy_id() );
 			if ( $vacancy ) {
-				$html .= '<div class="vacancy">';
-					$html .= "<p>{$vacancy->description}</h3>";
-					$html .= "<span class='last-application-date'>Sista ansökningsdagen: {$vacancy->date_end}</span";
-				$html .= '</div>';
+				$html .= <<<XYZ
+				<div class="vacancy">
+					<p>{$vacancy->description}</h3>
+					<span class="last-application-date">Sista ansökningsdagen: {$vacancy->date_end}</span>
+				</div>
+XYZ;
 			}
 		}
 
@@ -116,13 +118,15 @@ XYZ;
 					$date_start_unix = strtotime( $vacancy->date_start );
 					$date_end_unix = strtotime( $vacancy->date_end );
 
-					$html .= "<li class='vacancy list-group-item' data-dateend='{$date_end_unix}'>";
-						$html .= "<a href='{$url}'>";
-							$html .= "<h4 class='list-group-item-heading'>{$vacancy->title}</h4>";
-							$html .= "<p class='list-group-item-text'>{$vacancy->description}</p>";
-							$html .= "<p class='last-application-date list-group-item-text'>Sista ansökningsdagen: {$vacancy->date_end}</p>";
-						$html .= '</a>';
-					$html .= '</li>';
+					$html .= <<<XYZ
+					<li class="vacancy list-group-item" data-dateend="{$date_end_unix}"">
+						<a href="{$url}"">
+							<h4 class="list-group-item-heading">{$vacancy->title}</h4>
+							<p class="list-group-item-text">{$vacancy->description}</p>
+							<p class="last-application-date list-group-item-text">Sista ansökningsdagen: {$vacancy->date_end}</p>
+						</a>
+					</li>
+XYZ;
 				}
 
 				$html .= '</ul>';
