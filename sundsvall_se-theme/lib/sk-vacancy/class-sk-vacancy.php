@@ -105,7 +105,7 @@ XYZ;
 		// Otherwise we'll show the entire list.
 		else {
 			// Enqueue our JS.
-			wp_enqueue_script( 'sk-vacancies-list' );
+			// wp_enqueue_script( 'sk-vacancies-list' );
 
 			// Get all vacancies.
 			$vacancies = $this->api_w->get_all_vacancies( $this->get_orderby() );
