@@ -51,7 +51,10 @@ class SK_Vacancy {
 	 * @return string
 	 */
 	public function filter_the_title( $title, $id = null ) {
-		if ( is_main_query() && in_the_loop() && $this->is_single() ) {
+		global $post;
+
+		// Let's try our best to only alter the main post title.
+		if ( is_main_query() && in_the_loop() && $this->is_single() && $post->post_title === $title ) {
 			$vacancy = $this->api_w->get_single( $this->get_vacancy_id() );
 			if ( $vacancy ) {
 				return $vacancy->title;
