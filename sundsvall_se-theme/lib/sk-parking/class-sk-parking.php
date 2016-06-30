@@ -87,7 +87,7 @@ XYZ;
 		}
 
 		else {
-			$html .= '<p>Ett fel uppstod vid hätmnning av parkeringsplatser. Försök igen senare!<p>';
+			$html .= '<p>Ett fel uppstod vid hämtning av parkeringsplatser. Försök igen senare!<p>';
 		}
 
 		return $html;
