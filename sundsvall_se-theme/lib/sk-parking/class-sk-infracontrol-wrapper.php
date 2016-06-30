@@ -63,6 +63,9 @@ class SK_Infracontrol_Wrapper {
 	 * @return array|boolean
 	 */
 	private function get_parking_lots_from_api() {
+		// If SOAP isn't enabled, return false.
+		if ( !extension_loaded( 'soap' ) ) return false;
+
 		// Initiate SoapClient.
 		$client = new SoapClient( self::$WS_URL );
 
