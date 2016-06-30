@@ -18,7 +18,7 @@ class SK_Page_Contacts {
 		$this->page_contacts = null;
 
 		add_action( 'init', array(&$this, 'register_post_type'));
-		add_action( 'sk_after_page_content', array(&$this, 'output_page_contact'), 40);
+		add_action( 'sk_after_page_content', array(&$this, 'output_page_contacts'), 40);
 
 		add_filter('the_title', array(&$this, 'contact_unique_admin_titles'), 10, 2);
 
@@ -29,7 +29,7 @@ class SK_Page_Contacts {
 
 	}
 
-	private function get_page_contacts() {
+	private function get_page_contact_ids() {
 
 		global $post;
 
@@ -50,7 +50,7 @@ class SK_Page_Contacts {
 
 	function contact_sidebar_link() {
 
-		$page_contacts = $this->get_page_contacts();
+		$page_contacts = $this->get_page_contact_ids();
 
 		if(is_array($page_contacts)) {
 
@@ -143,8 +143,10 @@ class SK_Page_Contacts {
 		}
 	}
 
-	function output_page_contact() {
-		global $post;
+	/**
+	 * Echo div with page contacts
+	 */
+	function output_page_contacts() {
 
 		// We don't show page contact on navigation page. ACF is set to not show
 		// the field on nav-page. But if it was set and saved and later changed
@@ -154,7 +156,8 @@ class SK_Page_Contacts {
 				return;
 		}
 
-		$page_contacts = $this->get_page_contacts();
+		// Get array with info about page contacts
+		$page_contacts = $this->get_page_contacts_info();
 
 		if(is_array($page_contacts)) {
 
@@ -162,12 +165,30 @@ class SK_Page_Contacts {
 
 			echo '<h2>Kontakt</h2>';
 
-			foreach($page_contacts as $contact) {
-				echo $this->get_page_contact($contact);
+			foreach($page_contacts as $args) {
+				echo $this->get_page_contact_markup($args);
 			}
 
 			echo '</div>';
 		}
+
+	}
+
+	/**
+	 * Return array with info about page contacts (name, email etc.)
+	 */
+	function get_page_contacts_info() {
+
+		$page_contact_ids = $this->get_page_contact_ids();
+
+		$contact_args = array();
+
+		foreach($page_contact_ids as $id) {
+			$contact_args[] = $this->get_page_contact($id);
+		}
+
+		// Filter array to allow adding and removing page contacts
+		return apply_filters( 'sk_page_contacts', $contact_args );
 
 	}
 
@@ -185,13 +206,35 @@ class SK_Page_Contacts {
 			return false;
 		}
 
-		$contact_name  = get_the_title($contact_id);
-		$contact_role  = get_field('role', $contact_id);
-		$contact_email = get_field('email', $contact_id);
-		$contact_phone = get_field('phone', $contact_id);
-		$contact_address = get_field('address', $contact_id);
-		$contact_hours = get_field('hours', $contact_id);
-		$contact_thumb = get_the_post_thumbnail($contact_id, 'thumbnail');
+		$args = array(
+			'name' => get_the_title($contact_id),
+			'role' => get_field('role', $contact_id),
+			'email' => get_field('email', $contact_id),
+			'phone' => get_field('phone', $contact_id),
+			'address' => get_field('address', $contact_id),
+			'hours' => get_field('hours', $contact_id),
+			'thumbnail' => get_the_post_thumbnail($contact_id, 'thumbnail'),
+			'show_thumb' => $show_thumb
+		);
+
+		return $args;
+
+
+		return $this->get_page_contact_markup($args);
+
+	}
+
+	function get_page_contact_markup($args = array()) {
+
+			$contact_name  = isset($args['name']) ? $args['name'] : '';
+			$contact_role  = isset($args['role']) ? $args['role'] : '';
+			$contact_email = isset($args['email']) ? $args['email'] : '';
+			$contact_phone = isset($args['phone']) ? $args['phone'] : '';
+			$contact_address = isset($args['address']) ? $args['address'] : '';
+			$contact_hours = isset($args['hours']) ? $args['hours'] : '';
+			$contact_thumb = isset($args['thumbnail']) ? $args['thumbnail'] : '';
+			$show_thumb = isset($args['show_thumb']) ? $args['show_thumb'] : '';
+
 
 			$contact =  '<div class="page-contact">';
 			if($show_thumb) {
@@ -230,7 +273,7 @@ class SK_Page_Contacts {
 			$contact .= '<div class="clearfix"></div>';
 			$contact .= '</div>';
 
-		return apply_filters( 'sk_page_contact', $contact, $contact_thumb, $contact_name, $contact_role, $contact_email, $contact_phone);
+			return apply_filters( 'sk_page_contact', $contact, $args);
 
 	}
 
