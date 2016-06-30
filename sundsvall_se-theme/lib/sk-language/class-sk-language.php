@@ -83,7 +83,7 @@ class SK_Language {
 						continue;
 
 					// Add link.
-					echo SK_Helpmenu::helplink( 'listen', get_permalink( $translated_post->ID ), sprintf( __( 'Läs på %s', 'sundsvall_se' ), $this->get_full_name( $lang_code ) ) );
+					echo SK_Helpmenu::helplink( 'language', get_permalink( $translated_post->ID ), sprintf( __( 'Läs på %s', 'sundsvall_se' ), $this->get_full_name( $lang_code ) ) );
 
 					// Add to array.
 					$added_languages_links[] = $lang_code;
@@ -93,7 +93,7 @@ class SK_Language {
 
 		else {
 			$permalink = get_permalink( get_post_meta( $post->ID, 'sk_original_post', true ) );
-			echo SK_Helpmenu::helplink( 'listen', $permalink, sprintf( __( 'Läs på %s', 'sundsvall_se' ), $this->get_full_name( 'sv' ) ) );
+			echo SK_Helpmenu::helplink( 'language', $permalink, sprintf( __( 'Läs på %s', 'sundsvall_se' ), $this->get_full_name( 'sv' ) ) );
 		}
 	}
 
