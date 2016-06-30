@@ -69,6 +69,51 @@ class SK_Vacancy {
 	}
 
 	/**
+	 * Filters page contacts for single vacancy pages.
+	 * @return array|boolean
+	 */
+	public function filter_page_contacts( $contacts ) {
+		// We're only interested in changing anything if
+		// we're showing a single vacancy because it's then
+		// that we want to add the applications contact info.
+		if ( $this->is_single() ) {
+
+			// Also make sure that we have a valid single vacancy.
+			$vacancy = $this->api_w->get_single( $this->get_vacancy_id() );
+			if ( $vacancy ) {
+				// Reset array.
+				$contacts = array();
+
+				// Loop through all contact_persons for this vacancy
+				// and add them to the $contacts array.
+				foreach ( $vacancy->contact_persons as $contact ) {
+					// Inner loop for phone numbers since function is expecting
+					// comma separated string.
+					$phone = '';
+					foreach ( $contact->phonenumbers as $type => $number ) {
+						$phone .= ',' . $number;
+					}
+					$phone = ltrim( $phone, ',' );
+
+					// Add to array.
+					$contacts[] = array(
+						'name'		=> $contact->name,
+						'phone'		=> $phone
+					);
+				}
+
+				// Add thumbnail argument.
+				//$contacts['show_thumb'] = true;
+			}
+
+
+		}
+
+		// Return original.
+		return $contacts;
+	}
+
+	/**
 	 * @return string HTML output for vacancies
 	 */
 	public function sc_vacancy_func() {
@@ -84,34 +129,11 @@ class SK_Vacancy {
 				<div class="vacancy">
 					<p>{$vacancy->{'sub-title'}}</p>
 					{$vacancy->description}
-
-					<div class="contact-persons">
-XYZ;
-
-				// Loop through all contact persons add them.
-				foreach ( $vacancy->contact_persons as $contact ) {
-					$html .= <<<XYZ
-						<div class="contact">
-							<h3>{$contact->name}</h3>
-XYZ;
-							// Loop through all phone numbers contact currently has and add them.
-							foreach ( $contact->phonenumbers as $type => $phone ) {
-								$type_name = ( $type === 'cellular_phone' ) ? 'Mobil' : 'Telefon';
-								$phone_number = get_phone_links( $phone );
-								$html .= <<<XYZ
-								<span class="{$type}">{$type_name}: {$phone_number}</span>
-XYZ;
-							}
-
-						// Close div.contact
-						$html .= '</div>';
-				}
-
-				$html .= <<<XYZ
-				<div class="apply">
-					<a class="btn btn-success" href="{$vacancy->apply_link}">Sök jobbet</a>
-				</div>
-				<span class="last-application-date">Sista ansökningsdagen: {$vacancy->date_end}</span>
+	
+					<div class="apply">
+						<a class="btn btn-success" href="{$vacancy->apply_link}">Sök jobbet</a>
+					</div>
+					<span class="last-application-date">Sista ansökningsdagen: {$vacancy->date_end}</span>
 XYZ;
 
 				// Close div.vacancy
@@ -217,6 +239,7 @@ XYZ;
 // Add a filter to the_title so we can change it to the
 // vacancy's title if we're showing a single.
 add_filter( 'the_title', array( SK_Vacancy::get_instance(), 'filter_the_title' ), 10, 2 );
+add_filter( 'sk_page_contacts', array( SK_Vacancy::get_instance(), 'filter_page_contacts' ), 10, 1 );
 
 // Register our shortcode.
 // Alternative 'ledigajobb' for swedish.
