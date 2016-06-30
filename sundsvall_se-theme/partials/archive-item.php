@@ -3,7 +3,7 @@
 
 		<div class="archive-post__thumbnail">
 			<?php if(has_post_thumbnail()): ?>
-					<?php the_post_thumbnail('news-thumb-medium'); ?>
+					<?php the_post_thumbnail('news-thumb-large'); ?>
 			<?php else: ?>
 					<div class="img-placeholder">
 						<?php echo the_icon('dragon'); ?>

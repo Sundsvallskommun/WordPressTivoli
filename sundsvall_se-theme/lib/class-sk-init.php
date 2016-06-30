@@ -59,6 +59,7 @@ class SK_Init {
 
 		add_image_size( 'news-thumb-small',  132, 92, true);
 		add_image_size( 'news-thumb-medium', 370, 258, true);
+		add_image_size( 'news-thumb-large',  720, 502, true);
 
 		update_option('image_default_size', 'content-half');
 

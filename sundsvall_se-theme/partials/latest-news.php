@@ -25,7 +25,7 @@
 					<?php if(has_post_thumbnail()): ?>
 						<div class="media-left">
 							<div class="large">
-								<?php the_post_thumbnail('content-half'); ?>
+								<?php the_post_thumbnail('news-thumb-medium'); ?>
 							</div>
 							<div class="small">
 								<?php the_post_thumbnail('news-thumb-small'); ?>
