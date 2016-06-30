@@ -95,6 +95,11 @@ Kollar om en sida är en navigationssida.
 
 ### sk_popular_eservices
 
+## Shortcodes
+
+### parkeringsplatser / sk-parking
+Används på sidor eller inlägg för att visa en tabell med lediga parkeringsplatser i Sundsvall med data hämtat från Infracontrol.
+
 # Övrigt
 
 ## "Blev du hjälp av sidan?"
