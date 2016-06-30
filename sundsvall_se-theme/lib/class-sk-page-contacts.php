@@ -235,7 +235,7 @@ class SK_Page_Contacts {
 			$contact_address = isset($args['address']) ? $args['address'] : '';
 			$contact_hours = isset($args['hours']) ? $args['hours'] : '';
 			$contact_thumb = isset($args['thumbnail']) ? $args['thumbnail'] : '';
-			$show_thumb = isset($args['show_thumb']) ? $args['show_thumb'] : '';
+			$show_thumb = isset($args['show_thumb']) ? $args['show_thumb'] : true;
 
 
 			$contact =  '<div class="page-contact">';
