@@ -334,3 +334,18 @@ function display_modified_date() {
  */
 require_once locate_template( 'lib/sk-vacancy/class-sk-vacancy.php' );
 $sk_vacancy = SK_Vacancy::get_instance();
+
+/*
+ * ==============================================
+ *                   PARKING
+ * ==============================================
+ */
+
+/**
+ * SK_Parking
+ * ==========
+ *
+ * Functionality for showing list and single vacancies
+ */
+require_once locate_template( 'lib/sk-parking/class-sk-parking.php' );
+$sk_parking = SK_Parking::get_instance();
