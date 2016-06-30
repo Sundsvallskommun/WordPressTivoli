@@ -419,12 +419,17 @@ require('./sk_vacancies_list.js');
 		* Show voice-over playback controls (pause/resume and stop)
 		*/
 		function playbackControls() {
-			$controlContainer = $('<div class="bg-info p-a-2"></div>').css({'position': 'fixed', 'bottom': 0, 'right': 0, 'z-index': 9999});
+			$controlContainer = $('<div class="bg-faded p-x-2 p-t-2"></div>').css({'position': 'fixed', 'bottom': 0, 'right': 0, 'z-index': 9999});
 			var pauseButton = $('<button class="btn btn-lg btn-secondary m-r-1" id="voicePause">' + pauseLabel + '</button>').on('click', pauseControl);
 			var stopButton = $('<button class="btn btn-lg btn-danger" id="voiceStop">Sluta lyssna</button>').on('click', stopReading);
 
+			var attribution = ['<div style="margin-top: 2em; width:300px;vertical-align:top;font-family: Arial;font-size:9pt;line-height: normal">',
+			'<a rel="license" href="//responsivevoice.org/"><img title="ResponsiveVoice Text To Speech" src="https://responsivevoice.org/wp-content/uploads/2014/08/120x31.png" style="float:left;padding-right:2px" /></a><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a href="//responsivevoice.org/" target="_blank" title="ResponsiveVoice Text To Speech">ResponsiveVoice</a></span> used under <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" title="Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License">Non-Commercial License</a></div>',
+			'<div style="clear:both;">&nbsp;</div>'].join('');
+
 			$controlContainer.append(pauseButton);
 			$controlContainer.append(stopButton);
+			$controlContainer.append(attribution);
 
 			$('body').append($controlContainer);
 		}
