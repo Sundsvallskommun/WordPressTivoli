@@ -187,10 +187,10 @@ class SK_Page_Contacts {
 			foreach($page_contact_ids as $id) {
 				$contact_args[] = $this->get_page_contact($id);
 			}
-
-			// Filter array to allow adding and removing page contacts
-			return apply_filters( 'sk_page_contacts', $contact_args );
 		}
+
+		// Filter array to allow adding and removing page contacts
+		return apply_filters( 'sk_page_contacts', $contact_args );
 
 	}
 
