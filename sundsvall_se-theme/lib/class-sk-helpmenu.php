@@ -27,7 +27,9 @@ class SK_Helpmenu {
 	}
 
 	function listen_button() {
-		echo $this->helplink('listen', '#', __('Lyssna', 'sundsvall_se'), array('type' => 'button', 'id' => 'responsivevoice' ));
+		if(is_singular() && !is_front_page()) {
+			echo $this->helplink('listen', '#', __('Lyssna', 'sundsvall_se'), array('type' => 'button', 'id' => 'responsivevoice' ));
+		}
 	}
 
 	function print_link() {
