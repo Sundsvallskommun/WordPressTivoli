@@ -335,12 +335,6 @@ function display_modified_date() {
 <?php
 }
 
-/*
- * ==============================================
- *            PAGE AND POST LANGUAGE
- * ==============================================
- */
-
 /**
  * SK_Language
  * ==========
@@ -349,3 +343,20 @@ function display_modified_date() {
  */
 require_once locate_template( 'lib/sk-language/class-sk-language.php' );
 $sk_language = new SK_Language();
+
+/* SK_Vacancy
+ * ==========
+ *
+ * Functionality for showing list and single vacancies
+ */
+require_once locate_template( 'lib/sk-vacancy/class-sk-vacancy.php' );
+$sk_vacancy = SK_Vacancy::get_instance();
+
+/**
+ * SK_Parking
+ * ==========
+ *
+ * Functionality for showing list and single vacancies
+ */
+require_once locate_template( 'lib/sk-parking/class-sk-parking.php' );
+$sk_parking = SK_Parking::get_instance();
