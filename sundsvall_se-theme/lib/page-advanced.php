@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Return id of ancestor (or self) advanced template.
+ */
 function advanced_template_top_ancestor() {
 	global $post;
 
@@ -10,6 +13,8 @@ function advanced_template_top_ancestor() {
 	foreach( $ancestors as $ancestor ) {
 		if( is_advanced_template($ancestor) ) return $ancestor;
 	}
+
+	return false;
 }
 
 function is_advanced_template( $id ) {

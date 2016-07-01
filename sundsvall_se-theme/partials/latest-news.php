@@ -65,7 +65,28 @@
 	</div>
 	</div>
 
+<?php
 
-	<a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>" class="btn btn-purple btn-action"><?php the_icon('arrow-right-circle'); ?> Alla nyheter </a>
+	if(is_advanced_template( get_the_id() )) {
+
+		$pages = get_posts(array(
+			'post_type' => 'page',
+			'meta_key' => '_wp_page_template',
+			'meta_value' => 'templates/page-advanced-news.php',
+			'post_parent' => get_the_id(),
+			'posts_per_page' => 1
+		));
+
+		$all_posts_page = $pages[0]->ID;
+
+	} else {
+		$all_posts_page = get_option( 'page_for_posts' );
+	}
+
+?>
+
+	<a href="<?php echo get_permalink( $all_posts_page ); ?>" class="btn btn-purple btn-action"><?php the_icon('arrow-right-circle'); ?> Alla nyheter </a>
+
+
 
 </section>
