@@ -62,7 +62,8 @@
 		width: 2em;
 		height: 2em;
 		transform: translate(.6em, -50%);
-		fill: currentColor;
+		fill: $background;
+		background: $color;
 
 		@include media-breakpoint-up(md) {
 			top: 0;

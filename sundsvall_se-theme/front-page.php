@@ -40,12 +40,12 @@
 	<div class="container-fluid m-b-1">
 
 		<a class="btn btn-action btn-warning">
-			<?php the_icon('arrow-right-circle')?>
+			<?php the_icon('arrow-right')?>
 			<span>Felanmälan</span>
 		</a>
 
 		<a class="btn btn-action btn-eservice">
-			<?php the_icon('arrow-right-circle')?>
+			<?php the_icon('arrow-right')?>
 			<span>E-tjänster</span>
 		</a>
 

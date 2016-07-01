@@ -159,7 +159,7 @@ class SK_Page_Contacts {
 		// Get array with info about page contacts
 		$page_contacts = $this->get_page_contacts_info();
 
-		if(is_array($page_contacts)) {
+		if(is_array($page_contacts) && !empty($page_contacts)) {
 
 			echo '<div id="contact" class="page-contacts">';
 
