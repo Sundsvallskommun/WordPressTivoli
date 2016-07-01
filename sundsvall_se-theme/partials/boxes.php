@@ -43,7 +43,7 @@ if( have_rows('image_boxes') ):
 		</figure>
 
 		<a class="btn btn-action btn-purple hidden-md-up">
-			<?php the_icon('arrow-right-circle')?>
+			<?php the_icon('arrow-right')?>
 			<?php if(get_sub_field( 'box_title' )): ?>
 				<span><?php the_sub_field( 'box_title' ); ?></span>
 			<?php endif; ?>
