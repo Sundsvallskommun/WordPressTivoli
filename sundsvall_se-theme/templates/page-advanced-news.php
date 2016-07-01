@@ -15,9 +15,6 @@
 
 $advanced_ancestor = advanced_template_top_ancestor();
 $cats = get_field('news_category', $advanced_ancestor);
-
-error_log($cats);
-
 $query = new WP_Query( array( 'cat' => $cats ) );
 
 
