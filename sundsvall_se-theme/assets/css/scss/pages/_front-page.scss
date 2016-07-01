@@ -129,24 +129,25 @@
 
 		#prevslide,
 		#nextslide {
-			opacity: .25;
+
+			opacity: .75;
 			position: absolute;
-			top: 50%;
+			top: calc(70vw - 4em);
 			padding: 0;
 			height: 2em;
 			width: 2em;
 			fill: profile-color(björnstigen, 2);
 			&:hover {
         opacity: 1;
-				fill: profile-color(björnstigen, 1);
+				fill: profile-color(björnstigen, 3);
 			}
 		}
 		#prevslide {
-			left: 0;
+			left: 1.5em;
 			transform: translateY(-50%) translateX(-65%) rotate(180deg);
 		}
 		#nextslide {
-			right: 0;
+			right: 1.5em;
 			transform: translateY(-50%) translateX(65%);
 		}
 	}
