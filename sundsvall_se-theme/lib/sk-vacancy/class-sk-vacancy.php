@@ -125,15 +125,17 @@ class SK_Vacancy {
 		if ( $this->is_single() ) {
 			$vacancy = $this->api_w->get_single( $this->get_vacancy_id() );
 			if ( $vacancy ) {
+				$icon = get_icon( 'arrow-right' );
 				$html .= <<<XYZ
 				<div class="vacancy">
+					<span class="last-application-date">Sista ansökningsdagen: {$vacancy->date_end}</span>
+
+					<div class="apply">
+						<a class="btn btn-purple btn-action" href="{$vacancy->apply_link}">{$icon} Sök jobbet</a>
+					</div>
+
 					<p>{$vacancy->{'sub-title'}}</p>
 					{$vacancy->description}
-	
-					<div class="apply">
-						<a class="btn btn-success" href="{$vacancy->apply_link}">Sök jobbet</a>
-					</div>
-					<span class="last-application-date">Sista ansökningsdagen: {$vacancy->date_end}</span>
 XYZ;
 
 				// Close div.vacancy
@@ -150,22 +152,45 @@ XYZ;
 			$orderby_title_link = add_query_arg( 'orderby', 'title' );
 			$orderby_dateend_link = add_query_arg( 'orderby', 'dateend' );
 			$html .= <<<XYZ
-			<div class="btn-group">
-				<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Sortera efter
-				</button>
+			<div class="input-group" style="display: none;">
+				Sortera efter
 
-				<div class="dropdown-menu">
-					<a class="dropdown-item order-option" data-orderby="title" href="{$orderby_title_link}">Rubrik</a>
-					<a class="dropdown-item order-option" data-orderby="date_end" href="{$orderby_dateend_link}">Ansökningsdatum</a>
-				</div>
+				<select class="c-select order">
+					<option class="order-option" value="dateend"><a href="{$orderby_dateend_link}">Ansökningsdatum</a></option>
+					<option class="order-option" value="title"><a href="{$orderby_title_link}">Rubrik</a></option>
+				</select>
 			</div>
 XYZ;
+
+			// Add categories radio buttons.
+			$html .= '<div class="input-group categories" style="display: none;">';
+				$html .= <<<XYZ
+				<div class="radio-inline">
+					<label>
+						<input type="radio" name="category" id="all" value="all" class="category" checked>
+						Visa alla
+					</label>
+				</div>
+XYZ;
+				foreach ( $this->api_w->get_vacancies_categories() as $category => $count ) {
+					$id = sanitize_title( $category );
+					$html .= <<<XYZ
+					<div class="radio-inline">
+						<label>
+							<input type="radio" name="category" id="{$id}" value="{$id}" class="category">
+							{$category}
+						</label>
+					</div>
+XYZ;
+				}
+
+			// Close div.input-group
+			$html .= '</div>';
 
 			// Get all vacancies.
 			$vacancies = $this->api_w->get_all_vacancies( $this->get_orderby() );
 			if ( $vacancies ) {
-				$html .= '<ul class="vacancies list-group">';
+				$html .= '<div class="vacancies list-group">';
 				foreach ( $vacancies as $vacancy ) {
 					$url = add_query_arg( 'vacancyID', $vacancy->id );
 
@@ -174,17 +199,15 @@ XYZ;
 					$date_end_unix = strtotime( $vacancy->date_end );
 
 					$html .= <<<XYZ
-					<li class="vacancy list-group-item" data-dateend="{$date_end_unix}"">
-						<a href="{$url}"">
-							<h4 class="list-group-item-heading">{$vacancy->title}</h4>
-							<p class="list-group-item-text">{$vacancy->description}</p>
-							<p class="last-application-date list-group-item-text">Sista ansökningsdagen: {$vacancy->date_end}</p>
-						</a>
-					</li>
+					<a href="{$url}" class="vacancy list-group-item" data-category="{$vacancy->sanitized_cat}" data-dateend="{$date_end_unix}">
+						<h4 class="list-group-item-heading">{$vacancy->title}</h4>
+						<p class="list-group-item-text">{$vacancy->description}</p>
+						<p class="last-application-date list-group-item-text">Sista ansökningsdagen: {$vacancy->date_end}</p>
+					</a>
 XYZ;
 				}
 
-				$html .= '</ul>';
+				$html .= '</div>';
 			}
 		}
 
