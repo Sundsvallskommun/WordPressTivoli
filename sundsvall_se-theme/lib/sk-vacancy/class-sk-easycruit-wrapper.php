@@ -83,7 +83,20 @@ class SK_Easycruit_Wrapper {
 		$this->order( $orderby );
 
 		// Then return them.
-		return $this->vacancy_list;
+		return $this->vacancy_list->vacancies;
+	}
+
+	/**
+	 * Returns all categories found in current vacancies list.
+	 * @return array|boolean
+	 */
+	public function get_vacancies_categories() {
+		if ( $this->vacancy_list === null ) {
+			$this->vacancy_list = $this->get_all_vacancies_from_api();
+		}
+
+		// Return categories.
+		return $this->vacancy_list->categories;
 	}
 
 	/**
@@ -114,17 +127,40 @@ class SK_Easycruit_Wrapper {
 		if ( $xml ) {
 			// Loop through them, retrieve all relevant information
 			// and save them as objects in an array that we can later return.
-			$ret = array();
+			$ret = array(
+				'categories'	=> array(),
+				'vacancies'		=> array()
+			);
+
+			// Loop through them, read category and convert to object.
 			foreach ( $xml->Vacancy as $vacancy ) {
-				$ret[] = $this->convert_xml_to_obj( $vacancy );
+				$category = $this->get_category_name( $vacancy );
+
+				// Set category.
+				// Set it to 1 if this is the first occurence, otherwise count it up.
+				$ret[ 'categories' ][ $category ] = ( isset( $ret[ 'categories' ][ $category ] ) ) ?
+					$ret[ 'categories' ][ $category ] + 1 : 1;
+
+				// Convert to an object.
+				$ret[ 'vacancies' ][] = $this->convert_xml_to_obj( $vacancy );
 			}
-			return $ret;
+			return (object) $ret;
 		}
 
 		// Otherwise something went wrong and we'll return false.
 		else {
 			return false;
 		}
+	}
+
+	/**
+	 * Returns Vacancy items category from XML.
+	 * @param  SimpleXMLElement
+	 * @return string
+	 */
+	private function get_category_name( SimpleXMLElement $xml ) {
+		return (string) ( !empty( ( string) $xml->Versions->Version->Categories->Item[0] ) ) ?
+					(string) $xml->Versions->Version->Categories->Item[0] : 'Okategoriserad';
 	}
 
 	/**
@@ -138,7 +174,9 @@ class SK_Easycruit_Wrapper {
 			'date_start'	=> (string) $xml->attributes()->date_start,
 			'date_end'		=> (string) $xml->attributes()->date_end,
 			'title'			=> (string) $xml->Versions->Version->Title,
-			'description'	=> (string) $xml->Versions->Version->TitleHeading
+			'description'	=> (string) $xml->Versions->Version->TitleHeading,
+			'category'		=> $this->get_category_name( $xml ),
+			'sanitized_cat'	=> sanitize_title( $this->get_category_name( $xml ) )
 		);
 
 		// Add some more info if XML is detailed.
