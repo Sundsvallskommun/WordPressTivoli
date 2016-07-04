@@ -360,3 +360,12 @@ $sk_vacancy = SK_Vacancy::get_instance();
  */
 require_once locate_template( 'lib/sk-parking/class-sk-parking.php' );
 $sk_parking = SK_Parking::get_instance();
+
+/**
+ * SK_Admincolumns
+ * ===============
+ *
+ * Adds columns to post type.
+ */
+require_once locate_template( 'lib/class-sk-admincolumns.php' );
+$sk_admincolumns = new SK_Admincolumns();
