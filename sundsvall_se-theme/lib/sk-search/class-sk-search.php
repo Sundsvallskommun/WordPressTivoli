@@ -92,7 +92,11 @@ class SK_Search {
 
 	public function handlebar_templates() {
 		?>
-			<script id="searchitem-template-main" type="text/x-handlebars-template">
+			<script id="searchitem-template-pages" type="text/x-handlebars-template">
+				<?php printf($this->item_template(), '{{type}}', '{{url}}', get_icon('alignleft'), '{{title}}', '{{type_label}}', 'Uppdaterad {{modified}}' ); ?>
+			</script>
+
+			<script id="searchitem-template-posts" type="text/x-handlebars-template">
 				<?php printf($this->item_template(), '{{type}}', '{{url}}', get_icon('alignleft'), '{{title}}', '{{type_label}}', 'Uppdaterad {{modified}}' ); ?>
 			</script>
 
@@ -132,21 +136,32 @@ class SK_Search {
 
 	public function get_search_results($type = null) {
 
-		$main = $this->searchresult_main();
+		$pages = $this->searchresult_pages();
+		$posts = $this->searchresult_posts();
 		$contacts = $this->searchresult_contacts();
 		$attachments = $this->searchresult_attachments();
 		$eservices = $this->searchresult_eservices();
 
 		$result = array();
 
-		if(!$type || $type == 'main') {
-			$result['main'] = array(
-				'title' => __( 'Sidor och nyheter', 'sundsvall_se' ),
-				'posts' => $main['posts'],
-				'found_posts' => $main['found_posts'],
-				'max_num_pages' => $main['max_num_pages']
+		if(!$type || $type == 'pages') {
+			$result['pages'] = array(
+				'title' => __( 'Sidor', 'sundsvall_se' ),
+				'posts' => $pages['posts'],
+				'found_posts' => $pages['found_posts'],
+				'max_num_pages' => $pages['max_num_pages']
 			);
 		}
+
+		if(!$type || $type == 'posts') {
+			$result['posts'] = array(
+				'title' => __( 'Nyheter', 'sundsvall_se' ),
+				'posts' => $posts['posts'],
+				'found_posts' => $posts['found_posts'],
+				'max_num_pages' => $posts['max_num_pages']
+			);
+		}
+
 
 		if(!$type || $type == 'contacts') {
 			$result['contacts'] = array(
@@ -178,10 +193,12 @@ class SK_Search {
 		return $result;
 	}
 
-	private function searchresult_main() {
+	private function searchresult_pages() {
 
 		$query = new WP_Query();
-		$posts = $query->query($this->queryArgs);
+		$args = $this->queryArgs;
+		$args['post_type'] = 'page';
+		$posts = $query->query($args);
 		$posts = array_map( array( &$this, 'map_wp_posts' ), $posts);
 
 		return array(
@@ -191,6 +208,23 @@ class SK_Search {
 		);
 
 	}
+
+	private function searchresult_posts() {
+
+		$query = new WP_Query();
+		$args = $this->queryArgs;
+		$args['post_type'] = 'post';
+		$posts = $query->query($args);
+		$posts = array_map( array( &$this, 'map_wp_posts' ), $posts);
+
+		return array(
+			'posts' => $posts,
+			'found_posts' => $query->found_posts,
+			'max_num_pages' => $query->max_num_pages
+		);
+
+	}
+
 
 	private function searchresult_contacts() {
 

@@ -258,15 +258,28 @@ require('./sk_vacancies_list.js');
 
 		console.log(parentParam);
 
-		var mainResult = new Bloodhound({
+		var pageResult = new Bloodhound({
 
 			datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
 			queryTokenizer: Bloodhound.tokenizers.whitespace,
 
 			remote: {
-				url: ajaxdata.ajax_url + '?action=search_suggestions&type=main&s=%QUERY'+parentParam,
+				url: ajaxdata.ajax_url + '?action=search_suggestions&type=pages&s=%QUERY'+parentParam,
 				wildcard: '%QUERY',
-				transform: function(response) { return response.main.posts.slice(0, 3); }
+				transform: function(response) { return response.pages.posts.slice(0, 3); }
+			}
+
+		});
+
+		var postResult = new Bloodhound({
+
+			datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
+			queryTokenizer: Bloodhound.tokenizers.whitespace,
+
+			remote: {
+				url: ajaxdata.ajax_url + '?action=search_suggestions&type=posts&s=%QUERY'+parentParam,
+				wildcard: '%QUERY',
+				transform: function(response) { return response.posts.posts.slice(0, 3); }
 			}
 
 		});
@@ -292,7 +305,7 @@ require('./sk_vacancies_list.js');
 			remote: {
 				url: ajaxdata.ajax_url + '?action=search_suggestions&type=attachments&s=%QUERY'+parentParam,
 				wildcard: '%QUERY',
-				transform: function(response) { return response.media.posts.slice(0, 3); }
+				transform: function(response) { return response.attachments.posts.slice(0, 3); }
 			}
 
 		});
@@ -313,7 +326,8 @@ require('./sk_vacancies_list.js');
 		/*
 		* Typeahead
 		*/
-		var mainTemplate       = $('#searchitem-template-main').html();
+		var pageTemplate       = $('#searchitem-template-posts').html();
+		var postTemplate       = $('#searchitem-template-pages').html();
 		var contactTemplate    = $('#searchitem-template-contacts').html();
 		var attachmentTemplate = $('#searchitem-template-attachments').html();
 		var eserviceTemplate   = $('#searchitem-template-eservice').html();
@@ -324,13 +338,22 @@ require('./sk_vacancies_list.js');
 			 minLength: 3,
 			 highlight: true
 		 },{
-			 name: 'main-result',
+			 name: 'page-result',
 			 display: 'title',
-			 source: mainResult,
+			 source: pageResult,
 			 limit: Infinity, //Fix for bug causing only two results to show. See https://github.com/twitter/typeahead.js/issues/1232
 			 templates: {
-					header: '<h3 class="tt-heading">Sidor och nyheter</h3>',
-					suggestion: Handlebars.compile(mainTemplate)
+					header: '<h3 class="tt-heading">Sidor</h3>',
+					suggestion: Handlebars.compile(pageTemplate)
+				}
+		 },{
+			 name: 'post-result',
+			 display: 'title',
+			 source: postResult,
+			 limit: Infinity, //Fix for bug causing only two results to show. See https://github.com/twitter/typeahead.js/issues/1232
+			 templates: {
+					header: '<h3 class="tt-heading">Nyheter</h3>',
+					suggestion: Handlebars.compile(postTemplate)
 				}
 		 },{
 			 name: 'contacts-result',
