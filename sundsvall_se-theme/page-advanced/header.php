@@ -24,7 +24,7 @@
 					|
 				</span>
 				<h1>
-						<?php $ancestor_id = advanced_template_top_ancestor(); ?>
+					<?php $ancestor_id = advanced_template_top_ancestor(); ?>
 					<a href="<?php the_permalink($ancestor_id); ?>"><?php echo get_the_title($ancestor_id); ?></a>
 
 				</h1>

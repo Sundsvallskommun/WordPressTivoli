@@ -2,7 +2,13 @@
 
 function sk_header() {
 
-	if(is_advanced_template_child()) {
+	$search_parent = (isset($_GET['parent'])) ? sanitize_text_field( $_GET['parent'] ) : null;
+
+	if( $search_parent && is_advanced_template_child($search_parent) ) {
+		return get_template_part('page-advanced/header');
+	}
+
+	if(is_advanced_template_child() && !is_search()) {
 		return get_template_part('page-advanced/header');
 	} else {
 		get_header();

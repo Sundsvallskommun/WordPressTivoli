@@ -1,13 +1,11 @@
-<?php 
-global $post;
-if ( is_advanced_template_child($post->ID) ) {
-	$id = $post->ID;
-}
+<?php
+// Used in hidden input to set query parameter of advanced template
+$parent_id = advanced_template_top_ancestor();
 ?>
 
 <form role="search" method="get" id="searchform" class="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-	<?php if( isset($id) ): ?>
-	<input type="hidden" value="<?php echo $id; ?>" name="parent" />
+	<?php if( $parent_id ): ?>
+	<input type="hidden" value="<?php echo $parent_id; ?>" name="parent" />
 	<?php endif; ?>
 	<div class="input-group">
 		<input type="text" value="<?php echo get_search_query(); ?>" class="form-control" placeholder="Vad kan vi hjälpa dig med?" name="s" id="s" />
