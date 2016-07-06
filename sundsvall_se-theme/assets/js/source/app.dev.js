@@ -191,7 +191,8 @@ require('./sk_vacancies_list.js');
 					action: 'sk_search',
 					type: type,
 					s: term,
-					page: page
+					page: page,
+					parent: searchparams.post_parent
 				}
 
 			}).done( function(data) {
@@ -256,8 +257,6 @@ require('./sk_vacancies_list.js');
 
 		var parentParam = searchparams.post_parent ? '&parent='+searchparams.post_parent : '';
 
-		console.log(parentParam);
-
 		var pageResult = new Bloodhound({
 
 			datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
@@ -266,7 +265,10 @@ require('./sk_vacancies_list.js');
 			remote: {
 				url: ajaxdata.ajax_url + '?action=search_suggestions&type=pages&s=%QUERY'+parentParam,
 				wildcard: '%QUERY',
-				transform: function(response) { return response.pages.posts.slice(0, 3); }
+				transform: function(response) {
+					if(!response || !response.pages) return false;
+					return response.pages.posts.slice(0, 3);
+				}
 			}
 
 		});
@@ -279,7 +281,10 @@ require('./sk_vacancies_list.js');
 			remote: {
 				url: ajaxdata.ajax_url + '?action=search_suggestions&type=posts&s=%QUERY'+parentParam,
 				wildcard: '%QUERY',
-				transform: function(response) { return response.posts.posts.slice(0, 3); }
+				transform: function(response) {
+					if(!response || !response.posts) return false;
+					return response.posts.posts.slice(0, 3);
+				}
 			}
 
 		});
@@ -292,7 +297,10 @@ require('./sk_vacancies_list.js');
 			remote: {
 				url: ajaxdata.ajax_url + '?action=search_suggestions&type=contacts&s=%QUERY'+parentParam,
 				wildcard: '%QUERY',
-				transform: function(response) { return response.contacts.posts.slice(0, 3); }
+				transform: function(response) { 
+					if(!response || !response.contacts) return false;
+					return response.contacts.posts.slice(0, 3);
+				}
 			}
 
 		});
@@ -305,7 +313,10 @@ require('./sk_vacancies_list.js');
 			remote: {
 				url: ajaxdata.ajax_url + '?action=search_suggestions&type=attachments&s=%QUERY'+parentParam,
 				wildcard: '%QUERY',
-				transform: function(response) { return response.attachments.posts.slice(0, 3); }
+				transform: function(response) { 
+					if(!response || !response.attachments) return false;
+					return response.attachments.posts.slice(0, 3);
+				}
 			}
 
 		});
@@ -318,7 +329,10 @@ require('./sk_vacancies_list.js');
 			remote: {
 				url: ajaxdata.ajax_url + '?action=search_suggestions&type=eservice&s=%QUERY'+parentParam,
 				wildcard: '%QUERY',
-				transform: function(response) { return response.eservices.posts.slice(0, 3); }
+				transform: function(response) {
+					if(!response || !response.eservices) return false;
+					return response.eservices.posts.slice(0, 3);
+				}
 			}
 
 		});
@@ -383,12 +397,12 @@ require('./sk_vacancies_list.js');
 					suggestion: Handlebars.compile(eserviceTemplate),
 					empty : [
 							'<div class="search-module__footer">',
-								'<a href="/?s=%QUERY" class="tt-loadmore">Visa fler</a>',
+								'<a href="/?parent='+searchparams.post_parent+'&s=%QUERY" class="tt-loadmore">Visa fler</a>',
 							'<div>'
 						].join('\n'),
 					footer : [
 							'<div class="search-module__footer">',
-								'<a href="/?s=%QUERY" class="tt-loadmore">Visa fler</a>',
+								'<a href="/?parent='+searchparams.post_parent+'&s=%QUERY" class="tt-loadmore">Visa fler</a>',
 							'<div>'
 						].join('\n')
 				}

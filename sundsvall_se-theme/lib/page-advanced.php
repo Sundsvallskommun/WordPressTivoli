@@ -53,6 +53,6 @@ function is_advanced_template_child( $id = null ) {
 add_filter( 'sk_search_post_parent',  'advanced_template_search_post_parent', 10, 1 );
 
 function advanced_template_search_post_parent($post_parent) {
-	return (isset($_GET['parent'])) ? sanitize_text_field( $_GET['parent'] ) : $post_parent;
+	return (isset($_REQUEST['parent'])) ? sanitize_text_field( $_REQUEST['parent'] ) : $post_parent;
 }
 

@@ -217,13 +217,13 @@ class SK_Search {
 		$posts = array_map( array( &$this, 'map_wp_posts' ), $posts);
 
 		if( $this->is_advanced_search ) {
-			$this->page;
+			$posts = array_splice( $posts, ($this->page - 1) * $this->posts_per_page, $this->posts_per_page );
 		}
 
 		return array(
 			'posts' => $posts,
 			'found_posts' => $found_posts,
-			'max_num_pages' => $query->max_num_pages
+			'max_num_pages' => $max_num_pages
 		);
 
 	}
