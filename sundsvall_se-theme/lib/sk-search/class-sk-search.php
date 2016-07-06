@@ -18,6 +18,7 @@ class SK_Search {
 		// If this is set we should base all search results on it. Used by advanced
 		// template.
 		$this->post_parent = apply_filters( 'sk_search_post_parent', null );
+		$this->is_advanced_search = is_advanced_template_child($this->post_parent);
 
 		// The term to search for.
 		$this->search_string = (isset($_GET['s'])) ? sanitize_text_field( $_GET['s'] ) : '';
@@ -136,15 +137,10 @@ class SK_Search {
 
 	public function get_search_results($type = null) {
 
-		$pages = $this->searchresult_pages();
-		$posts = $this->searchresult_posts();
-		$contacts = $this->searchresult_contacts();
-		$attachments = $this->searchresult_attachments();
-		$eservices = $this->searchresult_eservices();
-
 		$result = array();
 
 		if(!$type || $type == 'pages') {
+			$pages = $this->searchresult_pages();
 			$result['pages'] = array(
 				'title' => __( 'Sidor', 'sundsvall_se' ),
 				'posts' => $pages['posts'],
@@ -154,6 +150,7 @@ class SK_Search {
 		}
 
 		if(!$type || $type == 'posts') {
+			$posts = $this->searchresult_posts();
 			$result['posts'] = array(
 				'title' => __( 'Nyheter', 'sundsvall_se' ),
 				'posts' => $posts['posts'],
@@ -162,8 +159,8 @@ class SK_Search {
 			);
 		}
 
-
-		if(!$type || $type == 'contacts') {
+		if((!$type || $type == 'contacts') && !$this->is_advanced_search) {
+			$contacts = $this->searchresult_contacts();
 			$result['contacts'] = array(
 				'title' => __( 'Kontakter', 'sundsvall_se' ),
 				'posts' => $contacts['posts'],
@@ -172,7 +169,8 @@ class SK_Search {
 			);
 		}
 
-		if(!$type || $type == 'attachments') {
+		if((!$type || $type == 'attachments') && !$this->is_advanced_search) {
+			$attachments = $this->searchresult_attachments();
 			$result['attachments'] = array(
 				'title' => __( 'Bilder och dokument', 'sundsvall_se' ),
 				'posts' => $attachments['posts'],
@@ -181,7 +179,8 @@ class SK_Search {
 			);
 		}
 
-		if(!$type || $type == 'eservice') {
+		if((!$type || $type == 'eservice') && !$this->is_advanced_search) {
+			$eservices = $this->searchresult_eservices();
 			$result['eservices'] = array(
 				'title' => __( 'E-tjänster', 'sundsvall_se' ),
 				'posts' => $eservices,
@@ -198,12 +197,30 @@ class SK_Search {
 		$query = new WP_Query();
 		$args = $this->queryArgs;
 		$args['post_type'] = 'page';
+
+		// Get all pages to be able to show only children of advanced template.
+		if( $this->is_advanced_search ) {
+			$args['posts_per_page'] = -1;
+		}
+
 		$posts = $query->query($args);
+
+		if( $this->is_advanced_search ) {
+			$posts = get_page_children( $this->post_parent, $posts );
+		}
+
+		$found_posts = $this->is_advanced_search ? count($posts) : $query->found_posts;
+		$max_num_pages = $this->is_advanced_search ? ceil($found_posts / $this->posts_per_page) : $query->max_num_pages;
+
 		$posts = array_map( array( &$this, 'map_wp_posts' ), $posts);
+
+		if( $this->is_advanced_search ) {
+			$this->page;
+		}
 
 		return array(
 			'posts' => $posts,
-			'found_posts' => $query->found_posts,
+			'found_posts' => $found_posts,
 			'max_num_pages' => $query->max_num_pages
 		);
 
@@ -214,6 +231,12 @@ class SK_Search {
 		$query = new WP_Query();
 		$args = $this->queryArgs;
 		$args['post_type'] = 'post';
+
+		// Only show posts from advanced page categories.
+		if( $this->is_advanced_search ) {
+			$args['cat'] = get_field( 'news_category', $this->post_parent );
+		}
+
 		$posts = $query->query($args);
 		$posts = array_map( array( &$this, 'map_wp_posts' ), $posts);
 
