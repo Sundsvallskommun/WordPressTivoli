@@ -375,3 +375,13 @@ $sk_parking = SK_Parking::get_instance();
  */
 require_once locate_template( 'lib/class-sk-admincolumns.php' );
 $sk_admincolumns = new SK_Admincolumns();
+
+/**
+ * SK_Revisions
+ * ============
+ *
+ * Adds functionaliy for setting a published date for already published posts
+ * and displaying a previous revision until then.
+ */
+require_once locate_template( 'lib/class-sk-revisions.php' );
+$sk_revisions = SK_Revisions::get_instance();
