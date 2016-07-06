@@ -18,6 +18,7 @@ class SK_Search {
 		// If this is set we should base all search results on it. Used by advanced
 		// template.
 		$this->post_parent = apply_filters( 'sk_search_post_parent', null );
+
 		$this->is_advanced_search = is_advanced_template_child($this->post_parent);
 
 		// The term to search for.
@@ -66,6 +67,7 @@ class SK_Search {
 		wp_localize_script( 'main', 'searchparams', array(
 			'ajax_url'         => admin_url( 'admin-ajax.php' ),
 			'search_string'    => $this->search_string,
+			'post_parent'      => is_advanced_template_child() ? advanced_template_top_ancestor() : $this->post_parent,
 			'currentPage' => (get_query_var('paged')) ? get_query_var('paged') : 1
 	 	) );
 

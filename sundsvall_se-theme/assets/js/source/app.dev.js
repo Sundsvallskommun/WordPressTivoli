@@ -254,7 +254,7 @@ require('./sk_vacancies_list.js');
 
 		});
 
-		var parentParam = '&parent='+searchparams.post_parent
+		var parentParam = searchparams.post_parent ? '&parent='+searchparams.post_parent : '';
 
 		console.log(parentParam);
 
