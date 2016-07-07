@@ -5,6 +5,8 @@
  */
 function advanced_template_top_ancestor() {
 
+	if(is_admin()) return false;
+
 	$id = apply_filters( 'sk_search_post_parent', null );
 
 	global $post;
@@ -27,10 +29,16 @@ function advanced_template_top_ancestor() {
 }
 
 function is_advanced_template( $id ) {
+
+	if(is_admin()) return false;
+
 	return get_page_template_slug($id) == 'templates/page-advanced.php';
 }
 
 function is_advanced_template_child( $id = null ) {
+
+	if(is_admin()) return false;
+
 	global $post;
 
 	if(isset($id)) {
