@@ -174,6 +174,12 @@ function get_section_class_name($item = null) {
  */
 function ancestor_field($page_id, array $fields) {
 
+	$is_revision = wp_is_post_revision( $page_id );
+
+	if( $is_revision ) {
+		$page_id = $is_revision;
+	}
+
 	$parent_id = wp_get_post_parent_id($page_id);
 
 	if(!$parent_id) {
