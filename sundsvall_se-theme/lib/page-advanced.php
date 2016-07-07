@@ -5,7 +5,9 @@
  */
 function advanced_template_top_ancestor() {
 
-	if(is_admin()) return false;
+	if ( is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
+		return false;
+	}
 
 	$id = apply_filters( 'sk_search_post_parent', null );
 
@@ -30,14 +32,18 @@ function advanced_template_top_ancestor() {
 
 function is_advanced_template( $id ) {
 
-	if(is_admin()) return false;
+	if ( is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
+		return false;
+	}
 
 	return get_page_template_slug($id) == 'templates/page-advanced.php';
 }
 
 function is_advanced_template_child( $id = null ) {
 
-	if(is_admin()) return false;
+	if ( is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
+		return false;
+	}
 
 	global $post;
 
