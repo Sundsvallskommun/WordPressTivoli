@@ -53,6 +53,8 @@ function is_advanced_template_child( $id = null ) {
 		$the_post = $post;
 	}
 
+	if( !$the_post ) return null;
+
 	if( is_advanced_template( $the_post->ID ) ) return true;
 
 	$ancestors = get_post_ancestors($the_post);
