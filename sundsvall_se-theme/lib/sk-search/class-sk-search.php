@@ -1,7 +1,11 @@
 <?php
 /**
+ * Improved search functions such as split by type, search by ajax and limit
+ * search based on current advanced template.
  *
+ * @author Johan Linder <johan@fmca.se>
  *
+ * @since 1.0
  */
 
 require_once __DIR__.'/../sk-eservices/class-oep-api.php';
@@ -27,11 +31,12 @@ class SK_Search {
 		// Current page in pagination
 		$this->page = (isset($_GET['page'])) ? sanitize_text_field( $_GET['page']) : 1;
 
+		// Number of search results
 		$this->posts_per_page = 6;
 
+		// Base args for WP-Query
 		$this->queryArgs = array(
 			's' => $this->search_string,
-			'post_type' => array( 'page', 'post' ),
 			'posts_per_page' => $this->posts_per_page,
 			'paged' => $this->page
 		);
@@ -49,7 +54,12 @@ class SK_Search {
 		add_action( 'wp_ajax_nopriv_search_suggestions', array( &$this, 'ajax_search' ) );
 	}
 
-	function ajax_search() {
+	/**
+	 * Echo json for searching with ajax.
+	 *
+	 * @return void
+	 */
+	public function ajax_search() {
 
 		$type = (isset($_GET['type'])) ? sanitize_text_field( $_GET['type'] ) : false;
 
@@ -61,7 +71,9 @@ class SK_Search {
 		die();
 	}
 
-	// Localize script to set variables to use in "load more" ajax requests
+	/**
+	 * Localize script to set variables to use in ajax search requests
+	 */
 	function ajax_search_variables() {
 
 		wp_localize_script( 'main', 'searchparams', array(
@@ -73,6 +85,9 @@ class SK_Search {
 
 	}
 
+	/**
+	 * @return string Markup template in sprintf-format.
+	 */
 	public function item_template() {
 		return '
 			<li class="search-module__item search-module__item--%s">
@@ -93,6 +108,9 @@ class SK_Search {
 			</li>';
 	}
 
+	/**
+	 * Echo handlebar templates for each search type
+	 */
 	public function handlebar_templates() {
 		?>
 			<script id="searchitem-template-pages" type="text/x-handlebars-template">
@@ -117,6 +135,11 @@ class SK_Search {
 		<?php
 	}
 
+	/**
+	 * Format post to be used in search template and ajax.
+	 *
+	 * @return array
+	 */
 	private function map_wp_posts( $post ) {
 
 		$filepath = get_attached_file( $post->ID );
@@ -137,6 +160,13 @@ class SK_Search {
 
 	}
 
+	/**
+	 * Search for all results or by type
+	 *
+	 * @param string $type optional type of search result to return
+	 *
+	 * @return array Search result
+	 */
 	public function get_search_results($type = null) {
 
 		$result = array();
@@ -194,6 +224,9 @@ class SK_Search {
 		return $result;
 	}
 
+	/**
+	 * Search for pages. If advanced template hierarchy, only return descendats.
+	 */
 	private function searchresult_pages() {
 
 		$query = new WP_Query();
@@ -228,6 +261,10 @@ class SK_Search {
 
 	}
 
+	/**
+	 * Search for posts. If advanced template hierarchy, only return posts of
+	 * advanced template categories.
+	 */
 	private function searchresult_posts() {
 
 		$query = new WP_Query();
@@ -251,6 +288,9 @@ class SK_Search {
 	}
 
 
+	/**
+	 * Search for contacts persons.
+	 */
 	private function searchresult_contacts() {
 
 		$query = new WP_Query();
@@ -267,6 +307,9 @@ class SK_Search {
 
 	}
 
+	/**
+	 * Search for attachments.
+	 */
 	private function searchresult_attachments() {
 
 		$query = new WP_Query();
@@ -284,6 +327,9 @@ class SK_Search {
 
 	}
 
+	/**
+	 * Search for e-services.
+	 */
 	public function searchresult_eservices() {
 
 		$result = $this->oep->search_services($this->search_string);
