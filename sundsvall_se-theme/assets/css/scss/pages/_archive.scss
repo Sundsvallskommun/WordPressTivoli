@@ -1,5 +1,26 @@
 .archive {
 
+	.row {
+
+		// Clear float at first div in each "row", else the layout break if
+		// headings are too long.
+		@include media-breakpoint-up(sm) {
+			> div:nth-child(2n+1) {
+				clear: left;
+			}
+		}
+
+		@include media-breakpoint-up(md) {
+			> div:nth-child(3n+1) {
+				clear: left;
+			}
+			> div:nth-child(2n+1) {
+				clear: none;
+			}
+		}
+
+	}
+
 	.archive-post__thumbnail {
 		margin-bottom: $spacer-y;
 		img, .img-placeholder {
@@ -28,6 +49,7 @@
 }
 
 .archive-post {
+
 	.media-left {
 		padding-right: $spacer-x*2;
 	}
