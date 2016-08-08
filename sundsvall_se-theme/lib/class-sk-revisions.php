@@ -44,7 +44,8 @@ class SK_Revisions {
 	 * @param  WP_Post
 	 * @return void
 	 */
-	public function add_save_draft_btn( $post ) {
+	public function add_save_draft_btn() {
+		global $post;
 		if ( count( wp_get_post_revisions( $post->ID ) ) >= 1 ) {
 			$html = <<<XYZ
 			<div id="save-as-draft-action" style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); margin-left: -20px;">
@@ -62,7 +63,7 @@ XYZ;
 	 * @return void
 	 */
 	public function save_revision_id( $post_id ) {
-		$post_id = (int) $_POST['post_ID'];
+		//$post_id = (int) $_POST['post_ID'];
 
 		if ( !empty( $_POST['save-as-draft'] ) ) {
 			// Check if this post already has a revision id saved.
@@ -75,9 +76,12 @@ XYZ;
 			}
 		}
 
+		// If user click preview, we don't do anything
+		else if ( isset($_POST['wp-preview'] ) && 'dopreview' == $_POST['wp-preview'] ) {
+
 		// If user clicked save, we assume they want to publish
 		// the draft and therefor we'll remove the post meta.
-		else {
+		} else {
 			delete_post_meta( $post_id, 'sk_revision_id' );
 		}
 	}
@@ -90,7 +94,8 @@ XYZ;
 	public function show_draft_notice() {
 		if ( $this->show_revision() ) {
 			global $post;
-			$current_revision = array_shift( wp_get_post_revisions( $post->ID ) );
+			$revisions = wp_get_post_revisions( $post->ID );
+			$current_revision = array_shift( $revisions );
 			$saved_revision = $this->get_revision( $post->ID );
 			$revision_edit_link = sprintf( 'Klicka <a href="%s/revision.php?from=%d&to=%d">här</a> för att jämföra utkastet med versionen som visas.', admin_url(), $current_revision->ID, $saved_revision->ID );
 			$html = <<<XYZ
@@ -147,8 +152,8 @@ XYZ;
 	 */
 	private function get_revision( $post_id = null ) {
 		if ( $this->revision === null ) {
+			global $post;
 			if ( $post_id === null || !$post ) {
-				global $post;
 				$post_id = $post->ID;
 			}
 
