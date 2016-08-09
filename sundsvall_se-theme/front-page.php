@@ -5,9 +5,9 @@
 <div class="hidden-md-up">
 	<div class="container-fluid m-b-2">
 		<h2 class="front-page__heading"><?php _e('Logga in', 'sundsvall_se')?></h2>
-		<a class="btn btn-secondary">Elev</a>
-		<a class="btn btn-secondary">Medborgare</a>
-		<a class="btn btn-secondary">Medarbetare</a>
+			<a class="btn btn-secondary" href="/kommun-och-politik/om-webbplatsen-2/elev/">Elev</a>
+			<a class="btn btn-secondary" href="/om-webbplatsen-2/medborgare/">Medborgare</a>
+			<a class="btn btn-secondary" href="/kommun-och-politik/om-webbplatsen-2/medarbetare/">Medarbetare</a>
 	</div>
 </div>
 

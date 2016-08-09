@@ -9,9 +9,9 @@
 				</button>
 
 				<div class="dropdown-menu" aria-labelledby="loginMenuButton">
-					<a class="dropdown-item" href="#">Elev</a>
-					<a class="dropdown-item" href="#">Medborgare</a>
-					<a class="dropdown-item" href="#">Medarbetare</a>
+					<a class="dropdown-item" href="/kommun-och-politik/om-webbplatsen-2/elev/">Elev</a>
+					<a class="dropdown-item" href="/kommun-och-politik/om-webbplatsen-2/medarbetare/">Medarbetare</a>
+					<a class="dropdown-item" href="/om-webbplatsen-2/medborgare/">Medborgare</a>
 				</div>
 
 			</div>
