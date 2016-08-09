@@ -155,6 +155,8 @@ class SK_EServices {
 		//$eservice_links .= $this->eservice_links($eservices, '<li>%s</li>');
 		$eservice_links .= '</div>';
 
+		$eservice_links .= '<a class="more-eservices-link" href="https://e-tjanster.sundsvall.se/">Alla e-tjänster &raquo;</a>';
+
 		printf($markup, $title, $eservice_links);
 
 	}

@@ -85,7 +85,8 @@
 
 ?>
 
-	<a href="<?php echo get_permalink( $all_posts_page ); ?>" class="btn btn-purple btn-action"><?php the_icon('arrow-right'); ?> Alla nyheter </a>
+	<?php /* <a href="<?php echo get_permalink( $all_posts_page ); ?>" class="btn btn-purple btn-action"><?php the_icon('arrow-right'); ?> Alla nyheter </a> */ ?>
+	<a href="<?php echo get_permalink( $all_posts_page ); ?>">Alla nyheter &raquo;</a>
 
 
 
