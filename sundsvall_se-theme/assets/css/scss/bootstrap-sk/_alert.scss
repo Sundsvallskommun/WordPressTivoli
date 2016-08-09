@@ -2,6 +2,11 @@ a.alert {
 	fill: currentColor;
 	display: block;
 
+	> span {
+		@extend .container-fluid;
+		display: block;
+	}
+
 	&:hover {
 
 		text-decoration: inherit;

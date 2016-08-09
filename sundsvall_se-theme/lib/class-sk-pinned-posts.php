@@ -44,7 +44,7 @@ class SK_Pinned_Posts {
 			$alert_type = $post_type === 'service_message' ? 'warning' : 'info';
 		?>
 
-		<a class="alert alert-centered <?php echo "alert-$alert_type"; ?>" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+		<a class="alert <?php echo "alert-$alert_type"; ?>" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
 			<span>
 				<?php the_icon('error'); ?>
 				<?php
