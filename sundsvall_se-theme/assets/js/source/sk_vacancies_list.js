@@ -24,7 +24,7 @@
 		// Show elements that are hidden for browsers
 		// without JS.
 		$orderEl.parents('div.input-group').show();
-		$categories.parents('div.input-group').show();
+		$categories.parents('div.categories').show();
 
 		// Bind our events to them.
 		bindEvents();
@@ -71,8 +71,8 @@
 			$parentEl.append( $vacancies );
 		} );
 
-		$categories.on( 'change', function(e) {
-			var category = $(this).val();
+		$categories.parents('label').on( 'change', function(e) {
+			var category = $(this).find( 'input' ).val();
 
 			// If 'all' show all and return.
 			if ( category === 'all' ) {

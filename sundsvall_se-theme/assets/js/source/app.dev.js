@@ -1,3 +1,4 @@
+require('./bootstrap/umd/button.js');
 require('./bootstrap/umd/collapse.js');
 require('./bootstrap/umd/dropdown.js');
 require('./bootstrap/umd/modal.js');

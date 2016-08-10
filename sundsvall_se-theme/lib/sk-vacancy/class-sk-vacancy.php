@@ -163,24 +163,20 @@ XYZ;
 XYZ;
 
 			// Add categories radio buttons.
-			$html .= '<div class="input-group categories" style="display: none;">';
+			$html .= '<div class="categories m-y-1" data-toggle="buttons" style="display: none">';
 				$html .= <<<XYZ
-				<div class="radio-inline">
-					<label>
-						<input type="radio" name="category" id="all" value="all" class="category" checked>
-						Visa alla
-					</label>
-				</div>
+				<label class="btn btn-secondary active">
+					<input type="radio" name="category" id="all" value="all" class="category" checked>
+					Visa alla
+				</label>
 XYZ;
 				foreach ( $this->api_w->get_vacancies_categories() as $category => $count ) {
 					$id = sanitize_title( $category );
 					$html .= <<<XYZ
-					<div class="radio-inline">
-						<label>
-							<input type="radio" name="category" id="{$id}" value="{$id}" class="category">
-							{$category}
-						</label>
-					</div>
+					<label class="btn btn-secondary">
+						<input type="radio" name="category" id="{$id}" value="{$id}" class="category">
+						{$category}
+					</label>
 XYZ;
 				}
 
