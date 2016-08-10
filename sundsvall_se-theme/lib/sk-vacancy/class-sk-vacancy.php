@@ -196,9 +196,9 @@ XYZ;
 
 					$html .= <<<XYZ
 					<a href="{$url}" class="vacancy list-group-item" data-category="{$vacancy->sanitized_cat}" data-dateend="{$date_end_unix}">
-						<h4 class="list-group-item-heading">{$vacancy->title}</h4>
+						<h3 class="list-group-item-heading"><strong>{$vacancy->title}</strong></h3>
 						<p class="list-group-item-text">{$vacancy->description}</p>
-						<p class="last-application-date list-group-item-text">Sista ansökningsdagen: {$vacancy->date_end}</p>
+						<p class="last-application-date list-group-item-text"> <small>Sista ansökningsdagen: {$vacancy->date_end}</small></p>
 					</a>
 XYZ;
 				}
