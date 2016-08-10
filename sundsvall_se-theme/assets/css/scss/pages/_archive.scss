@@ -1,5 +1,10 @@
 .archive {
 
+	.load-more {
+		margin: auto;
+		display: block;
+	}
+
 	.row {
 
 		// Clear float at first div in each "row", else the layout break if
@@ -11,11 +16,11 @@
 		}
 
 		@include media-breakpoint-up(md) {
-			> div:nth-child(3n+1) {
-				clear: left;
-			}
 			> div:nth-child(2n+1) {
 				clear: none;
+			}
+			> div:nth-child(3n+1) {
+				clear: left;
 			}
 		}
 

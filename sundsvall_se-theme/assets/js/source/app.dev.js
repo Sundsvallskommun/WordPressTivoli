@@ -4,6 +4,7 @@ require('./bootstrap/umd/dropdown.js');
 require('./bootstrap/umd/modal.js');
 require('./acf-map.js');
 require('./sk_vacancies_list.js');
+require('./sk_infinite_scroll.js');
 
 (function($) {
 	"use strict";

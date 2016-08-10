@@ -18,7 +18,7 @@ get_header();
 					}
 		?>
 
-		<div class="row">
+		<div class="row posts">
 
 		<?php if ( have_posts() ): while ( have_posts() ): the_post(); ?>
 
@@ -32,7 +32,9 @@ get_header();
 
 		</div>
 
-		<?php get_template_part('partials/pagination'); ?>
+		<div class="infinite-nav">
+			<?php get_template_part('partials/pagination'); ?>
+		</div>
 
 </div>
 
