@@ -386,3 +386,11 @@ $sk_admincolumns = new SK_Admincolumns();
 //require_once locate_template( 'lib/class-sk-revisions.php' );
 //$sk_revisions = SK_Revisions::get_instance();
 
+/**
+ * SK_Expiration
+ * ============
+ *
+ * Adds functionaliy for post expiration date
+ */
+require_once locate_template( 'lib/class-sk-expiration.php' );
+$sk_expiration = new SK_Expiration;
