@@ -41,7 +41,7 @@
 }
 
 .navbar-mobile {
-	background: rgba(profile-color(björnstigen, 2), .95);
+	background: rgba(profile-color(björnstigen, 2), 1);
 	color: white;
 	height: 4em;
 	padding: .5em $spacer-x;
@@ -49,11 +49,12 @@
 
 	@include media-breakpoint-up(md) {
 		padding-top: .25em;
-		height: 2.5em;
+		height: 2.25em;
 	}
 
 	&.navbar-fixed-bottom {
 		z-index: 9;
+		background: rgba(profile-color(björnstigen, 2), .95);
 	}
 
 	.admin-bar & {
@@ -126,8 +127,7 @@
 			margin-top: .1em;
 			max-width: 5.5em;
 			@include media-breakpoint-up(md) {
-				max-height: 1.5em;
-				margin-top: 0;
+				display: none;
 			}
 		}
 	}
