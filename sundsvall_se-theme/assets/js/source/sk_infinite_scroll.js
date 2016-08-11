@@ -28,11 +28,13 @@
 
 		e && e.preventDefault();
 
-		$loadMoreBtn.html('Laddar...');
+		$loadMoreBtn.html('Laddar…');
 
 		isLoading = true;
 
-		$.get(loadMoreUrl, function(data) {
+		var req = $.get( loadMoreUrl );
+		
+		req.success( function( data ) {
 
 			$loadMoreBtn.html(buttonLabel);
 
@@ -51,6 +53,11 @@
 			isLoading = false;
 
 		});
+
+		req.error( function( jqXHR, textStatus, errorThrown ) {
+			$loadMoreBtn.html('Något gick fel, testa igen…');
+		});
+
 	}
 
 	$(window).scroll(function() {
