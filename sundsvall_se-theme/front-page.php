@@ -83,8 +83,6 @@
 
 </div>
 
-<?php
-/*
 <div class="container-fluid container-fluid--full bg-primary hidden-sm-down">
 
 	<div class="row">
@@ -96,6 +94,5 @@
 	</div>
 
 </div>
-*/?>
 
 <?php get_footer(); ?>

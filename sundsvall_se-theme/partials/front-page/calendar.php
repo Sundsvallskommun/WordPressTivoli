@@ -1,22 +1,31 @@
 <section class="front-page-section front-page-section__calendar">
 
-
 <script type="text/javascript">
 	//<![CDATA[
-(function () {
+	(function () {
 	var s = document.createElement('script'); s.type = 'text/javascript';s.async = true;
-	s.src = 'http://webapps.citybreak.com/597883702/sv/sv/widget/GenerateEventCalendarWidget?eventbaseurl=http%3A%2F%2Fguide.visitsundsvall.se%2Fsv%2Flink%2Fproduct%2F&eventlistingurl=http%3A%2F%2Fguide.visitsundsvall.se%2Fsv%2Fevenemang%2F&online3=true&defaultcss=true&images=false&css=http://resources.citybreak.com/citybreakweb/sundsvall/widget/css/style.css&truncate=true&blanktarget=true&geoId=3497'
+	s.src ='http://webapps.citybreak.com/597883702/sv/sv-se/widget/GenerateEventCalendarWidget?eventbaseurl=http%3A%2F%2Fguide.visitsundsvall.se%2Fsv%2Flink%2Fproduct%2F&eventlistingurl=http%3A%2F%2Fguide.visitsundsvall.se%2Fsv%2Fevenemang%2F&online3=true&defaultcss=true&images=&css=http://resources.citybreak.com/citybreakweb/sundsvall/widget/css/style_with_time.css&notruncate=true&blanktarget=true&geoId=3497&arena=914533&arena=916347&arena=915750&arena=915751&arena=915760&arena=66991&arena=915672&arena=89713&arena=72258&arena=915779&arena=915784&arena=915800&arena=830322&showDateTime=true'
 	var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
 	})();
 	//]]>
-	</script>
+</script>
+
+
+
+<div class="calendar-image" style="background-image: linear-gradient(45deg, #c2bce0, #c1c1e6, #fff)"> </div>
+
+<div class="container-fluid">
 
 <div class="row">
-	<div class="col-md-5 col-md-push-7">
+
+	<div class="col-md-7 calendar-left front-page-section__calendar__left">
+	</div>
+	<div class="col-md-5">
 	<h2><?php echo date('l'); ?><strong><?php echo date(' j F'); ?></strong></h2>
 	<h3>Detta händer i Sundsvall i dag</h3>
 		<div id="citybreak_event_calendar_widget"></div>
 	</div>
+</div>
 </div>
 
 </section>

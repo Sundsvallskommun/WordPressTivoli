@@ -5,6 +5,7 @@ require('./bootstrap/umd/modal.js');
 require('./acf-map.js');
 require('./sk_vacancies_list.js');
 require('./sk_infinite_scroll.js');
+require('./sk_calendar_background.js');
 
 (function($) {
 	"use strict";
@@ -552,6 +553,8 @@ require('./sk_infinite_scroll.js');
 		}
 
 		$(window).on( 'resize', addSliderInMobile);
+
+
 
 	});
 

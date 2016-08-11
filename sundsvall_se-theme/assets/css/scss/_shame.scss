@@ -73,8 +73,29 @@ a[rel="tag"] {
 .front-page-section__calendar {
 	background: profile-color(juniskär, 2);
 	color: #fff;
-	padding-top: 2em;
-	padding-bottom: 2em;
+	width: 100%;
+
+	.calendar-image {
+		width: 200px;
+		height: 100px;
+		background-size: cover;
+		background-color: #fff;
+		position: absolute;
+	}
+
+	&__left {
+	}
+
+	h2 {
+		margin-top: 2rem;
+		font-size: 2em;
+	}
+
+	h3 {
+		font-size: .875em;
+		text-transform: uppercase;
+		margin-bottom: 3.5em;
+	}
 }
 
 #tblCalendarEventWidget {
@@ -82,26 +103,47 @@ a[rel="tag"] {
 }
 
 #Citybreak_CalendarEventWidget {
+	margin-bottom: 5.25rem;
 	background: transparent !important;
 	border: none !important;
 	border-radius: 0 !important;
-	font-size: 2em;
+	font-size: .9375em;
 	width: 100% !important;
+	line-height: 1.2;
 	#cb_whathappenstoday_list {
+		margin-bottom: 2.5em;
 		li {
 			margin-bottom: .5em;
+
+			&:before {
+				content: url('../images/clock.png');
+				float: left;
+				margin-top: .25em;
+				margin-right: 1.5em;
+			}
+
 		}
 	}
 	#cb_whathappenstoday {
 		background: transparent;
 		margin: 0;
+		padding: 0;
 		.cb_whathappensheader,
 		.cb_daytitle {
 			display: none;
 		}
+		.cb_eventlink_time {
+			font-size: 1em;
+			font-weight: 600;
+			display: block;
+		}
 		.cb_title {
 			font-size: 1em;
 		}
+	}
+
+	.cb_showmoreevents {
+		text-transform: uppercase;
 	}
 
 }
