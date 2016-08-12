@@ -1,0 +1,90 @@
+{
+    "key": "group_57ad6b4646e6b",
+    "title": "Evenemangskalender",
+    "fields": [
+        {
+            "key": "field_57ad6b71d4ec1",
+            "label": "Bild",
+            "name": "event_calendar_left_image",
+            "type": "image",
+            "instructions": "Visas bakom texten i v\u00e4nstra kolumnen av kalender-blocket.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_57ad6bcad4ec2",
+            "label": "Rubrik",
+            "name": "event_calendar_left_heading",
+            "type": "text",
+            "instructions": "Rubrik som visas i v\u00e4nstra kolumnen av kalender-blocket.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": 100,
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_57ad6c2bd4ec3",
+            "label": "Text",
+            "name": "event_calendar_left_description",
+            "type": "textarea",
+            "instructions": "Text som visas i v\u00e4nstra kolumnen av kalender-blocket.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "wpautop",
+            "readonly": 0,
+            "disabled": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1470983924
+}

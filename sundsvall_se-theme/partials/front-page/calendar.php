@@ -11,18 +11,22 @@
 </script>
 
 
+<?php $front_page_id = get_option('page_on_front'); ?>
 
-<div class="calendar-image" style="background-image: linear-gradient(45deg, #c2bce0, #c1c1e6, #fff)"> </div>
+<div class="calendar-image" style="background-image: url(<?php the_field( 'event_calendar_left_image', $front_page_id ); ?>)"> </div>
 
 <div class="container-fluid">
 
 <div class="row">
 
 	<div class="col-md-7 calendar-left front-page-section__calendar__left">
+		<h2 class=""><?php the_field( 'event_calendar_left_heading', $front_page_id ); ?></h2>
+		<div class="content"><?php the_field(  'event_calendar_left_description', $front_page_id ); ?></div>
 	</div>
+
 	<div class="col-md-5">
-	<h2><?php echo date('l'); ?><strong><?php echo date(' j F'); ?></strong></h2>
-	<h3>Detta händer i Sundsvall i dag</h3>
+		<h2><?php echo date('l'); ?><strong><?php echo date(' j F'); ?></strong></h2>
+		<h3>Detta händer i Sundsvall i dag</h3>
 		<div id="citybreak_event_calendar_widget"></div>
 	</div>
 </div>
