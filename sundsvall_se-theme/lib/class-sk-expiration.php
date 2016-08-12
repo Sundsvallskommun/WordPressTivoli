@@ -38,7 +38,10 @@ class SK_Expiration {
 
 			<?php $expiry_date = get_post_meta( $post->ID, self::META_NAME, true ); ?>
 
-			<label for="sk_expiry_date"><?php _e( 'Avpubliceringsdatum', 'sundsvall_se' ); ?></label>
+			<label for="sk_expiry_date">
+				<?php _e( 'Avpubliceringsdatum', 'sundsvall_se' ); ?>
+				<span style="color: red">*</span>
+			</label>
 
 			<input type="text" class="expiry-date" id="sk_expiry_date" name="sk_expiry_date" value="<?php echo esc_attr( $expiry_date ); ?>" / >
 				<script type="text/javascript">
@@ -49,6 +52,30 @@ class SK_Expiration {
 										minDate : '+1'
 								});
 						});
+
+						jQuery(document).ready(function($){
+								$('#post').submit(function(){
+
+									var $dateInput = $('.expiry-date');
+									var dateValue = $dateInput.val();
+
+									if( dateValue == '' ) {
+										return invalidDate();
+									}
+
+								});
+
+								function invalidDate() {
+
+									alert('Du måste ange ett avpubliceringsdatum.');
+									$('.expiry-date').css('border-color', 'red');
+
+									return false;
+
+								}
+						});
+
+
 				</script>
 		</form>
 
