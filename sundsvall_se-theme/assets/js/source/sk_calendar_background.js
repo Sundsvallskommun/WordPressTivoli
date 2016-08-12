@@ -1,10 +1,16 @@
 ;(function($) {
 
+	if ( $('#citybreak_event_calendar_widget').length < 1 ) return; // Only run this script if we are on page with calendar
+
 	$(document).ready(function() {
 
 		$(window).on( 'resize', calendarImageSize);
 
+		// Update size when calendar has changed (loaded)
+		$('#citybreak_event_calendar_widget').on( 'DOMSubtreeModified', calendarImageSize);
+
 		$(window).load( function() {
+			// We use this as a fallback if DOMSubtreeModified is unsupported.
 			setTimeout(calendarImageSize, 1000);
 		});
 
