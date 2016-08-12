@@ -38,12 +38,17 @@ class SK_Expiration {
 
 			<?php $expiry_date = get_post_meta( $post->ID, self::META_NAME, true ); ?>
 
+		<p>
 			<label for="sk_expiry_date">
 				<?php _e( 'Avpubliceringsdatum', 'sundsvall_se' ); ?>
 				<span style="color: red">*</span>
 			</label>
+		</p>
 
-			<input type="text" class="expiry-date" id="sk_expiry_date" name="sk_expiry_date" value="<?php echo esc_attr( $expiry_date ); ?>" / >
+		<p> <input type="text" class="expiry-date" id="sk_expiry_date" name="sk_expiry_date" value="<?php echo esc_attr( $expiry_date ); ?>" / > </p>
+
+		<p><small>När avpubliceringsdatumet passerat blir posten satt till utkast.</small></p>
+
 				<script type="text/javascript">
 						jQuery(document).ready(function() {
 								jQuery('.expiry-date').datepicker({
@@ -60,14 +65,24 @@ class SK_Expiration {
 									var dateValue = $dateInput.val();
 
 									if( dateValue == '' ) {
+										alert('Du måste ange ett avpubliceringsdatum.');
+										return invalidDate();
+									}
+
+									var date = new Date(dateValue);
+
+									var m3 = new Date();
+									m3.setMonth( m3.getMonth() + 3 );
+
+									if( date > m3 ) {
+										alert('Du måste ange ett avpubliceringsdatum som är max 3 månader från idag.');
+
 										return invalidDate();
 									}
 
 								});
 
 								function invalidDate() {
-
-									alert('Du måste ange ett avpubliceringsdatum.');
 									$('.expiry-date').css('border-color', 'red');
 
 									return false;
