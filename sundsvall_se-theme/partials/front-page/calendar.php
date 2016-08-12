@@ -25,7 +25,7 @@
 	</div>
 
 	<div class="col-md-5">
-		<h2><?php echo date('l'); ?><strong><?php echo date(' j F'); ?></strong></h2>
+		<h2><?php echo ucfirst( date_i18n('l') ); ?><strong><?php echo date_i18n(' j F'); ?></strong></h2>
 		<h3>Detta händer i Sundsvall i dag</h3>
 		<div id="citybreak_event_calendar_widget"></div>
 	</div>
