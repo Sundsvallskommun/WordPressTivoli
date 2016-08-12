@@ -263,7 +263,7 @@ function is_navigation($id = null) {
 		$id = get_queried_object_id();
 	}
 
-	return strpos(get_page_template_slug($id), 'page-navigation.php');
+	return strpos(get_page_template_slug($id), 'page-navigation.php') || strpos(get_page_template_slug($id), 'page-advanced.php');
 
 }
 
