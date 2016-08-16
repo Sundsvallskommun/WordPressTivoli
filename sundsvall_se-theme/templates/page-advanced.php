@@ -15,7 +15,23 @@
 	<div class="row">
 
 		<div class="news-col" id="news">
+
 			<?php get_template_part('partials/latest-news'); ?>
+
+		</div>
+
+	</div>
+
+</div>
+
+<div class="container-fluid container-fluid--full bg-faded hidden-sm-down">
+
+	<div class="row">
+
+		<div class="container-fluid">
+
+			<?php get_template_part('partials/front-page/service-messages'); ?>
+
 		</div>
 
 	</div>

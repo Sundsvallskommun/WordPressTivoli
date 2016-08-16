@@ -5,7 +5,20 @@ $args = array(
     'post_type' => 'service_message',
     'posts_per_page' => 4,
     'orderby' => 'modified'
-);
+	);
+
+// If this is used on another page (like page advanced) we only show it if the
+// page has got assigned service messages.
+if ( !is_front_page() ) {
+
+	$args['meta_query'] = array(
+		array(
+			'key' => 'pin_post_on',
+			'value' => '"' . $post->ID . '"',
+			'compare' => 'LIKE'
+		)
+	);
+}
 
 if( !($service_messages instanceof WP_Query) ) {
 	$service_messages = new WP_Query( $args );
@@ -13,6 +26,9 @@ if( !($service_messages instanceof WP_Query) ) {
 ?>
 
 
+<?php
+// Hide if no service messages found and is not front page
+if ( !is_front_page() && !$service_messages->have_posts() ) return; ?>
 
 
 <section class="front-page-section front-page-section__service-messages">
@@ -54,3 +70,5 @@ if( !($service_messages instanceof WP_Query) ) {
 	</div>
 
 </section>
+
+<?php wp_reset_query(); ?>
