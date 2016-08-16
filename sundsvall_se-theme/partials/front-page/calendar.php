@@ -1,3 +1,18 @@
+<?php
+
+$page_id = is_front_page() ? get_option('page_on_front') : $post->ID;
+
+// Only show calendar if it has been activated.
+if ( !get_field( 'event_calendar_active', $page_id ) ) return false;
+
+?>
+
+<div class="container-fluid container-fluid--full bg-primary hidden-sm-down">
+
+	<div class="row">
+
+		<div class="col-md-12">
+
 <section class="front-page-section front-page-section__calendar">
 
 <script type="text/javascript">
@@ -10,18 +25,15 @@
 	//]]>
 </script>
 
-
-<?php $front_page_id = get_option('page_on_front'); ?>
-
-<div class="calendar-image" style="background-image: url(<?php the_field( 'event_calendar_left_image', $front_page_id ); ?>)"> </div>
+<div class="calendar-image" style="background-image: url(<?php the_field( 'event_calendar_left_image', $page_id ); ?>)"> </div>
 
 <div class="container-fluid">
 
 <div class="row">
 
 	<div class="col-md-7 calendar-left front-page-section__calendar__left">
-		<h2 class=""><?php the_field( 'event_calendar_left_heading', $front_page_id ); ?></h2>
-		<div class="content"><?php the_field(  'event_calendar_left_description', $front_page_id ); ?></div>
+		<h2 class=""><?php the_field( 'event_calendar_left_heading', $page_id ); ?></h2>
+		<div class="content"><?php the_field(  'event_calendar_left_description', $page_id ); ?></div>
 	</div>
 
 	<div class="col-md-5">
@@ -34,3 +46,8 @@
 
 </section>
 
+		</div>
+
+	</div>
+
+</div>

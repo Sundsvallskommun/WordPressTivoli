@@ -38,4 +38,6 @@
 
 </div>
 
+			<?php get_template_part('partials/front-page/calendar'); ?>
+
 <?php get_template_part('page-advanced/footer'); ?>

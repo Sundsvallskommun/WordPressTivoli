@@ -139,3 +139,11 @@ driftmeddelanden knutna till webb-i-webben. Man knyter de på samma sätt som ma
 knyter driftmeddelanden till andra sidor på webbplatsen (inne på
 driftmeddelandet).
 
+### Kalender
+
+Fungerar som på startsidan, inställningar för kalendern görs på sidmallen, där
+kan den visas/döljas och ange text och bild i vänsterkolumnen. En select anger
+vilken widget som ska användas, och för att lägga till en ny måste denna
+beställas från visit och sedan läggas in i filen för kalendern, och ett val
+måste läggas till i ACF.
+

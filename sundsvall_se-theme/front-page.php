@@ -83,16 +83,6 @@
 
 </div>
 
-<div class="container-fluid container-fluid--full bg-primary hidden-sm-down">
-
-	<div class="row">
-
-		<div class="col-md-12">
-			<?php get_template_part('partials/front-page/calendar'); ?>
-		</div>
-
-	</div>
-
-</div>
+<?php get_template_part('partials/front-page/calendar'); ?>
 
 <?php get_footer(); ?>

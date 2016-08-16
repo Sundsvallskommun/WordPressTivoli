@@ -3,6 +3,47 @@
     "title": "Evenemangskalender",
     "fields": [
         {
+            "key": "field_57b2d0915a963",
+            "label": "Visa kalender",
+            "name": "event_calendar_active",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0
+        },
+        {
+            "key": "field_57b2d0af5a964",
+            "label": "Kalender",
+            "name": "event_calendar_selected",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Sundsvall.se": "sundsvall_se"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        },
+        {
             "key": "field_57ad6b71d4ec1",
             "label": "Bild",
             "name": "event_calendar_left_image",
@@ -76,6 +117,13 @@
                 "operator": "==",
                 "value": "front_page"
             }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates\/page-advanced.php"
+            }
         ]
     ],
     "menu_order": 0,
@@ -86,5 +134,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1470983924
+    "modified": 1471336728
 }
