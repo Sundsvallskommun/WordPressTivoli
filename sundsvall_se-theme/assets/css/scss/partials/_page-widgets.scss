@@ -7,6 +7,10 @@ $page-widget-bg2: #f7f7f9;
 	@include media-breakpoint-up(md) {
 		margin-top: 5.5rem;
 	}
+
+	.page-template-page-advanced & {
+		margin-top: 0;
+	}
 }
 
 .page-widget {
