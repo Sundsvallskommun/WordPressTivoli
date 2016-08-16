@@ -115,3 +115,27 @@ det Gravity Forms-formulär som ska visas när besökaren röstat på en sida.
 För att ett epostmeddelande ska skickas ut till författaren till sidan måste
 det finnas en notis för formuläret i Gravity Forms som heter "Författarnotis".
 
+## "Webb i webb"
+
+Kallas advanced template i koden.
+
+### Nyheter
+
+Nyheter som ska visas anges via ett ACF-fält på webb-i-webb-mallen. Där väljer
+man en eller flera kategorier som ska visas på startsidan.
+
+För att ha ett nyhetsarkiv som ligger i webb-i-webbens struktur så skapas en
+sida under webb-i-webbens startsida med mallen "Nyhetsarkiv: Webb-i-webb".
+
+### Bildpuffar
+
+Fungerar som på webbplatsens startsida, ACF-fält där man kan lägga till upp
+till 3 bildpuffar (med titel bild och länk).
+
+### Driftmeddelanden
+
+Visas i en lika list som på startsidan, men visas bara om det finns
+driftmeddelanden knutna till webb-i-webben. Man knyter de på samma sätt som man
+knyter driftmeddelanden till andra sidor på webbplatsen (inne på
+driftmeddelandet).
+
