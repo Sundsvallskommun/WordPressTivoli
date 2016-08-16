@@ -21,7 +21,7 @@ class SK_Search {
 
 		// If this is set we should base all search results on it. Used by advanced
 		// template.
-		$this->post_parent = apply_filters( 'sk_search_post_parent', null );
+		$this->post_parent = apply_filters( 'sk_advanced_post_parent', null );
 
 		$this->is_advanced_search = is_advanced_template_child($this->post_parent);
 

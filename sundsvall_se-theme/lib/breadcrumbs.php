@@ -81,6 +81,18 @@ function get_the_breadcrumbs() {
 		$bc .= bc_item($front_page_title, $home_url);
 	}
 
+	if( is_advanced_template_child() && ( is_search() || is_single() ) ) {
+
+		$id = advanced_template_top_ancestor();
+
+		$ancestors = get_ancestors($id, 'page');
+		foreach( array_reverse($ancestors) as $ancestor ) {
+			$bc .= bc_item(get_the_title($ancestor), get_the_permalink($ancestor));
+		}
+
+		$bc .= bc_item(get_the_title($id), get_the_permalink($id));
+	}
+
 	if(is_home()) {
 
 		// Blog/news page
