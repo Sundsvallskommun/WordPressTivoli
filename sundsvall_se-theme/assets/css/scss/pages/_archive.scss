@@ -1,5 +1,10 @@
 .archive {
 
+	margin-bottom: 2rem;
+	@include media-breakpoint-up(md) {
+		margin-bottom: 5.5rem;
+	}
+
 	.load-more {
 		margin: auto;
 		display: block;

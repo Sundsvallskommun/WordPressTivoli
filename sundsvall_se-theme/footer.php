@@ -1,7 +1,7 @@
 </main>
 
 <?php
-if(!is_front_page() && !is_search()) {
+if(!is_front_page() && !is_search() && !is_archive() && !is_home()) {
 	do_action('sk_page_widgets');
 }
 ?>
