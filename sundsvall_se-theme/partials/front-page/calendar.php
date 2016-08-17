@@ -19,7 +19,7 @@ if ( !get_field( 'event_calendar_active', $page_id ) ) return false;
 	//<![CDATA[
 	(function () {
 	var s = document.createElement('script'); s.type = 'text/javascript';s.async = true;
-	s.src ='http://webapps.citybreak.com/597883702/sv/sv-se/widget/GenerateEventCalendarWidget?eventbaseurl=http%3A%2F%2Fguide.visitsundsvall.se%2Fsv%2Flink%2Fproduct%2F&eventlistingurl=http%3A%2F%2Fguide.visitsundsvall.se%2Fsv%2Fevenemang%2F&online3=true&defaultcss=true&images=&css=http://resources.citybreak.com/citybreakweb/sundsvall/widget/css/style_with_time.css&notruncate=true&blanktarget=true&geoId=3497&arena=914533&arena=916347&arena=915750&arena=915751&arena=915760&arena=66991&arena=915672&arena=89713&arena=72258&arena=915779&arena=915784&arena=915800&arena=830322&showDateTime=true'
+	s.src ='http://webapps.citybreak.com/597883702/sv/sv-se/widget/GenerateEventCalendarWidget?eventbaseurl=http%3A%2F%2Fguide.visitsundsvall.se%2Fsv%2Flink%2Fproduct%2F&eventlistingurl=http%3A%2F%2Fguide.visitsundsvall.se%2Fsv%2Fevenemang%2F&online3=true&defaultcss=true&images=&css=http://resources.citybreak.com/citybreakweb/sundsvall/widget/css/style_with_time.css&notruncate=true&blanktarget=true&geoId=3497&showDateTime=true'
 	var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
 	})();
 	//]]>
