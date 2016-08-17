@@ -1,13 +1,13 @@
 {
-    "key": "group_57710f7198d69",
-    "title": "Nyheter",
+    "key": "group_57b45b319f86d",
+    "title": "Arkivinst\u00e4llningar",
     "fields": [
         {
-            "key": "field_57710f767a7c6",
-            "label": "Kategorier att inkludera",
-            "name": "news_category",
+            "key": "field_57b45b530cea9",
+            "label": "Taggar att visa",
+            "name": "archive_displayed_tags",
             "type": "taxonomy",
-            "instructions": "",
+            "instructions": "Anger vilka taggar som visas i nyhetslistningen f\u00f6r bes\u00f6karen.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -15,13 +15,13 @@
                 "class": "",
                 "id": ""
             },
-            "taxonomy": "category",
+            "taxonomy": "post_tag",
             "field_type": "multi_select",
-            "allow_null": 1,
+            "allow_null": 0,
             "add_term": 1,
             "save_terms": 0,
             "load_terms": 0,
-            "return_format": "id",
+            "return_format": "object",
             "multiple": 0
         }
     ],
@@ -30,14 +30,14 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "templates\/page-advanced.php"
+                "value": "templates\/page-advanced-news.php"
             }
         ],
         [
             {
                 "param": "page_type",
                 "operator": "==",
-                "value": "front_page"
+                "value": "posts_page"
             }
         ]
     ],
@@ -49,5 +49,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1471437609
+    "modified": 1471437724
 }

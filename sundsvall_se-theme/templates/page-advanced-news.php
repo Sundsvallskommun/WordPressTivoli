@@ -9,7 +9,9 @@
 
 	<h1 class="archive__title"><?php the_title(); ?></h1>
 
-	<div class="row">
+	<?php get_template_part( 'partials/archive-tags' ); ?>
+
+	<div class="row posts">
 
 <?php
 
@@ -33,7 +35,9 @@ $query = new WP_Query( array( 'cat' => $cats ) );
 
 	</div>
 
-	<?php get_template_part('partials/pagination'); ?>
+	<div class="infinite-nav">
+		<?php get_template_part('partials/pagination'); ?>
+	</div>
 
 </div>
 
