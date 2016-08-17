@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light navbar-full navbar-mobile not-fixed">
+<nav class="navbar navbar-light navbar-full cwn not-fixed">
 	<?php get_template_part('partials/site-logo'); ?>
 </nav>
 

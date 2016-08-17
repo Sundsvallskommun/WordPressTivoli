@@ -40,7 +40,7 @@
 	}
 }
 
-.navbar-mobile {
+.cwn, .navbar-mobile {
 	background: rgba(profile-color(björnstigen, 2), 1);
 	color: white;
 	height: 4em;
@@ -55,10 +55,6 @@
 	&.navbar-fixed-bottom {
 		z-index: 9;
 		background: rgba(profile-color(björnstigen, 2), .95);
-	}
-
-	.admin-bar & {
-		margin-top: 46px;
 	}
 
 	button,
