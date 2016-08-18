@@ -131,7 +131,7 @@
 
 .logo-container {
 	max-width: 15.65rem;
-	flex: 0 0 15.65rem;
+	flex: 0 0 auto;
 	display: none;
 	@include make-col();
 	@include media-breakpoint-up(md) {
