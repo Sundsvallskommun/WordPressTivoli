@@ -13,29 +13,44 @@ class SK_Init {
 
 		add_action('after_setup_theme', array(&$this, 'image_setup'));
 
-		add_filter( 'init', array(&$this, 'options_page'));
+		add_filter('init', array(&$this, 'options_page'));
 
-		add_filter( 'embed_oembed_html', array(&$this, 'oembed_wrapper'), 10, 4);
+		add_filter('embed_oembed_html', array(&$this, 'oembed_wrapper'), 10, 4);
 
 		add_action('wp_dashboard_setup', array(&$this, 'sk_remove_dashboard_widgets'));
 
 		add_action('admin_head', array(&$this, 'template_dir_js_var'));
 
-		add_action( 'init', array(&$this, 'register_sk_menus' ));
+		add_action('init', array(&$this, 'register_sk_menus' ));
 
-		add_filter('tiny_mce_before_init', array(&$this, 'tiny_mce_settings') );
+		add_filter('tiny_mce_before_init', array(&$this, 'tiny_mce_settings'));
 
-		add_filter('acf/fields/wysiwyg/toolbars', array(&$this, 'acf_tiny_mce_settings') );
+		add_filter('acf/fields/wysiwyg/toolbars', array(&$this, 'acf_tiny_mce_settings'));
 
 		add_filter('body_class', array(&$this, 'body_section_class'));
 
 		add_action('sk_after_page_title', array(&$this, 'sk_page_top_image'));
 
-		add_filter( 'wp_trim_excerpt', array(&$this, 'sk_excerpt'), 10, 2 );
+		add_filter('wp_trim_excerpt', array(&$this, 'sk_excerpt'), 10, 2 );
 
-		add_filter( 'the_content', array(&$this, 'shortcode_remove_empty_paragraphs') );
+		add_filter('the_content', array(&$this, 'shortcode_remove_empty_paragraphs'));
 
-		add_action( 'admin_init', array( &$this, 'admin_init' ));
+		add_action('after_switch_theme', array( &$this, 'extend_editor_capabilities'));
+
+		add_action('switch_theme', array( &$this, 'reset_editor_capabilities'));
+
+		add_action('after_switch_theme', array( &$this, 'extend_author_capabilities'));
+
+		add_action('switch_theme', array( &$this, 'reset_author_capabilities'));		
+
+		add_action('after_switch_theme', array( &$this, 'add_role_service_message_editor'));
+
+		add_action('switch_theme', array( &$this, 'remove_role_service_message_editor'));
+
+		add_action('after_switch_theme', array( &$this, 'add_cap_service_messages'));
+
+		add_action('switch_theme', array( &$this, 'remove_cap_service_messages'));
+
 
 	}
 
@@ -273,13 +288,13 @@ class SK_Init {
 	}
 
 	/**
-	 * Give ditors access to Gravity fomrs.
+	 * Give editors access to Gravity forms on theme activation.
 	 *
 	 * @author 
 	 * 
 	 * @return null
 	 */
-	public function admin_init() {
+	public function extend_editor_capabilities() {
 		$capabilities = array(
 		    'gravityforms_edit_forms',
 		    'gravityforms_delete_forms',
@@ -298,5 +313,184 @@ class SK_Init {
 			$role ->add_cap( $cap );
 		}
 	}
+
+	/**
+	 * Remove editors access to Gravity forms on theme deactivation.
+	 *
+	 * @author 
+	 * 
+	 * @return null
+	 */
+	public function reset_editor_capabilities() {
+		$capabilities = array(
+		    'gravityforms_edit_forms',
+		    'gravityforms_delete_forms',
+		    'gravityforms_create_form',
+		    'gravityforms_view_entries',
+		    'gravityforms_edit_entries',
+		    'gravityforms_delete_entries',
+		    'gravityforms_export_entries',
+		    'gravityforms_view_entry_notes',
+		    'gravityforms_edit_entry_notes',
+		    'gravityforms_preview_forms'
+		);
+		$role = get_role( 'editor' );
+
+		foreach ($capabilities as $cap) {
+			$role ->remove_cap( $cap );
+		}
+	}
+
+	/**
+	 * Extend authors capabilities on theme activation.
+	 *
+	 * @author 
+	 * 
+	 * @return null
+	 */
+	public function extend_author_capabilities() {
+		$capabilities = array(
+		    'edit_pages',
+		    'edit_published_pages',
+		    'delete_pages',
+		    'edit_others_pages',
+		    'edit_others_posts',
+		    'delete_others_posts',
+		    'delete_others_pages',
+		    'delete_published_pages'
+		);
+		$role = get_role( 'author' );
+
+		foreach ($capabilities as $cap) {
+			$role ->add_cap( $cap );
+		}
+	}
+
+	/**
+	 * Reset authors capabilities on theme deactivation.
+	 *
+	 * @author 
+	 * 
+	 * @return null
+	 */
+	public function reset_author_capabilities() {
+		$capabilities = array(
+		    'edit_pages',
+		    'edit_published_pages',
+		    'delete_pages',
+		    'edit_others_pages',
+		    'edit_others_posts',
+		    'delete_others_posts',
+		    'delete_others_pages',
+		    'delete_published_pages'
+		);
+		$role = get_role( 'author' );
+
+		foreach ($capabilities as $cap) {
+			$role ->remove_cap( $cap );
+		}
+	}
+
+	/**
+	 * Give everyone access to Driftmeddelanden on theme activation.
+	 *
+	 * @author 
+	 * 
+	 * @return null
+	 */
+	public function add_cap_service_messages() {
+		$capabilities = array(
+			'edit_service_messages',
+			'edit_others_service_messages',
+			'publish_service_messages',
+			'read_private_service_messages',
+			'delete_service_messages',
+			'delete_private_service_messages',
+			'delete_published_service_messages',
+			'delete_others_service_messages',
+			'edit_private_service_messages',
+			'edit_published_service_messages',
+			'edit_service_messages'
+		);	
+
+		$roles = array('administrator', 'editor', 'author');
+			foreach ( $roles as $role ) {
+				
+				$therole = get_role( $role );
+				
+				foreach ( $capabilities as $cap ) {
+				$therole->add_cap( $cap );
+			}
+		}
+	}
+
+	/**
+	 * Remove capabilities for service messages on theme deactivation.
+	 *
+	 * @author 
+	 * 
+	 * @return null
+	 */
+	public function remove_cap_service_messages() {
+		$capabilities = array(
+			'edit_service_messages',
+			'edit_others_service_messages',
+			'publish_service_messages',
+			'read_private_service_messages',
+			'delete_service_messages',
+			'delete_private_service_messages',
+			'delete_published_service_messages',
+			'delete_others_service_messages',
+			'edit_private_service_messages',
+			'edit_published_service_messages',
+			'edit_service_messages'
+		);	
+
+		$roles = array('administrator', 'editor', 'author');
+			foreach ( $roles as $role ) {
+				
+				$therole = get_role( $role );
+				
+				foreach ( $capabilities as $cap ) {
+				$therole->remove_cap( $cap );
+			}
+		}
+	}
+
+	/**
+	 * Create new role: Drift/fil on theme activation.
+	 *
+	 * @author Therese Persson <therese.persson@sundsvall.se>
+	 */
+	public function add_role_service_message_editor() {
+		add_role( 'service_message_editor', __( 'Filuppladdare och driftmeddelare', 'sundsvall_se' ), 
+			array(
+				'upload_files' => true,
+				'edit_service_messages' => true,
+				'edit_others_service_messages' => true,
+				'publish_service_messages' => true,
+				'read_private_service_messages' => true,
+				'delete_service_messages' => true,
+				'delete_private_service_messages' => true,
+				'delete_published_service_messages' => true,
+				'delete_others_service_messages' => true,
+				'edit_private_service_messages' => true,
+				'edit_published_service_messages'=> true,
+				'edit_service_messages' => true
+				)
+			);
+
+	}
+
+	/**
+	 * Remove role: Drift/fil on theme deactivation.
+	 *
+	 * @author Therese Persson <therese.persson@sundsvall.se>
+	 */
+	public function remove_role_service_message_editor() {
+		remove_role( 'service_message_editor' );
+
+	}
+
 }
 

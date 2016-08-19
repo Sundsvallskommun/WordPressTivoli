@@ -35,15 +35,32 @@ class SK_Service_Messages {
 		);
 
 		$args = array(
-			'labels'             => $labels,
-			'public'             => true,
-			'capability_type'    => 'post',
-			'has_archive'        => true,
-			'rewrite'            => array( 'slug' => 'driftmeddelanden' ),
-			'hierarchical'       => false,
-			'menu_position'      => null,
-			'menu_icon'          => 'dashicons-warning',
-			'supports'           => array( 'title', 'editor', 'author', 'revisions' ),
+			'labels'                 => $labels,
+			'public'                 => true,
+			'has_archive'            => true,
+			'rewrite'                => array( 'slug' => 'driftmeddelanden' ),
+			'hierarchical'           => false,
+			'menu_position'    	     => null,
+			'menu_icon'        	  	 => 'dashicons-warning',
+			'supports'          	 => array( 'title', 'editor', 'author', 'revisions' ),
+			'map_meta_cap'      	 => true,
+			'capabilities'       	 => array(
+				'edit_post'              => 'edit_service_message',
+				'read_post'              => 'read_service_message',
+				'delete_post'            => 'delete_service_message',
+				'edit_posts'             => 'edit_service_messages',
+				'edit_others_posts'      => 'edit_others_service_messages',
+				'publish_posts'          => 'publish_service_messages',
+				'read_private_posts'     => 'read_private_service_messages',
+				'read'                   => 'read',
+				'delete_posts'           => 'delete_service_messages',
+				'delete_private_posts'   => 'delete_private_service_messages',
+				'delete_published_posts' => 'delete_published_service_messages',
+				'delete_others_posts'    => 'delete_others_service_messages',
+				'edit_private_posts'     => 'edit_private_service_messages',
+				'edit_published_posts'   => 'edit_published_service_messages',
+				'create_posts'           => 'edit_service_messages'
+			)
 		);
 
 		register_post_type('service_message', $args);
