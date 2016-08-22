@@ -50,9 +50,9 @@ class SK_Page_Contacts {
 
 	function contact_sidebar_link() {
 
-		$page_contacts = $this->get_page_contact_ids();
+		$page_contacts = $this->get_page_contacts_info();
 
-		if(is_array($page_contacts)) {
+		if(!empty($page_contacts)) {
 
 			global $sk_helpmenu;
 			echo $sk_helpmenu->helplink('message', '#contact', 'Kontakt');
