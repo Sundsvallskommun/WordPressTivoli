@@ -330,7 +330,7 @@ $sk_collapse = new SK_Collapse();
 
 
 
-add_action( 'sk_after_page_content', 'display_modified_date', 30 );
+add_action( 'sk_after_page_content', 'display_modified_date', 50 );
 
 function display_modified_date() {
 ?>

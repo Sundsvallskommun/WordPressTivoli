@@ -14,7 +14,7 @@ class SK_PageVote {
 
 		add_action('sk_page_helpmenu', array(&$this, 'display_vote_percent'), 40);
 
-		add_action( 'sk_after_page_content', array(&$this, 'pagevote_buttons' ), 20);
+		add_action( 'sk_after_page_content', array(&$this, 'pagevote_buttons' ), 40);
 
 		add_action('wp_ajax_pagevote', array(&$this, 'ajax_vote'), 10);
 		add_action('wp_ajax_nopriv_pagevote', array(&$this, 'ajax_vote'), 10);
