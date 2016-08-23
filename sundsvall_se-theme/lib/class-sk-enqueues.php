@@ -70,6 +70,7 @@ class SK_Enqueues {
 
 	function sk_enqueue_styles() {
 		$this->add_deferred_style( 'main',   get_template_directory_uri().'/assets/css/style.css' );
+		$this->add_deferred_style( 'print',   get_template_directory_uri().'/assets/css/print.css', $media = 'print' );
 		$this->add_deferred_style( 'gfonts', $this->sk_font_url );
 		$this->add_deferred_style( 'slick', '//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css' );
 	}
@@ -84,8 +85,8 @@ class SK_Enqueues {
 		wp_enqueue_script( 'slick', '//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js' );
 	}
 
-	function add_deferred_style( $handle, $url) {
-		$this->deferred_styles[$handle] = $url;
+	function add_deferred_style( $handle, $url, $media = 'all') {
+		$this->deferred_styles[$handle] = array($url, $media);
 	}
 
 	/**
@@ -96,8 +97,8 @@ class SK_Enqueues {
 	 */
 	function sk_deferred_styles() {
 		echo '<noscript id="deferred-styles">';
-		foreach ($this->deferred_styles as $url) {
-			echo "<link href='".$url."' rel='stylesheet' type='text/css'>";
+		foreach ($this->deferred_styles as $style) {
+			echo "<link href='".$style[0]."' rel='stylesheet' type='text/css' media='".$style[1]."'>";
 		}
 		echo '</noscript>';
 

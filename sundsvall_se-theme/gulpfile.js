@@ -40,6 +40,16 @@ gulp.task('styles', ['editor-styles'], function() {
 		.pipe(config.production ? cssmin() : util.noop())
 		.pipe(gulp.dest('./assets/css'))
 		.pipe(browserSync.stream({match: '**/*.css'}));
+
+	// Print styles
+	gulp.src('./assets/css/scss/print.scss')
+		.pipe(sass().on('error', sass.logError))
+		.pipe(autoprefixer({
+			browsers: ['last 2 versions'],
+			cascade: false
+		}))
+		.pipe(gulp.dest('./assets/css'));
+
 });
 
 gulp.task('editor-styles', function() {
