@@ -48,7 +48,8 @@ gulp.task('styles', ['editor-styles'], function() {
 			browsers: ['last 2 versions'],
 			cascade: false
 		}))
-		.pipe(gulp.dest('./assets/css'));
+		.pipe(gulp.dest('./assets/css'))
+		.pipe(browserSync.stream({match: '**/*.css'}));
 
 });
 
