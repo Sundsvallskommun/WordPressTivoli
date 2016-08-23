@@ -10,19 +10,7 @@
 
 <?php get_template_part('partials/navigation-cards'); ?>
 
-<div class="container-fluid">
-
-	<div class="row">
-
-		<div class="news-col" id="news">
-
-			<?php get_template_part('partials/latest-news'); ?>
-
-		</div>
-
-	</div>
-
-</div>
+<?php get_template_part('page-advanced/latest-news'); ?>
 
 <div class="container-fluid container-fluid--full bg-faded hidden-sm-down">
 
@@ -38,6 +26,6 @@
 
 </div>
 
-			<?php get_template_part('partials/front-page/calendar'); ?>
+<?php get_template_part('partials/front-page/calendar'); ?>
 
 <?php get_template_part('page-advanced/footer'); ?>

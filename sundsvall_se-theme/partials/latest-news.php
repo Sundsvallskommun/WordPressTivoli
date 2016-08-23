@@ -6,11 +6,7 @@
 	<ul class="list-unstyled widget-latest-news">
 
 <?php
-		if(is_front_page()) {
-			$posts_category = get_field( 'news_category', get_option( 'page_on_front' ) );
-		} else {
-			$posts_category = get_field( 'news_category' );
-		}
+		$posts_category = get_field( 'news_category', get_option( 'page_on_front' ) );
 
 		$latest_posts = get_posts( array(
 			'posts_per_page' => 3,
@@ -66,28 +62,10 @@
 	</div>
 
 <?php
-
-	if(is_advanced_template( get_the_id() )) {
-
-		$pages = get_posts(array(
-			'post_type' => 'page',
-			'meta_key' => '_wp_page_template',
-			'meta_value' => 'templates/page-advanced-news.php',
-			'post_parent' => get_the_id(),
-			'posts_per_page' => 1
-		));
-
-		$all_posts_page = $pages[0]->ID;
-
-	} else {
 		$all_posts_page = get_option( 'page_for_posts' );
-	}
-
 ?>
 
 	<?php /* <a href="<?php echo get_permalink( $all_posts_page ); ?>" class="btn btn-purple btn-action"><?php the_icon('arrow-right'); ?> Alla nyheter </a> */ ?>
 	<a href="<?php echo get_permalink( $all_posts_page ); ?>">Alla nyheter &raquo;</a>
-
-
 
 </section>
