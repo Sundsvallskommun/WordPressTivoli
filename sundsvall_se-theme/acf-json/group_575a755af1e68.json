@@ -446,6 +446,13 @@
                 "operator": "==",
                 "value": "acf-options-sidfot"
             }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates\/page-advanced.php"
+            }
         ]
     ],
     "menu_order": 0,
@@ -456,5 +463,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1465886004
+    "modified": 1471938380
 }

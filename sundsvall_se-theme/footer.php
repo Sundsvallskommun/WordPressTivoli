@@ -10,11 +10,16 @@ if(!is_front_page() && !is_search() && !is_archive() && !is_home()) {
 
 	<div class="container-fluid">
 
-		<?php if ( have_rows ( 'footer_columns', 'option' ) ) : ?>
+<?php
+// if this is advanced template we use its footer column, else we use them options settings.
+$fields_id = is_advanced_template_child() ? advanced_template_top_ancestor() : 'option';
+?>
 
-		<div class="row site-footer__columns site-footer__columns--<?php echo count( get_field( 'footer_columns', 'option' ) ); ?>">
+		<?php if ( have_rows ( 'footer_columns', $fields_id) ) : ?>
 
-			<?php while ( have_rows( 'footer_columns', 'option' ) ) : the_row(); ?>
+		<div class="row site-footer__columns site-footer__columns--<?php echo count( get_field( 'footer_columns', $fields_id) ); ?>">
+
+			<?php while ( have_rows( 'footer_columns', $fields_id) ) : the_row(); ?>
 
 				<div class="site-footer__column">
 
@@ -167,7 +172,7 @@ if(!is_front_page() && !is_search() && !is_archive() && !is_home()) {
 
 			<div class="site-footer__column">
 
-				<p>&copy; Copyright <?php echo date( 'Y' ); ?></p>
+				<p></p>
 
 			</div>
 
