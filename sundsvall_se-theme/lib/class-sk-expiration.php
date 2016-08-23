@@ -59,7 +59,7 @@ class SK_Expiration {
 
 		<p> <input type="text" class="expiry-date" id="sk_expiry_date" name="sk_expiry_date" value="<?php echo esc_attr( $expiry_date ); ?>" / > </p>
 
-		<p><small>När avpubliceringsdatumet passerat blir posten satt till utkast.</small></p>
+		<p><small>När avpubliceringsdatumet passerat blir nyhetens status satt till utkast.</small></p>
 
 				<script type="text/javascript">
 						jQuery(document).ready(function() {
