@@ -465,6 +465,7 @@ class SK_Init {
 	public function add_role_service_message_editor() {
 		add_role( 'service_message_editor', __( 'Filuppladdare och driftmeddelare', 'sundsvall_se' ), 
 			array(
+				'read' => true,
 				'upload_files' => true,
 				'edit_service_messages' => true,
 				'edit_others_service_messages' => true,
