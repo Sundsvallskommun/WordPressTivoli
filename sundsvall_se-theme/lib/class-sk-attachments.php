@@ -13,6 +13,7 @@ class SK_Attachments {
 		$this->attachment_fields();
 
 		add_action('admin_head', array(&$this, 'validate_media_javascript'));
+		add_filter( 'the_content', array(&$this, 'photographer_title') );
 	}
 
 	/**
@@ -134,5 +135,34 @@ class SK_Attachments {
 		update_post_meta($post_id , 'media_photographer', $meta);
 		clean_post_cache($post_id);
 	}
+
+
+	/**
+	 * Add title to photos in content with photographer credit
+	 */
+	function photographer_title($content) {
+		$content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
+		$document = new DOMDocument();
+		libxml_use_internal_errors(true);
+		$document->loadHTML(utf8_decode($content));
+
+		$imgs = $document->getElementsByTagName('img');
+		foreach ($imgs as $img) {
+			$src = $img->getAttribute('src');
+			$postid = get_attachment_id($src);
+
+			$photographer = get_post_meta( $postid, 'media_photographer', true );
+
+			if( isset( $photographer ) ) {
+				$img->setAttribute('title', "Foto: $photographer");
+			}
+
+		}
+
+		$html = $document->saveHTML();
+		return $html;
+	}
+
+
 
 }
