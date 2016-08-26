@@ -144,6 +144,7 @@ class SK_Expiration {
 		$today = date('Y-m-d');
 
 		$query_args = array(
+				'post_status' => 'publish',
 				'meta_key' => self::META_NAME,
 				'meta_value' => $today,
 				'meta_compare' => '<=',
