@@ -26,3 +26,12 @@
 
 .site-footer {
   display: none; }
+
+.sk-collapse > h2 a:after,
+.sk-collapse > h3 a:after,
+.sk-collapse > h4 a:after {
+  background: transparent;
+  color: currentColor; }
+
+.sk-collapse > div {
+  border-width: 1px; }

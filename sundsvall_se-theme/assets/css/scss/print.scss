@@ -37,3 +37,20 @@
 .site-footer {
 	display: none;
 }
+
+.sk-collapse {
+
+	> h2,
+	> h3,
+	> h4 {
+
+		a:after {
+			background: transparent;
+			color: currentColor;
+		}
+	}
+
+	> div {
+		border-width: 1px;
+	}
+}
