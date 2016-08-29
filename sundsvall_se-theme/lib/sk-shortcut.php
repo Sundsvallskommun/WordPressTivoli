@@ -51,3 +51,25 @@ function sk_is_shortcut($id) {
 	return false;
 }
 
+add_filter('the_title', 'shortcut_title', 10, 2);
+/**
+ * Indicate that a page is a shortcut page when showing its title in wp-admin
+ */
+function shortcut_title($title, $id) {
+
+	if(!is_admin()) return $title;
+
+	if(get_post_type($id) === 'page') {
+
+		$template = get_post_meta( $id, '_wp_page_template', true );
+
+		if ( strpos( $template, 'page-shortcut.php' ) > 0 ) {
+			$title .= ' [Genväg]';
+		}
+
+		return $title;
+	}
+
+	return $title;
+
+}
