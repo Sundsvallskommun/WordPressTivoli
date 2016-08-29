@@ -1,5 +1,4 @@
 <?php
-
 function sk_header() {
 
 	$search_parent = (isset($_GET['parent'])) ? sanitize_text_field( $_GET['parent'] ) : null;
@@ -394,3 +393,49 @@ $sk_admincolumns = new SK_Admincolumns();
  */
 require_once locate_template( 'lib/class-sk-expiration.php' );
 $sk_expiration = new SK_Expiration;
+
+
+/**
+ * Shame/misc
+ * ==========
+ */
+
+/**
+ * Add expand and collapse all buttons to Real Media Library directory tree.
+ */
+add_action('RML/Sidebar/Toolbar', 'rml_collapseall', 10);
+add_action('RML/Sidebar/ToolbarTips', 'rml_collapseall_tooltip', 10);
+
+function rml_collapseall() {
+  echo '<a data-helper="expandall" href="javascript:window.rml_sundsvall.expandAll();" class=""><i class="fa fa-plus-circle"></i></a>';
+	echo '<a data-helper="collapseall" href="javascript:window.rml_sundsvall.collapseAll();" class=""><i class="fa fa-minus-circle"></i></a>';
+
+?>
+	<script>
+
+		window.rml_sundsvall = {};
+
+		window.rml_sundsvall.collapseAll = function() {
+			jQuery('.rml-expander.rml-open').each(function(){ jQuery(this).click() });
+		}
+
+		window.rml_sundsvall.expandAll = function() {
+			jQuery('.rml-expander:not(.rml-open)').each(function(){ jQuery(this).click() });
+		}
+
+	</script>
+
+<?php
+}
+
+function rml_collapseall_tooltip() {
+?>
+	<div class="page-title-action-helper bar" data-helper="expandall">
+			<div><?php _e('Expand all', 'sundsvall_se'); ?></div>
+	</div>
+	<div class="page-title-action-helper bar" data-helper="collapseall">
+			<div><?php _e('Collapse all', 'sundsvall_se'); ?></div>
+	</div>
+<?php
+}
+
