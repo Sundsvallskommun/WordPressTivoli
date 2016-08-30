@@ -38,7 +38,8 @@ class SK_Search {
 		$this->queryArgs = array(
 			's' => $this->search_string,
 			'posts_per_page' => $this->posts_per_page,
-			'paged' => $this->page
+			'paged' => $this->page,
+			'post_status' => 'publish'
 		);
 
 
