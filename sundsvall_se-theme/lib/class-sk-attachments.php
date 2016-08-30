@@ -84,10 +84,18 @@ class SK_Attachments {
 	 * Based on https://gist.github.com/kosinix/5493051
 	 */
 	function attachment_fields() {
+		add_action('admin_head', array( &$this, 'alt_text_asterisk' ));
 		add_filter( 'attachment_fields_to_edit', array(&$this, 'new_attachment_fields'), 9, 2 );
 		add_filter( 'attachment_fields_to_save', array(&$this, 'update_attachment_meta'), 4, 2);
 		add_action( 'wp_ajax_save-attachment-compat', array(&$this, 'media_extra_fields'), 0, 1 );
 		add_filter( 'wp_prepare_attachment_for_js', array(&$this, 'media_fields_attachment_js'), 10, 3);
+	}
+
+	function alt_text_asterisk() {
+		echo "<style>label.setting[data-setting=alt] .name:after {
+			color: red;
+			content: ' *';
+		}</style>";
 	}
 
 	function media_fields_attachment_js( $response, $attachment, $meta ) {
