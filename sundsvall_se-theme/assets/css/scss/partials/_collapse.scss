@@ -21,11 +21,12 @@
 	> h3,
 	> h4 {
 		margin-bottom: 0;
+
 		a {
 			color: inherit;
 			display: block;
 			padding: $spacer-x * 1.5;
-			padding-right: $spacer-x * 3;
+			padding-right: $spacer-x * 5;
 			background: $gray-lightest;
 			position: relative;
 			text-decoration: none;
