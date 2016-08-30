@@ -38,7 +38,7 @@ function advanced_template_top_ancestor($id = null) {
 
 	$ancestors = get_post_ancestors($the_post);
 
-	if( is_advanced_template( $the_post->ID ) ) return $the_post->ID;
+	if( $the_post && is_advanced_template( $the_post->ID ) ) return $the_post->ID;
 
 	foreach( $ancestors as $ancestor ) {
 		if( is_advanced_template($ancestor) ) return $ancestor;

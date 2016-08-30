@@ -120,7 +120,7 @@ XYZ;
 
 		global $post;
 
-		if ( $this->show_revision( $post->ID ) ) {
+		if ( $post && $this->show_revision( $post->ID ) ) {
 			// Get revision.
 			$revision = $this->get_revision();
 
