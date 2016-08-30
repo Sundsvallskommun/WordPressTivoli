@@ -27,6 +27,7 @@ class SK_Tags {
 	function display_tags() {
 
 		if( is_page_template( 'templates/page-navigation.php' ) ||
+				is_advanced_template_child() ||
 				is_page_template( 'templates/page-sitemap.php' )) {
 			return;
 		}
