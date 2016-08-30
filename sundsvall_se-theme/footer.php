@@ -12,6 +12,7 @@ if(!is_front_page() && !is_search() && !is_archive() && !is_home()) {
 
 <?php
 // if this is advanced template we use its footer column, else we use them options settings.
+wp_reset_query();
 $fields_id = is_advanced_template_child() ? advanced_template_top_ancestor() : 'option';
 ?>
 
