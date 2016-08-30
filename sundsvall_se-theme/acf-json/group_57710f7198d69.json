@@ -28,13 +28,6 @@
     "location": [
         [
             {
-                "param": "page_template",
-                "operator": "==",
-                "value": "templates\/page-advanced.php"
-            }
-        ],
-        [
-            {
                 "param": "page_type",
                 "operator": "==",
                 "value": "front_page"
@@ -49,5 +42,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1471437609
+    "modified": 1472557114
 }

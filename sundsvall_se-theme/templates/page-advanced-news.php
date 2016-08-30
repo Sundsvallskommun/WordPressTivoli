@@ -9,8 +9,6 @@
 
 	<h1 class="archive__title"><?php the_title(); ?></h1>
 
-	<?php get_template_part( 'partials/archive-tags' ); ?>
-
 	<div class="row posts">
 
 <?php
