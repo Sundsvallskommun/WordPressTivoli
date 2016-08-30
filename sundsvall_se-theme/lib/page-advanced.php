@@ -10,8 +10,8 @@ function advanced_template_permalinks($url) {
 
 	$id = get_queried_object_id();
 
-	if( is_advanced_template_child($id) ) {
-		return add_query_arg( array('parent' => $id), $url );
+	if( is_advanced_template_child( $id ) || is_advanced_template( $id ) ) {
+		return add_query_arg( array('parent' => advanced_template_top_ancestor($id) ), $url );
 	}
 
 	return $url;
