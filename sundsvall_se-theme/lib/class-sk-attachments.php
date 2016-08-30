@@ -149,7 +149,11 @@ class SK_Attachments {
 	 * Add title to photos in content with photographer credit
 	 */
 	function photographer_title($content) {
+
 		$content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
+
+		if( empty($content) ) return;
+
 		$document = new DOMDocument();
 		libxml_use_internal_errors(true);
 		$document->loadHTML(utf8_decode($content));
