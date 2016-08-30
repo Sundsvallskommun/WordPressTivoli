@@ -92,3 +92,21 @@ function advanced_template_search_post_parent($post_parent) {
 	return (isset($_REQUEST['parent'])) ? sanitize_text_field( $_REQUEST['parent'] ) : $post_parent;
 }
 
+/**
+ * Get id of advanced template news archive if it exists
+ */
+function get_advanced_template_archive_id( $id = null ) {
+
+	$id = isset($id) ? $id : advanced_template_top_ancestor();
+
+	$pages = get_posts(array(
+		'post_type' => 'page',
+		'meta_key' => '_wp_page_template',
+		'meta_value' => 'templates/page-advanced-news.php',
+		'post_parent' => $id,
+		'posts_per_page' => 1
+	));
+
+	return $pages[0]->ID;
+}
+

@@ -24,17 +24,7 @@
 
 		</div>
 		<?php
-			wp_reset_postdata();
-
-			$pages = get_posts(array(
-				'post_type' => 'page',
-				'meta_key' => '_wp_page_template',
-				'meta_value' => 'templates/page-advanced-news.php',
-				'post_parent' => get_the_id(),
-				'posts_per_page' => 1
-			));
-
-			$all_posts_page = $pages[0]->ID;
+			$all_posts_page = get_advanced_template_archive_id();
 
 			if($all_posts_page):
 		?>

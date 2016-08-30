@@ -81,7 +81,7 @@ function get_the_breadcrumbs() {
 		$bc .= bc_item($front_page_title, $home_url);
 	}
 
-	if( is_advanced_template_child() && ( is_search() || is_single() ) ) {
+	if( is_advanced_template_child() && (is_search() || is_single()) ) {
 
 		$id = advanced_template_top_ancestor();
 
@@ -114,6 +114,16 @@ function get_the_breadcrumbs() {
 
 	} else if(is_singular()) {
 
+		if( is_advanced_template_child() ):
+
+			$advanced_archive_id = get_advanced_template_archive_id();
+
+			if($advanced_archive_id):
+				$bc .= bc_item( get_the_title($advanced_archive_id), get_the_permalink($advanced_archive_id) );
+			endif;
+
+		else:
+
 		$post_type = get_post_type_object( $post->post_type );
 		$post_type_url = get_post_type_archive_link( $post->post_type );
 
@@ -141,6 +151,8 @@ function get_the_breadcrumbs() {
 			}
 
 		}
+
+		endif;
 
 		// @todo: Possibly show if post is in custom taxonomy
 
