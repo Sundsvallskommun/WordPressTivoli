@@ -208,3 +208,24 @@ add_action( 'admin_notices', array( SK_Revisions::get_instance(), 'show_draft_no
 
 // Change global $post to reference revision WP_Post.
 add_action( 'wp', array( SK_Revisions::get_instance(), 'change_post_to_revision' ) );
+
+add_filter( 'wp_revisions_to_keep', 'unlimited_revisions_for_draft', 500, 2 );
+
+/**
+ * Don't limit number of revisions to keep when a published post has a draft
+ * revision.
+ */
+function unlimited_revisions_for_draft( $num, $post ) {
+
+	if ( !empty( get_post_meta( $post->ID, '_sk_revision_id', true ) ) ) {
+		return -1;
+	}
+
+	// Return default num, in default installs this function would not do
+	// anything because this is set to -1.
+	//
+	// If WP_POST_REVISIONS is set to a number in wp-config (or another filter)
+	// $num would be that number.
+	return $num;
+
+}
