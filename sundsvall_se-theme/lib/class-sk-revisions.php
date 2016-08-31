@@ -151,6 +151,7 @@ XYZ;
 	 * @return WP_Post
 	 */
 	private function get_revision( $post_id = null ) {
+
 		if ( $this->revision === null ) {
 			global $post;
 			if ( $post_id === null || !$post ) {
@@ -164,7 +165,16 @@ XYZ;
 
 			else {
 				// Get revisions.
-				$revisions = array_slice( wp_get_post_revisions( $post_id ), 1, 1 );
+				$revisions = wp_get_post_revisions( $post_id );
+
+				// Make sure we don't point at an autosave.
+				foreach( $revisions as $key => $revision ) {
+					if ( wp_is_post_autosave($revision->ID) ) {
+						unset($revisions[$key]);
+					}
+				}
+
+				$revisions = array_slice( $revisions, 1, 1 );
 
 				// Save last revision.
 				$this->revision = $revisions[0];
