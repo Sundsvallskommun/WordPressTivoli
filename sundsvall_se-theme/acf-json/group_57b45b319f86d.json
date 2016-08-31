@@ -4,10 +4,10 @@
     "fields": [
         {
             "key": "field_57b45b530cea9",
-            "label": "Taggar att visa",
-            "name": "archive_displayed_tags",
+            "label": "Kategorier att visa",
+            "name": "archive_displayed_categories",
             "type": "taxonomy",
-            "instructions": "Anger vilka taggar som visas i nyhetslistningen f\u00f6r bes\u00f6karen.",
+            "instructions": "Anger vilka kategorier som visas i nyhetslistningen f\u00f6r bes\u00f6karen.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -15,7 +15,7 @@
                 "class": "",
                 "id": ""
             },
-            "taxonomy": "post_tag",
+            "taxonomy": "category",
             "field_type": "multi_select",
             "allow_null": 0,
             "add_term": 1,
@@ -49,5 +49,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1471437724
+    "modified": 1472651852
 }
