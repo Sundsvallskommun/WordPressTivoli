@@ -226,7 +226,7 @@ Skatteverket och Försäkringskassan.
 				</div>
 			</div>');
 
-		$title = __('Alla etjänster för ', 'sundsvall_se').'<strong>'.$eservices[0]['Category'].'</strong>';
+		$title = __('Alla e-tjänster för ', 'sundsvall_se').'<strong>'.$eservices[0]['Category'].'</strong>';
 
 		$eIDLink = $this->eservice_link( array( 'Name' => 'Logga in', 'URL'  => 'https://e-tjanster.sundsvall.se/loggain', 'Icon' => get_icon('arrow-right') ) );
 
