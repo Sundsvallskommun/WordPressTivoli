@@ -33,12 +33,26 @@ class SK_ShortURL {
 	private function redirect_if_shortlink() {
 
 		$path = preg_replace('/[^A-Za-z0-9\-]/', '',$_SERVER["REQUEST_URI"]);
-		$query = array('meta_key' => 'sk_shortlink', 'meta_value' => trim($path), 'post_type' => 'page');
+
+		// Check for partial match of meta value in case it is comma separated.
+		$query = array(
+			'meta_key' => 'sk_shortlink',
+			'meta_value' => trim($path),
+			'meta_compare' => 'LIKE',
+			'post_type' => 'page'
+		);
+
 		$pages = get_posts($query);
 
-		if(count($pages) > 0) {
-			wp_redirect(get_permalink($pages[0]), 301);
-			exit;
+		// Check to see if path is in comma separated meta value.
+		foreach( $pages as $page ) {
+			$short_urls = get_post_meta( $page->ID, 'sk_shortlink', true );
+			$short_urls = array_map('trim', explode(',', $short_urls));
+
+			if( in_array( $path, $short_urls ) ) {
+				wp_redirect(get_permalink($page), 301);
+				exit;
+			}
 		}
 
 		return false;

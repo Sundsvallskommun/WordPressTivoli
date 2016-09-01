@@ -7,7 +7,7 @@
             "label": "Kort URL",
             "name": "sk_shortlink",
             "type": "text",
-            "instructions": "",
+            "instructions": "Endast ett ord per s\u00f6kv\u00e4g (t.ex. \"bad\"). Kommaseparerat f\u00f6r flera s\u00f6kv\u00e4gar (t.ex. \"bad, bada, simma\").",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -41,5 +41,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1461932755
+    "modified": 1472736943
 }
