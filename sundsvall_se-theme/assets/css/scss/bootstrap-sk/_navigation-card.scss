@@ -39,7 +39,10 @@
 
 	.nav-card-title {
 		font-size: 1.25rem;
-		margin-bottom: .75em;
+		margin-bottom: .65em;
+		position: relative;
+		padding-left: 2em;
+		line-height: 1.4;
 	}
 
 	.nav-card-title a {
@@ -48,6 +51,9 @@
 
 	.nav-card-title__icon {
 		@extend %circle-with-icon;
+		position: absolute;
+		left: 0;
+		top: 1px;
 		content: "";
 		display: inline-block;
 		border-radius: 50%;
