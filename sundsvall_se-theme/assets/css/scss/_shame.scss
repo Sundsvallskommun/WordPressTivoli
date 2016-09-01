@@ -148,6 +148,10 @@ a[rel="tag"] {
 }
 
 .gform_wrapper ul.gfield_checkbox li {
-	@extend .checkbox
+	@extend .checkbox;
+	input {
+		width: auto !important;
+		margin-left: 0 !important;
+		margin-top: .45em !important;
+	}
 }
-
