@@ -34,12 +34,29 @@ class SK_Search {
 		// Number of search results
 		$this->posts_per_page = 6;
 
+		// Exclude pages with shortcut template exept if shortcut type is set to
+		// external.
+		$exclude_internal_shortcut = array(
+			'relation' => 'or',
+			array(
+				'key' => '_wp_page_template',
+				'value' => 'templates/page-shortcut.php',
+				'compare' => '!='
+			),
+			array(
+				'key' => 'shortcut_type',
+				'value' => 'external',
+				'compare' => '='
+			)
+		);
+
 		// Base args for WP-Query
 		$this->queryArgs = array(
 			's' => $this->search_string,
 			'posts_per_page' => $this->posts_per_page,
 			'paged' => $this->page,
-			'post_status' => 'publish'
+			'post_status' => 'publish',
+			'meta_query' => $exclude_internal_shortcut
 		);
 
 
