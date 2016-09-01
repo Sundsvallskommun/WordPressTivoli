@@ -73,6 +73,14 @@ a[rel="tag"] {
 	margin-bottom: $spacer-y;
 }
 
+.single-post__content .gform_wrapper {
+	margin-bottom: $spacer-y * 2;
+}
+
+.vote-widget .gform_wrapper {
+	margin-bottom: 0;
+}
+
 .gform_wrapper ul {
 	@extend .list-unstyled;
 }
