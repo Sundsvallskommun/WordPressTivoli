@@ -141,6 +141,11 @@ XYZ;
 	private function show_revision( $post_id = null ) {
 		if ( $post_id === null ) {
 			global $post;
+
+			if(!$post) {
+				return false;
+			}
+
 			$post_id = $post->ID;
 		}
 		return !empty( get_post_meta( $post_id, '_sk_revision_id', true ) );
