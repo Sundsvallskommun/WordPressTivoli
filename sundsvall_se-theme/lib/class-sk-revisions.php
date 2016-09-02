@@ -49,7 +49,7 @@ class SK_Revisions {
 		if ( count( wp_get_post_revisions( $post->ID ) ) >= 1 ) {
 			$html = <<<XYZ
 			<div id="save-as-draft-action" style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); margin-left: -20px;">
-				<input name="save-as-draft" type="submit" class="button button-large" id="publish" value="Spara utkast">	
+				<input name="save-as-draft" type="submit" class="button button-large" id="saveAsPublishedDraft" value="Spara utkast">
 			</div>
 XYZ;
 			echo $html;
