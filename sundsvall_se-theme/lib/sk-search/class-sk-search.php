@@ -36,7 +36,7 @@ class SK_Search {
 
 		// Exclude pages with shortcut template exept if shortcut type is set to
 		// external.
-		$exclude_internal_shortcut = array(
+		$this->exclude_internal_shortcut = array(
 			'relation' => 'or',
 			array(
 				'key' => '_wp_page_template',
@@ -55,8 +55,7 @@ class SK_Search {
 			's' => $this->search_string,
 			'posts_per_page' => $this->posts_per_page,
 			'paged' => $this->page,
-			'post_status' => 'publish',
-			'meta_query' => $exclude_internal_shortcut
+			'post_status' => 'publish'
 		);
 
 
@@ -250,6 +249,7 @@ class SK_Search {
 		$query = new WP_Query();
 		$args = $this->queryArgs;
 		$args['post_type'] = 'page';
+		$args['meta_query'] = $this->exclude_internal_shortcut;
 
 		// Get all pages to be able to show only children of advanced template.
 		if( $this->is_advanced_search ) {
