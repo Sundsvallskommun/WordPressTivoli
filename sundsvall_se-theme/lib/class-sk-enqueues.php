@@ -70,7 +70,6 @@ class SK_Enqueues {
 
 	function sk_enqueue_styles() {
 		$this->add_deferred_style( 'main',   get_template_directory_uri().'/assets/css/style.css' );
-		$this->add_deferred_style( 'print',   get_template_directory_uri().'/assets/css/print.css', $media = 'print' );
 		$this->add_deferred_style( 'gfonts', $this->sk_font_url );
 		$this->add_deferred_style( 'slick', '//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css' );
 	}

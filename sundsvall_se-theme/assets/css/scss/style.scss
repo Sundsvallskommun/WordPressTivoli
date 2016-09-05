@@ -29,3 +29,7 @@
 @import 'partials/vacancy';
 
 @import 'shame';
+
+@media print {
+	@import 'print';
+}
