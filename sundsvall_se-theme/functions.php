@@ -431,10 +431,10 @@ function rml_collapseall() {
 function rml_collapseall_tooltip() {
 ?>
 	<div class="page-title-action-helper bar" data-helper="expandall">
-			<div><?php _e('Expand all', 'sundsvall_se'); ?></div>
+			<div><?php _e('Fäll ut allt', 'sundsvall_se'); ?></div>
 	</div>
 	<div class="page-title-action-helper bar" data-helper="collapseall">
-			<div><?php _e('Collapse all', 'sundsvall_se'); ?></div>
+			<div><?php _e('Fäll ihop allt', 'sundsvall_se'); ?></div>
 	</div>
 <?php
 }
