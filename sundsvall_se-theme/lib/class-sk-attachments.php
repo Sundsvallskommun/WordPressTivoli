@@ -13,7 +13,7 @@ class SK_Attachments {
 		$this->attachment_fields();
 
 		add_action('admin_head', array(&$this, 'validate_media_javascript'));
-		add_filter( 'the_content', array(&$this, 'photographer_title') );
+		add_filter( 'img_caption_shortcode', array(&$this, 'photographer_caption'), 100, 3 );
 	}
 
 	/**
@@ -148,31 +148,57 @@ class SK_Attachments {
 	/**
 	 * Add title to photos in content with photographer credit
 	 */
-	function photographer_title($content) {
+	function photographer_caption( $output, $attr, $content ) {
 
-		$content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
+		$attr = shortcode_atts( array(
+			'id'      => '',
+			'align'   => 'alignnone',
+			'width'   => '',
+			'caption' => ''
+		), $attr );
 
-		if( empty($content) ) return;
 
+		// Find img tag and get photograper meta field.
 		$document = new DOMDocument();
 		libxml_use_internal_errors(true);
 		$document->loadHTML(utf8_decode($content));
 
 		$imgs = $document->getElementsByTagName('img');
-		foreach ($imgs as $img) {
-			$src = $img->getAttribute('src');
-			$postid = get_attachment_id($src);
+		$src = $imgs[0]->getAttribute('src');
+		$postid = get_attachment_id($src);
 
-			$photographer = get_post_meta( $postid, 'media_photographer', true );
+		$photographer = get_post_meta( $postid, 'media_photographer', true );
 
-			if( isset( $photographer ) ) {
-				$img->setAttribute('title', "Foto: $photographer");
-			}
-
+		// Add photographer as title attribute.
+		if( isset( $photographer ) ) {
+			$imgs[0]->setAttribute('title', "Foto: $photographer");
 		}
 
-		$html = $document->saveHTML();
-		return $html;
+		$content = $document->saveHTML();
+
+		// Create caption
+		if ( 1 > (int) $attr['width'] || empty( $attr['caption'] ) ) {
+			return '';
+		}
+
+		if ( $attr['id'] ) {
+			$attr['id'] = 'id="' . esc_attr( $attr['id'] ) . '" ';
+		}
+
+		$new_content = '<div ' . $attr['id']
+			. 'class="wp-caption ' . esc_attr( $attr['align'] ) . '" '
+			. 'style="max-width: ' . ( 10 + (int) $attr['width'] ) . 'px;">';
+		$new_content .= do_shortcode( $content );
+		$new_content .= '<p class="wp-caption-text">' . $attr['caption'];
+		// Add photograper to caption
+		if( isset( $photographer ) ) {
+			$new_content .= " Foto: $photographer";
+		}
+		$new_content .= '</p>';
+		$new_content .= '</div>';
+
+		return $new_content;
+
 	}
 
 
