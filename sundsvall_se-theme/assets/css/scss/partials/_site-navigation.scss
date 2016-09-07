@@ -75,8 +75,7 @@
 
 	@include media-breakpoint-up(md) {
 		//border-bottom: 5px solid $gray-lighter;
-		border-bottom: 5px solid #DEE4E9;
-		box-shadow: 0px 1px 1px #C2CBD1;
+		border-bottom: 4px solid #DEE4E9;
 	}
 
 	@include media-breakpoint-up(md) {
@@ -92,7 +91,7 @@
 			align-content: flex-end;
 
 			max-width: 76.125em;
-			margin: 0 auto -5px;
+			margin: 0 auto -4px;
 		}
 	}
 
@@ -109,7 +108,7 @@
 			justify-content: center;
 			text-align: center;
 			//border-bottom: 5px solid $gray-lighter;
-			border-bottom: 5px solid #DEE4E9;
+			border-bottom: 4px solid #DEE4E9;
 			padding: 2em .5em 2em .5em;
 		}
 		@include media-breakpoint-up(lg) {
