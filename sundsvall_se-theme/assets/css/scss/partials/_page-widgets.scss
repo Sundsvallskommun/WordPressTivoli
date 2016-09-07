@@ -88,6 +88,8 @@ $page-widget-bg2: #f7f7f9;
 
 	&__columns {
 		width: 100%;
+		page-break-inside: avoid;
+		break-inside: avoid;
 		@include media-breakpoint-up(sm) {
 			columns: 2;
 		}
