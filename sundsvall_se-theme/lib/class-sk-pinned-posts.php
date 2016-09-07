@@ -61,21 +61,10 @@ class SK_Pinned_Posts {
 				$title = substr($original_title, 0, $maxlength);
 
 				// Add ellipsis at the end of title if it has been limited.
-				$title .= ($title !== $original_title) ? '…' : '.';
+				$title .= ($title !== $original_title) ? '…' : '';
 
-				$remaining_limit = $maxlength - $title_length;
-
-				$original_excerpt = sk_get_excerpt();
-
-				// Limit length of excerpt based on remaining limit after title.
-				$excerpt = ($remaining_limit > 0) ? substr($original_excerpt, 0, $remaining_limit) : '';
-
-				// Add ellipsis at the end of excerpt if it has been limited.
-				$excerpt .= ($excerpt !== $original_excerpt && strlen($excerpt)) ? '…' : '';
-
+				echo $title;
 				?>
-				<strong><?php echo $title; ?></strong>
-				<?php echo $excerpt; ?> »
 			</span>
 		</a>
 
@@ -115,7 +104,7 @@ class SK_Pinned_Posts {
 			<span>
 				<?php the_icon('error'); ?>
 				<strong><?php the_title(); ?>.</strong>
-				<?php echo sk_get_excerpt(); ?> »
+				<?php echo sk_get_excerpt(); ?>
 			</span>
 		</a>
 
