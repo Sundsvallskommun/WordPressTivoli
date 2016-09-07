@@ -22,6 +22,8 @@
 
 	.eservices-col {
 
+		margin-top: .6em;
+
 		@include make-col-span(12);
 
 		@include media-breakpoint-up(md) {
@@ -34,6 +36,8 @@
 	}
 
 	.news-col {
+
+		margin-top: 1.2em;
 
 		@include make-col-span(12);
 		
@@ -49,6 +53,10 @@
 	.eservices-col .front-page__heading,
 	.news-col .front-page__heading {
 		margin-bottom: 1.875em;
+	}
+
+	.news-col .front-page__heading {
+		font-size: 1.25rem;
 	}
 
 	// E-service container
