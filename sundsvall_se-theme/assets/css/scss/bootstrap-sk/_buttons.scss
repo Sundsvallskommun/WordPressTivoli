@@ -5,6 +5,16 @@
 	padding-bottom: .25em;
 }
 
+.btn.btn-rounded {
+	font-size: .825em;
+	font-weight: 600;
+	padding-top: .6rem;
+	padding-bottom: .6rem;
+	border-width: 2px;
+	border-radius: 2em;
+	font-family: $font-family-large;
+}
+
 .btn-purple {
   @include button-variant($btn-primary-color, profile-color(björnstigen, 2), profile-color(björnstigen, 2));
 }

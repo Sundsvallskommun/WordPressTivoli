@@ -66,6 +66,6 @@
 ?>
 
 	<?php /* <a href="<?php echo get_permalink( $all_posts_page ); ?>" class="btn btn-purple btn-action"><?php the_icon('arrow-right'); ?> Alla nyheter </a> */ ?>
-	<a href="<?php echo get_permalink( $all_posts_page ); ?>">Alla nyheter &raquo;</a>
+	<a class="btn btn-secondary btn-rounded btn-rounded btn-block" href="<?php echo get_permalink( $all_posts_page ); ?>">Visa alla nyheter</a>
 
 </section>
