@@ -20,6 +20,10 @@
 		margin-top: 3rem;
 	}
 
+	@include media-breakpoint-up(lg) {
+		margin-top: 5rem;
+	}
+
 	.widget-service-messages {
 
 		font-size: .875em;
