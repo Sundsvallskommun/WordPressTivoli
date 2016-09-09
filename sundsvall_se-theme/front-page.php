@@ -16,19 +16,9 @@
 			<?php get_template_part('partials/latest-news'); ?>
 		</div>
 
-	</div>
+	<div class="clearfix"></div>
 
-</div>
-
-<div class="container-fluid container-fluid--full bg-faded hidden-sm-down">
-
-	<div class="row">
-
-		<div class="container-fluid">
-
-			<?php get_template_part('partials/front-page/service-messages'); ?>
-
-		</div>
+	<?php get_template_part('partials/front-page/service-messages'); ?>
 
 	</div>
 

@@ -14,11 +14,13 @@
 	}
 
 	.front-page__heading {
-		font-size: 1.375rem;
+		font-size: 1.5rem;
 		@include media-breakpoint-up(md) {
 			font-size: 2rem;
+			margin-top: 0;
 		}
-		margin-top: 0;
+
+		margin-top: .65em;
 		margin-bottom: .75em;
 	}
 
@@ -30,20 +32,31 @@
 		}
 
 		.eservices-col {
-			order: 2;
+			order: 3;
 		}
+
 		.news-col {
 			order: 1;
+		}
+
+		.front-page-section__service-messages {
+			order: 2;
 		}
 
 	}
 
 	.eservices-col,
-	.news-col {
+	.news-col,
+	.front-page-section__service-messages {
 		@include make-col();
 		margin-bottom: $spacer-y * 1.5;
 
 		@extend %mobile-divider;
+		@include media-breakpoint-down(sm) {
+			padding-left: $spacer-x * 1.5;
+			padding-right: $spacer-x * 1.5;
+			margin-bottom: 0;
+		}
 	}
 
 	.eservices-col {
@@ -100,6 +113,10 @@
 	}
 
 	.widget-eservices {
+
+		@include media-breakpoint-down(md) {
+			padding-top: 1.75rem;
+		}
 
 		> .page-widget__columns {
 			position: relative;
@@ -192,7 +209,7 @@
 
 			opacity: .75;
 			position: absolute;
-			top: calc(70vw - 4em);
+			top: calc(75vw - 3em);
 			padding: 0;
 			height: 2em;
 			width: 2em;

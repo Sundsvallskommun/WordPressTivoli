@@ -1,12 +1,8 @@
-<nav class="navbar navbar-light navbar-full cwn not-fixed">
+<nav class="navbar navbar-light navbar-full mobile-header not-fixed">
 	<?php get_template_part('partials/site-logo'); ?>
 </nav>
 
 <nav class="hidden-md-up navbar navbar-light navbar-full navbar-mobile navbar-fixed-bottom">
-
-	<div class="pull-xs-left">
-		<?php get_template_part('partials/site-logo'); ?>
-	</div>
 
 	<div class="navbar-center">
 		<a class="navbar-toggler btn" data-toggle="offcanvas-left" aria-hidden="true" href="#mainNavigation">
