@@ -1,6 +1,6 @@
 .home .front-page-section__service-messages .front-page__heading {
 
-	@include media-breakpoint-up(md) {
+	@include media-breakpoint-up(sm) {
 		margin-bottom: 0;
 	}
 }
@@ -15,6 +15,23 @@
 	padding: 1.75rem 0;
 	margin-top: 0;
 	width: 100%;
+
+	&:before {
+		content: "";
+		position: absolute;
+		display: block;
+		height: 100%;
+		z-index: -1;
+		width: 100vw;
+		left: 50%;
+		transform: translateX(-50%);
+		top: 0;
+		@include media-breakpoint-up(md) {
+			background: $state-warning-bg;
+		}
+	}
+
+	margin-bottom: 0;
 
 	.btn-rounded {
 		@include media-breakpoint-down(md) {
@@ -39,8 +56,12 @@
 		margin: 2em 0;
 
 		li {
-			width: 100%;
 			display: inline-block;
+			margin-right: $spacer-x;
+			width: 100%;
+			@include media-breakpoint-down(md) {
+				margin-right: 0;
+			}
 		}
 
 		a {

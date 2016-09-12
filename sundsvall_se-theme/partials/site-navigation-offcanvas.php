@@ -1,6 +1,6 @@
 <div id="mainNavigation" class="site-navigation offcanvas">
 
-	<nav class="mobile-header not-fixed">
+	<nav class="hidden-md-up mobile-header not-fixed">
 		<?php get_template_part('partials/site-logo'); ?>
 	</nav>
 

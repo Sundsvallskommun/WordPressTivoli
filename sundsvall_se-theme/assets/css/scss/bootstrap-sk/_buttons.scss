@@ -14,7 +14,7 @@
 	border-radius: 2em;
 	font-family: $font-family-large;
 
-	@include media-breakpoint-up(md) {
+	@include media-breakpoint-up(lg) {
 		font-size: .825em;
 	}
 }
