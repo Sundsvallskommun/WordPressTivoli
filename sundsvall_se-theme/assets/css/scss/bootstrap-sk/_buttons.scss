@@ -6,13 +6,17 @@
 }
 
 .btn.btn-rounded {
-	font-size: .825em;
+	font-size: 1em;
 	font-weight: 600;
 	padding-top: .6rem;
 	padding-bottom: .6rem;
 	border-width: 2px;
 	border-radius: 2em;
 	font-family: $font-family-large;
+
+	@include media-breakpoint-up(md) {
+		font-size: .825em;
+	}
 }
 
 .btn-purple {

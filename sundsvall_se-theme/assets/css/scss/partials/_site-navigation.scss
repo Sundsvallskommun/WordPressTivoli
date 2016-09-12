@@ -1,19 +1,3 @@
-@include media-breakpoint-down(sm) {
-
-	.offcanvas-active-left .contentwrapper-outer,
-	.offcanvas-animating-left .contentwrapper-outer {
-		overflow: hidden;
-		height: 100%;
-		width: 100%;
-	}
-
-	body.offcanvas-active-left,
-	body.offcanvas-animating-left {
-		overflow: hidden;
-	}
-
-}
-
 .site-navigation {
 
 	line-height: 1.25;
