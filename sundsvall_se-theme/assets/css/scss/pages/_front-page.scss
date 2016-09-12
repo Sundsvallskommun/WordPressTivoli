@@ -24,7 +24,7 @@
 		margin-bottom: .75em;
 	}
 
-	@include media-breakpoint-down(md) {
+	@include media-breakpoint-down(sm) {
 
 		.eservice-news-row {
 			display: flex;

@@ -1,0 +1,128 @@
+/**
+* Buttons to toggle navigation + search
+*/
+
+.btn-mobile-fixed {
+
+	@include media-breakpoint-up(md) {
+		display: none;
+	}
+
+	position: fixed;
+	bottom: 1rem;
+	z-index: 100;
+
+
+	.iconwrapper {
+		display: inline-block;
+		background: white;
+		border-radius: 50%;
+		position: relative;
+		width: 4.35rem;
+		height: 4.35rem;
+		box-shadow: 0 5px 11px 0 rgba(0,0,0,0.28),0 4px 15px 0 rgba(0,0,0,0.22);
+		font-size: 1rem;
+		text-transform: uppercase;
+		text-align: center;
+		fill: $brand-primary;
+		overflow: hidden;
+	}
+
+	.search-active & {
+		bottom: -.15rem;
+		.iconwrapper {
+			box-shadow: none;
+		}
+	}
+
+	.icon {
+		font-size: 1.75em;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.icon-active {
+		display: none;
+	}
+
+	.search-active &,
+	.offcanvas-active-bottom & {
+
+		.icon-inactive {
+			display: none;
+		}
+
+		.icon-active {
+			display: inline-block;
+		}
+	}
+
+	&-bottom-left {
+		left: 1rem;
+
+		.offcanvas-active-bottom & {
+			display: none;
+		}
+
+		.search-active & {
+			left: .35rem;
+		}
+
+	}
+
+	&-bottom-right {
+		right: 1rem;
+
+		.icon-inactive {
+			font-size: 1.25em;
+		}
+
+		.search-active & {
+			display: none;
+		}
+
+	}
+
+	.icon-active {
+		font-size: .875em;
+	}
+
+}
+
+
+/**
+ * Off canvas navigation, sliding from bottom
+ */
+.offcanvas {
+
+	@include media-breakpoint-down(sm) {
+		z-index: 2;
+		background: white;
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		overflow: scroll;
+		transform: translateY(100%);
+		transition: transform $offcanvas-transition-duration, padding $mobile-search-transition-duration;
+		-webkit-overflow-scrollling: touch; // More standard scroll behaviour in iOS
+		&.active,
+		&:target {
+			transform: translateY(0);
+		}
+	}
+
+}
+
+@include media-breakpoint-down(sm) {
+
+	body.offcanvas-active-bottom,
+	body.offcanvas-animating-bottom {
+		overflow: hidden;
+	}
+
+}
+

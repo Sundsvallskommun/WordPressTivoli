@@ -53,15 +53,16 @@ require('./sk_calendar_background.js');
 			var target = $(this).attr('href');
 			$(target).toggleClass('active');
 			$('body').toggleClass('search-active');
+			$('#s').focus();
 		});
 
 		/**
 		 * Toggle off canvas navigation
 		 */
-		$('[data-toggle="offcanvas-left"]').on('click', function (e) {
+		$('[data-toggle="offcanvas-bottom"]').on('click', function (e) {
 			e.preventDefault();
 			var target = $(this).attr('href');
-			offcanvas(target, 'left');
+			offcanvas(target, 'bottom');
 		});
 
 		function offcanvas(target, dir) {
