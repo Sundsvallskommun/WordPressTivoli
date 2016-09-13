@@ -20,7 +20,7 @@
 		position: relative;
 		width: 4.35rem;
 		height: 4.35rem;
-		box-shadow: 0 5px 11px 0 rgba(0,0,0,0.28),0 4px 15px 0 rgba(0,0,0,0.22);
+		box-shadow: $overlay_shadow;
 		font-size: 1rem;
 		text-transform: uppercase;
 		text-align: center;
@@ -96,6 +96,27 @@
  * Off canvas navigation, sliding from bottom
  */
 .offcanvas {
+
+	.nav-header {
+		padding-top: .75em;
+		padding-bottom: .75em;
+
+		h2 {
+			font-size: 1.5em;
+			margin-top: .5em;
+			margin-bottom: 0;
+		}
+	}
+
+	// Login button and dropdown
+	.btn-rounded {
+		background: transparent;
+	}
+
+	.dropdown-menu {
+		right: 0;
+		left: auto;
+	}
 
 	@include media-breakpoint-down(sm) {
 		z-index: 2;
