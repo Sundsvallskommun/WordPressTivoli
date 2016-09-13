@@ -4,6 +4,8 @@
 
 <?php get_template_part('partials/boxes'); ?>
 
+<div style="overflow: hidden;"> <?php //Fix for IE11, service-messages caused horizontal scrollbar ?>
+
 <div class="container-fluid">
 
 	<div class="row eservice-news-row">
@@ -21,6 +23,8 @@
 	<?php get_template_part('partials/front-page/service-messages'); ?>
 
 	</div>
+
+</div>
 
 </div>
 

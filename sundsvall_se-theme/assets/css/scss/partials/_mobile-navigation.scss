@@ -119,6 +119,7 @@
 	}
 
 	@include media-breakpoint-down(sm) {
+		opacity: 0; // Opacity 0 when hidden, else it might show up in mobile when viewport changes height on scroll
 		z-index: 2;
 		background: white;
 		position: fixed;
@@ -128,11 +129,13 @@
 		width: 100%;
 		overflow: scroll;
 		transform: translateY(100%);
-		transition: transform $offcanvas-transition-duration, padding $mobile-search-transition-duration;
+		transition: transform $offcanvas-transition-duration, padding $mobile-search-transition-duration, opacity 0s $offcanvas-transition-duration;
 		-webkit-overflow-scrollling: touch; // More standard scroll behaviour in iOS
 		&.active,
 		&:target {
 			transform: translateY(0);
+			opacity: 1;
+		transition: transform $offcanvas-transition-duration, padding $mobile-search-transition-duration, opacity 0s;
 		}
 	}
 
