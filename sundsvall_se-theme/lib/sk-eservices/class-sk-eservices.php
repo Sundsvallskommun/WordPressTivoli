@@ -284,6 +284,7 @@ Skatteverket och Försäkringskassan.
 
 			$return .= sprintf($headingwrap, $category);
 			$return .= sprintf($groupwrap, $links);
+			$return .= '<div class="clearfix"></div>';
 		}
 
 		return $return;
