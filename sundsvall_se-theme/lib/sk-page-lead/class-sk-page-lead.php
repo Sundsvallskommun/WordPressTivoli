@@ -45,7 +45,7 @@ class SK_Page_Lead {
 	}
 
 	/**
-	 * Validate content before save so make sure lead is under 200 characters.
+	 * Validate content before save so make sure lead is under 160 characters.
 	 */
 	function lead_save_validation() {
 		global $post;
@@ -56,7 +56,7 @@ class SK_Page_Lead {
 	}
 
 	/**
-	 * JS used to check that lead is under 200 characters long before allowing
+	 * JS used to check that lead is under 160 characters long before allowing
 	 * post submit.
 	 */
 	function lead_validation_js() {
@@ -65,8 +65,8 @@ class SK_Page_Lead {
 				jQuery(document).ready(function($) {
 					$('#publish').on('click', function() {
 						var leadtext = tinyMCE.get('content').dom.select('p:first')[0].innerHTML;
-						if(leadtext.length > 200) {
-							alert('Ingressen är för lång, var vänlig korta ner den. Ingressen får max vara 200 tecken och är nu ' + leadtext.length + ' tecken lång.')
+						if(leadtext.length > 160) {
+							alert('Ingressen är för lång, var vänlig korta ner den. Ingressen får max vara 160 tecken och är nu ' + leadtext.length + ' tecken lång.')
 							return false;
 						}
 					});

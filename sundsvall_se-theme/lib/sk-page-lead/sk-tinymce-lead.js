@@ -1,6 +1,6 @@
 /**
  * Add .lead class to first paragraph in editor. Add red styling if longer than
- * 200 characters
+ * 160 characters
  */
 
 tinymce.PluginManager.add('sk_page_lead', function(editor, url) {
@@ -29,9 +29,9 @@ tinymce.PluginManager.add('sk_page_lead', function(editor, url) {
 		var lead = ed.dom.select('p:first');
 		ed.dom.addClass(lead, 'lead');
 
-		// Add red/white colors to lead paragraph if it is longer than 200 characters.
+		// Add red/white colors to lead paragraph if it is longer than 160 characters.
 		var leadLength = lead[0].innerHTML.length;
-		if (leadLength > 200) {
+		if (leadLength > 160) {
 			ed.dom.setStyle(lead, 'background-color', 'rgb(221, 61, 54)');
 			ed.dom.setStyle(lead, 'color', 'white');
 		}
