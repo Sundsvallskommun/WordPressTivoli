@@ -140,7 +140,7 @@ XYZ;
 	 */
 	public function add_draft_to_title( $title, $id ) {
 		if ( is_admin() && $this->show_revision( $id ) ) {
-			$title .= ' [draft]';
+			$title .= ' [Opublicerad version]';
 		}
 
 		return $title;
