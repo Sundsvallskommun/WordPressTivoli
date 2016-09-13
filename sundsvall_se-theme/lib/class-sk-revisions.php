@@ -134,6 +134,19 @@ XYZ;
 	}
 
 	/**
+	 * Adds [draft] to the post title if post has a draft.
+	 * @param string $title
+	 * @param int    $id
+	 */
+	public function add_draft_to_title( $title, $id ) {
+		if ( is_admin() && $this->show_revision( $id ) ) {
+			$title .= ' [draft]';
+		}
+
+		return $title;
+	}
+
+	/**
 	 * Helper function to check if we're suppose to show
 	 * revision instead of post.
 	 * @return boolean
@@ -214,7 +227,12 @@ add_action( 'admin_notices', array( SK_Revisions::get_instance(), 'show_draft_no
 // Change global $post to reference revision WP_Post.
 add_action( 'wp', array( SK_Revisions::get_instance(), 'change_post_to_revision' ) );
 
+// Add filter to let WordPress save an unlimited number of revisions
+// if a post is marked as having a sk_revision.
 add_filter( 'wp_revisions_to_keep', 'unlimited_revisions_for_draft', 500, 2 );
+
+// Adds a [draft] to the title when in back-end.
+add_filter( 'the_title', array( SK_Revisions::get_instance(), 'add_draft_to_title' ), 10, 2 );
 
 /**
  * Don't limit number of revisions to keep when a published post has a draft
