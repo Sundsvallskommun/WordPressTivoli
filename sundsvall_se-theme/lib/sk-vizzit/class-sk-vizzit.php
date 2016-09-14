@@ -18,6 +18,10 @@ class SK_Vizzit {
 
 	public function navcard_children($id) {
 
+		if ( is_null( $id ) ) {
+			return false;
+		}
+
 		$date = current_time('Y-m-d');
 
 		$pages = $this->vizzit->get_popular_pages_by_node($id, $date);
