@@ -1,31 +1,69 @@
 <nav class="navbar navbar-full hidden-sm-down">
+
 	<div class="container-fluid">
+
 		<div class="nav navbar-nav pull-xs-right">
 
-			<div class="nav-item dropdown">
+			<?php if ( have_rows ( 'header_links', 'option') ) : ?>
+				<?php while ( have_rows( 'header_links', 'option') ) : the_row(); ?>
 
-				<button class="btn btn-purple btn-sm nav-link dropdown-toggle" data-toggle="dropdown" type="button" id="loginMenuButton" aria-haspopup="true" aria-expanded="false">
-					Logga in
-				</button>
+				<?php
+					$type = get_row_layout();
+					if( 'simple_link_internal' == $type || 'simple_link_external' == $type ):
+				?>
 
-				<div class="dropdown-menu" aria-labelledby="loginMenuButton">
-					<a class="dropdown-item" href="/kommun-och-politik/om-webbplatsen-2/elev/">Elev</a>
-					<a class="dropdown-item" href="/kommun-och-politik/om-webbplatsen-2/medarbetare/">Medarbetare</a>
-					<a class="dropdown-item" href="/om-webbplatsen-2/medborgare/">Medborgare</a>
-				</div>
+					<a class="nav-item nav-link btn btn-primary btn-sm" href="<?php the_sub_field( 'link_url' )?>">
+						<?php the_sub_field( 'link_text' ); ?>
+					</a>
+
+				<?php endif; // simple link ?>
+
+				<?php if( 'google_translate' == $type || 'link_list' == $type ): ?>
+
+					<div class="nav-item dropdown">
+
+						<?php 
+						$dropdown_id = get_sub_field( 'dropdown_text' );
+						$dropdown_id = strtolower($dropdown_id);
+						//Make alphanumeric (removes all other characters)
+						$dropdown_id = preg_replace("/[^a-z0-9_\s-]/", "", $dropdown_id);
+						//Clean up multiple dashes or whitespaces
+						$dropdown_id = preg_replace("/[\s-]+/", " ", $dropdown_id);
+						//Convert whitespaces and underscore to dash
+						$dropdown_id = preg_replace("/[\s_]/", "-", $dropdown_id);
+						?>
+
+						<button class="btn btn-purple btn-sm nav-link dropdown-toggle" data-toggle="dropdown" type="button" id="<?php echo $dropdown_id ?>" aria-haspopup="true" aria-expanded="false">
+								<?php the_sub_field( 'dropdown_text' ); ?>
+						</button>
+
+						<div class="dropdown-menu" aria-labelledby="<?php echo $dropdown_id; ?>">
+
+							<?php if( 'google_translate' == $type ): ?>
+								<?php get_template_part('./partials/google-translate'); ?>
+							<?php endif; ?>
+
+							<?php if( 'link_list' == $type ): ?>
+		
+								<?php while ( have_rows( 'links' ) ) : the_row(); ?>
+									<a class="dropdown-item" href="<?php the_sub_field( 'link_url' )?>">
+										<?php the_sub_field( 'link_text' ); ?>
+									</a>
+								<?php endwhile; ?>
+							<?php endif; ?>
+
+						</div>
+
+					</div>
+
+				<?php endif; // dropdown ?>
+
+				<?php endwhile; // while have rows ?>
+			<?php endif; // if have rows ?>
 
 			</div>
 
-			<?php get_template_part('./partials/google-translate'); ?>
-
-			<?php
-				$finnish_page = get_page_by_title( 'Suomeksi');
-				if($finnish_page):
-			?>
-			<a class="nav-item nav-link btn btn-primary btn-sm" lang="fi" href="<?php echo get_permalink($finnish_page->ID); ?>">Suomeksi</a>
-			<?php endif; ?>
-
 		</div>
-	</div>
+
 </nav>
 

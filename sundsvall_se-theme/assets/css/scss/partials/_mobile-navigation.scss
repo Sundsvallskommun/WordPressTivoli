@@ -113,11 +113,6 @@
 		background: transparent;
 	}
 
-	.dropdown-menu {
-		right: 0;
-		left: auto;
-	}
-
 	@include media-breakpoint-down(sm) {
 		opacity: 0; // Opacity 0 when hidden, else it might show up in mobile when viewport changes height on scroll
 		z-index: 2;
