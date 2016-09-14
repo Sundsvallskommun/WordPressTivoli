@@ -101,6 +101,12 @@ class SK_Init {
 			));
 
 			acf_add_options_sub_page(array(
+				'page_title'  => 'Sidhuvud',
+				'menu_title'  => 'Sidhuvud',
+				'parent_slug' => 'general-settings'
+			));
+
+			acf_add_options_sub_page(array(
 				'page_title'  => 'Sidfot',
 				'menu_title'  => 'Sidfot',
 				'parent_slug' => 'general-settings'
