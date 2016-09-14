@@ -5,7 +5,7 @@ require('./bootstrap/umd/modal.js');
 require('./acf-map.js');
 require('./sk_vacancies_list.js');
 require('./sk_infinite_scroll.js');
-require('./sk_calendar_background.js');
+require('./sk_calendar.js');
 
 (function($) {
 	"use strict";
