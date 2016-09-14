@@ -34,14 +34,19 @@ foreach($children as $child) {
 						the_icon('external');
 					} ?>
 				</span>
-				<a href="<?php echo $is_shortcut ? $shortcut_url : $permalink ; ?>"<?php echo $is_shortcut === 'external' ? 'target="_blank"' : '' ; ?>>
+
+				<?php if ( $is_shortcut === 'page' && is_null( get_field( 'page_link', $child_id ) ) ) : ?>
 					<?php echo $title; ?>
-				</a>
+				<?php else : ?>
+					<a href="<?php echo $is_shortcut ? $shortcut_url : $permalink ; ?>"<?php echo $is_shortcut === 'external' ? 'target="_blank"' : '' ; ?>>
+						<?php echo $title; ?>
+					</a>
+				<?php endif; ?>
 			</h2>
 			<p class="nav-card-text">
 				<?php
 
-						if(!is_navigation($child_id)) {
+					if(!is_navigation($child_id)) {
 
 						// If child page is a shortcut to an internal page we set child id to
 						// the page its pointing to
@@ -58,8 +63,15 @@ foreach($children as $child) {
 
 					if(is_navigation($child_id)) {
 						$children = apply_filters('sk_navcard_children', $child_id);
-						if(!$children) {
-							$children = get_children(array('post_type' => 'page', 'post_parent' => $child_id));
+
+						if( !$children ) {
+							if ( $child_id === null ) {
+								$children = array();
+							}
+
+							else {
+								$children = get_children(array('post_type' => 'page', 'post_parent' => $child_id));
+							}
 						}
 
 						$i = 0;
@@ -75,9 +87,13 @@ foreach($children as $child) {
 						}
 
 						?>
+
+						<?php if ( is_navigation( $child_id ) && is_null( get_field( 'page_link', $child_id ) ) ) : ?>
+						<?php else : ?>
 							| <a href="<?php echo $is_shortcut ? $shortcut_url : $permalink ; ?>">Visa&nbsp;alla&nbsp;&#187;</a>
-						<?php
-					} else {
+						<?php endif; ?>
+
+					<?php } else {
 						$excerpt = sk_get_excerpt($child_id);
 						echo $excerpt;
 					}
