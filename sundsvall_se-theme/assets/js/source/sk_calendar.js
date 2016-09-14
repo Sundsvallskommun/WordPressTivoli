@@ -33,12 +33,19 @@
 		/**
 		 * Replace 00.00 with "Heldag" in calendar widget.
 		 */
-		$('#citybreak_event_calendar_widget').on( 'DOMSubtreeModified', function() {
+		$('#citybreak_event_calendar_widget').on( 'DOMSubtreeModified', fullday_event_time);
+
+		function fullday_event_time() {
 			$(this).find('.cb_eventlink_time').each(function() {
 				if( '00.00' == $(this).html() ) {
 					$(this).html('Heldag');
 				}
 			});
+		}
+
+		$(window).load( function() {
+			// We use this as a fallback if DOMSubtreeModified is unsupported.
+			setTimeout(fullday_event_time, 1000);
 		});
 
 	});
