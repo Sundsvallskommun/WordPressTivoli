@@ -1,0 +1,11 @@
+.dropdown-menu {
+	font-family: $font-family-large;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	box-shadow: $overlay_shadow;
+}
+
+.dropdown-item {
+	font-weight: 600;
+	line-height: 2.5;
+}

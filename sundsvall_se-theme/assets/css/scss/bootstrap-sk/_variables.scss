@@ -476,19 +476,19 @@ $jumbotron-bg:                   $gray-lighter !default;
 // Define colors for form feedback states and, by default, alerts.
 
 $state-success-text:             profile-color(grönsta, 2);
-$state-success-bg:               profile-color(grönsta, 3);
+$state-success-bg:               mix(profile-color(grönsta, 3), white, 40);
 $state-success-border:           darken($state-success-bg, 5%) !default;
 
 $state-info-text:                profile-color(vattjom, 2);
-$state-info-bg:                  profile-color(vattjom, 3);
+$state-info-bg:                  mix(profile-color(vattjom, 3), white, 40);
 $state-info-border:              darken($state-info-bg, 7%) !default;
 
 $state-warning-text:             profile-color(solum, 2);
-$state-warning-bg:               profile-color(solum, 3);
+$state-warning-bg:               mix(profile-color(solum, 3), white, 40);
 $state-warning-border:           darken($state-warning-bg, 5%) !default;
 
 $state-danger-text:              profile-color(rödön, 2);
-$state-danger-bg:                profile-color(rödön, 3);
+$state-danger-bg:                mix(profile-color(rödön, 3), white, 40);
 $state-danger-border:            darken($state-danger-bg, 5%) !default;
 
 

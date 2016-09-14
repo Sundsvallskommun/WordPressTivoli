@@ -29,6 +29,18 @@
 
 		}
 
+
+		/**
+		 * Replace 00.00 with "Heldag" in calendar widget.
+		 */
+		$('#citybreak_event_calendar_widget').on( 'DOMSubtreeModified', function() {
+			$(this).find('.cb_eventlink_time').each(function() {
+				if( '00.00' == $(this).html() ) {
+					$(this).html('Heldag');
+				}
+			});
+		});
+
 	});
 
 })(jQuery);

@@ -1,4 +1,4 @@
-$offcanvas-transition-duration: .75s;
+$offcanvas-transition-duration: .5s;
 $mobile-search-transition-duration: .5s;
 
 $sk-section-colors: (
@@ -10,4 +10,6 @@ $sk-section-colors: (
 	naringsliv: profile-color(vattjom, 2),
 	kommun: profile-color(björnstigen),
 );
+
+$overlay_shadow: 0 5px 11px 0 rgba(0,0,0,0.28),0 4px 15px 0 rgba(0,0,0,0.22);
 

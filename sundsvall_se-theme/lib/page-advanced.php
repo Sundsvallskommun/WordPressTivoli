@@ -17,6 +17,21 @@ function advanced_template_permalinks($url) {
 	return $url;
 }
 
+add_filter( 'bloginfo', 'advanced_template_bloginfo_name', 10, 2 );
+
+/**
+ * Filter bloginfo( 'name' ) and change it to advanced template name.
+ */
+function advanced_template_bloginfo_name( $output, $show ) {
+	if ( 'name' != $show ) return $output;
+
+	if( is_advanced_template_child() ) {
+		return get_the_title( advanced_template_top_ancestor() );
+	}
+
+	return $output;
+}
+
 /**
  * Return id of ancestor (or self) advanced template.
  */

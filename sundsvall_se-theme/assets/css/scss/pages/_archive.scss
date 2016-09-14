@@ -65,12 +65,16 @@
 	}
 
 	.img-placeholder {
-		width: 132px;
+		width: 160px;
 		height: 0px;
 		position: relative;
-		padding-bottom: 69.5%;
+
 		max-width: 100%;
 		background: profile-color(svartvik, 2);
+		padding-bottom: 78.125%;
+		@include media-breakpoint-up(md) {
+			padding-bottom: 70%;
+		}
 
 		.icon {
 			width: 40%;
@@ -85,18 +89,19 @@
 
 	.media-body,
 	&__content {
-		vertical-align: middle;
 		line-height: 1.5;
 		.media-heading {
-			line-height: inherit;
+			line-height: 1.2;
 		}
 	}
 
-		margin-bottom: 1.5em;
+		margin-bottom: 1.3em;
 
 		&__date {
-			color: $gray;
-			font-size: .875em;
+			color: $gray-light;
+			font-size: .75em;
+			font-family: $font-family-large;
+			font-weight: 500;
 		}
 
 		&__excerpt {

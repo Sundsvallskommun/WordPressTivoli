@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid image-boxes-container">
 
 <div class="image-boxes">
 
