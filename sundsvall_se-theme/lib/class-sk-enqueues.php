@@ -12,7 +12,7 @@ class SK_Enqueues {
 	function __construct() {
 
 		$this->deferred_styles = array();
-		$this->sk_font_url = str_replace( ',', '%2C', 'https://fonts.googleapis.com/css?family=Raleway:400,700,500,300');
+		$this->sk_font_url = str_replace( ',', '%2C', 'https://fonts.googleapis.com/css?family=Raleway:400,700,500,300|Material+Icons');
 
 		add_action( 'wp_print_styles', array(&$this, 'sk_dequeue_scripts_and_styles') );
 		add_action( 'init', array(&$this, 'sk_disable_emojis') );
