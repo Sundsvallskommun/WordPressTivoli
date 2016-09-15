@@ -10,6 +10,8 @@
 
 class SK_Revisions {
 
+	const REVISION_ID_KEY = '_sk_revision_id';
+
 	/**
 	 * Singleton instance of class.
 	 * @var SK_Vacancy|null
@@ -67,12 +69,12 @@ XYZ;
 
 		if ( !empty( $_POST['save-as-draft'] ) ) {
 			// Check if this post already has a revision id saved.
-			if ( empty( get_post_meta( $post_id, '_sk_revision_id', true ) ) ) {
+			if ( empty( get_post_meta( $post_id, self::REVISION_ID_KEY, true ) ) ) {
 				// Get revision.
 				$revision = $this->get_revision();
 
 				// Save revision id as postmeta.
-				update_post_meta( $post_id, '_sk_revision_id', $revision->ID );
+				update_post_meta( $post_id, self::REVISION_ID_KEY, $revision->ID );
 			}
 		}
 
@@ -82,7 +84,7 @@ XYZ;
 		// If user clicked save, we assume they want to publish
 		// the draft and therefor we'll remove the post meta.
 		} else {
-			delete_post_meta( $post_id, '_sk_revision_id' );
+			delete_post_meta( $post_id, self::REVISION_ID_KEY );
 		}
 	}
 
@@ -161,7 +163,7 @@ XYZ;
 
 			$post_id = $post->ID;
 		}
-		return !empty( get_post_meta( $post_id, '_sk_revision_id', true ) );
+		return !empty( get_post_meta( $post_id, self::REVISION_ID_KEY, true ) );
 	}
 
 	/**
@@ -177,8 +179,8 @@ XYZ;
 			}
 
 			// Check if revision id exists.
-			if ( !empty( get_post_meta( $post_id, '_sk_revision_id', true ) ) ) {
-				$this->revision = get_post( get_post_meta( $post_id, '_sk_revision_id', true ) );
+			if ( !empty( get_post_meta( $post_id, self::REVISION_ID_KEY, true ) ) ) {
+				$this->revision = get_post( get_post_meta( $post_id, self::REVISION_ID_KEY, true ) );
 			}
 
 			else {
@@ -234,13 +236,16 @@ add_filter( 'wp_revisions_to_keep', 'unlimited_revisions_for_draft', 500, 2 );
 // Adds a [draft] to the title when in back-end.
 add_filter( 'the_title', array( SK_Revisions::get_instance(), 'add_draft_to_title' ), 10, 2 );
 
+// Adds a [draft] to the title when in back-end.
+add_filter( 'the_title', array( SK_Revisions::get_instance(), 'add_draft_to_title' ), 10, 2 );
+
 /**
  * Don't limit number of revisions to keep when a published post has a draft
  * revision.
  */
 function unlimited_revisions_for_draft( $num, $post ) {
 
-	if ( !empty( get_post_meta( $post->ID, '_sk_revision_id', true ) ) ) {
+	if ( !empty( get_post_meta( $post->ID, SK_Revisions::REVISION_ID_KEY, true ) ) ) {
 		return -1;
 	}
 
