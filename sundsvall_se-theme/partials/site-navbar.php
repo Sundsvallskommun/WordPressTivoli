@@ -33,9 +33,19 @@
 						$dropdown_id = preg_replace("/[\s_]/", "-", $dropdown_id);
 						?>
 
-						<button class="btn btn-purple btn-sm nav-link dropdown-toggle" data-toggle="dropdown" type="button" id="<?php echo $dropdown_id ?>" aria-haspopup="true" aria-expanded="false">
-								<?php the_sub_field( 'dropdown_text' ); ?>
-						</button>
+						<?php if( 'google_translate' == $type ): ?>
+
+							<button class="btn btn-primary btn-sm nav-link dropdown-toggle" lang="en" type="button" id="languageMenuButton" aria-haspopup="true" aria-expanded="false">
+								Language
+							</button>
+
+						<?php else: ?>
+
+							<button class="btn btn-primary btn-sm nav-link dropdown-toggle" data-toggle="dropdown" type="button" id="<?php echo $dropdown_id ?>" aria-haspopup="true" aria-expanded="false">
+									<?php the_sub_field( 'dropdown_text' ); ?>
+							</button>
+
+						<?php endif; ?>
 
 						<div class="dropdown-menu" aria-labelledby="<?php echo $dropdown_id; ?>">
 

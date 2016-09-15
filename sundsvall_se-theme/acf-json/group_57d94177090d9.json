@@ -266,29 +266,7 @@
                     "name": "google_translate",
                     "label": "Google Translate",
                     "display": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_57d9507a43201",
-                            "label": "Knapp-text",
-                            "name": "dropdown_text",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 1,
-                            "conditional_logic": "",
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "maxlength": "",
-                            "readonly": 0,
-                            "disabled": 0
-                        }
-                    ],
+                    "sub_fields": [],
                     "min": "",
                     "max": ""
                 }
@@ -312,5 +290,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1473864084
+    "modified": 1473919514
 }
