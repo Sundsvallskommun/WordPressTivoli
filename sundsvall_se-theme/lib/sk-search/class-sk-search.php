@@ -259,7 +259,31 @@ class SK_Search {
 		$posts = $query->query($args);
 
 		if( $this->is_advanced_search ) {
-			$posts = get_page_children( $this->post_parent, $posts );
+			$posts_arr = array();
+
+			// Loop through all found pages.
+			foreach ( $posts as $post ) {
+				$p = $post;
+
+				// Loop through all parents for the currently
+				// iterated found post.
+				while ( $p->post_parent > 0 ) {
+					// Get the parent object.
+					$parent = get_post( $p->post_parent );
+
+					// Check if this parent is the same as $this->post_parent.
+					// This makes sure that all found posts are descendants of
+					// the post parent.
+					if ( $parent->ID === (int) $this->post_parent ) {
+						// If it is, add the found post to the $posts array.
+						$posts_arr[] = $post;
+					}
+
+					$p = $parent;
+				}
+			}
+
+			$posts = $posts_arr;
 		}
 
 		$found_posts = $this->is_advanced_search ? count($posts) : $query->found_posts;
