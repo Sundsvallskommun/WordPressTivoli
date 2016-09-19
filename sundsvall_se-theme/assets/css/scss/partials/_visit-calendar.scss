@@ -47,7 +47,10 @@
 }
 
 #Citybreak_CalendarEventWidget {
-	margin-bottom: 5.25rem;
+	margin-bottom: 2rem;
+	@include media-breakpoint-up(sm) {
+		margin-bottom: 5.25rem;
+	}
 	background: transparent !important;
 	border: none !important;
 	border-radius: 0 !important;

@@ -7,7 +7,7 @@ if ( !get_field( 'event_calendar_active', $page_id ) ) return false;
 
 ?>
 
-<div class="container-fluid container-fluid--full bg-primary hidden-sm-down">
+<div class="container-fluid container-fluid--full bg-primary">
 
 	<div class="row">
 
@@ -25,13 +25,15 @@ if ( !get_field( 'event_calendar_active', $page_id ) ) return false;
 	//]]>
 </script>
 
-<div class="calendar-image" style="background-image: url(<?php the_field( 'event_calendar_left_image', $page_id ); ?>)"> </div>
+<div class="calendar-image hidden-sm-down" style="background-image: url(<?php the_field( 'event_calendar_left_image', $page_id ); ?>)"> </div>
 
 <div class="container-fluid">
 
 <div class="row">
 
-	<div class="col-md-7 calendar-left front-page-section__calendar__left">
+	<div class="clearfix"></div>
+
+	<div class="col-md-7 calendar-left front-page-section__calendar__left hidden-sm-down">
 		<h2 class=""><?php the_field( 'event_calendar_left_heading', $page_id ); ?></h2>
 		<div class="content"><?php the_field(  'event_calendar_left_description', $page_id ); ?></div>
 	</div>
