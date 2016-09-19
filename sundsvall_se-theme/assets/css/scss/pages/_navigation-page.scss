@@ -9,6 +9,8 @@
 			background: $gray-lightest;
 			border-bottom: 1px solid $gray-lighter;
 			margin: 0;
+			margin-left: -$spacer-x;
+			width: calc( 100% + (#{$spacer-x} * 2) );
 		}
 
 		margin-bottom: 2.75em;
