@@ -51,6 +51,8 @@ class SK_Init {
 
 		add_action('switch_theme', array( &$this, 'remove_cap_service_messages'));
 
+		add_filter('get_the_archive_title', array( &$this, 'change_archive_title'));
+
 
 	}
 
@@ -497,6 +499,21 @@ class SK_Init {
 	public function remove_role_service_message_editor() {
 		remove_role( 'service_message_editor' );
 
+	}
+
+	/**
+	 * Changes archive_title on blog and post type archives.
+	 * @param  string $title
+	 * @return string
+	 */
+	public function change_archive_title( $title ) {
+		if ( is_post_type_archive() ) {
+			$title = str_replace( __( 'Archives' ), '', $title );
+			$title = str_replace( ':', '', $title );
+			return 'Alla ' . strtolower( $title );
+		}
+
+		return $title;
 	}
 
 }
