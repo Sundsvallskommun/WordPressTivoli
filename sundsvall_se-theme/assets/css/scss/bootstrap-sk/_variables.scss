@@ -483,8 +483,8 @@ $state-info-text:                profile-color(vattjom, 2);
 $state-info-bg:                  mix(profile-color(vattjom, 3), white, 40);
 $state-info-border:              darken($state-info-bg, 7%) !default;
 
-$state-warning-text:             profile-color(solum, 2);
-$state-warning-bg:               mix(profile-color(solum, 3), white, 40);
+$state-warning-text:             rgb(212, 74, 0);
+$state-warning-bg:               rgb(255, 237, 224);
 $state-warning-border:           darken($state-warning-bg, 5%) !default;
 
 $state-danger-text:              profile-color(rödön, 2);
