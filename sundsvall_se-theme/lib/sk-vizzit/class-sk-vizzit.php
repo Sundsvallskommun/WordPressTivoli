@@ -28,14 +28,21 @@ class SK_Vizzit {
 
 		if(!$pages) return false;
 
-		$pages = array_map(function($page) {
-			return (object) array(
-				'ID' => $page['id'],
-				'post_title' => $page['name']
-			);
-		}, $pages);
+		$pages_arr = array();
+		foreach ( $pages as $page ) {
+			// Skip over pages that doesn't exist in WP.
+			if ( ! get_permalink( $page[ 'id' ] ) )
+				continue;
 
-		return $pages;
+			$pages_arr[] = (object) array(
+				'ID'			=> $page[ 'id' ],
+				'post_title'	=> $page[ 'name' ]
+			);
+		}
+
+		// Return false if Vizzit only returned 1 valid link
+		// to let template fallback to child pages.
+		return ( count( $pages_arr ) >= 2 ) ? $pages_arr : false;
 
 	}
 
