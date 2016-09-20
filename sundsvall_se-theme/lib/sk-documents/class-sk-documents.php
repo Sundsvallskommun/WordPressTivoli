@@ -209,7 +209,7 @@ class SK_Documents {
 
 		$links = '';
 		foreach( $docs as $doc ) {
-			$links .= sprintf('<a class="list-group-item" href="%s"><span class="label label-default label-pill pull-xs-right">%s, %s</span> %s</a>', $doc['url'], $doc['filetype'], $doc['size'], $doc['title']);
+			$links .= sprintf('<a class="list-group-item" href="%s" target="_blank"><span class="label label-default label-pill pull-xs-right">%s, %s</span> %s</a>', $doc['url'], $doc['filetype'], $doc['size'], $doc['title']);
 		}
 
 		if ( is_user_logged_in() && current_user_can( 'upload_files' ) ) {
