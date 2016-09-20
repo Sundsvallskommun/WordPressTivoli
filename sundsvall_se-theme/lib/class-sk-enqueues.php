@@ -22,7 +22,7 @@ class SK_Enqueues {
 		add_action( 'wp_enqueue_scripts', array(&$this, 'sk_enqueue_scripts'), 10 );
 
 		add_action( 'wp_enqueue_scripts', array(&$this, 'scripts_to_footer') );
-		add_action( 'after_setup_theme', array(&$this, 'jquery_to_header') );
+		add_action( 'init', array(&$this, 'change_jquery_version') );
 
 		add_action('wp_footer', array(&$this, 'sk_deferred_styles'));
 
@@ -147,19 +147,28 @@ class SK_Enqueues {
 	 *
 	 * We also load from google CDN with local fallback.
 	 */
-	function jquery_to_header() {
-
-		add_action('wp_enqueue_script', function() {
+	function change_jquery_version() {
+		if ( !is_admin() ) {
+			// Deregister and dequeue the WP included jQuery.
 			wp_deregister_script('jquery');
-		});
+			wp_dequeue_script('jquery');
 
-		add_action('wp_head', function() {
-			// Google CDN
-			echo '<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>';
-			// Local fallback
-			echo '<script>if (!window.jQuery) { document.write(\'<script src="'. get_stylesheet_directory_uri() .'/assets/js/source/vendor/jquery-2.2.4.min.js'.'"><\/script>\'); }</script>';
-		}, 10);
+			// Register and enqueue our own jQuery file.
+			// NOTE: This file is empty since we're actually loading jQuery from
+			// Googles CDN in the header.
+			// 
+			// The reason we enqueue an empty file is because some scripts depends on
+			// jQuery being registered and enqueued.
+			wp_register_script( 'jquery', get_template_directory_uri() . '/assets/js/jquery.js', false, '1.8.7' );
+			wp_enqueue_script( 'jquery' );
 
+			add_action('wp_head', function() {
+				// Google CDN
+				echo '<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>';
+				// Local fallback
+				echo '<script>if (!window.jQuery) { document.write(\'<script src="'. get_stylesheet_directory_uri() .'/assets/js/source/vendor/jquery-2.2.4.min.js'.'"><\/script>\'); }</script>';
+			}, 10);
+		}
 	}
 
 
