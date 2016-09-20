@@ -59,6 +59,8 @@ if ( !is_front_page() && !$service_messages->have_posts() ) return; ?>
 	<?php $service_messages->rewind_posts(); ?>
 
 	<a href="<?php echo get_post_type_archive_link( 'service_message' ); ?>" class="btn btn-secondary btn-rounded">Visa alla driftmeddelanden</a>
+	<div class="m-b-1 hidden-lg-up"></div>
+	<a href="/kommun-och-politik/felanmal/" class="btn btn-secondary btn-rounded">Felanmäl</a>
 
 </section>
 
