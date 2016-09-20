@@ -1,8 +1,10 @@
 .sk-sidebar {
 	font-size: .8125em;
 	color: $gray-light;
-	fill: currentColor;
 	padding-top: 2em;
+	svg {
+		fill: currentColor;
+	}
 
 	.icon {
 		font-size: 2.25em;
