@@ -45,9 +45,17 @@ class SK_Helpmenu {
 		$link   = '<li>';
 
 		if('button' == $type) {
-			$link  .= sprintf('<button href="%2$s" %4$s><span class="link-icon">%1$s</span> <span class="link-text">%3$s</span></button>', get_icon($icon), $href, $label, $id);
+			$link  .= sprintf('<button href="%2$s" %4$s><span class="link-icon">%1$s</span> <span class="link-text">%3$s</span></button>',
+				get_icon($icon),
+				$href,
+				apply_filters( 'sk_helplink_label', $label ),
+				$id);
 		} else {
-			$link  .= sprintf('<a href="%2$s" %4$s><span class="link-icon">%1$s</span> <span class="link-text">%3$s</span></a>', get_icon($icon), $href, $label, $id);
+			$link  .= sprintf('<a href="%2$s" %4$s><span class="link-icon">%1$s</span> <span class="link-text">%3$s</span></a>',
+				get_icon($icon),
+				$href,
+				apply_filters( 'sk_helplink_label', $label ),
+				$id);
 		}
 
 		$link  .= '</li>';
@@ -55,4 +63,3 @@ class SK_Helpmenu {
 		return $link;
 	}
 }
-
