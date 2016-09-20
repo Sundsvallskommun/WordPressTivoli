@@ -217,7 +217,8 @@ XYZ;
 	 * @return boolean
 	 */
 	private function is_single() {
-		return !empty( get_query_var( 'vacancyID' ) );
+		$ret = !empty( get_query_var( 'vacancyID' ) );
+		return $ret;
 	}
 
 	/**
