@@ -7,8 +7,6 @@ wp_reset_postdata();
 if( have_rows('image_boxes') ):
 ?>
 
-<h2 class="front-page__heading hidden-md-up"><?php _e('Populärt innehåll', 'sundsvall_se')?></h2>
-
 <div class="row">
 <?php
 	$box_count = count(get_field('image_boxes'));
