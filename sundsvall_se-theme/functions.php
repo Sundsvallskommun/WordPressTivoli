@@ -80,6 +80,8 @@ $sk_search = new SK_Search();
  * Use first paragraph as excerpt
  *
  * Remove empty paragraph and break tags caused by shortcodes.
+ *
+ * Changes archive_title.
  */
 require_once locate_template( 'lib/class-sk-init.php' );
 $sk_init = new SK_Init();
