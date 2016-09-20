@@ -10,6 +10,7 @@
 
 class SK_Revisions {
 
+	const PUBLISH_DATE_KEY = 'sk_publish_date';
 	const REVISION_ID_KEY = '_sk_revision_id';
 
 	/**
@@ -149,6 +150,149 @@ XYZ;
 	}
 
 	/**
+	 * Add metabox to draft posts to let user pick a publishing date.
+	 * @return void
+	 */
+	public function add_publishing_metabox() {
+		if ( $this->show_revision() ) {
+			add_meta_box(
+				'sk_publishing_metabox',
+				'Publiceringsdatum',
+				array( $this, 'sk_publishing_metabox_callback' ),
+				'page',
+				'side',
+				'high'
+			);
+		}
+	}
+
+	/**
+	 * Enqueue scripts and styles for jquery ui datepicker.
+	 * @return void
+	 */
+	public function datepicker_scripts() {
+		if ( $this->show_revision() ) {
+			wp_enqueue_script( 'jquery-ui-datepicker' );
+			wp_enqueue_style( 'jquery-style', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css' );
+		}
+	}
+
+	/**
+	 * Add datepicker form with custom validation.
+	 * @return void
+	 */
+	public function sk_publishing_metabox_callback( $post ) { 
+
+		wp_nonce_field( 'sk_publish_date_nonce', 'sk_nonce' ); ?>
+
+		<form action="" method="post">
+
+			<?php $expiry_date = get_post_meta( $post->ID, self::PUBLISH_DATE_KEY, true ); ?>
+
+		<p>
+			<label for="sk_publish_date">
+				<?php _e( 'Uppdateringsdatum', 'sundsvall_se' ); ?>
+			</label>
+		</p>
+
+		<p> <input type="text" class="publishing-date" id="sk_publish_date" name="sk_publish_date" value="<?php echo esc_attr( $expiry_date ); ?>" / > </p>
+
+		<p><small>Välj ett datum för att publicera den senaste versionen.</small></p>
+
+				<script type="text/javascript">
+						jQuery(document).ready(function() {
+								jQuery('.publishing-date').datepicker({
+										dateFormat : 'yy-mm-dd',
+										minDate : '+1'
+								});
+						});
+
+						jQuery(document).ready(function($){
+								$('#post').submit(function(){
+
+									var $dateInput = $('.publishing-date');
+									var dateValue = $dateInput.val();
+
+									var date = new Date(dateValue);
+
+									var m3 = new Date();
+									m3.setMonth( m3.getMonth() + 3 );
+
+								});
+
+								function invalidDate() {
+									$('.publishing-date').css('border-color', 'red');
+
+									return false;
+
+								}
+						});
+
+
+				</script>
+		</form>
+
+	<?php }
+
+	/**
+	 * Saves publishing date as postmeta.
+	 * @param  integer $post_id
+	 * @return void
+	 */
+	public function save_publishing_meta( $post_id ) {
+		// Don't do anything if nonce is invalid or user is not allowed
+		// to save.
+		if ( ! isset( $_POST[ 'sk_nonce' ] )
+			|| ! wp_verify_nonce( $_POST[ 'sk_nonce' ], 'sk_publish_date_nonce' )
+			|| ! current_user_can( 'edit_post', $post_id ) )
+			return;
+
+		// Check if publish_date is set in post data.
+		if ( isset( $_POST['sk_publish_date'] ) ) {
+			$publish_date = ( $_POST['sk_publish_date'] );
+
+			update_post_meta( $post_id, self::PUBLISH_DATE_KEY, $publish_date );
+		}
+	}
+
+	/**
+	 * Adds our action to the WP-CRON job.
+	 * @return void
+	 */
+	public function publish_content_cron() {
+		if ( ! wp_next_scheduled( 'sk_unpublish_expired' ) ) {
+			wp_schedule_event( time(), 'hourly', 'sk_unpublish_expired' );
+		}
+	}
+
+	/**
+	 * Replaces current content with draft.
+	 * @return void
+	 */
+	public function publish_content() {
+		$today = date('Y-m-d');
+
+		$query_args = array(
+				'meta_key'		=> self::PUBLISH_DATE_KEY,
+				'meta_value'	=> $today,
+				'meta_compare'	=> '<=',
+				'meta_type'		=> 'DATE',
+				'post_type'		=> 'any'
+		);
+
+		$query = new WP_Query( $query_args );
+
+		if ( $query->have_posts() ) {
+			while ( $query->have_posts() ) {
+				$query->the_post();
+				// Remove all sk_revision metadata.
+				delete_post_meta( get_the_ID(), self::REVISION_ID_KEY );
+				delete_post_meta( get_the_ID(), self::PUBLISH_DATE_KEY );
+			}
+		}
+	}
+
+	/**
 	 * Helper function to check if we're suppose to show
 	 * revision instead of post.
 	 * @return boolean
@@ -238,6 +382,18 @@ add_filter( 'the_title', array( SK_Revisions::get_instance(), 'add_draft_to_titl
 
 // Adds a [draft] to the title when in back-end.
 add_filter( 'the_title', array( SK_Revisions::get_instance(), 'add_draft_to_title' ), 10, 2 );
+
+// Add a meta box for choosing a publishing date.
+// Also enqueue datepicker to make it easier for user.
+add_action('admin_enqueue_scripts', array( SK_Revisions::get_instance(), 'datepicker_scripts' ) );
+add_action('add_meta_boxes', array( SK_Revisions::get_instance(), 'add_publishing_metabox' ) );
+
+// Add action to save_post to save publishing date for revision.
+add_action('save_post', array( SK_Revisions::get_instance(), 'save_publishing_meta' ) );
+
+// Add CRON actions to publish draft when publishing date occurs.
+add_action( 'sk_publish_content', array( SK_Revisions::get_instance(), 'publish_content' ) );
+add_action('init', array( SK_Revisions::get_instance(), 'publish_content_cron' ) );
 
 /**
  * Don't limit number of revisions to keep when a published post has a draft
