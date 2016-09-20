@@ -35,7 +35,7 @@
 
 						<?php if( 'google_translate' == $type ): ?>
 
-							<button class="btn btn-primary btn-sm nav-link dropdown-toggle" lang="en" type="button" id="languageMenuButton" aria-haspopup="true" aria-expanded="false">
+							<button class="btn btn-primary btn-sm nav-link dropdown-toggle" lang="en" type="button" id="languageMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Language
 							</button>
 
@@ -47,22 +47,25 @@
 
 						<?php endif; ?>
 
-						<div class="dropdown-menu" aria-labelledby="<?php echo $dropdown_id; ?>">
 
 							<?php if( 'google_translate' == $type ): ?>
-								<?php get_template_part('./partials/google-translate'); ?>
+								<div class="dropdown-menu" aria-labelledby="languageMenuButton">
+									<?php get_template_part('./partials/google-translate'); ?>
+								</div>
 							<?php endif; ?>
 
 							<?php if( 'link_list' == $type ): ?>
+								<div class="dropdown-menu" aria-labelledby="<?php echo $dropdown_id; ?>">
 		
 								<?php while ( have_rows( 'links' ) ) : the_row(); ?>
 									<a class="dropdown-item" href="<?php the_sub_field( 'link_url' )?>">
 										<?php the_sub_field( 'link_text' ); ?>
 									</a>
 								<?php endwhile; ?>
+
+							</div>
 							<?php endif; ?>
 
-						</div>
 
 					</div>
 
