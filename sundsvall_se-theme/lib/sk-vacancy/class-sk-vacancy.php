@@ -217,8 +217,8 @@ XYZ;
 	 * @return boolean
 	 */
 	private function is_single() {
-		$ret = !empty( get_query_var( 'vacancyID' ) );
-		return $ret;
+		$vacancy_id = get_query_var( 'vacancyID' );
+		return !empty( $vacancy_id );
 	}
 
 	/**
@@ -228,8 +228,10 @@ XYZ;
 	 * @return integer|boolean
 	 */
 	private function get_vacancy_id() {
-		if ( !empty( get_query_var( 'vacancyID' ) ) && get_query_var( 'vacancyID' ) > 0 ) {
-			return (int) get_query_var( 'vacancyID' );
+		$vacancy_id = get_query_var( 'vacancyID' );
+
+		if ( !empty( $vacancy_id ) && $vacancy_id > 0 ) {
+			return (int) $vacancy_id;
 		} else {
 			return false;
 		}

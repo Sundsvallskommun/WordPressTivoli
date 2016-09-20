@@ -159,8 +159,10 @@ class SK_Easycruit_Wrapper {
 	 * @return string
 	 */
 	private function get_category_name( SimpleXMLElement $xml ) {
-		return (string) ( !empty( ( string) $xml->Versions->Version->Categories->Item[0] ) ) ?
-					(string) $xml->Versions->Version->Categories->Item[0] : 'Okategoriserad';
+
+		$category_name = (string) $xml->Versions->Version->Categories->Item[0];
+
+		return (string) ( !empty( $category_name ) ) ?  $category_name : 'Okategoriserad';
 	}
 
 	/**
