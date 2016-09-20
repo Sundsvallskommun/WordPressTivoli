@@ -19,6 +19,9 @@ class SK_Language {
 
 		// Add link to finnish translation.
 		add_action( 'sk_page_helpmenu', array( $this, 'translated_version_button' ), 11 );
+
+		// Filter certain help menu links.
+		add_filter( 'sk_helplink_label', array( $this, 'translate_helpmenu_label' ) );
 	}
 
 	/**
@@ -83,7 +86,7 @@ class SK_Language {
 						continue;
 
 					// Add link.
-					echo SK_Helpmenu::helplink( 'language', get_permalink( $translated_post->ID ), sprintf( __( 'Läs på %s', 'sundsvall_se' ), $this->get_full_name( $lang_code ) ) );
+					echo SK_Helpmenu::helplink( 'language', get_permalink( $translated_post->ID ), sprintf( __( 'På %s', 'sundsvall_se' ), $this->get_full_name( $lang_code ) ) );
 
 					// Add to array.
 					$added_languages_links[] = $lang_code;
@@ -93,8 +96,41 @@ class SK_Language {
 
 		else {
 			$permalink = get_permalink( get_post_meta( $post->ID, 'sk_original_post', true ) );
-			echo SK_Helpmenu::helplink( 'language', $permalink, sprintf( __( 'Läs på %s', 'sundsvall_se' ), $this->get_full_name( 'sv' ) ) );
+			echo SK_Helpmenu::helplink( 'language', $permalink, sprintf( __( 'På %s', 'sundsvall_se' ), $this->get_full_name( 'sv' ) ) );
 		}
+	}
+
+	/**
+	 * Translates certain helpmenu labels.
+	 * @param  string $label
+	 * @return string
+	 */
+	public function translate_helpmenu_label( $label ) {
+		global $post;
+
+		if ( $this->is_lang( 'fi', $post ) ) {
+			switch ( $label ) {
+				case 'Kontakt':
+					return 'Yhteystiedot';
+
+				case 'Lyssna':
+					return 'Kuuntele';
+
+				case 'Skriv ut':
+					return 'Tulosta';
+
+				default:
+					return $label;
+			}
+		}
+
+		else if ( $this->is_swedish_post( $post->ID ) ) {
+			if ( $label === 'På finska' ) {
+				return 'Suomeksi';
+			}
+		}
+
+		return $label;
 	}
 
 	/**
@@ -108,6 +144,16 @@ class SK_Language {
 
 		return ( get_field( 'sk_lang', $post_id ) !== null ) ? get_field( 'sk_lang', $post_id ) === 'sv' : true;
 
+	}
+
+	/**
+	 * Checks if post is translated to given language code.
+	 * @param  string  $lang_code
+	 * @return boolean
+	 */
+	private function is_lang( $lang_code, $post_id ) {
+		return ( get_field( 'sk_lang', $post_id ) !== null ) ?
+			get_field( 'sk_lang', $post_id ) === $lang_code : false;
 	}
 
 	/**
@@ -167,4 +213,17 @@ function sk_lang_attr() {
 	if ( $post ) {
 		printf( 'lang="%s"', get_field( 'sk_lang', $post->ID ) );
 	}
+}
+
+/**
+ * Checks if current post has a translated version.
+ * @return boolean
+ */
+function sk_has_translated_version() {
+	global $post;
+	if ( $post ) {
+		return ! is_null( get_field( 'sk_lang', $post->ID ) );
+	}
+
+	return false;
 }
