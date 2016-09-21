@@ -4,6 +4,11 @@
  * If it's a hack, document it well.
  * */
 
+// Fix IE11 height issue with input group. Fixed in bootstrap 4, alpha 2
+.search-container .form-control {
+	height: 3.62rem;
+}
+
 img {
 }
 
