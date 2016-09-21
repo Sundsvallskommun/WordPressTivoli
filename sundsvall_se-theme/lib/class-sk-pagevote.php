@@ -112,14 +112,7 @@ class SK_PageVote {
 					<button data-vote="up"   class="btn btn-secondary" <?php disabled($has_voted, true); ?>>Ja</button>
 					<button data-vote="down" class="btn btn-secondary" <?php disabled($has_voted, true); ?>>Nej</button>
 				<?php endif; ?>
-
-				<span class="vote-status">
-
-					<?php if($has_voted): ?>
-						<span class="">Du har redan tyckt till om denna sida, tack för din synpunkt!</span>
-					<?php endif; ?>
-
-				</span>
+					<button data-showvoteform class="btn btn-secondary">Lämna synpunkt</button>
 
 			</p>
 
