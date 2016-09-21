@@ -208,19 +208,11 @@ class SK_EServices {
 						%s
 					</div>
 					<div class="page-widget__secondary">
-						<h3 class="page-widget__title">Logga in med <strong>e-legitimation</strong></h3>
+						<h3 class="page-widget__title">Logga in till våra <strong>e-tjänster</strong></h3>
 						<div class="page-widget__description">
 						<p class="">%s</p>
-<p>
-							Använd din personliga e-legitimation för att logga in i e-tjänster och fälja
-							ärenden via Mina sidor.  E-legitimation, t.ex. BankID eller Mobild BankD,
-							används för att kommunen ska vara säker på vem det är som använt e-tjänsten
-							samt att rätt person får tillgång till rätt ärenden via Mina sidor.
-</p>
-<p>
-Din e-legitimation använder du även vid kontakt med andra myndigheter, såsom
-Skatteverket och Försäkringskassan.
-</p>
+						<p>Du loggar in med e-legitimation i form av bank-id eller mobilt bank-id. Om du saknar e-legitimation kan du beställa det via din bank eller Skatteverket.</p>
+						<p><a href="http://www.skatteverket.se/privat/sjalvservice/allaetjanster/omelegitimation.4.18e1b10334ebe8bc80004811.html?q=e-legitimation">Om e-legitimation, Skatteverket</a></p>
 						</div>
 					</div>
 				</div>
@@ -228,13 +220,17 @@ Skatteverket och Försäkringskassan.
 
 		$title = __('Alla e-tjänster för ', 'sundsvall_se').'<strong>'.$eservices[0]['Category'].'</strong>';
 
-		$eIDLink = $this->eservice_link( array( 'Name' => 'Logga in', 'URL'  => 'https://e-tjanster.sundsvall.se/loggain', 'Icon' => get_icon('arrow-right') ) );
+		$loginlinks = '';
+		$loginlinks .= $this->eservice_link( array( 'Name' => 'Logga in som elev', 'URL'  => 'https://e-tjanster.sundsvall.se/loggain', 'Icon' => get_icon('arrow-right') ) );
+		$loginlinks .= $this->eservice_link( array( 'Name' => 'Logga in som medarbetare', 'URL'  => 'https://e-tjanster.sundsvall.se/loggain', 'Icon' => get_icon('arrow-right') ) );
+		$loginlinks .= $this->eservice_link( array( 'Name' => 'Logga in som medborgare', 'URL'  => 'https://e-tjanster.sundsvall.se/loggain', 'Icon' => get_icon('arrow-right') ) );
+
 
 		$eservice_links = '<div class="page-widget__columns"><ul>';
 		$eservice_links .= $this->eservice_links($eservices, '<li>%s</li>');
 		$eservice_links .= '</ul></div>';
 
-		printf($markup, $title, $eservice_links, $eIDLink);
+		printf($markup, $title, $eservice_links, $loginlinks);
 
 	}
 
