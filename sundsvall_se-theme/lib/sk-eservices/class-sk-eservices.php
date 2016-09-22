@@ -148,6 +148,9 @@ class SK_EServices {
 
 
 		$eservices = $this->oep->get_popular_services(16);
+
+		if(!$eservices) return false;
+
 		$title = __('Populära e-tjänster', 'sundsvall_se');
 
 		$eservice_links = '<div class="page-widget__columns">';
