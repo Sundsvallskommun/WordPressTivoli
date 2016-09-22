@@ -164,14 +164,14 @@ class SK_Attachments {
 		$document->loadHTML(utf8_decode($content));
 
 		$imgs = $document->getElementsByTagName('img');
-		$src = $imgs[0]->getAttribute('src');
+		$src = $imgs->item(0)->getAttribute('src');
 		$postid = get_attachment_id($src);
 
 		$photographer = get_post_meta( $postid, 'media_photographer', true );
 
 		// Add photographer as title attribute.
 		if( isset( $photographer ) ) {
-			$imgs[0]->setAttribute('title', "Foto: $photographer");
+			$imgs->item(0)->setAttribute('title', "Foto: $photographer");
 		}
 
 		$content = $document->saveHTML();
