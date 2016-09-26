@@ -214,6 +214,9 @@ function sk_get_excerpt($post_id = 0) {
 }
 
 function format_file_size($path) {
+
+	if (!file_exists( $path )) return false;
+
 	$bytes = sprintf('%u', filesize($path));
 
 	if ($bytes > 0)
