@@ -104,7 +104,7 @@ class SK_Easycruit_Wrapper {
 	 * @param  integer
 	 * @return StdClass
 	 */
-	private function get_single_from_api( int $vacancy_id ) {
+	private function get_single_from_api( $vacancy_id ) {
 		// SimpleXML loads XML from URL.
 		@$xml = simplexml_load_file(sprintf( self::$SINGLE_URL, $vacancy_id ), 'SimpleXMLElement', LIBXML_NOWARNING);
 
