@@ -15,9 +15,9 @@
 				</button>
 
 				<div class="dropdown-menu" aria-labelledby="loginMenuButtonMobile">
-					<a class="dropdown-item" href="/kommun-och-politik/om-webbplatsen-2/elev/">Elev</a>
-					<a class="dropdown-item" href="/kommun-och-politik/om-webbplatsen-2/medarbetare/">Medarbetare</a>
-					<a class="dropdown-item" href="/om-webbplatsen-2/medborgare/">Medborgare</a>
+					<a class="dropdown-item" href="http://skola.login.sundsvall.se/">Elev</a>
+					<a class="dropdown-item" href="http://sundsvall.se/kommun-och-politik/om-webbplatsen-2/medarbetare/">Medarbetare</a>
+					<a class="dropdown-item" href="https://e-tjanster.sundsvall.se/oversikt">Medborgare</a>
 				</div>
 
 			</div>

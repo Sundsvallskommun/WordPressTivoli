@@ -224,9 +224,9 @@ class SK_EServices {
 		$title = __('Alla e-tjänster för ', 'sundsvall_se').'<strong>'.$eservices[0]['Category'].'</strong>';
 
 		$loginlinks = '';
-		$loginlinks .= $this->eservice_link( array( 'Name' => 'Logga in som elev', 'URL'  => 'https://e-tjanster.sundsvall.se/loggain', 'Icon' => get_icon('arrow-right') ) );
-		$loginlinks .= $this->eservice_link( array( 'Name' => 'Logga in som medarbetare', 'URL'  => 'https://e-tjanster.sundsvall.se/loggain', 'Icon' => get_icon('arrow-right') ) );
-		$loginlinks .= $this->eservice_link( array( 'Name' => 'Logga in som medborgare', 'URL'  => 'https://e-tjanster.sundsvall.se/loggain', 'Icon' => get_icon('arrow-right') ) );
+		$loginlinks .= $this->eservice_link( array( 'Name' => 'Logga in som elev', 'URL'  => 'http://skola.login.sundsvall.se/', 'Icon' => get_icon('arrow-right') ) );
+		$loginlinks .= $this->eservice_link( array( 'Name' => 'Logga in som medarbetare', 'URL'  => 'http://sundsvall.se/kommun-och-politik/om-webbplatsen-2/medarbetare/', 'Icon' => get_icon('arrow-right') ) );
+		$loginlinks .= $this->eservice_link( array( 'Name' => 'Logga in som medborgare', 'URL'  => 'https://e-tjanster.sundsvall.se/oversikt', 'Icon' => get_icon('arrow-right') ) );
 
 
 		$eservice_links = '<div class="page-widget__columns"><ul>';
