@@ -51,7 +51,7 @@ class SK_Widgets {
 
 		if( have_rows('map_locations') ):
 
-			wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?v=3.exp', false);
+			wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?v=3.exp&?key=AIzaSyCC1vUDAh4hf_orwNHREJ85i_yFApHkB20', false);
 
 		?>
 
