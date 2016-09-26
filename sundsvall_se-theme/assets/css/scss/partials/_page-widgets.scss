@@ -42,6 +42,11 @@ $page-widget-bg2: #f7f7f9;
 		z-index: 1;
 		overflow: visible !important;
 
+		&.acf-map {
+			padding-top: 0;
+			padding-left: 0;
+		}
+
 		&:before {
 			content: '';
 			background: $page-widget-bg1;
