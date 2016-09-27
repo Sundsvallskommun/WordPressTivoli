@@ -1,3 +1,20 @@
+<?php 
+
+/**
+ * We serve site navbar from saved transient to prevent a lot of meta queries
+ * to happen for every visitor.
+ */
+$cached_navbar = get_transient( 'site_navbar' );
+
+if( $cached_navbar ):
+	echo $cached_navbar;
+else:
+
+ob_start();
+
+?>
+
+
 <nav class="navbar navbar-full hidden-sm-down">
 
 	<div class="container-fluid">
@@ -80,3 +97,14 @@
 
 </nav>
 
+<?php 
+
+$navbar = ob_get_clean();
+
+set_transient( 'site_navbar', $navbar, HOUR_IN_SECONDS );
+
+echo $navbar;
+
+endif;
+
+?>
