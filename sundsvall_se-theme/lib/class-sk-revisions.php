@@ -49,10 +49,10 @@ class SK_Revisions {
 	 */
 	public function add_save_draft_btn() {
 		global $post;
-		if ( count( wp_get_post_revisions( $post->ID ) ) >= 1 ) {
+		if ( count( wp_get_post_revisions( $post->ID ) ) >= 1 && $post->post_status === 'publish' ) {
 			$html = <<<XYZ
 			<div id="save-as-draft-action" style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); margin-left: -20px;">
-				<input name="save-as-draft" type="submit" class="button button-large" id="saveAsPublishedDraft" value="Spara utkast">
+				<input name="save-as-draft" type="submit" class="button button-large" id="saveAsPublishedDraft" value="Spara">
 			</div>
 XYZ;
 			echo $html;
