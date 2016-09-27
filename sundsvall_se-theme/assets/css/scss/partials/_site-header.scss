@@ -46,13 +46,19 @@
 
 	.site-logo {
 		margin-top: .2em;
-		.icon {
+
+		.icon,
+		.custom-logo {
 			max-height: 3em;
 			margin-top: .1em;
 			max-width: 6.75em;
 			@include media-breakpoint-up(md) {
 				display: none;
 			}
+		}
+
+		.custom-logo {
+			margin-top: .3em;
 		}
 	}
 
@@ -191,6 +197,12 @@
 }
 
 .site-logo {
+
+	.custom-logo {
+		margin-top: .1em;
+		max-width: 250px;
+		height: auto;
+	}
 	.icon {
 		height: auto;
 		width: 100%;

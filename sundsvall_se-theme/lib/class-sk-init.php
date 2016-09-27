@@ -11,6 +11,12 @@ class SK_Init {
 
 	function __construct() {
 
+		add_theme_support( 'custom-logo', array(
+			'height'      => 200,
+			'width'       => 500,
+			'flex-width'  => false,
+		) );
+
 		add_action('after_setup_theme', array(&$this, 'image_setup'));
 
 		add_filter('init', array(&$this, 'options_page'));
