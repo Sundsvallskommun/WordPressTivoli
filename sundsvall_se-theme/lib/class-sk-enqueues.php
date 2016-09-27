@@ -148,6 +148,9 @@ class SK_Enqueues {
 	 * We also load from google CDN with local fallback.
 	 */
 	function change_jquery_version() {
+
+		if( $GLOBALS['pagenow'] === 'wp-login.php' ) return;
+
 		if ( !is_admin() ) {
 			// Deregister and dequeue the WP included jQuery.
 			wp_deregister_script('jquery');
