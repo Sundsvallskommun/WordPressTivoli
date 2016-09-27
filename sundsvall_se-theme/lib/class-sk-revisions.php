@@ -102,10 +102,10 @@ XYZ;
 			$revisions = wp_get_post_revisions( $post->ID );
 			$current_revision = array_shift( $revisions );
 			$saved_revision = $this->get_revision( $post->ID );
-			$revision_edit_link = sprintf( 'Klicka <a href="%s/revision.php?from=%d&to=%d">här</a> för att jämföra utkastet med versionen som visas.', admin_url(), $current_revision->ID, $saved_revision->ID );
+			$revision_edit_link = sprintf( '<a href="%s/revision.php?from=%d&to=%d">Jämför utkastet med verisonen som visas.</a>', admin_url(), $current_revision->ID, $saved_revision->ID );
 			$html = <<<XYZ
 			<div class="notice notice-info">
-				<p>Du redigerar ett utkast.</p>
+				<p>Du redigerar en opublicerad version.</p>
 				<p>{$revision_edit_link}</p>
 			</div>
 XYZ;
