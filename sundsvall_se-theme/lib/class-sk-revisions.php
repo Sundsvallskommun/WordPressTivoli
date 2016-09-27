@@ -199,7 +199,7 @@ XYZ;
 
 		<p> <input type="text" class="publishing-date" id="sk_publish_date" name="sk_publish_date" value="<?php echo esc_attr( $expiry_date ); ?>" / > </p>
 
-		<p><small>Välj ett datum för att publicera den senaste versionen.</small></p>
+		<p><small>Välj ett datum för att publicera den senaste utkastversionen.</small></p>
 
 				<script type="text/javascript">
 						jQuery(document).ready(function() {
