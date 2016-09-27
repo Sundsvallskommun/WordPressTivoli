@@ -32,7 +32,7 @@ class SK_ShortURL {
 
 	private function redirect_if_shortlink() {
 
-		$path = preg_replace('/[^A-Za-z0-9\-]/', '',$_SERVER["REQUEST_URI"]);
+		$path = preg_replace('/[^A-Za-z0-9_\-]/', '',$_SERVER["REQUEST_URI"]);
 
 		// Check for partial match of meta value in case it is comma separated.
 		$query = array(
