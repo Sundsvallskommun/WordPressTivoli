@@ -68,9 +68,11 @@ XYZ;
 	public function save_revision_id( $post_id ) {
 		//$post_id = (int) $_POST['post_ID'];
 
+		$revision_id = get_post_meta( $post_id, self::REVISION_ID_KEY, true );
+
 		if ( !empty( $_POST['save-as-draft'] ) ) {
 			// Check if this post already has a revision id saved.
-			if ( empty( get_post_meta( $post_id, self::REVISION_ID_KEY, true ) ) ) {
+			if ( empty( $revision_id ) ) {
 				// Get revision.
 				$revision = $this->get_revision();
 
@@ -307,7 +309,10 @@ XYZ;
 
 			$post_id = $post->ID;
 		}
-		return !empty( get_post_meta( $post_id, self::REVISION_ID_KEY, true ) );
+
+		$revision_id = get_post_meta( $post_id, self::REVISION_ID_KEY, true );
+
+		return !empty( $revision_id );
 	}
 
 	/**
@@ -323,7 +328,8 @@ XYZ;
 			}
 
 			// Check if revision id exists.
-			if ( !empty( get_post_meta( $post_id, self::REVISION_ID_KEY, true ) ) ) {
+			$revision_id = get_post_meta( $post_id, self::REVISION_ID_KEY, true );
+			if ( !empty( $revision_id ) ) {
 				$this->revision = get_post( get_post_meta( $post_id, self::REVISION_ID_KEY, true ) );
 			}
 
@@ -401,7 +407,9 @@ add_action('init', array( SK_Revisions::get_instance(), 'publish_content_cron' )
  */
 function unlimited_revisions_for_draft( $num, $post ) {
 
-	if ( !empty( get_post_meta( $post->ID, SK_Revisions::REVISION_ID_KEY, true ) ) ) {
+	$revision_id = get_post_meta( $post->ID, SK_Revisions::REVISION_ID_KEY, true );
+
+	if ( !empty( $revision_id ) ) {
 		return -1;
 	}
 

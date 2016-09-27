@@ -33,7 +33,7 @@ class SK_Expiration {
 			'sk_expiration_metabox',
 			'Utgångsdatum',
 			array(&$this, 'sk_expiration_metabox_callback'),
-			'post',
+			array('post', 'page'),
 			'side',
 			'high'
 		);
@@ -53,7 +53,7 @@ class SK_Expiration {
 		<p>
 			<label for="sk_expiry_date">
 				<?php _e( 'Avpubliceringsdatum', 'sundsvall_se' ); ?>
-				<span style="color: red">*</span>
+				<?php if ( $post->post_type === 'post' ) : ?><span style="color: red">*</span><?php endif; ?>
 			</label>
 		</p>
 
@@ -62,47 +62,49 @@ class SK_Expiration {
 		<p><small>När avpubliceringsdatumet passerat blir nyhetens status satt till utkast.</small></p>
 
 				<script type="text/javascript">
-						jQuery(document).ready(function() {
-								jQuery('.expiry-date').datepicker({
-										dateFormat : 'yy-mm-dd',
-										maxDate : '+3M',
-										minDate : '+1'
-								});
-						});
+					jQuery(document).ready(function() {
+							jQuery('.expiry-date').datepicker({
+									dateFormat : 'yy-mm-dd',
+									maxDate : '+3M',
+									minDate : '+1'
+							});
+					});
 
-						jQuery(document).ready(function($){
-								$('#post').submit(function(){
+					jQuery(document).ready(function($){
+						$('#post').submit(function(){
 
-									var $dateInput = $('.expiry-date');
-									var dateValue = $dateInput.val();
+							var $dateInput = $('.expiry-date');
+							var dateValue = $dateInput.val();
 
-									if( dateValue == '' ) {
-										alert('Du måste ange ett avpubliceringsdatum.');
-										return invalidDate();
-									}
 
-									var date = new Date(dateValue);
-
-									var m3 = new Date();
-									m3.setMonth( m3.getMonth() + 3 );
-
-									if( date > m3 ) {
-										alert('Du måste ange ett avpubliceringsdatum som är max 3 månader från idag.');
-
-										return invalidDate();
-									}
-
-								});
-
-								function invalidDate() {
-									$('.expiry-date').css('border-color', 'red');
-
-									return false;
-
+							<?php if ( $post->post_type === 'post' ) : ?>
+								if( dateValue == '' ) {
+									alert('Du måste ange ett avpubliceringsdatum.');
+									return invalidDate();
 								}
+
+								var date = new Date(dateValue);
+
+								var m3 = new Date();
+								m3.setMonth( m3.getMonth() + 3 );
+
+								if( date > m3 ) {
+									alert('Du måste ange ett avpubliceringsdatum som är max 3 månader från idag.');
+
+									return invalidDate();
+								}
+							<?php endif; ?>
 						});
 
+						<?php if ( $post->post_type === 'post' ) : ?>
+							function invalidDate() {
+								$('.expiry-date').css('border-color', 'red');
 
+								return false;
+
+							}
+						<?php endif; ?>
+					});
 				</script>
 		</form>
 

@@ -209,6 +209,9 @@ class SK_Documents {
 
 		$links = '';
 		foreach( $docs as $doc ) {
+
+			if ( $doc['size'] == false  ) continue; // Dont show file if it does not exist.
+
 			$links .= sprintf('<a class="list-group-item" href="%s" target="_blank"><span class="label label-default label-pill pull-xs-right">%s, %s</span> %s</a>', $doc['url'], $doc['filetype'], $doc['size'], $doc['title']);
 		}
 

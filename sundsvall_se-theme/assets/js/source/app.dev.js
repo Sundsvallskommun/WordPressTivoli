@@ -117,6 +117,11 @@ require('./sk_calendar.js');
 			$('#vote-form').collapse('show');
 		});
 
+		$('.vote-widget').on('click', '[data-showvoteform]', function(e) {
+			$(this).prop("disabled", true);
+			$('#vote-form').collapse('show');
+		});
+
 		function pageVote(voteType) {
 
 			var $buttons = $('.vote-widget [data-vote]');

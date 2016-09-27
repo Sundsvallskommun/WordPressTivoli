@@ -35,6 +35,8 @@ if(!class_exists('Menu_Icons_Walker')) {
 ?>
 
 <?php
+if ( has_nav_menu( 'main-menu' ) ) {
+
 	$nav_args = array(
 		'theme_location'  => 'main-menu',
 		'container'       => false,
@@ -43,4 +45,6 @@ if(!class_exists('Menu_Icons_Walker')) {
 		'walker'          => new Menu_Icons_Walker()
 	);
 	wp_nav_menu( $nav_args );
+
+}
 ?>

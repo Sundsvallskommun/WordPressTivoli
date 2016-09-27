@@ -13,7 +13,13 @@ class SK_Vizzit {
 
 		$this->vizzit = new Vizzit();
 
+		add_action( 'wp_head', array( &$this, 'vizzit_disable_cookies' ), 1 );
+
 		add_filter('sk_navcard_children', array(&$this, 'navcard_children'), 10, 1);
+	}
+
+	public function vizzit_disable_cookies() {
+		echo '<script>$vizzit_enableCookies = false;</script>';
 	}
 
 	public function navcard_children($id) {

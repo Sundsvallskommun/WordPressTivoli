@@ -40,7 +40,7 @@ if( have_rows('image_boxes') ):
 			</a>
 		</figure>
 
-		<a class="btn btn-action btn-purple hidden-md-up">
+		<a class="btn btn-action btn-purple hidden-md-up" href="<?php the_sub_field( 'box_url' ); ?>">
 			<?php the_icon('arrow-right')?>
 			<?php if(get_sub_field( 'box_title' )): ?>
 				<span><?php the_sub_field( 'box_title' ); ?></span>

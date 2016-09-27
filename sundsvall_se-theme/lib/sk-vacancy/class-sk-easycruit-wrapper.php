@@ -104,7 +104,7 @@ class SK_Easycruit_Wrapper {
 	 * @param  integer
 	 * @return StdClass
 	 */
-	private function get_single_from_api( int $vacancy_id ) {
+	private function get_single_from_api( $vacancy_id ) {
 		// SimpleXML loads XML from URL.
 		@$xml = simplexml_load_file(sprintf( self::$SINGLE_URL, $vacancy_id ), 'SimpleXMLElement', LIBXML_NOWARNING);
 
@@ -159,8 +159,10 @@ class SK_Easycruit_Wrapper {
 	 * @return string
 	 */
 	private function get_category_name( SimpleXMLElement $xml ) {
-		return (string) ( !empty( ( string) $xml->Versions->Version->Categories->Item[0] ) ) ?
-					(string) $xml->Versions->Version->Categories->Item[0] : 'Okategoriserad';
+
+		$category_name = (string) $xml->Versions->Version->Categories->Item[0];
+
+		return (string) ( !empty( $category_name ) ) ?  $category_name : 'Okategoriserad';
 	}
 
 	/**
