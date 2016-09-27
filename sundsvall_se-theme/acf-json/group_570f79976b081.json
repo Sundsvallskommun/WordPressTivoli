@@ -40,7 +40,7 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Ja, visa inl\u00e4gget f\u00f6r alla bes\u00f6kare.",
+            "message": "Ja.",
             "default_value": 0
         }
     ],
@@ -68,5 +68,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1463051503
+    "modified": 1474965596
 }
