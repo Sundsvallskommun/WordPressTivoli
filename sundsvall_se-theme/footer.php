@@ -6,6 +6,22 @@ if(!is_front_page() && !is_search() && !is_archive() && !is_home()) {
 }
 ?>
 
+<?php 
+
+/**
+ * We serve site footer from saved transient to prevent a lot of meta queries
+ * to happen for every visitor.
+ */
+$cached_footer = get_transient( 'site_footer' );
+
+if( $cached_footer ):
+	echo $cached_footer;
+else:
+
+ob_start();
+
+?>
+
 <footer class="site-footer">
 
 	<div class="container-fluid">
@@ -184,6 +200,18 @@ $fields_id = is_advanced_template_child() ? advanced_template_top_ancestor() : '
 	</div>
 
 </footer>
+
+<?php 
+
+$footer = ob_get_clean();
+
+set_transient( 'site_footer', $footer, HOUR_IN_SECONDS );
+
+echo $footer;
+
+endif;
+
+?>
 
 <?php get_template_part('partials/feedback-modal'); ?>
 
