@@ -41,16 +41,8 @@
 }
 
 .mobile-header {
-
-	background: profile-color(björnstigen, 2); //Purple "cwn" on desktop
-	padding: .5em $spacer-x;
+	border-top: 6px solid profile-color(björnstigen, 2);
 	z-index: 1;
-
-	@include media-breakpoint-up(md) {
-		border-top: none;
-		padding-top: .25em;
-		height: 2.25em;
-	}
 
 	.site-logo {
 		margin-top: .2em;
@@ -66,7 +58,6 @@
 
 	@include media-breakpoint-down(sm) {
 		background: $gray-lightest;
-		border-top: 6px solid profile-color(björnstigen, 2);
 		border-bottom: 4px solid $gray-lighter;
 		height: 5.35em;
 		text-align: center;
