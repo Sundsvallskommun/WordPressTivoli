@@ -229,8 +229,6 @@ XYZ;
 
 								}
 						});
-
-
 				</script>
 		</form>
 
