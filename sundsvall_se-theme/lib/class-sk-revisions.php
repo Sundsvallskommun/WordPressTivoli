@@ -185,7 +185,7 @@ XYZ;
 	 */
 	public function sk_publishing_metabox_callback( $post ) { 
 
-		wp_nonce_field( 'sk_publish_date_nonce', 'sk_nonce' ); ?>
+		wp_nonce_field( 'sk_publish_date_nonce', 'sk_publishing_nonce' ); ?>
 
 		<form action="" method="post">
 
@@ -244,10 +244,11 @@ XYZ;
 	public function save_publishing_meta( $post_id ) {
 		// Don't do anything if nonce is invalid or user is not allowed
 		// to save.
-		if ( ! isset( $_POST[ 'sk_nonce' ] )
-			|| ! wp_verify_nonce( $_POST[ 'sk_nonce' ], 'sk_publish_date_nonce' )
-			|| ! current_user_can( 'edit_post', $post_id ) )
+		if ( ! isset( $_POST[ 'sk_publishing_nonce' ] )
+			|| ! wp_verify_nonce( $_POST[ 'sk_publishing_nonce' ], 'sk_publish_date_nonce' )
+			|| ! current_user_can( 'edit_post', $post_id ) ) {
 			return;
+		}
 
 		// Check if publish_date is set in post data.
 		if ( isset( $_POST['sk_publish_date'] ) ) {
