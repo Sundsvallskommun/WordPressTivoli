@@ -178,16 +178,17 @@ class SK_Init {
 	}
 
 	function sk_content_image_sizes_attr( $sizes, $size ) {
+
 		$width = $size[0];
 
 		// Content full
-		740 <= $width && $sizes = '(max-width: 768px) calc(100vw - 1.875em), (max-width: 992px) 84vw, 740px';
+		740 >= $width && $sizes = '(max-width: 768px) calc(100vw - 1.875em), (max-width: 992px) 84vw, 740px';
 
 		// Content half
-		370 <= $width && $sizes = '(max-width: 544px) calc(100vw-1.875em), (max-width: 992px) calc(84vw / 2), 370px';
+		370 >= $width && $sizes = '(max-width: 544px) calc(100vw-1.875em), (max-width: 992px) calc(84vw / 2), 370px';
 
 		// Content quarter
-		185 <= $width && $sizes = '(max-width: 544px) calc(100vw-1.875em), (max-width: 992px) calc(84vw / 4), 185px';
+		185 >= $width && $sizes = '(max-width: 544px) calc(100vw-1.875em), (max-width: 992px) calc(84vw / 4), 185px';
 
 		return $sizes;
 	}
