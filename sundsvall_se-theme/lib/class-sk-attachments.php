@@ -13,7 +13,9 @@ class SK_Attachments {
 		$this->attachment_fields();
 
 		add_action('admin_head', array(&$this, 'validate_media_javascript'));
-		add_filter( 'img_caption_shortcode', array(&$this, 'photographer_caption'), 100, 3 );
+		// add_filter( 'img_caption_shortcode', array(&$this, 'photographer_caption'), 100, 3 );
+
+		add_filter( 'the_content', array( $this, 'add_caption_shortcode' ) );
 	}
 
 	/**
@@ -201,6 +203,62 @@ class SK_Attachments {
 
 	}
 
+	/**
+	 * Adds the [caption] shortcode to all images.
+	 * @param  string $content
+	 * @return string
+	 */
+	public function add_caption_shortcode( $content ) {
+		// Set up DOMDocument which will help with
+		// manipulating the content.
+		$doc = new DOMDocument();
+		libxml_use_internal_errors(true);
+		$doc->loadHTML( utf8_decode( $content ) );
 
+		// Get all images.
+		foreach ( $doc->getElementsByTagName( 'img' ) as $img ) {
+			// Get the post id from the class attribute.
+			if ( preg_match( '/.*-(?P<id>\d*)/', $img->getAttribute( 'class' ), $match ) ) {
+				$id = $match[ 'id' ];
+				$src = $img->getAttribute( 'src' );
+
+				// Get the photographer.
+				$photographer = get_post_meta( $id, 'media_photographer', true );
+
+				// Add a caption if image doesn't have one.
+				if ( $img->previousSibling->nodeName !== '#text' && ! strpos($img->previousSibling->data, '[caption') ) {
+					// Setup some variables.
+					preg_match( '/.*-(?P<id>\d*)/', $img->getAttribute( 'class' ), $matches );
+					$width = $img->getAttribute( 'width' );
+
+					$caption_start = $doc->createTextNode( "[caption id=\"{$id}\" align=\"alignnone\" width=\"{$width}\"]" );
+					$caption_end = $doc->createTextNode( "Foto: {$photographer}[/caption]" );
+
+					// Append.
+					$img->parentNode->insertBefore( $caption_start, $img );
+					$img->parentNode->appendChild( $caption_end );
+				}
+
+				// Append photographer name to caption if image already has one.
+				else {
+					/**
+					 * Get the previous value by using substring.
+					 *
+					 * We'll extract everything from nodeValue except for the last 10 characters
+					 * which will always be "[/caption]".
+					 *
+					 * NOTE: Probably should use regex?
+					 */
+					$previous_value = substr( $img->nextSibling->nodeValue, 0, ( strlen( $img->nextSibling->nodeValue ) - 11 ) );
+
+					// Set the new value.
+					$img->nextSibling->nodeValue = sprintf( '%s Foto: %s[/caption]', $previous_value, $photographer );
+				}
+			}
+		}
+
+		// Return as html.
+		return $doc->saveHTML();
+	}
 
 }
