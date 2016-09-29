@@ -16,6 +16,30 @@
                 "id": ""
             },
             "default_value": ""
+        },
+        {
+            "key": "field_57ecd6fee7a23",
+            "label": "Ikon",
+            "name": "icon",
+            "type": "image",
+            "instructions": "Ikon p\u00e5 max 150x150px, helst med transparent bakgrund.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": 150,
+            "max_height": 150,
+            "max_size": "",
+            "mime_types": ""
         }
     ],
     "location": [
@@ -35,6 +59,6 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "menu_item_level": "all",
-    "modified": 1475056280
+    "menu_item_level": "first",
+    "modified": 1475142588
 }

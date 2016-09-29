@@ -27,9 +27,10 @@ if(!class_exists('Menu_Icons_Walker')) {
 				$class_names,
 				$item->url,
 				( $item->object_id === get_the_ID() ) ? ' class="current"' : '',
-				get_icon($keyword),
+				get_section_icon($item->object_id),
 				$item->title
 			);
+
 		}
 
 		function end_el( &$output, $object, $depth = 0, $args = array() ) {
