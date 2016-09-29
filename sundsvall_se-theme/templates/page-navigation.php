@@ -11,7 +11,7 @@ sk_header();
 
 		<div class="navigation-page__header__title">
 
-			<div class="page-icon"><?php the_icon(get_section_class_name()); ?></div>
+			<div class="page-icon" <?php section_style('background'); ?>><?php the_icon(get_section_class_name()); ?></div>
 
 			<h1 class="page-title"><?php the_title(); ?></h1>
 

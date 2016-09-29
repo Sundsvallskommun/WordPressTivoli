@@ -59,6 +59,12 @@ require_once locate_template( 'lib/helpers/sk-general.php' );
  * ==============================================
  */
 
+
+/**
+ * Functions for working with section (page structure) themes (color/icon)
+ */
+require_once locate_template( 'lib/sk-section-theme.php' );
+
 require_once locate_template( 'lib/sk-search/class-sk-search.php' );
 $sk_search = new SK_Search();
 

@@ -1,15 +1,21 @@
 <?php
+
 if(!class_exists('Menu_Icons_Walker')) {
 
 	class Menu_Icons_Walker extends Walker_Nav_Menu {
 
 		function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 
+			// Save color and icon to global array.
+			add_global_section_theme($item);
+			
 			$keyword = get_section_class_name($item);
 
 			if( is_array( $item->classes ) ) {
 				$class_names = join( ' ', $item->classes );
 			}
+
+			global $page_themes;
 
 			$output .= sprintf( "\n
 				<a class='nav-%s %s' href='%s'%s>
@@ -47,4 +53,29 @@ if ( has_nav_menu( 'main-menu' ) ) {
 	wp_nav_menu( $nav_args );
 
 }
+
+/**
+ * Add theme colors to nav items.
+ */
+echo '<style>';
+global $page_themes;
+foreach( $page_themes as $theme ) {
+
+	$keyword = $theme['keyword'];
+	$color = $theme['color'];
+
+	echo "
+		.site-navigation .nav-$keyword .menu-item-icon {
+				background-color:  $color;
+		}
+		.site-navigation .nav-$keyword:hover,
+		.site-navigation .nav-$keyword.current-menu-item,
+		.site-navigation .nav-$keyword.current-menu-ancestor {
+				border-bottom-color:  $color;
+		}
+	";
+}
+
+echo '</style>';
+
 ?>

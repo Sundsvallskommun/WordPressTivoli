@@ -1,6 +1,14 @@
 <div class="container-fluid">
 <div class="row">
 
+<?php
+// Add color to navigation card circle based on page structure theme
+?>
+<style>
+.nav-card-title__icon {
+	background-color: <?php echo get_section_color(); ?>;
+}
+</style>
 
 <div class="col-xs-12">
 
