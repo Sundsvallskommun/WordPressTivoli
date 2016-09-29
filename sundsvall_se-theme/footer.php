@@ -6,13 +6,19 @@ if(!is_front_page() && !is_search() && !is_archive() && !is_home()) {
 }
 ?>
 
+<?php
+// if this is advanced template we use its footer column, else we use them options settings.
+wp_reset_query();
+$fields_id = is_advanced_template_child() ? advanced_template_top_ancestor() : 'option';
+?>
+
 <?php 
 
 /**
  * We serve site footer from saved transient to prevent a lot of meta queries
  * to happen for every visitor.
  */
-$cached_footer = get_transient( 'site_footer' );
+$cached_footer = get_transient( "site_footer_$fields_id" );
 
 if( $cached_footer ):
 	echo $cached_footer;
@@ -25,12 +31,6 @@ ob_start();
 <footer class="site-footer">
 
 	<div class="container-fluid">
-
-<?php
-// if this is advanced template we use its footer column, else we use them options settings.
-wp_reset_query();
-$fields_id = is_advanced_template_child() ? advanced_template_top_ancestor() : 'option';
-?>
 
 		<?php if ( have_rows ( 'footer_columns', $fields_id) ) : ?>
 
@@ -205,7 +205,7 @@ $fields_id = is_advanced_template_child() ? advanced_template_top_ancestor() : '
 
 $footer = ob_get_clean();
 
-set_transient( 'site_footer', $footer, HOUR_IN_SECONDS );
+set_transient( "site_footer_$fields_id", $footer, HOUR_IN_SECONDS );
 
 echo $footer;
 
