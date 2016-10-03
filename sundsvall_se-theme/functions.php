@@ -405,39 +405,29 @@ $sk_expiration = new SK_Expiration;
 /**
  * Add expand and collapse all buttons to Real Media Library directory tree.
  */
-add_action('RML/Sidebar/Toolbar', 'rml_collapseall', 10);
-add_action('RML/Sidebar/ToolbarTips', 'rml_collapseall_tooltip', 10);
+add_action('RML/Sidebar/Content', 'rml_collapseall', 10);
 
 function rml_collapseall() {
-  echo '<a data-helper="expandall" href="javascript:window.rml_sundsvall.expandAll();" class=""><i class="fa fa-plus-circle"></i></a>';
-	echo '<a data-helper="collapseall" href="javascript:window.rml_sundsvall.collapseAll();" class=""><i class="fa fa-minus-circle"></i></a>';
-
+	echo '<div style="margin: 1em 0; line-height: 2;">';
+  echo '<a data-helper="expandall" href="javascript:window.rml_sundsvall.expandAll();" style="text-decoration: none"><i class="fa fa-plus-circle"></i> Fäll ut allt</a>';
+  echo '<br>';
+	echo '<a data-helper="collapseall" href="javascript:window.rml_sundsvall.collapseAll();" style="text-decoration: none"><i class="fa fa-minus-circle"></i> Fäll ihop allt</a>';
+	echo '</div>';
 ?>
 	<script>
 
 		window.rml_sundsvall = {};
 
 		window.rml_sundsvall.collapseAll = function() {
-			jQuery('.rml-expander.rml-open').each(function(){ jQuery(this).click() });
+			jQuery('.aio-expander.aio-open').each(function(){ jQuery(this).click() });
 		}
 
 		window.rml_sundsvall.expandAll = function() {
-			jQuery('.rml-expander:not(.rml-open)').each(function(){ jQuery(this).click() });
+			jQuery('.aio-expander:not(.aio-open)').each(function(){ jQuery(this).click() });
 		}
 
 	</script>
 
-<?php
-}
-
-function rml_collapseall_tooltip() {
-?>
-	<div class="page-title-action-helper bar" data-helper="expandall">
-			<div><?php _e('Fäll ut allt', 'sundsvall_se'); ?></div>
-	</div>
-	<div class="page-title-action-helper bar" data-helper="collapseall">
-			<div><?php _e('Fäll ihop allt', 'sundsvall_se'); ?></div>
-	</div>
 <?php
 }
 
