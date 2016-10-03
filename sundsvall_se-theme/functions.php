@@ -431,3 +431,17 @@ function rml_collapseall() {
 <?php
 }
 
+/**
+ * Show link in publish meta box that points to page where editors can get
+ * help.
+ */
+add_action( 'post_submitbox_misc_actions', 'editor_help_link', 10 );
+
+function editor_help_link() {
+?>
+<div class="misc-pub-section misc-pub-post-status">
+
+<a href="http://sundsvall.se/kommun-och-politik/om-webbplatsen-2/sa-fungerar-webbplatsen/kontakta-redaktorsstod/" target="_blank">Kontakta redaktörsstöd.</a>
+</div>
+	<?php
+}
