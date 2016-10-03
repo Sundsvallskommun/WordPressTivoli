@@ -88,10 +88,7 @@ foreach($children as $child) {
 
 						?>
 
-						<?php if ( is_navigation( $child_id ) && is_null( get_field( 'page_link', $child_id ) ) ) : ?>
-						<?php else : ?>
 							| <a href="<?php echo $is_shortcut ? $shortcut_url : $permalink ; ?>">Visa&nbsp;alla&nbsp;&#187;</a>
-						<?php endif; ?>
 
 					<?php } else {
 						$excerpt = sk_get_excerpt($child_id);
