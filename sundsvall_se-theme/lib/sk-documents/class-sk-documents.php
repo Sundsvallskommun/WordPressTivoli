@@ -217,7 +217,7 @@ class SK_Documents {
 
 		if ( is_user_logged_in() && current_user_can( 'upload_files' ) ) {
 			$upload_url = get_site_url().'/wp-admin/upload.php?mode=grid&rml_folder='.$id;
-			$links .= '<a class="list-group-item text-xs-center font-weight-bold" href="'.$upload_url.'">Ladda upp filer</a>';
+			$links .= '<a class="list-group-item text-xs-center font-weight-bold" href="'.$upload_url.'">Ändra i listan</a>';
 		}
 
 		$doc_list = sprintf('<div class="list-group m-b-2">%s</div>', $links);
