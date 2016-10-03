@@ -27,7 +27,12 @@ if ( !get_field( 'event_calendar_active', $page_id ) ) return false;
 	//]]>
 </script>
 
-<div class="calendar-image hidden-sm-down" style="background-image: url(<?php the_field( 'event_calendar_left_image', $page_id ); ?>)"> </div>
+	<?php 
+		$image_id = get_field( 'event_calendar_left_image', $page_id );
+		$image    = wp_get_attachment_image_src($image_id, 'large')[0];
+	?>
+
+<div class="calendar-image hidden-sm-down" style="background-image: url(<?php echo $image; ?>)"> </div>
 
 <div class="container-fluid">
 
