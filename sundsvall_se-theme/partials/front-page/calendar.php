@@ -1,5 +1,7 @@
 <?php
 
+wp_reset_query();
+
 $page_id = is_front_page() ? get_option('page_on_front') : $post->ID;
 
 // Only show calendar if it has been activated.
