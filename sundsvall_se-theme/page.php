@@ -14,7 +14,7 @@
 
 	</aside>
 
-	<div class="single-post__content" id="post-content" <?php sk_lang_attr(); ?>>
+	<div class="single-post__content" id="post-content">
 
 		<?php do_action('sk_before_page_title'); ?>
 
