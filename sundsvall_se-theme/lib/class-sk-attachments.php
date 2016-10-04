@@ -217,10 +217,19 @@ class SK_Attachments {
 
 		// Get all images.
 		foreach ( $doc->getElementsByTagName( 'img' ) as $img ) {
-			// Get the post id from the class attribute.
-			if ( preg_match( '/.*-(?P<id>\d*)/', $img->getAttribute( 'class' ), $match ) ) {
+			// Get the attachment id from the class attribute.
+			if ( preg_match( '/image-(?P<id>\D*)/', $img->getAttribute( 'class' ), $match ) ) {
 				$id = $match[ 'id' ];
 				$src = $img->getAttribute( 'src' );
+
+				// If we failed to retrieve the attachment ID from the class attribute we'll
+				// retrieve it from the database directly.
+				if ( empty ( $id ) ) {
+					$id = $this->get_attachment_id_from_src( $src );
+
+					// If for some reason ID is still empty we'll have to return.
+					if ( ! $id ) return $content;
+				}
 
 				// Get the photographer.
 				$photographer = get_post_meta( $id, 'media_photographer', true );
@@ -259,6 +268,33 @@ class SK_Attachments {
 
 		// Return as html.
 		return $doc->saveHTML();
+	}
+
+	/**
+	 * Retrieves the attachment ID from database with the image src.
+	 *
+	 * NOTE:
+	 * This method takes in to account different sizes so as long as the image src
+	 * is related to an actual attachment it should be able to retrieve an ID.
+	 * @param  string $image_url
+	 * @return integer            Attachment ID
+	 */
+	private function get_attachment_id_from_src( $image_url ) {
+		global $wpdb, $table_prefix;
+
+		// Sizes are saved as postmeta so we can check there if this $image_url exists.
+		$res = $wpdb->get_results('select post_id from ' . $table_prefix . 'postmeta where meta_value like "%' . basename($image_url). '%"');
+
+		// If didn't find anything there we'll try to retrieve it directly as an WP_Post which works if it's the full size image.
+		if( count( $res ) === 0 ) {
+			$res = $wpdb->get_results('select ID as post_id from ' . $table_prefix . 'posts where guid="' . $image_url . '"');
+		}
+
+		// Return either the ID or false if we didn't find any.
+		if ( empty( $res ) )
+			return false;
+		else
+			return $res[ 0 ]->post_id;
 	}
 
 }
