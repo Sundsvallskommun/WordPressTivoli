@@ -6,7 +6,7 @@
 ?>
 <style>
 .nav-card-title__icon {
-	background-color: <?php echo get_section_color(); ?>;
+	background-color: <?php echo get_section_color(); ?> !important;
 }
 </style>
 
