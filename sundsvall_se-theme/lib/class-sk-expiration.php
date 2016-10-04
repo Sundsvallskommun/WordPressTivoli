@@ -53,7 +53,6 @@ class SK_Expiration {
 		<p>
 			<label for="sk_expiry_date">
 				<?php _e( 'Avpubliceringsdatum', 'sundsvall_se' ); ?>
-				<?php if ( $post->post_type === 'post' ) : ?><span style="color: red">*</span><?php endif; ?>
 			</label>
 		</p>
 
@@ -65,45 +64,14 @@ class SK_Expiration {
 					jQuery(document).ready(function() {
 							jQuery('.expiry-date').datepicker({
 									dateFormat : 'yy-mm-dd',
-									maxDate : '+3M',
 									minDate : '+1'
 							});
-					});
 
-					jQuery(document).ready(function($){
 						$('#post').submit(function(){
 
 							var $dateInput = $('.expiry-date');
 							var dateValue = $dateInput.val();
-
-
-							<?php if ( $post->post_type === 'post' ) : ?>
-								if( dateValue == '' ) {
-									alert('Du måste ange ett avpubliceringsdatum.');
-									return invalidDate();
-								}
-
-								var date = new Date(dateValue);
-
-								var m3 = new Date();
-								m3.setMonth( m3.getMonth() + 3 );
-
-								if( date > m3 ) {
-									alert('Du måste ange ett avpubliceringsdatum som är max 3 månader från idag.');
-
-									return invalidDate();
-								}
-							<?php endif; ?>
 						});
-
-						<?php if ( $post->post_type === 'post' ) : ?>
-							function invalidDate() {
-								$('.expiry-date').css('border-color', 'red');
-
-								return false;
-
-							}
-						<?php endif; ?>
 					});
 				</script>
 		</form>
