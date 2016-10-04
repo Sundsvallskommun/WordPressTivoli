@@ -28,11 +28,6 @@ class SK_Page_Lead {
 	* @return string
 	* */
 	function frontend_lead($content){
-
-		if(is_easyread()) {
-			return $content;
-		}
-
 		return preg_replace('/<p([^>]+)?>/', '<p$1 class="lead">', $content, 1);
 	}
 

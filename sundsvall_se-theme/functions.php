@@ -268,15 +268,6 @@ require_once locate_template( 'lib/class-sk-helpmenu.php' );
 $sk_helpmenu = new SK_Helpmenu();
 
 /**
- * SK_Easyread
- * ===========
- *
- * Add link to sidebar of posts/pages to toggle easily readable content.
- */
-require_once locate_template( 'lib/class-sk-easyread.php' );
-$sk_easyread = new SK_Easyread();
-
-/**
  * SK_Tags
  * =======
  *
