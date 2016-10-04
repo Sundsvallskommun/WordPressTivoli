@@ -9,7 +9,6 @@ class SK_Helpmenu {
 		add_action('sk_page_helpmenu', array(&$this, 'sk_helpmenu_start'), 1);
 		add_action('sk_page_helpmenu', array(&$this, 'sk_helpmenu_end'), 10000);
 
-		add_action('sk_page_helpmenu', array(&$this, 'listen_button'), 10);
 		//add_action('sk_page_helpmenu', array(&$this, 'share_link'), 10);
 		add_action('sk_page_helpmenu', array(&$this, 'print_link'), 30);
 	}
@@ -24,12 +23,6 @@ class SK_Helpmenu {
 
 	function share_link() {
 		echo $this->helplink('share', '#', __('Dela', 'sundsvall_se'));
-	}
-
-	function listen_button() {
-		if(is_singular() && !is_front_page()) {
-			echo $this->helplink('listen', '#', __('Lyssna', 'sundsvall_se'), array('type' => 'button', 'id' => 'responsivevoice' ));
-		}
 	}
 
 	function print_link() {
