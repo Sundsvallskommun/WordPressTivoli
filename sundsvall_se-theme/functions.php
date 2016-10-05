@@ -193,25 +193,6 @@ $sk_post_type_boxes = new SK_Boxes();
 require_once locate_template( 'lib/class-sk-rename-post-types.php' );
 $sk_rename_default_post_type = new SK_Rename_Default_Post_Type();
 
-
-
-/*
- * ==============================================
- *               NAVIGATION PAGE
- * ==============================================
- */
-
-/**
- * SK_Vizzit
- * ===========================
- *
- * Vizzit api, show most popular nodes on navigational cards.
- */
-require_once locate_template( 'lib/sk-vizzit/class-sk-vizzit.php' );
-$class_sk_vizzit = new SK_Vizzit();
-
-
-
 /*
  * ==============================================
  *                SHORTCUT PAGE

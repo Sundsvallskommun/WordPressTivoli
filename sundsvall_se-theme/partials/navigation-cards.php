@@ -70,17 +70,10 @@ foreach($children as $child) {
 					}
 
 					if(is_navigation($child_id)) {
-						$children = apply_filters('sk_navcard_children', $child_id);
 
-						if( !$children ) {
-							if ( $child_id === null ) {
-								$children = array();
-							}
+						$children = get_children(array('post_type' => 'page', 'post_parent' => $child_id, 'numberposts' => 5));
 
-							else {
-								$children = get_children(array('post_type' => 'page', 'post_parent' => $child_id));
-							}
-						}
+						$children = apply_filters('sk_navcard_children', $children, $child_id);
 
 						$i = 0;
 						foreach($children as $child) {
