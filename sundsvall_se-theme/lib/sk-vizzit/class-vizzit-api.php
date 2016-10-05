@@ -7,7 +7,7 @@
 class Vizzit {
 
 	const BASEURL        = 'http://www.vizzit.se/feeds';
-	const USERHASH       = '2c7c50503ddceb4dc94f2f1608086ca1';
+	const USERHASH       = 'b020f0f7a4495193bfb7874508d030f8';
 	const USE_TRANSIENTS = true;
 
 	function __construct() {
