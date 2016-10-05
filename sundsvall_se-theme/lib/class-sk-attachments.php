@@ -209,6 +209,10 @@ class SK_Attachments {
 	 * @return string
 	 */
 	public function add_caption_shortcode( $content ) {
+		// Don't continue if $content is empty.
+		if ( strlen( $content ) === 0 )
+			return $content;
+
 		// Set up DOMDocument which will help with
 		// manipulating the content.
 		$doc = new DOMDocument();
