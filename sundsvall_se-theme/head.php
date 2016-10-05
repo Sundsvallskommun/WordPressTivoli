@@ -15,8 +15,6 @@
 
 	<link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/favicon.ico" rel="shortcut icon">
 
-	<?php gravity_form_enqueue_scripts( get_field('site_feedback_form_id', 'option'), true ); ?>
-
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>

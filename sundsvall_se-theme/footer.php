@@ -213,8 +213,6 @@ endif;
 
 ?>
 
-<?php get_template_part('partials/feedback-modal'); ?>
-
 </div> <?php // .contentwrapper-inner ?>
 </div> <?php // .contentwrapper-outer ?>
 

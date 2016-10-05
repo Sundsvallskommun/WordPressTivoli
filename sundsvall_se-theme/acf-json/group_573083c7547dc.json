@@ -3,61 +3,6 @@
     "title": "Synpunktsformul\u00e4r",
     "fields": [
         {
-            "key": "field_5731a8c53f50b",
-            "label": "Globalt synpunktsformul\u00e4r",
-            "name": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
-        },
-        {
-            "key": "field_573083dceec11",
-            "label": "Visa globalt synpunktsformul\u00e4r",
-            "name": "show_site_feedback_form",
-            "type": "true_false",
-            "instructions": "Visar en knapp p\u00e5 alla sidor: \"Tyck till om webbplatsen\"",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": 50,
-                "class": "",
-                "id": ""
-            },
-            "message": "Ja, visa globalt synpunktsformul\u00e4r",
-            "default_value": 0
-        },
-        {
-            "key": "field_573084a2eec12",
-            "label": "Formul\u00e4rs-ID",
-            "name": "site_feedback_form_id",
-            "type": "number",
-            "instructions": "ID-nummer f\u00f6r formul\u00e4ret som ska visas.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": 50,
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
-            "step": "",
-            "readonly": 0,
-            "disabled": 0
-        },
-        {
             "key": "field_5731a90b3f50c",
             "label": "Sidspecifikt formul\u00e4r",
             "name": "",
@@ -131,5 +76,6 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1462872608
+    "menu_item_level": "all",
+    "modified": 1475673469
 }
