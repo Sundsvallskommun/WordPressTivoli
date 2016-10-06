@@ -66,12 +66,6 @@ class SK_Expiration {
 									dateFormat : 'yy-mm-dd',
 									minDate : '+1'
 							});
-
-						$('#post').submit(function(){
-
-							var $dateInput = $('.expiry-date');
-							var dateValue = $dateInput.val();
-						});
 					});
 				</script>
 		</form>
