@@ -104,15 +104,6 @@ require_once locate_template( 'lib/class-sk-ajax.php' );
 $sk_ajax = new SK_Ajax();
 
 /**
- * SK_Attachments
- * ==============
- *
- * Add photographer field to attachments.
- */
-require_once locate_template( 'lib/class-sk-attachments.php' );
-$sk_attachments = new SK_Attachments();
-
-/**
  * Breadcrumbs
  * ===========
  *

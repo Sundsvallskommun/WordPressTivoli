@@ -6,7 +6,6 @@ class SK_Rename_Default_Post_Type {
 
 	public function __construct() {
 		add_action( 'init', array(&$this, 'change_object_labels'), 10);
-		add_action( 'admin_menu', array(&$this, 'change_menu_labels'), 10);
 	}
 
 	public function change_object_labels() {
@@ -37,12 +36,6 @@ class SK_Rename_Default_Post_Type {
 		$post_labels->items_list = 'Nyhetslista';
 		$post_labels->menu_name = 'Nyheter';
 		$post_labels->name_admin_bar = 'Nyheter';
-	}
-
-	public function change_menu_labels() {
-		global $menu;
-		global $submenu;
-		$menu[10][0] = __('Filarkiv', 'sundsvall_se');
 	}
 
 }
