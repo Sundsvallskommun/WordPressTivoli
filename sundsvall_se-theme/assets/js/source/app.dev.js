@@ -107,51 +107,6 @@ require('./sk_calendar.js');
 		});
 
 		/**
-		 * Vote function for pages
-		 */
-		$('.vote-widget').on('click', '[data-vote]', function(e) {
-			var $buttons = $('.vote-widget [data-vote]');
-			$buttons.prop("disabled", true);
-			var action = $(this).data('vote');
-			pageVote(action);
-			$('#vote-form').collapse('show');
-		});
-
-		$('.vote-widget').on('click', '[data-showvoteform]', function(e) {
-			$(this).prop("disabled", true);
-			$('#vote-form').collapse('show');
-		});
-
-		function pageVote(voteType) {
-
-			var $buttons = $('.vote-widget [data-vote]');
-
-			if(voteType !== 'up' && voteType !== 'down') {
-				return false;
-			}
-
-			$.ajax({
-				url: ajaxdata.ajax_url,
-				type: 'POST',
-				dataType: 'json',
-				data: {
-					action: 'pagevote',
-					vote_type: voteType,
-					post_id: ajaxdata.post_id,
-					_ajax_nonce: ajaxdata.ajax_nonce,
-				}
-			}).done(function(data) {
-				if(data.status == 'success') {
-					$buttons.hide();
-					$('.vote-percent').html(data.new_percent_text);
-				}
-			}).error(function(jqHXR, textStatus, errorThrown) {
-			});
-
-		}
-
-
-		/**
 		* Load Gravity Form with ajax
 		*/
 		var loadedForms = [];

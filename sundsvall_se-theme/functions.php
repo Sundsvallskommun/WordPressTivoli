@@ -222,13 +222,13 @@ require_once locate_template( 'lib/class-sk-pinned-posts.php' );
 $sk_pinned_posts = new SK_Pinned_Posts();
 
 /**
- * SK_PageVote
+ * SK_Feedback
  * ===========================
  *
  * "Was this page helpful?"-function for pages.
  */
-require_once locate_template( 'lib/class-sk-pagevote.php' );
-$sk_shortURL = new SK_PageVote();
+require_once locate_template( 'lib/class-sk-feedback.php' );
+$sk_shortURL = new SK_Feedback();
 
 /**
  * SK_Helpmenu
