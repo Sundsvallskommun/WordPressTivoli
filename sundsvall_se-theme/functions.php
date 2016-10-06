@@ -273,8 +273,6 @@ $sk_tags = new SK_Tags();
  *
  * Page widgets wrapper
  *
- * TinyMCE buttons (youtube)
- *
  * Google maps page widget
  */
 require_once locate_template( 'lib/sk-widgets/class-sk-widgets.php' );
