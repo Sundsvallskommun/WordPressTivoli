@@ -1,0 +1,41 @@
+{
+    "key": "group_57f5febdbc44d",
+    "title": "Redigering",
+    "fields": [
+        {
+            "key": "field_57f5fed599db7",
+            "label": "Ingress",
+            "name": "page_lead_active",
+            "type": "true_false",
+            "instructions": "Om ingress \u00e4r aktiverat blir f\u00f6rsta stycket p\u00e5 sidor automatiskt en ingress.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Automatisk ingress",
+            "default_value": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-allmant"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "Inst\u00e4llningar f\u00f6r redigering av sidor (t.ex. ingress).",
+    "menu_item_level": "all",
+    "modified": 1475742371
+}
