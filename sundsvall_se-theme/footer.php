@@ -52,83 +52,7 @@ ob_start();
 								<p><?php the_sub_field( 'footer_module_description' )?></p>
 							<?php endif; ?>
 
-							<?php if( 'contact_info' == get_row_layout() ): ?>
-
-								<h2>Kontakta oss</h2>
-
-								<?php if( get_sub_field('email') ): ?>
-
-									<div class="contact-item contact-item--email">
-										<span class="footer-icon">
-											<?php the_icon('message', array('alt' => 'E-post')); ?>
-										</span>
-										<p>
-											<?php echo get_email_links(get_sub_field('email')); ?>
-										</p>
-									</div>
-
-								<?php endif; ?>
-
-								<?php if( get_sub_field('phone') ): ?>
-
-									<div class="contact-item contact-item--phone">
-										<span class="footer-icon">
-											<?php the_icon('telephone', array('alt' => 'Telefon')); ?>
-										</span>
-										<p>
-											<?php echo get_phone_links(get_sub_field('phone')); ?>
-										</p>
-									</div>
-
-								<?php endif; ?>
-
-								<?php if( get_sub_field('address') ): ?>
-
-									<div class="contact-item contact-item--address">
-										<span class="footer-icon">
-											<?php the_icon('home', array('alt' => 'Adress')); ?>
-										</span>
-										<p>
-											<?php the_sub_field( 'address' ); ?>
-										</p>
-									</div>
-
-								<?php endif; ?>
-
-								<?php if( get_sub_field('political_links') ): ?>
-
-									<div class="contact-item contact-item--political-contact">
-										<span class="footer-icon">
-											<?php the_icon('kommun'); ?>
-										</span>
-										<p>
-										<?php
-												$pi = 0;
-												foreach(get_sub_field('political_links') as $page) {
-													if($pi > 0) { echo '<br>'; }
-													printf('<a href="%s">%s</a>', get_the_permalink($page->ID), $page->post_title);
-													$pi += 1;
-												}
-											?>
-										</p>
-									</div>
-
-								<?php endif; ?>
-
-								<?php if( get_sub_field('error_report_page') ): ?>
-
-									<div class="contact-item contact-item--error-report">
-										<span class="footer-icon">
-											<?php the_icon('error', array('alt' => 'Felanmälan')); ?>
-										</span>
-										<p>
-											<a href="<?php the_sub_field('error_report_page'); ?>">Felanmälan</a>
-										</p>
-									</div>
-
-								<?php endif; ?>
-
-							<?php elseif( 'content' == get_row_layout() ): ?>
+							<?php if( 'content' == get_row_layout() ): ?>
 
 							<?php the_sub_field('content')?>
 
@@ -159,6 +83,31 @@ ob_start();
 									</ul>
 
 								</nav>
+
+							<?php elseif( 'icon_links' == get_row_layout() ): ?>
+
+								<nav>
+
+										<?php while ( have_rows( 'links' ) ) : the_row(); ?>
+
+											<div class="contact-item contact-item--email">
+												<span class="footer-icon">
+													<?php material_icon( get_sub_field( 'icon_keyword' ) ); ?>
+												</span>
+												<p>
+													<?php if( get_sub_field( 'linktype' ) == 'internal' ): ?>
+														<a href="<?php the_sub_field('internal_link_url')?>">
+															<?php the_sub_field('link_title')?>
+														</a>
+													<?php elseif( get_sub_field( 'linktype' ) == 'external' ): ?>
+														<a href="<?php the_sub_field('external_link_url')?>">
+															<?php the_sub_field('link_title')?>
+														</a>
+													<?php endif; ?>
+												</p>
+											</div>
+
+									<?php endwhile; ?>
 
 							<?php elseif( 'social_media' == get_row_layout() ): ?>
 

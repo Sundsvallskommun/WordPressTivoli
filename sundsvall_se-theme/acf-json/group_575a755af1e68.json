@@ -39,114 +39,6 @@
                     "max": "",
                     "layouts": [
                         {
-                            "key": "575a8709eadd7",
-                            "name": "contact_info",
-                            "label": "Kontaktuppgifter",
-                            "display": "row",
-                            "sub_fields": [
-                                {
-                                    "key": "field_575a8726eadd8",
-                                    "label": "Adress",
-                                    "name": "address",
-                                    "type": "textarea",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "placeholder": "",
-                                    "maxlength": "",
-                                    "rows": "",
-                                    "new_lines": "br",
-                                    "readonly": 0,
-                                    "disabled": 0
-                                },
-                                {
-                                    "key": "field_575aa2e87c15b",
-                                    "label": "Telefon",
-                                    "name": "phone",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "maxlength": "",
-                                    "readonly": 0,
-                                    "disabled": 0
-                                },
-                                {
-                                    "key": "field_575aa65e3caac",
-                                    "label": "E-post",
-                                    "name": "email",
-                                    "type": "email",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": ""
-                                },
-                                {
-                                    "key": "field_575aa66d3caad",
-                                    "label": "Politik-l\u00e4nkar",
-                                    "name": "political_links",
-                                    "type": "post_object",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "post_type": [],
-                                    "taxonomy": [],
-                                    "allow_null": 1,
-                                    "multiple": 1,
-                                    "return_format": "object",
-                                    "ui": 1
-                                },
-                                {
-                                    "key": "field_575aa84bbe2c5",
-                                    "label": "Sida f\u00f6r felanm\u00e4lan",
-                                    "name": "error_report_page",
-                                    "type": "page_link",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "post_type": [],
-                                    "taxonomy": [],
-                                    "allow_null": 1,
-                                    "multiple": 0
-                                }
-                            ],
-                            "min": "",
-                            "max": ""
-                        },
-                        {
                             "key": "575a772d28ff5",
                             "name": "content",
                             "label": "Fritext",
@@ -368,6 +260,199 @@
                             "max": ""
                         },
                         {
+                            "key": "57fb8be260815",
+                            "name": "icon_links",
+                            "label": "L\u00e4nkar med ikoner",
+                            "display": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_57fb8be260816",
+                                    "label": "Rubrik",
+                                    "name": "footer_module_title",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": "",
+                                    "readonly": 0,
+                                    "disabled": 0
+                                },
+                                {
+                                    "key": "field_57fb8be260817",
+                                    "label": "Beskrivning",
+                                    "name": "footer_module_description",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": "",
+                                    "conditional_logic": "",
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": "",
+                                    "readonly": 0,
+                                    "disabled": 0
+                                },
+                                {
+                                    "key": "field_57fb8be260818",
+                                    "label": "L\u00e4nkar",
+                                    "name": "links",
+                                    "type": "repeater",
+                                    "instructions": "",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "collapsed": "",
+                                    "min": "",
+                                    "max": "",
+                                    "layout": "table",
+                                    "button_label": "L\u00e4gg till l\u00e4nk",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_57fb8be260819",
+                                            "label": "L\u00e4nktyp",
+                                            "name": "linktype",
+                                            "type": "radio",
+                                            "instructions": "",
+                                            "required": "",
+                                            "conditional_logic": "",
+                                            "wrapper": {
+                                                "width": 20,
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "choices": {
+                                                "internal": "Intern",
+                                                "external": "Extern"
+                                            },
+                                            "allow_null": "",
+                                            "other_choice": 0,
+                                            "save_other_choice": 0,
+                                            "default_value": "",
+                                            "layout": ""
+                                        },
+                                        {
+                                            "key": "field_57fb8be26081a",
+                                            "label": "Titel",
+                                            "name": "link_title",
+                                            "type": "text",
+                                            "instructions": "",
+                                            "required": "",
+                                            "conditional_logic": "",
+                                            "wrapper": {
+                                                "width": 40,
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "placeholder": "",
+                                            "prepend": "",
+                                            "append": "",
+                                            "maxlength": "",
+                                            "readonly": 0,
+                                            "disabled": 0
+                                        },
+                                        {
+                                            "key": "field_57fb8be26081b",
+                                            "label": "Sida",
+                                            "name": "internal_link_url",
+                                            "type": "page_link",
+                                            "instructions": "",
+                                            "required": "",
+                                            "conditional_logic": [
+                                                [
+                                                    {
+                                                        "field": "field_57fb8be260819",
+                                                        "operator": "==",
+                                                        "value": "internal"
+                                                    }
+                                                ]
+                                            ],
+                                            "wrapper": {
+                                                "width": 40,
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "post_type": [],
+                                            "taxonomy": [],
+                                            "allow_null": "",
+                                            "multiple": ""
+                                        },
+                                        {
+                                            "key": "field_57fb8be26081c",
+                                            "label": "Url",
+                                            "name": "external_link_url",
+                                            "type": "text",
+                                            "instructions": "",
+                                            "required": "",
+                                            "conditional_logic": [
+                                                [
+                                                    {
+                                                        "field": "field_57fb8be260819",
+                                                        "operator": "==",
+                                                        "value": "external"
+                                                    }
+                                                ]
+                                            ],
+                                            "wrapper": {
+                                                "width": 40,
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "placeholder": "",
+                                            "prepend": "",
+                                            "append": "",
+                                            "maxlength": "",
+                                            "readonly": 0,
+                                            "disabled": 0
+                                        },
+                                        {
+                                            "key": "field_57fb8c156081d",
+                                            "label": "Ikon",
+                                            "name": "icon_keyword",
+                                            "type": "text",
+                                            "instructions": "Ikonnamn fr\u00e5n <a href=\"https:\/\/design.google.com\/icons\/\">\r\nGoogle Material Icons\r\n<\/a>",
+                                            "required": 1,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "placeholder": "",
+                                            "prepend": "",
+                                            "append": "",
+                                            "maxlength": "",
+                                            "readonly": 0,
+                                            "disabled": 0
+                                        }
+                                    ]
+                                }
+                            ],
+                            "min": "",
+                            "max": ""
+                        },
+                        {
                             "key": "575ab8a0dc8b8",
                             "name": "social_media",
                             "label": "Sociala medie-l\u00e4nkar",
@@ -513,5 +598,5 @@
     "active": 1,
     "description": "",
     "menu_item_level": "all",
-    "modified": 1476088451
+    "modified": 1476110455
 }
