@@ -1,4 +1,23 @@
 <?php
+function material_icon($id, array $args = array()) {
+	echo get_material_icon($id, $args);
+}
+
+function get_material_icon($id, array $args = array()) {
+
+	$args = array_merge(array(
+		'alt' => '',
+		'size' => '1.35em',
+	), $args);
+
+	$markup = '
+	<span class="icon icon-%1$s" role="img" aria-label="%2$s">
+		<i class="material-icons" style="font-size: %3$s;">%1$s</i>
+	</span>';
+
+	return $icon = sprintf($markup, $id, $args['alt'], $args['size']);
+}
+
 
 /**
  * Generate svg markup to load svg icon by id
