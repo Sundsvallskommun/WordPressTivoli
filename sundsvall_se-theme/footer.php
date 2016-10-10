@@ -128,6 +128,9 @@ ob_start();
 
 								<?php endif; ?>
 
+							<?php elseif( 'content' == get_row_layout() ): ?>
+
+							<?php the_sub_field('content')?>
 
 							<?php elseif( 'links' == get_row_layout() ): ?>
 

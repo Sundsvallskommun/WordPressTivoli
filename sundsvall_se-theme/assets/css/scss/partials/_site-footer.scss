@@ -2,6 +2,11 @@ $footer_background: profile-color(björnstigen, 2);
 
 .site-footer {
 
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
 	font-size: .9375em;
 	line-height: 1.2;
 	background-color: $footer_background;
