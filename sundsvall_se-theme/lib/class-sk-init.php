@@ -49,14 +49,6 @@ class SK_Init {
 
 		add_action('switch_theme', array( &$this, 'reset_author_capabilities'));		
 
-		add_action('after_switch_theme', array( &$this, 'add_role_service_message_editor'));
-
-		add_action('switch_theme', array( &$this, 'remove_role_service_message_editor'));
-
-		add_action('after_switch_theme', array( &$this, 'add_cap_service_messages'));
-
-		add_action('switch_theme', array( &$this, 'remove_cap_service_messages'));
-
 		add_filter('get_the_archive_title', array( &$this, 'change_archive_title'));
 
 
@@ -404,108 +396,6 @@ class SK_Init {
 		foreach ($capabilities as $cap) {
 			$role ->remove_cap( $cap );
 		}
-	}
-
-	/**
-	 * Give everyone access to Driftmeddelanden on theme activation.
-	 *
-	 * @author 
-	 * 
-	 * @return null
-	 */
-	public function add_cap_service_messages() {
-		$capabilities = array(
-			'edit_service_messages',
-			'edit_others_service_messages',
-			'publish_service_messages',
-			'read_private_service_messages',
-			'delete_service_messages',
-			'delete_private_service_messages',
-			'delete_published_service_messages',
-			'delete_others_service_messages',
-			'edit_private_service_messages',
-			'edit_published_service_messages',
-			'edit_service_messages'
-		);	
-
-		$roles = array('administrator', 'editor', 'author');
-			foreach ( $roles as $role ) {
-				
-				$therole = get_role( $role );
-				
-				foreach ( $capabilities as $cap ) {
-				$therole->add_cap( $cap );
-			}
-		}
-	}
-
-	/**
-	 * Remove capabilities for service messages on theme deactivation.
-	 *
-	 * @author 
-	 * 
-	 * @return null
-	 */
-	public function remove_cap_service_messages() {
-		$capabilities = array(
-			'edit_service_messages',
-			'edit_others_service_messages',
-			'publish_service_messages',
-			'read_private_service_messages',
-			'delete_service_messages',
-			'delete_private_service_messages',
-			'delete_published_service_messages',
-			'delete_others_service_messages',
-			'edit_private_service_messages',
-			'edit_published_service_messages',
-			'edit_service_messages'
-		);	
-
-		$roles = array('administrator', 'editor', 'author');
-			foreach ( $roles as $role ) {
-				
-				$therole = get_role( $role );
-				
-				foreach ( $capabilities as $cap ) {
-				$therole->remove_cap( $cap );
-			}
-		}
-	}
-
-	/**
-	 * Create new role: Drift/fil on theme activation.
-	 *
-	 * @author Therese Persson <therese.persson@sundsvall.se>
-	 */
-	public function add_role_service_message_editor() {
-		add_role( 'service_message_editor', __( 'Filuppladdare och driftmeddelare', 'sundsvall_se' ), 
-			array(
-				'read' => true,
-				'upload_files' => true,
-				'edit_service_messages' => true,
-				'edit_others_service_messages' => true,
-				'publish_service_messages' => true,
-				'read_private_service_messages' => true,
-				'delete_service_messages' => true,
-				'delete_private_service_messages' => true,
-				'delete_published_service_messages' => true,
-				'delete_others_service_messages' => true,
-				'edit_private_service_messages' => true,
-				'edit_published_service_messages'=> true,
-				'edit_service_messages' => true
-				)
-			);
-
-	}
-
-	/**
-	 * Remove role: Drift/fil on theme deactivation.
-	 *
-	 * @author Therese Persson <therese.persson@sundsvall.se>
-	 */
-	public function remove_role_service_message_editor() {
-		remove_role( 'service_message_editor' );
-
 	}
 
 	/**

@@ -3,31 +3,6 @@
     "title": "Exponering",
     "fields": [
         {
-            "key": "field_570f79a20b2da",
-            "label": "F\u00e4st p\u00e5 sidor",
-            "name": "pin_post_on",
-            "type": "relationship",
-            "instructions": "V\u00e4lj en eller flera sidor som detta inl\u00e4gg ska visas p\u00e5.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "page"
-            ],
-            "taxonomy": [],
-            "filters": [
-                "search"
-            ],
-            "elements": "",
-            "min": "",
-            "max": "",
-            "return_format": "id"
-        },
-        {
             "key": "field_573448dfe86c5",
             "label": "Visa p\u00e5 hela webbplatsen",
             "name": "pin_post_global",
@@ -68,5 +43,6 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1474965596
+    "menu_item_level": "all",
+    "modified": 1476084266
 }
