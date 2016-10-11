@@ -5,6 +5,8 @@ function material_icon($id, array $args = array()) {
 
 function get_material_icon($id, array $args = array()) {
 
+	$id = str_replace(' ', '_', $id);
+
 	$args = array_merge(array(
 		'alt' => '',
 		'size' => '1.35em',
