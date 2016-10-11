@@ -90,7 +90,7 @@ ob_start();
 
 										<?php while ( have_rows( 'links' ) ) : the_row(); ?>
 
-											<div class="contact-item contact-item--email">
+											<div class="icon-link">
 												<span class="footer-icon">
 													<?php material_icon( get_sub_field( 'icon_keyword' ) ); ?>
 												</span>
