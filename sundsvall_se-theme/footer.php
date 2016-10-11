@@ -88,26 +88,26 @@ ob_start();
 
 								<nav>
 
-										<?php while ( have_rows( 'links' ) ) : the_row(); ?>
+									<ul class="list-unstyled">
 
-											<div class="icon-link">
-												<span class="footer-icon">
-													<?php material_icon( get_sub_field( 'icon_keyword' ) ); ?>
-												</span>
-												<p>
-													<?php if( get_sub_field( 'linktype' ) == 'internal' ): ?>
-														<a href="<?php the_sub_field('internal_link_url')?>">
-															<?php the_sub_field('link_title')?>
-														</a>
-													<?php elseif( get_sub_field( 'linktype' ) == 'external' ): ?>
-														<a href="<?php the_sub_field('external_link_url')?>">
-															<?php the_sub_field('link_title')?>
-														</a>
-													<?php endif; ?>
-												</p>
-											</div>
+									<?php while ( have_rows( 'links' ) ) : the_row();
 
-									<?php endwhile; ?>
+										if( get_sub_field( 'linktype' ) == 'internal' ) {
+											$link_url = get_sub_field('internal_link_url');
+										} elseif( get_sub_field( 'linktype' ) == 'external' ) {
+											$link_url = get_sub_field('external_link_url');
+										}
+
+									printf('<li><a href="%s"><span class="footer-icon">%s</span>%s</a></li>',
+										$link_url,
+										get_material_icon( get_sub_field( 'icon_keyword' ) ),
+										get_sub_field( 'link_title' ));
+
+									endwhile; ?>
+
+								</ul>
+
+							</nav>
 
 							<?php elseif( 'social_media' == get_row_layout() ): ?>
 
