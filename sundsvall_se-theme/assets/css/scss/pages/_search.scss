@@ -102,6 +102,14 @@ body.search-results main {
 		}
 
 
+		// Colors for custom post types added through admin or filter
+		.search-module__item__icon {
+			background: profile-color(svartvik, 2);
+		}
+		svg {
+			fill: profile-color(svartvik, 2);
+		}
+
 		&--post {
 			.search-module__item__icon {
 				background: profile-color(juniskär, 2);

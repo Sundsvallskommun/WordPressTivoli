@@ -60,10 +60,6 @@ foreach ($results as $type => $result): ?>
 
 					printf($sk_search->item_template(), $post['type'], $post['url'], get_icon('alignleft'), $post['title'], $post['file_type'],  'Uppdaterad '.$post['modified']);
 
-				} else if( 'eservice' == $post['type'] ) {
-
-					printf($sk_search->item_template(), 'eservice', $post['url'], get_icon('alignleft'), $post['title'], 'E-tjänst', $post['category']);
-
 				} else {
 
 					printf($sk_search->item_template(), $post['type'], $post['url'], get_icon('alignleft'), $post['title'], $post['type_label'], 'Uppdaterad '.$post['modified']);
@@ -82,13 +78,6 @@ foreach ($results as $type => $result): ?>
 				endif;
 			?>
 			</div>
-
-			<?php if( 'eservices' == $type ): ?>
-			<div class="search-module__footer">
-				<a href="//e-tjanster.sundsvall.se/">Alla e-tjänster</a>
-			</div>
-			<?php endif; ?>
-
 
 		<?php else: ?>
 			<p class="m-t-2 text-xs-center text-muted">Inget resultat för <?php echo $result['title']; ?></p>

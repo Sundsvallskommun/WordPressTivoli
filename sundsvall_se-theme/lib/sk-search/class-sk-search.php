@@ -8,16 +8,11 @@
  * @since 1.0
  */
 
-require_once __DIR__.'/../sk-eservices/class-oep-api.php';
-
 class SK_Search {
 
 	private $queryArgs;
 
 	function __construct() {
-
-		// Open ePlatform api
-		$this->oep = new OEP();
 
 		// If this is set we should base all search results on it. Used by advanced
 		// template.
@@ -145,10 +140,6 @@ class SK_Search {
 			<script id="searchitem-template-contacts" type="text/x-handlebars-template">
 				<?php printf($this->item_template(), '{{type}}', '{{url}}', '{{{thumbnail}}}', '{{title}}', '{{type_label}}', 'Uppdaterad {{modified}}' ); ?>
 			</script>
-
-			<script id="searchitem-template-eservice" type="text/x-handlebars-template">
-				<?php printf($this->item_template(), '{{type}}', '{{url}}', get_icon('alignleft'), '{{title}}', '{{type_label}}', '{{category}}' ); ?>
-			</script>
 		<?php
 	}
 
@@ -228,15 +219,32 @@ class SK_Search {
 			);
 		}
 
-		if((!$type || $type == 'eservice') && !$this->is_advanced_search) {
-			$eservices = $this->searchresult_eservices();
-			$result['eservices'] = array(
-				'title' => __( 'E-tjänster', 'sundsvall_se' ),
-				'posts' => $eservices,
-				'found_posts' => count($eservices),
-				'max_num_pages' => 1
-			);
+		if(!$type) {
+
+			$extra_post_types = get_field( 'search_post_types', 'option' );
+
+			$extra_post_types = array_map( 'trim', explode(',', $extra_post_types) );
+
+			$extra_post_types = apply_filters( 'tivoli_search_included_post_types', $extra_post_types );
+
+			foreach( $extra_post_types as $post_type ) {
+
+				$pt = get_post_type_object( $post_type );
+
+				if(!$pt) continue; // Make sure we only include valid post types in search
+
+				$posts = $this->searchresult_posts($post_type);
+				$result[$post_type] = array(
+					'title' => $pt->labels->name,
+					'posts' => $posts['posts'],
+					'found_posts' => $posts['found_posts'],
+					'max_num_pages' => $posts['max_num_pages']
+				);
+
+			}
+
 		}
+
 
 		return $result;
 	}
@@ -307,11 +315,11 @@ class SK_Search {
 	 * Search for posts. If advanced template hierarchy, only return posts of
 	 * advanced template categories.
 	 */
-	private function searchresult_posts() {
+	private function searchresult_posts( $post_type = 'post' ) {
 
 		$query = new WP_Query();
 		$args = $this->queryArgs;
-		$args['post_type'] = 'post';
+		$args['post_type'] = $post_type;
 
 		// Only show posts from advanced page categories.
 		if( $this->is_advanced_search ) {
@@ -366,29 +374,6 @@ class SK_Search {
 			'found_posts' => $query->found_posts,
 			'max_num_pages' => $query->max_num_pages
 		);
-
-	}
-
-	/**
-	 * Search for e-services.
-	 */
-	public function searchresult_eservices() {
-
-		$result = $this->oep->search_services($this->search_string);
-		$map = array_map(
-			function($flow) { 
-				return array(
-					'title'      => $flow['Name'],
-					'type'       => 'eservice',
-					'type_label' => 'E-tjänst',
-					'category'   => $flow['Category'],
-					'url'        => $flow['URL'],
-				);
-			},
-			$result
-		);
-
-		return $map;
 
 	}
 
