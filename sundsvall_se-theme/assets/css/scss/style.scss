@@ -31,6 +31,8 @@
 
 @import 'shame';
 
+@import 'partials/ie-fix';
+
 @media print {
 	@import 'print';
 }

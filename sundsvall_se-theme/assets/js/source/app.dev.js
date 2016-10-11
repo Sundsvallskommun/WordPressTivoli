@@ -19,6 +19,17 @@ require('./sk_calendar.js');
 	$(document).ready(function() {
 
 		/**
+		 * Some flex styling is not working properly in Internet Explorer 10
+		 * and the only way to target IE10 specifically via CSS media queries
+		 * also targets IE11 (in which these things works) so we have to resort
+		 * to UE sniffing in order to fix these style related problems.
+		 *
+		 * 
+		 */
+		var doc = document.documentElement;
+  		doc.setAttribute('data-useragent', navigator.userAgent);
+
+		/**
 		* Wrap tables in wrapper to make them responsive with bootstraps
 		* .table-responsive-class
 		*/

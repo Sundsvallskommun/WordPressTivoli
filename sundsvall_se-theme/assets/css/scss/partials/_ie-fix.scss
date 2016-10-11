@@ -1,0 +1,36 @@
+html[data-useragent*='MSIE 10.0'] {
+	.logo-search-row {
+		.logo-container {
+			max-width: 20%;
+			flex: none;
+			float: left;
+		}
+
+		.search-container {
+			width: 80%;
+			float: left;
+			flex: none;
+			display: block;
+
+			.searchform {
+				input#s {
+					height: 3.67rem;
+				}
+			}
+		}
+	}
+
+	.site-navigation {
+		nav a {
+			/* display: inline-block; */
+			width: calc( 100% / 7 );
+			overflow: hidden;
+
+			.menu-item-text {
+				@include media-breakpoint-up(md) {
+					flex: 1 1 auto;
+				}
+			}
+		}
+	}
+}
