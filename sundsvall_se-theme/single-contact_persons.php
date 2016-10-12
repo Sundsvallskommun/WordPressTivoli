@@ -28,6 +28,7 @@
 
 		<?php the_post_thumbnail( 'portrait', array( 'class' => 'alignleft' ) ); ?>
 
+		<div style="display: inline-block;">
 		<?php 
 
 			$fields = array(
@@ -48,11 +49,7 @@
 			echo '</dl>';
 
 		?>
-
-<dl>
-	<dt></dt>
-	<dd></dd>
-</dl>
+		</div>
 
 		<div class="clearfix"></div>
 
