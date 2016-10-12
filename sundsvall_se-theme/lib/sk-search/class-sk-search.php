@@ -53,6 +53,10 @@ class SK_Search {
 			'post_status' => 'publish'
 		);
 
+		// Custom post types from settings (acf) and/or filter.
+		$extra_post_types = get_field( 'search_post_types', 'option' );
+		$extra_post_types = array_map( 'trim', explode(',', $extra_post_types) );
+		$this->extra_post_types = apply_filters( 'tivoli_search_included_post_types', $extra_post_types );
 
 		add_action( 'wp_enqueue_scripts', array( &$this, 'ajax_search_variables' ), 50 );
 
@@ -92,7 +96,8 @@ class SK_Search {
 			'ajax_url'         => admin_url( 'admin-ajax.php' ),
 			'search_string'    => $this->search_string,
 			'post_parent'      => is_advanced_template_child() ? advanced_template_top_ancestor() : $this->post_parent,
-			'currentPage' => (get_query_var('paged')) ? get_query_var('paged') : 1
+			'currentPage'      => (get_query_var('paged')) ? get_query_var('paged') : 1,
+			'extra_post_types' => $this->extra_post_types
 	 	) );
 
 	}
@@ -221,13 +226,8 @@ class SK_Search {
 
 		if(!$type) {
 
-			$extra_post_types = get_field( 'search_post_types', 'option' );
-
-			$extra_post_types = array_map( 'trim', explode(',', $extra_post_types) );
-
-			$extra_post_types = apply_filters( 'tivoli_search_included_post_types', $extra_post_types );
-
-			foreach( $extra_post_types as $post_type ) {
+			// Add custom post types from settings or filter
+			foreach( $this->extra_post_types as $post_type ) {
 
 				$pt = get_post_type_object( $post_type );
 

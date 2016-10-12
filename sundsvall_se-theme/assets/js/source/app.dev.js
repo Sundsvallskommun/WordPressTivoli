@@ -285,22 +285,6 @@ require('./sk_calendar.js');
 
 		});
 
-		var eserviceResult = new Bloodhound({
-
-			datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
-			queryTokenizer: Bloodhound.tokenizers.whitespace,
-
-			remote: {
-				url: ajaxdata.ajax_url + '?action=search_suggestions&type=eservice&s=%QUERY'+parentParam,
-				wildcard: '%QUERY',
-				transform: function(response) {
-					if(!response || !response.eservices) return false;
-					return response.eservices.posts.slice(0, 3);
-				}
-			}
-
-		});
-
 		/*
 		* Typeahead
 		*/
@@ -308,7 +292,6 @@ require('./sk_calendar.js');
 		var postTemplate       = $('#searchitem-template-pages').html();
 		var contactTemplate    = $('#searchitem-template-contacts').html();
 		var attachmentTemplate = $('#searchitem-template-attachments').html();
-		var eserviceTemplate   = $('#searchitem-template-eservice').html();
 
 		function initTypeahead() {
 
@@ -349,16 +332,7 @@ require('./sk_calendar.js');
 			 limit: Infinity, //Fix for bug causing only two results to show. See https://github.com/twitter/typeahead.js/issues/1232
 			 templates: {
 					header: '<h3 class="tt-heading">Bilder och dokument</h3>',
-					suggestion: Handlebars.compile(attachmentTemplate)
-				}
-		 },{
-			 name: 'eservice-result',
-			 display: 'title',
-			 source: eserviceResult,
-			 limit: Infinity, //Fix for bug causing only two results to show. See https://github.com/twitter/typeahead.js/issues/1232
-			 templates: {
-					header: '<h3 class="tt-heading">E-tjänster</h3>',
-					suggestion: Handlebars.compile(eserviceTemplate),
+					suggestion: Handlebars.compile(attachmentTemplate),
 					empty : [
 							'<div class="search-module__footer">',
 								'<a href="/?parent='+searchparams.post_parent+'&s=%QUERY" class="tt-loadmore">Visa fler</a>',
