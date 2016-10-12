@@ -22,8 +22,9 @@ var gulp         = require('gulp'),
     browserSync  = require('browser-sync').create();
 
 var config = {
-	/* Local address of wordpress install. Used by browsersync  */
-	PROXY: 'sundsvall.dev',
+	/* Local address of wordpress install. Used by browsersync,
+	 * use proxy flag to override (e.g. --proxy tema.dev) */
+	PROXY: util.env.proxy || 'theme.sundsvall.dev',
 
 	production: !!util.env.production
 }
