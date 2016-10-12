@@ -26,6 +26,15 @@ class SK_Feedback {
 			return;
 		}
 
+		if ( ! class_exists( 'GFForms' ) ) {
+			return;
+		}
+
+		// Only show if form id is an actual form
+		if( !GFAPI::get_form($this->feedback_form_id )) {
+			return false;
+		}
+
 	?>
 		<div class="feedback-widget">
 			<p class="feedback-widget__actions pull-xs-left">
