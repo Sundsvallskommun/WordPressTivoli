@@ -26,13 +26,6 @@
                 "operator": "==",
                 "value": "service_message"
             }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "post"
-            }
         ]
     ],
     "menu_order": 0,
@@ -44,5 +37,5 @@
     "active": 1,
     "description": "",
     "menu_item_level": "all",
-    "modified": 1476084266
+    "modified": 1476452741
 }
