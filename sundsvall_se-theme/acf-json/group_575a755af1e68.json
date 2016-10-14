@@ -271,7 +271,7 @@
                                     "name": "footer_module_title",
                                     "type": "text",
                                     "instructions": "",
-                                    "required": 1,
+                                    "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
                                         "width": "",
@@ -323,7 +323,7 @@
                                     "collapsed": "",
                                     "min": "",
                                     "max": "",
-                                    "layout": "table",
+                                    "layout": "block",
                                     "button_label": "L\u00e4gg till l\u00e4nk",
                                     "sub_fields": [
                                         {
@@ -332,8 +332,8 @@
                                             "name": "linktype",
                                             "type": "radio",
                                             "instructions": "",
-                                            "required": "",
-                                            "conditional_logic": "",
+                                            "required": 1,
+                                            "conditional_logic": 0,
                                             "wrapper": {
                                                 "width": 20,
                                                 "class": "",
@@ -343,11 +343,11 @@
                                                 "internal": "Intern",
                                                 "external": "Extern"
                                             },
-                                            "allow_null": "",
+                                            "allow_null": 1,
                                             "other_choice": 0,
                                             "save_other_choice": 0,
                                             "default_value": "",
-                                            "layout": ""
+                                            "layout": "vertical"
                                         },
                                         {
                                             "key": "field_57fb8be26081a",
@@ -355,10 +355,10 @@
                                             "name": "link_title",
                                             "type": "text",
                                             "instructions": "",
-                                            "required": "",
-                                            "conditional_logic": "",
+                                            "required": 1,
+                                            "conditional_logic": 0,
                                             "wrapper": {
-                                                "width": 40,
+                                                "width": 30,
                                                 "class": "",
                                                 "id": ""
                                             },
@@ -376,7 +376,7 @@
                                             "name": "internal_link_url",
                                             "type": "page_link",
                                             "instructions": "",
-                                            "required": "",
+                                            "required": 1,
                                             "conditional_logic": [
                                                 [
                                                     {
@@ -387,14 +387,14 @@
                                                 ]
                                             ],
                                             "wrapper": {
-                                                "width": 40,
+                                                "width": 25,
                                                 "class": "",
                                                 "id": ""
                                             },
                                             "post_type": [],
                                             "taxonomy": [],
-                                            "allow_null": "",
-                                            "multiple": ""
+                                            "allow_null": 1,
+                                            "multiple": 1
                                         },
                                         {
                                             "key": "field_57fb8be26081c",
@@ -402,7 +402,7 @@
                                             "name": "external_link_url",
                                             "type": "text",
                                             "instructions": "",
-                                            "required": "",
+                                            "required": 1,
                                             "conditional_logic": [
                                                 [
                                                     {
@@ -413,7 +413,7 @@
                                                 ]
                                             ],
                                             "wrapper": {
-                                                "width": 40,
+                                                "width": 25,
                                                 "class": "",
                                                 "id": ""
                                             },
@@ -434,7 +434,7 @@
                                             "required": 1,
                                             "conditional_logic": 0,
                                             "wrapper": {
-                                                "width": "",
+                                                "width": 25,
                                                 "class": "",
                                                 "id": ""
                                             },
@@ -598,5 +598,5 @@
     "active": 1,
     "description": "",
     "menu_item_level": "all",
-    "modified": 1476110455
+    "modified": 1476453664
 }
