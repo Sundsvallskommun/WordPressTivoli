@@ -100,6 +100,11 @@ $page-widget-bg2: #f7f7f9;
 		}
 		max-width: 54em;
 
+		li {
+			display: inline-block;
+			margin-bottom: -9px;
+		}
+
 		.home.page & {
 			@include media-breakpoint-up(md) {
 				columns: 1;
