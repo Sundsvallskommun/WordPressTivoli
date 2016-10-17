@@ -74,6 +74,15 @@ require('./sk_calendar.js');
 			e.preventDefault();
 			var target = $(this).attr('href');
 			offcanvas(target, 'bottom');
+
+			// Fix scrolling issues on iOS
+			var showMenu = $(target).hasClass('active');
+			if(showMenu) {
+				disableBodyScroll();
+			} else {
+				enableBodyScroll();
+			}
+
 		});
 
 		function offcanvas(target, dir) {
@@ -427,5 +436,62 @@ require('./sk_calendar.js');
 
 	});
 
+
+	/**
+	 * Fix scrolling issues between fixed navigation and body in iOS.
+	 *
+	 * Solution from http://stackoverflow.com/a/22041340
+	 */
+	function document_touchmove(e) {
+		e.preventDefault();
+	}
+
+	function body_touchstart(e) {
+		// If the element is scrollable (content overflows), then...
+		if (this.scrollHeight !== this.clientHeight) {
+			// If we're at the top, scroll down one pixel to allow scrolling up
+			if (this.scrollTop === 0) {
+				this.scrollTop = 1;
+			}
+			// If we're at the bottom, scroll up one pixel to allow scrolling down
+			if (this.scrollTop === this.scrollHeight - this.clientHeight) {
+				this.scrollTop = this.scrollHeight - this.clientHeight - 1;
+			}
+		}
+		// Check if we can scroll
+		this.allowUp = this.scrollTop > 0;
+		this.allowDown = this.scrollTop < (this.scrollHeight - this.clientHeight);
+		this.lastY = e.originalEvent.pageY;
+	}
+
+	function body_touchmove(e) {
+		var event = e.originalEvent;
+		var up = event.pageY > this.lastY;
+		var down = !up;
+		this.lastY = event.pageY;
+
+		if ((up && this.allowUp) || (down && this.allowDown)) {
+			event.stopPropagation();
+		} else {
+			event.preventDefault();
+		}
+	}
+
+	function disableBodyScroll() {
+		// Disable scroll for the document, we'll handle it ourselves
+		$(document).on('touchmove', document_touchmove);
+
+		// Check if we should allow scrolling up or down
+		$(document.body).on("touchstart", ".offcanvas", body_touchstart);
+
+		$(document.body).on('touchmove', ".offcanvas", body_touchmove);
+	}
+
+	function enableBodyScroll() {
+		$(document).off('touchmove', document_touchmove);
+		$(document.body).off("touchstart", ".offcanvas", allowScroll);
+		$(document.body).off('touchmove', ".offcanvas", foo);
+
+	}
 
 })(jQuery);

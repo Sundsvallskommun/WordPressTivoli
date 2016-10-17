@@ -123,6 +123,7 @@
 		height: 100%;
 		width: 100%;
 		overflow: scroll;
+		-webkit-overflow-scrolling: touch;
 		transform: translateY(100%);
 		transition: transform $offcanvas-transition-duration, padding $mobile-search-transition-duration, opacity 0s $offcanvas-transition-duration;
 		-webkit-overflow-scrollling: touch; // More standard scroll behaviour in iOS
