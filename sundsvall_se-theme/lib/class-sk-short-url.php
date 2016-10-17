@@ -12,6 +12,8 @@ class SK_ShortURL {
 
 		add_action('wp', array(&$this, 'shortlink_on_404'), 100);
 
+		add_action('acf/update_value/name=sk_shortlink', array($this, 'save_field_lowercase'), 10, 3);
+
 	}
 
 	function shortlink_on_404() {
@@ -56,6 +58,13 @@ class SK_ShortURL {
 		}
 
 		return false;
+	}
+
+
+	// Save short-url as lowercase so we can make it case insensitive when the
+	// meta query is case sensitive.
+	function save_field_lowercase( $value, $field, $post_id ) {
+		return strtolower($value);
 	}
 
 }
