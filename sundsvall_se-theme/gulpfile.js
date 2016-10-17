@@ -34,7 +34,7 @@ gulp.task('styles', ['editor-styles'], function() {
 		.pipe(config.production ? sourcemaps.init() : util.noop())
 		.pipe(sass().on('error', sass.logError))
 		.pipe(autoprefixer({
-			browsers: ['last 2 versions'],
+			browsers: ['last 2 versions', 'iOS > 7', 'Samsung 4', 'Android >= 4'],
 			cascade: false
 		}))
 		.pipe(config.production ? sourcemaps.write('.') : util.noop())
