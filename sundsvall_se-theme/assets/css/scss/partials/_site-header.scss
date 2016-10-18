@@ -44,8 +44,19 @@
 	border-top: 6px solid profile-color(björnstigen, 2);
 	z-index: 1;
 
+	.site-title {
+		font-size: 1.25rem;
+		font-family: $font-family-large;
+	}
+
 	.site-logo {
 		margin-top: .2em;
+
+		.site-title {
+			@include media-breakpoint-up(md) {
+				display: none;
+			}
+		}
 
 		.icon,
 		.custom-logo {
@@ -74,7 +85,11 @@
 }
 
 .logo-container {
-	max-width: 15.65rem;
+
+	&.haslogo {
+		max-width: 15.65rem;
+	}
+
 	flex: 0 0 auto;
 	display: none;
 	@include make-col();
@@ -197,6 +212,13 @@
 }
 
 .site-logo {
+
+	.site-title {
+		display: inline-block;
+		margin-top: .825em;
+		margin-bottom: 0;
+		color: $gray-dark;
+	}
 
 	.custom-logo {
 		margin-top: .1em;

@@ -10,7 +10,8 @@
 
 		<div class="row logo-search-row">
 
-			<div class="logo-container">
+			<?php $has_logo = function_exists( 'the_custom_logo' ) && has_custom_logo(); ?>
+			<div class="logo-container <?php echo $has_logo ? 'haslogo' : '' ?>">
 
 				<h1><?php get_template_part('partials/site-logo'); ?></h1>
 
