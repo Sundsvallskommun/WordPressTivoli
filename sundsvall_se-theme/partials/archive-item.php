@@ -6,7 +6,6 @@
 					<?php the_post_thumbnail('news-thumb-large'); ?>
 			<?php else: ?>
 					<div class="img-placeholder">
-						<?php echo the_icon('dragon'); ?>
 					</div>
 			<?php endif; ?>
 		</div>

@@ -30,7 +30,6 @@
 					<?php else: ?>
 						<div class="media-left">
 							<div class="img-placeholder">
-								<?php echo the_icon('dragon'); ?>
 							</div>
 						</div>
 					<?php endif; ?>
