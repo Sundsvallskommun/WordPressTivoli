@@ -151,6 +151,10 @@ $footer_background: profile-color(björnstigen, 2);
 		p {
 			font-size: .933em;
 		}
+
+		li > p {
+			line-height: 1.5;
+		}
 	}
 
 }

@@ -92,16 +92,25 @@ ob_start();
 
 									<?php while ( have_rows( 'links' ) ) : the_row();
 
-										if( get_sub_field( 'linktype' ) == 'internal' ) {
-											$link_url = get_sub_field('internal_link_url');
-										} elseif( get_sub_field( 'linktype' ) == 'external' ) {
-											$link_url = get_sub_field('external_link_url');
-										}
+										if( get_sub_field( 'linktype' ) == 'text' ) {
+											printf('<li><p class="description"><span class="footer-icon">%s</span>%s</p></li>',
+												get_material_icon( get_sub_field( 'icon_keyword' ) ),
+												get_sub_field('text') );
+										} else {
 
-									printf('<li><a href="%s"><span class="footer-icon">%s</span>%s</a></li>',
-										$link_url,
-										get_material_icon( get_sub_field( 'icon_keyword' ) ),
-										get_sub_field( 'link_title' ));
+
+											if( get_sub_field( 'linktype' ) == 'internal' ) {
+												$link_url = get_sub_field('internal_link_url')[0];
+											} elseif( get_sub_field( 'linktype' ) == 'external' ) {
+												$link_url = get_sub_field('external_link_url');
+											}
+
+										printf('<li><a href="%s"><span class="footer-icon">%s</span>%s</a></li>',
+											$link_url,
+											get_material_icon( get_sub_field( 'icon_keyword' ) ),
+											get_sub_field('link_title'));
+
+										}
 
 									endwhile; ?>
 
