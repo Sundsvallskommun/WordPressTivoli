@@ -175,15 +175,6 @@ $sk_service_messages = new SK_Service_Messages();
 require_once locate_template( 'lib/class-sk-boxes.php' );
 $sk_post_type_boxes = new SK_Boxes();
 
-/**
- * SK_Rename_Default_Post_Type
- * ===========================
- *
- * Rename default post-type to "Nyheter"
- */
-require_once locate_template( 'lib/class-sk-rename-post-types.php' );
-$sk_rename_default_post_type = new SK_Rename_Default_Post_Type();
-
 /*
  * ==============================================
  *                SHORTCUT PAGE
