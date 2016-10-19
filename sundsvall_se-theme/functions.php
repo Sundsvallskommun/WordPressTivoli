@@ -385,3 +385,23 @@ function editor_help_link() {
 </div>
 	<?php
 }
+
+/**
+ * Clear footer/navbar transients on save to make sure they update instantly on
+ * save.
+ */
+add_action('acf/save_post', 'clear_transients_on_update', 20);
+
+function clear_transients_on_update( $post_id ) {
+
+	$screen = get_current_screen();
+
+	if (strpos($screen->id, "acf-options-sidfot") == true) {
+		delete_transient( "site_footer_option" );
+	}
+
+	if (strpos($screen->id, "acf-options-sidhuvud") == true) {
+		delete_transient( "site_navbar" );
+	}
+
+}
