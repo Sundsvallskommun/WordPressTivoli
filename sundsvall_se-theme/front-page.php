@@ -14,7 +14,6 @@
 			<section class="front-page-section front-page-section__content">
 			<?php the_content(); ?>
 			</section>
-			<?php get_template_part('partials/front-page/eservices'); ?>
 		</div>
 
 		<div class="news-col mobile-news" id="news">
