@@ -8,9 +8,12 @@
 
 <div class="container-fluid">
 
-	<div class="row eservice-news-row">
+	<div class="row content-news-row">
 
-		<div class="eservices-col">
+		<div class="content-col">
+			<section class="front-page-section front-page-section__content">
+			<?php the_content(); ?>
+			</section>
 			<?php get_template_part('partials/front-page/eservices'); ?>
 		</div>
 

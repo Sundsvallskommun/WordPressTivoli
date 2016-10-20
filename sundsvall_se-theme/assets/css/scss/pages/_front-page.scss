@@ -35,12 +35,12 @@
 
 	@include media-breakpoint-down(sm) {
 
-		.eservice-news-row {
+		.content-news-row {
 			display: flex;
 			flex-flow: column;
 		}
 
-		.eservices-col {
+		.content-col {
 			order: 3;
 		}
 
@@ -54,7 +54,7 @@
 
 	}
 
-	.eservices-col,
+	.content-col,
 	.news-col,
 	.front-page-section__service-messages {
 		@include make-col();
@@ -70,7 +70,7 @@
 		}
 	}
 
-	.eservices-col {
+	.content-col {
 
 		margin-top: .6em;
 
@@ -108,7 +108,7 @@
 		}
 	}
 
-	.eservices-col .front-page__heading,
+	.content-col .front-page__heading,
 	.news-col .front-page__heading {
 		margin-bottom: 1.4em;
 	}
