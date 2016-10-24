@@ -52,10 +52,8 @@
 	.site-logo {
 		margin-top: .2em;
 
-		.site-title {
-			@include media-breakpoint-up(md) {
-				display: none;
-			}
+		@include media-breakpoint-up(md) {
+			display: none;
 		}
 
 		.icon,
