@@ -20,6 +20,11 @@ class SK_Search {
 
 		$this->is_advanced_search = is_advanced_template_child($this->post_parent);
 
+		// Allowing plugins to add post types to search result.
+		$this->extra_post_types = get_field( 'search_post_types', 'option' );
+		$this->extra_post_types = array_map( 'trim', explode(',', $this->extra_post_types) );
+		$this->extra_post_types = apply_filters( 'tivoli_search_included_post_types', $this->extra_post_types );
+
 		// The term to search for.
 		$this->search_string = (isset($_GET['s'])) ? sanitize_text_field( $_GET['s'] ) : '';
 
@@ -53,10 +58,6 @@ class SK_Search {
 			'post_status' => 'publish'
 		);
 
-		// Custom post types from settings (acf) and/or filter.
-		$extra_post_types = get_field( 'search_post_types', 'option' );
-		$extra_post_types = array_map( 'trim', explode(',', $extra_post_types) );
-		$this->extra_post_types = apply_filters( 'tivoli_search_included_post_types', $extra_post_types );
 
 		add_action( 'wp_enqueue_scripts', array( &$this, 'ajax_search_variables' ), 50 );
 
@@ -92,12 +93,30 @@ class SK_Search {
 	 */
 	function ajax_search_variables() {
 
+		$post_type_details = array();
+
+		// Post types to include in typeahead
+		$post_types = array_merge( array('page', 'post', 'attachment', 'page_contact'), $this->extra_post_types);
+
+		foreach( $post_types as $post_type ) {
+			$post_type_object = get_post_type_object( $post_type );
+
+			if(!$post_type_object) continue;
+
+			$label = $post_type_object->labels->name;
+
+			$post_type_details[] = array(
+				'slug' => $post_type,
+				'label' => $label
+			);
+		}
+
 		wp_localize_script( 'main', 'searchparams', array(
 			'ajax_url'         => admin_url( 'admin-ajax.php' ),
 			'search_string'    => $this->search_string,
 			'post_parent'      => is_advanced_template_child() ? advanced_template_top_ancestor() : $this->post_parent,
-			'currentPage'      => (get_query_var('paged')) ? get_query_var('paged') : 1,
-			'extra_post_types' => $this->extra_post_types
+			'currentPage' => (get_query_var('paged')) ? get_query_var('paged') : 1,
+			'post_types' => $post_type_details
 	 	) );
 
 	}
@@ -130,10 +149,6 @@ class SK_Search {
 	 */
 	public function handlebar_templates() {
 		?>
-			<script id="searchitem-template-pages" type="text/x-handlebars-template">
-				<?php printf($this->item_template(), '{{type}}', '{{url}}', get_icon('alignleft'), '{{title}}', '{{type_label}}', 'Uppdaterad {{modified}}' ); ?>
-			</script>
-
 			<script id="searchitem-template-posts" type="text/x-handlebars-template">
 				<?php printf($this->item_template(), '{{type}}', '{{url}}', get_icon('alignleft'), '{{title}}', '{{type_label}}', 'Uppdaterad {{modified}}' ); ?>
 			</script>
@@ -184,7 +199,7 @@ class SK_Search {
 
 		$result = array();
 
-		if(!$type || $type == 'pages') {
+		if(!$type || $type == 'page') {
 			$pages = $this->searchresult_pages();
 			$result['pages'] = array(
 				'title' => __( 'Sidor', 'sundsvall_se' ),
@@ -194,7 +209,7 @@ class SK_Search {
 			);
 		}
 
-		if(!$type || $type == 'posts') {
+		if(!$type || $type == 'post') {
 			$posts = $this->searchresult_posts();
 			$result['posts'] = array(
 				'title' => __( 'Nyheter', 'sundsvall_se' ),
@@ -204,7 +219,7 @@ class SK_Search {
 			);
 		}
 
-		if((!$type || $type == 'contacts') && !$this->is_advanced_search) {
+		if((!$type || $type == 'contact') && !$this->is_advanced_search) {
 			$contacts = $this->searchresult_contacts();
 			$result['contacts'] = array(
 				'title' => __( 'Kontakter', 'sundsvall_se' ),
@@ -214,7 +229,7 @@ class SK_Search {
 			);
 		}
 
-		if((!$type || $type == 'attachments') && !$this->is_advanced_search) {
+		if((!$type || $type == 'attachment') && !$this->is_advanced_search) {
 			$attachments = $this->searchresult_attachments();
 			$result['attachments'] = array(
 				'title' => __( 'Bilder och dokument', 'sundsvall_se' ),
@@ -224,9 +239,18 @@ class SK_Search {
 			);
 		}
 
+		if((in_array( $type, $this->extra_post_types )) && !$this->is_advanced_search) {
+			$posts = $this->searchresult_posts($type);
+			$result[$type] = array(
+				'title' => __( $type, 'sundsvall_se' ),
+				'posts' => $posts['posts'],
+				'found_posts' => $posts['found_posts'],
+				'max_num_pages' => $posts['max_num_pages']
+			);
+		}
+
 		if(!$type) {
 
-			// Add custom post types from settings or filter
 			foreach( $this->extra_post_types as $post_type ) {
 
 				$pt = get_post_type_object( $post_type );

@@ -241,8 +241,7 @@ require('./sk_calendar.js');
 
 		var parentParam = searchparams.post_parent ? '&parent='+searchparams.post_parent : '';
 
-		var pageResult = new Bloodhound({
-
+		var bh_params = {
 			datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
 			queryTokenizer: Bloodhound.tokenizers.whitespace,
 
@@ -250,121 +249,73 @@ require('./sk_calendar.js');
 				url: ajaxdata.ajax_url + '?action=search_suggestions&type=pages&s=%QUERY'+parentParam,
 				wildcard: '%QUERY',
 				transform: function(response) {
-					if(!response || !response.pages) return false;
-					return response.pages.posts.slice(0, 3);
+					if(!response) return false;
+
+					var key = Object.keys(response)[0];
+
+					if(!response[key] || !response[key].posts) return false;
+
+					return response[key].posts.slice(0, 3);
 				}
 			}
 
-		});
+		};
 
-		var postResult = new Bloodhound({
 
-			datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
-			queryTokenizer: Bloodhound.tokenizers.whitespace,
-
-			remote: {
-				url: ajaxdata.ajax_url + '?action=search_suggestions&type=posts&s=%QUERY'+parentParam,
-				wildcard: '%QUERY',
-				transform: function(response) {
-					if(!response || !response.posts) return false;
-					return response.posts.posts.slice(0, 3);
-				}
-			}
-
-		});
-
-		var contactResult = new Bloodhound({
-
-			datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
-			queryTokenizer: Bloodhound.tokenizers.whitespace,
-
-			remote: {
-				url: ajaxdata.ajax_url + '?action=search_suggestions&type=contacts&s=%QUERY'+parentParam,
-				wildcard: '%QUERY',
-				transform: function(response) { 
-					if(!response || !response.contacts) return false;
-					return response.contacts.posts.slice(0, 3);
-				}
-			}
-
-		});
-
-		var mediaResult = new Bloodhound({
-
-			datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
-			queryTokenizer: Bloodhound.tokenizers.whitespace,
-
-			remote: {
-				url: ajaxdata.ajax_url + '?action=search_suggestions&type=attachments&s=%QUERY'+parentParam,
-				wildcard: '%QUERY',
-				transform: function(response) { 
-					if(!response || !response.attachments) return false;
-					return response.attachments.posts.slice(0, 3);
-				}
-			}
-
-		});
+	function initTypeahead() {
+		// ---------------------------------------------------------
 
 		/*
 		* Typeahead
 		*/
-		var pageTemplate       = $('#searchitem-template-posts').html();
-		var postTemplate       = $('#searchitem-template-pages').html();
-		var contactTemplate    = $('#searchitem-template-contacts').html();
+		var postTemplate       = $('#searchitem-template-posts').html();
 		var attachmentTemplate = $('#searchitem-template-attachments').html();
+		var contactTemplate    = $('#searchitem-template-contacts').html();
 
-		function initTypeahead() {
-
-			$( 'input[name="s"]' ).typeahead({
+		var typeaheadParams = [{
 			 minLength: 3,
 			 highlight: true
-		 },{
-			 name: 'page-result',
+		}];
+
+		searchparams.post_types.forEach(function(postType) {
+
+			var source_params = bh_params;
+			source_params.remote.url = ajaxdata.ajax_url + '?action=search_suggestions&type='+postType.slug+'&s=%QUERY'+parentParam;
+			var source = new Bloodhound(source_params);
+			var suggestionTemplate = (postType.slug == 'attachment') ? Handlebars.compile(attachmentTemplate) : Handlebars.compile(postTemplate);
+
+			typeaheadParams.push({
+			 name: postType.slug + '-result',
 			 display: 'title',
-			 source: pageResult,
+			 source: source,
 			 limit: Infinity, //Fix for bug causing only two results to show. See https://github.com/twitter/typeahead.js/issues/1232
 			 templates: {
-					header: '<h3 class="tt-heading">Sidor</h3>',
-					suggestion: Handlebars.compile(pageTemplate)
+					header: '<h3 class="tt-heading">'+postType.label+'</h3>',
+					suggestion: suggestionTemplate
 				}
-		 },{
-			 name: 'post-result',
-			 display: 'title',
-			 source: postResult,
-			 limit: Infinity, //Fix for bug causing only two results to show. See https://github.com/twitter/typeahead.js/issues/1232
-			 templates: {
-					header: '<h3 class="tt-heading">Nyheter</h3>',
-					suggestion: Handlebars.compile(postTemplate)
-				}
-		 },{
-			 name: 'contacts-result',
-			 display: 'title',
-			 source: contactResult,
-			 limit: Infinity, //Fix for bug causing only two results to show. See https://github.com/twitter/typeahead.js/issues/1232
-			 templates: {
-					header: '<h3 class="tt-heading">Kontakter</h3>',
-					suggestion: Handlebars.compile(contactTemplate)
-				}
-		 },{
-			 name: 'media-result',
-			 display: 'title',
-			 source: mediaResult,
-			 limit: Infinity, //Fix for bug causing only two results to show. See https://github.com/twitter/typeahead.js/issues/1232
-			 templates: {
-					header: '<h3 class="tt-heading">Bilder och dokument</h3>',
-					suggestion: Handlebars.compile(attachmentTemplate),
-					empty : [
-							'<div class="search-module__footer">',
-								'<a href="/?parent='+searchparams.post_parent+'&s=%QUERY" class="tt-loadmore">Visa fler</a>',
-							'<div>'
-						].join('\n'),
-					footer : [
-							'<div class="search-module__footer">',
-								'<a href="/?parent='+searchparams.post_parent+'&s=%QUERY" class="tt-loadmore">Visa fler</a>',
-							'<div>'
-						].join('\n')
-				}
-		 }).on('typeahead:asyncrequest', function() {
+		 });
+
+		});
+
+		// Add "Show more" button at the last dataset.
+		typeaheadParams[typeaheadParams.length-1].templates.empty = [
+				'<div class="search-module__footer">',
+				'<a href="/?parent='+searchparams.post_parent+'&s=%QUERY" class="tt-loadmore">Visa fler</a>',
+				'<div>'
+			].join('\n');
+
+		typeaheadParams[typeaheadParams.length-1].templates.footer = [
+				'<div class="search-module__footer">',
+				'<a href="/?parent='+searchparams.post_parent+'&s=%QUERY" class="tt-loadmore">Visa fler</a>',
+				'<div>'
+			].join('\n');
+
+			var $searchInput = $('input[name="s"]');
+
+			$searchInput.typeahead.apply($searchInput, typeaheadParams)
+
+			// Show loading indicator while loading results
+			.on('typeahead:asyncrequest', function() {
 				$(this).parents('.input-group').find('.input-group-btn').addClass('loading');
 			})
 			.on('typeahead:asynccancel typeahead:asyncreceive', function() {
