@@ -122,6 +122,8 @@ function get_advanced_template_archive_id( $id = null ) {
 		'posts_per_page' => 1
 	));
 
+	if(!$pages) return false;
+
 	return $pages[0]->ID;
 }
 
