@@ -233,7 +233,7 @@ function get_the_breadcrumbs() {
 	} else if(is_search()) {
 
 		$search_query = get_search_query();
-		$bc .= bc_item(sprintf(__('Sökresultat för: "%s"', 'sundsvall_se'), $search_query));
+		$bc .= bc_item(sprintf(__('Sökresultat för: "%s"', 'sk_tivoli'), $search_query));
 
 	} else if(is_404()) {
 

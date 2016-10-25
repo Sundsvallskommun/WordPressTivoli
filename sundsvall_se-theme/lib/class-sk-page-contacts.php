@@ -7,7 +7,7 @@
  *
  * @since 1.0.0
  *
- * @package sundsvall_se
+ * @package sk_tivoli
  */
 
 class SK_Page_Contacts {
@@ -94,19 +94,19 @@ class SK_Page_Contacts {
 	private function post_type_contacts() {
 
 		$labels = array(
-			'name'               => __( 'Kontakter', 'sundsvall_se' ),
-			'singular_name'      => __( 'Kontakt', 'sundsvall_se' ),
-			'menu_name'          => __( 'Kontaktarkiv', 'sundsvall_se' ),
-			'name_admin_bar'     => __( 'Kontakt', 'sundsvall_se' ),
-			'add_new'            => __( 'Skapa ny', 'sundsvall_se' ),
-			'add_new_item'       => __( 'Skapa ny kontakt', 'sundsvall_se' ),
-			'new_item'           => __( 'Ny kontakt', 'sundsvall_se' ),
-			'edit_item'          => __( 'Redigera kontakt', 'sundsvall_se' ),
-			'view_item'          => __( 'Visa kontakt', 'sundsvall_se' ),
-			'all_items'          => __( 'Alla kontakter', 'sundsvall_se' ),
-			'search_items'       => __( 'Sök bland kontakter', 'sundsvall_se' ),
-			'not_found'          => __( 'Hittade inga kontakter.', 'sundsvall_se' ),
-			'not_found_in_trash' => __( 'Hittade inga kontakter i papperskorgen.', 'sundsvall_se' )
+			'name'               => __( 'Kontakter', 'sk_tivoli' ),
+			'singular_name'      => __( 'Kontakt', 'sk_tivoli' ),
+			'menu_name'          => __( 'Kontaktarkiv', 'sk_tivoli' ),
+			'name_admin_bar'     => __( 'Kontakt', 'sk_tivoli' ),
+			'add_new'            => __( 'Skapa ny', 'sk_tivoli' ),
+			'add_new_item'       => __( 'Skapa ny kontakt', 'sk_tivoli' ),
+			'new_item'           => __( 'Ny kontakt', 'sk_tivoli' ),
+			'edit_item'          => __( 'Redigera kontakt', 'sk_tivoli' ),
+			'view_item'          => __( 'Visa kontakt', 'sk_tivoli' ),
+			'all_items'          => __( 'Alla kontakter', 'sk_tivoli' ),
+			'search_items'       => __( 'Sök bland kontakter', 'sk_tivoli' ),
+			'not_found'          => __( 'Hittade inga kontakter.', 'sk_tivoli' ),
+			'not_found_in_trash' => __( 'Hittade inga kontakter i papperskorgen.', 'sk_tivoli' )
 		);
 
 		$args = array(
@@ -255,7 +255,7 @@ class SK_Page_Contacts {
 			}
 
 			if($contact_hours) {
-				$contact .= sprintf('<h4 class="page-contact__heading">%s</h4>', __('Öppettider', 'sundsvall_se'));
+				$contact .= sprintf('<h4 class="page-contact__heading">%s</h4>', __('Öppettider', 'sk_tivoli'));
 				$contact .= sprintf('<div class="page-contact__hours">%s</div>', $contact_hours);
 			}
 

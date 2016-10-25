@@ -1,6 +1,6 @@
 <div class="container-fluid archive">
 
-		<h2 class="front-page__heading"><?php _e('Nyheter', 'sundsvall_se')?></h2>
+		<h2 class="front-page__heading"><?php _e('Nyheter', 'sk_tivoli')?></h2>
 
 		<div class="row posts">
 

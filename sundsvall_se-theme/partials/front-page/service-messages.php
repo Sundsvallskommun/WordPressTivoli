@@ -33,7 +33,7 @@ if ( !is_front_page() && !$service_messages->have_posts() ) return; ?>
 
 <section class="front-page-section front-page-section__service-messages">
 
-	<h2 class="front-page__heading"><?php _e('Driftmeddelanden', 'sundsvall_se')?></h2>
+	<h2 class="front-page__heading"><?php _e('Driftmeddelanden', 'sk_tivoli')?></h2>
 	<?php if ( $service_messages->have_posts() ) : ?>
 
 	<ul class="list-unstyled widget-service-messages">

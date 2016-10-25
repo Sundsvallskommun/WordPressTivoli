@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
 <?php /*
-	<h1 class="page-title shidden-xs-up"><?php printf( __( 'Visar alla resultat för: %s', 'sundsvall_se' ), '<span>' . esc_html( get_search_query() ) . '</span>' ); ?></h1>
+	<h1 class="page-title shidden-xs-up"><?php printf( __( 'Visar alla resultat för: %s', 'sk_tivoli' ), '<span>' . esc_html( get_search_query() ) . '</span>' ); ?></h1>
  */ ?>
 
 	<div class="row search-modules-row">

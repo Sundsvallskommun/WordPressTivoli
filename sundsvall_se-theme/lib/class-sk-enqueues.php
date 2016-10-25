@@ -4,7 +4,7 @@
  *
  * @since 1.0.0
  *
- * @package sundsvall_se
+ * @package sk_tivoli
  */
 
 class SK_Enqueues {

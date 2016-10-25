@@ -55,7 +55,7 @@ class SK_Admincolumns {
 			$date = date_create( $post->post_modified );
 			
 			// Print column info.
-			printf( '%s<br><abbr title="%2$s">%2$s</abbr>', __( 'Uppdaterad', 'sundsvall_se' ), date_format( $date, 'Y-m-d' ) );
+			printf( '%s<br><abbr title="%2$s">%2$s</abbr>', __( 'Uppdaterad', 'sk_tivoli' ), date_format( $date, 'Y-m-d' ) );
 		}
 
 	}

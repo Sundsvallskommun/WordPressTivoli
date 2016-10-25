@@ -4,7 +4,7 @@
  *
  * @since 1.0.0
  *
- * @package sundsvall_se
+ * @package sk_tivoli
  */
 
 class SK_Init {
@@ -159,11 +159,11 @@ class SK_Init {
 	 */
 	function sk_attachment_image_size_options($sizes) {
 		$sizes = array(
-			'portrait' => __('Porträtt', 'sundsvall_se'),
-			'content-quarter' => __('Fjärdedel', 'sundsvall_se'),
-			'content-half' => __('Halvbredd', 'sundsvall_se'),
-			//'full' => __('Orginalstorlek', 'sundsvall_se'),
-			'content-full' => __('Helbredd', 'sundsvall_se'),
+			'portrait' => __('Porträtt', 'sk_tivoli'),
+			'content-quarter' => __('Fjärdedel', 'sk_tivoli'),
+			'content-half' => __('Halvbredd', 'sk_tivoli'),
+			//'full' => __('Orginalstorlek', 'sk_tivoli'),
+			'content-full' => __('Helbredd', 'sk_tivoli'),
 		);
 
 		return $sizes;

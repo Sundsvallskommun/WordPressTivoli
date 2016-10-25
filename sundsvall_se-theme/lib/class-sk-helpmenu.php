@@ -22,12 +22,12 @@ class SK_Helpmenu {
 	}
 
 	function share_link() {
-		echo $this->helplink('share', '#', __('Dela', 'sundsvall_se'));
+		echo $this->helplink('share', '#', __('Dela', 'sk_tivoli'));
 	}
 
 	function print_link() {
 		$link = '';
-		echo $this->helplink('print', 'javascript:window.print()', __('Skriv ut', 'sundsvall_se'));
+		echo $this->helplink('print', 'javascript:window.print()', __('Skriv ut', 'sk_tivoli'));
 	}
 
 	static function helplink($icon, $href, $label, $arguments = array()) {

@@ -202,7 +202,7 @@ class SK_Search {
 		if(!$type || $type == 'page') {
 			$pages = $this->searchresult_pages();
 			$result['pages'] = array(
-				'title' => __( 'Sidor', 'sundsvall_se' ),
+				'title' => __( 'Sidor', 'sk_tivoli' ),
 				'posts' => $pages['posts'],
 				'found_posts' => $pages['found_posts'],
 				'max_num_pages' => $pages['max_num_pages']
@@ -212,7 +212,7 @@ class SK_Search {
 		if(!$type || $type == 'post') {
 			$posts = $this->searchresult_posts();
 			$result['posts'] = array(
-				'title' => __( 'Nyheter', 'sundsvall_se' ),
+				'title' => __( 'Nyheter', 'sk_tivoli' ),
 				'posts' => $posts['posts'],
 				'found_posts' => $posts['found_posts'],
 				'max_num_pages' => $posts['max_num_pages']
@@ -222,7 +222,7 @@ class SK_Search {
 		if((!$type || $type == 'contact') && !$this->is_advanced_search) {
 			$contacts = $this->searchresult_contacts();
 			$result['contacts'] = array(
-				'title' => __( 'Kontakter', 'sundsvall_se' ),
+				'title' => __( 'Kontakter', 'sk_tivoli' ),
 				'posts' => $contacts['posts'],
 				'found_posts' => $contacts['found_posts'],
 				'max_num_pages' => $contacts['max_num_pages']
@@ -232,7 +232,7 @@ class SK_Search {
 		if((!$type || $type == 'attachment') && !$this->is_advanced_search) {
 			$attachments = $this->searchresult_attachments();
 			$result['attachments'] = array(
-				'title' => __( 'Bilder och dokument', 'sundsvall_se' ),
+				'title' => __( 'Bilder och dokument', 'sk_tivoli' ),
 				'posts' => $attachments['posts'],
 				'found_posts' => $attachments['found_posts'],
 				'max_num_pages' => $attachments['max_num_pages']
@@ -242,7 +242,7 @@ class SK_Search {
 		if((in_array( $type, $this->extra_post_types )) && !$this->is_advanced_search) {
 			$posts = $this->searchresult_posts($type);
 			$result[$type] = array(
-				'title' => __( $type, 'sundsvall_se' ),
+				'title' => __( $type, 'sk_tivoli' ),
 				'posts' => $posts['posts'],
 				'found_posts' => $posts['found_posts'],
 				'max_num_pages' => $posts['max_num_pages']

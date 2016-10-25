@@ -52,7 +52,7 @@ class SK_Expiration {
 
 		<p>
 			<label for="sk_expiry_date">
-				<?php _e( 'Avpubliceringsdatum', 'sundsvall_se' ); ?>
+				<?php _e( 'Avpubliceringsdatum', 'sk_tivoli' ); ?>
 			</label>
 		</p>
 

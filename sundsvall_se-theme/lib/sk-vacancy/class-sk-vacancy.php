@@ -61,7 +61,7 @@ class SK_Vacancy {
 			}
 
 			else {
-				return __( 'Inget jobb med hittades', 'sundsvall_se' );
+				return __( 'Inget jobb med hittades', 'sk_tivoli' );
 			}
 		}
 

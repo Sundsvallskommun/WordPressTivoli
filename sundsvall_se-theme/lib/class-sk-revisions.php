@@ -193,7 +193,7 @@ XYZ;
 
 		<p>
 			<label for="sk_publish_date">
-				<?php _e( 'Uppdateringsdatum', 'sundsvall_se' ); ?>
+				<?php _e( 'Uppdateringsdatum', 'sk_tivoli' ); ?>
 			</label>
 		</p>
 

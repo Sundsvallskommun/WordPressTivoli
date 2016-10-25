@@ -12,7 +12,7 @@ if (is_advanced_template_child()) {
 }
 
 if($categories) {
-	echo'<h2>'; _e( 'Sortera efter kategorier:', 'sundsvall_se' ); echo '</h2>';
+	echo'<h2>'; _e( 'Sortera efter kategorier:', 'sk_tivoli' ); echo '</h2>';
 	echo '<div class="archive__tags post-tags">';
 	foreach( $categories as $category ) {
 		echo '<a rel="tag" href="' . get_tag_link( $category->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $category->name ) . '" ' . '>' . $category->name.'</a> ';

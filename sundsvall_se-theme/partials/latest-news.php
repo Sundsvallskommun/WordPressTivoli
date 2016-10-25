@@ -1,6 +1,6 @@
 <section class="news">
 
-	<h2 class="front-page__heading"><?php _e('Nyheter', 'sundsvall_se')?></h2>
+	<h2 class="front-page__heading"><?php _e('Nyheter', 'sk_tivoli')?></h2>
 
 	<div class="news-slider">
 	<ul class="list-unstyled widget-latest-news">

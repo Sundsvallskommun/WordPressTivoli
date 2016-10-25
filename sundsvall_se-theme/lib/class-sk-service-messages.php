@@ -7,7 +7,7 @@
  *
  * @since 1.0.0
  *
- * @package sundsvall_se
+ * @package sk_tivoli
  */
 
 class SK_Service_Messages {
@@ -19,19 +19,19 @@ class SK_Service_Messages {
 
 	function post_type_service_message() {
 		$labels = array(
-			'name'               => __( 'Driftmeddelanden', 'sundsvall_se' ),
-			'singular_name'      => __( 'Driftmeddelande', 'sundsvall_se' ),
-			'menu_name'          => __( 'Driftmeddelanden', 'sundsvall_se' ),
-			'name_admin_bar'     => __( 'Driftmeddelande', 'sundsvall_se' ),
-			'add_new'            => __( 'Skapa nytt', 'sundsvall_se' ),
-			'add_new_item'       => __( 'Skapa nytt driftmeddelande', 'sundsvall_se' ),
-			'new_item'           => __( 'Nytt driftmeddelande', 'sundsvall_se' ),
-			'edit_item'          => __( 'Redigera driftmeddelande', 'sundsvall_se' ),
-			'view_item'          => __( 'Visa driftmeddelande', 'sundsvall_se' ),
-			'all_items'          => __( 'Alla driftmeddelanden', 'sundsvall_se' ),
-			'search_items'       => __( 'Sök bland driftmeddelanden', 'sundsvall_se' ),
-			'not_found'          => __( 'Hittade inga driftmeddelanden.', 'sundsvall_se' ),
-			'not_found_in_trash' => __( 'Hittade inga driftmeddelanden i papperskorgen.', 'sundsvall_se' )
+			'name'               => __( 'Driftmeddelanden', 'sk_tivoli' ),
+			'singular_name'      => __( 'Driftmeddelande', 'sk_tivoli' ),
+			'menu_name'          => __( 'Driftmeddelanden', 'sk_tivoli' ),
+			'name_admin_bar'     => __( 'Driftmeddelande', 'sk_tivoli' ),
+			'add_new'            => __( 'Skapa nytt', 'sk_tivoli' ),
+			'add_new_item'       => __( 'Skapa nytt driftmeddelande', 'sk_tivoli' ),
+			'new_item'           => __( 'Nytt driftmeddelande', 'sk_tivoli' ),
+			'edit_item'          => __( 'Redigera driftmeddelande', 'sk_tivoli' ),
+			'view_item'          => __( 'Visa driftmeddelande', 'sk_tivoli' ),
+			'all_items'          => __( 'Alla driftmeddelanden', 'sk_tivoli' ),
+			'search_items'       => __( 'Sök bland driftmeddelanden', 'sk_tivoli' ),
+			'not_found'          => __( 'Hittade inga driftmeddelanden.', 'sk_tivoli' ),
+			'not_found_in_trash' => __( 'Hittade inga driftmeddelanden i papperskorgen.', 'sk_tivoli' )
 		);
 
 		$args = array(

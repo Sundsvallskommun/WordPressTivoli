@@ -3,7 +3,7 @@
 global $wp_query;
 
 $big = 999999999; // need an unlikely integer
-$translated = __( 'Sida', 'sundsvall_se' ); // Supply translatable string
+$translated = __( 'Sida', 'sk_tivoli' ); // Supply translatable string
 
 echo paginate_links( array(
 	'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),

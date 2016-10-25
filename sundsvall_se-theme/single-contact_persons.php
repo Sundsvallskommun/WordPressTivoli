@@ -8,7 +8,7 @@
 
 	<aside class="sk-sidebar single-post__sidebar">
 
-		<a href="#post-content" class="focus-only"><?php _e('Hoppa över sidomeny', 'sundsvall_se'); ?></a>
+		<a href="#post-content" class="focus-only"><?php _e('Hoppa över sidomeny', 'sk_tivoli'); ?></a>
 
 		<?php do_action('sk_page_helpmenu'); ?>
 

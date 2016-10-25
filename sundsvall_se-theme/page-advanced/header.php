@@ -16,7 +16,7 @@
 					<?php the_icon('dragon', array(
 						'width' => 118,
 						'height' => 216,
-						'alt' => sprintf(__('%s logotyp, länk till startsidan, sundsvall.se.', 'sundsvall_se'), get_bloginfo('title'))
+						'alt' => sprintf(__('%s logotyp, länk till startsidan, sundsvall.se.', 'sk_tivoli'), get_bloginfo('title'))
 					)); ?>
 				</a>
 
