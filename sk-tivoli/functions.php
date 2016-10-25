@@ -364,6 +364,8 @@ function clear_transients_on_update( $post_id ) {
 
 	$screen = get_current_screen();
 
+	delete_transient( "site_footer_$post_id" );
+
 	if (strpos($screen->id, "acf-options-sidfot") == true) {
 		delete_transient( "site_footer_option" );
 	}
