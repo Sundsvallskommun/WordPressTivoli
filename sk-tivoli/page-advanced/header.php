@@ -10,15 +10,10 @@
 
 		<div class="row logo-search-row">
 
-			<div class="logo-container">
+			<?php $has_logo = function_exists( 'the_custom_logo' ) && has_custom_logo(); ?>
+			<div class="logo-container <?php echo $has_logo ? 'haslogo' : '' ?>">
 
-				<a href="<?php bloginfo('url'); ?>">
-					<?php the_icon('dragon', array(
-						'width' => 118,
-						'height' => 216,
-						'alt' => sprintf(__('%s logotyp, länk till startsidan, sundsvall.se.', 'sk_tivoli'), get_bloginfo('title'))
-					)); ?>
-				</a>
+				<div class="parent-site-logo"><?php get_template_part('partials/site-logo'); ?></div>
 
 				<span class="logo-divider">
 					|
