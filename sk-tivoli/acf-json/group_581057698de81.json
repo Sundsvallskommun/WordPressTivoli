@@ -1,0 +1,55 @@
+{
+    "key": "group_581057698de81",
+    "title": "Tema",
+    "fields": [
+        {
+            "key": "field_58105ba0c66c0",
+            "label": "Temaf\u00e4rg 1",
+            "name": "theme_color_1",
+            "type": "color_picker",
+            "instructions": "F\u00e4rg f\u00f6r bl.a. sidfot, sidhuvud.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#5B1F78"
+        },
+        {
+            "key": "field_5810688a0feb1",
+            "label": "Temaf\u00e4rg 2",
+            "name": "theme_color_2",
+            "type": "color_picker",
+            "instructions": "F\u00e4rg f\u00f6r bl.a. toppmeny l\u00e4ngst upp p\u00e5 sidan.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#D85194"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-allmant"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "menu_item_level": "all",
+    "modified": 1477471043
+}

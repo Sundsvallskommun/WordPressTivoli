@@ -135,3 +135,35 @@ function get_section_icon($id = null) {
 
 }
 
+function get_theme_color_hex( $variant ) {
+
+	switch ($variant) {
+		case 1:
+		case 'color_1':
+			$color = get_field( 'theme_color_1', 'option' );
+		break;
+		case 2:
+		case 'color_2':
+			$color = get_field( 'theme_color_2', 'option' );
+		break;
+	}
+
+	return $color;
+}
+
+function theme_color( $attributes, $variant = 1 ) {
+
+	$attributes = !is_array( $attributes ) ? $attributes = array($attributes) : $attributes;
+
+	echo ' style="';
+
+	foreach ( $attributes as $attr ):
+
+			echo $attr.': ' . get_theme_color_hex( $variant ) . ';';
+
+	endforeach;
+
+	echo '" '; // close style tag
+
+}
+

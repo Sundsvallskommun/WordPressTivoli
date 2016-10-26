@@ -29,7 +29,7 @@ ob_start();
 					if( 'simple_link_internal' == $type || 'simple_link_external' == $type ):
 				?>
 
-					<a class="nav-item nav-link btn btn-primary btn-sm" href="<?php the_sub_field( 'link_url' )?>">
+					<a class="nav-item nav-link btn btn-primary btn-sm" href="<?php the_sub_field( 'link_url' )?>" <?php theme_color( array('background', 'border-color'), 2); ?>>
 						<?php the_sub_field( 'link_text' ); ?>
 					</a>
 

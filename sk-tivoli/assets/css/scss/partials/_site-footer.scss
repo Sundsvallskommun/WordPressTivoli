@@ -51,7 +51,7 @@ $footer_background: profile-color(björnstigen, 2);
 
 	.footer-icon {
 		float: left;
-		background: darken($footer_background, 5%);
+		background: rgba( 0, 0, 0, 0.16 );
 		fill: white;
 		width: 2.5rem;
 		height: 2.5rem;

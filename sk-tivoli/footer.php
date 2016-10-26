@@ -28,7 +28,7 @@ ob_start();
 
 ?>
 
-<footer class="site-footer">
+<footer class="site-footer" <?php theme_color('background'); ?>>
 
 	<div class="container-fluid">
 
