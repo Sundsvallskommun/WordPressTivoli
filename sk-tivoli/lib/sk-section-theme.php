@@ -135,6 +135,13 @@ function get_section_icon($id = null) {
 
 }
 
+/**
+ * Return hex color from theme option
+ *
+ * @author Johan Linder <johan@flatmate.se>
+ *
+ * @param string $variant The theme color variant to return.
+ */
 function get_theme_color_hex( $variant ) {
 
 	switch ($variant) {
@@ -151,6 +158,14 @@ function get_theme_color_hex( $variant ) {
 	return $color;
 }
 
+/**
+ * Echo style attribute for element with a specified theme color.
+ *
+ * @author Johan Linder <johan@flatmate.se>
+ *
+ * @param array|string $attributes The css attributes to apply color to.
+ * @param string $variant The theme color variant to use.
+ */
 function theme_color( $attributes, $variant = 1 ) {
 
 	$attributes = !is_array( $attributes ) ? $attributes = array($attributes) : $attributes;
