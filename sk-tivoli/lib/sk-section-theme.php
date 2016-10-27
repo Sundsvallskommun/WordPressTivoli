@@ -70,7 +70,12 @@ function add_global_section_theme( $item ) {
 
 	$page_themes[$item->object_id]['color'] = get_field( 'color', $item->ID);
 	$page_themes[$item->object_id]['keyword'] = get_section_class_name($item);
-	$page_themes[$item->object_id]['icon'] = get_field( 'icon', $item->ID);
+
+	$icon_type = $page_themes[$item->object_id]['icon_type'] = get_field('icon_type', $item->ID);
+
+	$page_themes[$item->object_id]['icon'] = $icon_type === 'material_icon' ?
+	get_material_icon( get_field( 'material_icon', $item->ID ) ) :
+	get_field('icon', $item->ID);
 }
 
 /**
@@ -126,6 +131,14 @@ function get_section_icon_src($id = null) {
 }
 
 function get_section_icon($id = null) {
+
+	global $page_themes;
+
+	$top_ancestor = get_top_ancestor($id);
+
+	if( $page_themes[$top_ancestor->ID]['icon_type'] === 'material_icon' ) {
+		return $page_themes[$top_ancestor->ID]['icon'];
+	}
 
 	$icon_src = get_section_icon_src($id);
 

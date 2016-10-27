@@ -76,6 +76,8 @@
 	}
 
 	.menu-item-icon {
+		font-size: 1.4em;
+		color: #fff;
 		fill: #fff;
 		background-color: $gray-light;
 		display: inline-block;
@@ -100,6 +102,7 @@
 			margin-right: $spacer-x/2;
 			min-width: 3.5rem;
 			min-height: 3.5rem;
+			font-size: 1.6em;
 		}
 
 		.icon {
