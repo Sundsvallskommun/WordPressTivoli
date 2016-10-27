@@ -28,7 +28,7 @@
 }
 
 .sk-sidebar,
-.vote-widget,
+.feedback-widget,
 .post-tags,
 .page-widgets {
 	display: none;
@@ -53,4 +53,18 @@
 	> div {
 		border-width: 1px;
 	}
+}
+
+blockquote {
+	border-right: none;
+	border-top: none;
+	border-bottom: none;
+}
+
+.mobile-header {
+	display: none;
+}
+
+.btn-mobile-fixed {
+	display: none;
 }
