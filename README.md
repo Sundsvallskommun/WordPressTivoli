@@ -1,9 +1,11 @@
-# Beroenden
+n# Beroenden
 
 WordPress-plugins:
 
 * [ACF (Advanced Custom Fields) Pro](http://www.advancedcustomfields.com/pro/)
-* [TinyMCE Advanced](https://sv.wordpress.org/plugins/tinymce-advanced/)
+* [Location "Nav Menu" for ACF](https://wordpress.org/plugins/location-nav-menu-for-acf/) 
+(Används för att lägga till egna fält i wp nav menu som t ex ikoner, färger)
+* [TinyMCE Advanced](https://sv.wordpress.org/plugins/tinymce-advanced/) 
 	(Används just nu endast för tabeller, som läggs till programmatiskt i
 	verktygsfältet. Aktivera pluginet och avaktivera alla inställningar.)
 * Gravity Forms
@@ -17,8 +19,14 @@ WordPress-plugins:
 
 # Utveckling
 
+Node.js behöver vara installerat i utvecklingsmiljön för att kunna hantera beroenden.
+
+Med Node.js installerat kör "npm install" från terminalen i temamappens root för att kunna använda Gulp.
+
 Gulp används som byggprocess. Använd flaggan --production för att bygga för
 produktion, som att t.ex. minifiera css.
+ 
+
 
 ## JavaScript
 
