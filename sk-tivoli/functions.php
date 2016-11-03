@@ -374,4 +374,9 @@ function clear_transients_on_update( $post_id ) {
 		delete_transient( "site_navbar" );
 	}
 
+	if (strpos($screen->id, "acf-options-allmant") == true) {
+		delete_transient( "site_footer_option" );
+		delete_transient( "site_navbar" );
+	}
+
 }
