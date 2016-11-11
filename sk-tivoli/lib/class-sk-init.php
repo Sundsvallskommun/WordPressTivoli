@@ -51,6 +51,7 @@ class SK_Init {
 
 		add_filter('get_the_archive_title', array( &$this, 'change_archive_title'));
 
+		add_action('admin_menu', array( $this, 'hide_admin_menu_items') );
 
 	}
 
@@ -302,6 +303,7 @@ class SK_Init {
 	 * @return null
 	 */
 	public function extend_editor_capabilities() {
+
 		$capabilities = array(
 		    'gravityforms_edit_forms',
 		    'gravityforms_delete_forms',
@@ -312,7 +314,8 @@ class SK_Init {
 		    'gravityforms_export_entries',
 		    'gravityforms_view_entry_notes',
 		    'gravityforms_edit_entry_notes',
-		    'gravityforms_preview_forms'
+		    'gravityforms_preview_forms',
+			'edit_theme_options'
 		);
 		$role = get_role( 'editor' );
 
@@ -339,7 +342,8 @@ class SK_Init {
 		    'gravityforms_export_entries',
 		    'gravityforms_view_entry_notes',
 		    'gravityforms_edit_entry_notes',
-		    'gravityforms_preview_forms'
+		    'gravityforms_preview_forms',
+			'edit_theme_options'
 		);
 		$role = get_role( 'editor' );
 
@@ -411,6 +415,26 @@ class SK_Init {
 		}
 
 		return $title;
+	}
+
+	/**
+	 * Hide admin menu items for editor.
+	 *
+	 * @author Daniel Pihlström <daniel.pihlstrom@cybercom.com>
+	 *
+	 * @return bool
+	 */
+	public function hide_admin_menu_items(){
+
+		$user = wp_get_current_user();
+		if( $user->roles[0] !== 'editor')
+			return false;
+
+		global $submenu;
+		unset($submenu['themes.php'][6]); // Customize
+		remove_submenu_page( 'themes.php', 'themes.php' );
+		remove_submenu_page( 'themes.php', 'widgets.php' );
+
 	}
 
 }
