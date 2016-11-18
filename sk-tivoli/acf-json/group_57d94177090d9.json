@@ -4,10 +4,10 @@
     "fields": [
         {
             "key": "field_57d94cf95122e",
-            "label": "header_links",
+            "label": "Toppl\u00e4nkar",
             "name": "header_links",
             "type": "flexible_content",
-            "instructions": "",
+            "instructions": "L\u00e4nkar som placeras allra l\u00e4ngst upp p\u00e5 webbplatsen.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -59,10 +59,15 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "post_type": [],
-                            "taxonomy": [],
+                            "post_type": [
+
+                            ],
+                            "taxonomy": [
+
+                            ],
                             "allow_null": 0,
-                            "multiple": 0
+                            "multiple": 0,
+                            "allow_archives": 1
                         }
                     ],
                     "min": "",
@@ -199,10 +204,15 @@
                                                 "class": "",
                                                 "id": ""
                                             },
-                                            "post_type": [],
-                                            "taxonomy": [],
+                                            "post_type": [
+
+                                            ],
+                                            "taxonomy": [
+
+                                            ],
                                             "allow_null": "",
-                                            "multiple": ""
+                                            "multiple": "",
+                                            "allow_archives": 1
                                         }
                                     ],
                                     "min": "",
@@ -266,7 +276,9 @@
                     "name": "google_translate",
                     "label": "Google Translate",
                     "display": "block",
-                    "sub_fields": [],
+                    "sub_fields": [
+
+                    ],
                     "min": "",
                     "max": ""
                 }
@@ -290,5 +302,6 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1473919514
+    "menu_item_level": "all",
+    "modified": 1478968798
 }
