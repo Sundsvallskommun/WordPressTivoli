@@ -1,3 +1,14 @@
+
+.front-page-section-margin {
+	@include media-breakpoint-up(sm) {
+		margin-top: 3rem;
+	}
+
+	@include media-breakpoint-up(lg) {
+		margin-top: 5rem;
+	}
+}
+
 %mobile-divider {
 	@include media-breakpoint-down(sm) {
 		border-bottom: 1px solid lighten($gray-light, 25);

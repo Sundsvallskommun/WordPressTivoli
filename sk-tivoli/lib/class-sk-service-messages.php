@@ -13,8 +13,22 @@
 class SK_Service_Messages {
 
 	function __construct() {
-		add_action( 'init', array(&$this, 'post_type_service_message'));
-		//add_filter('the_title' , array( &$this, 'add_update_status' ) );
+
+		$this->use_service_messages = true;
+
+		/*
+		 * We wont register this post type if service messages is deactivated
+		 * through acf-options page.
+		 */
+		if( function_exists( 'get_field' ) ) {
+			$this->use_service_messages = get_field( 'use_service_messages', 'option' );
+		}
+
+		if( $this->use_service_messages ) {
+			add_action( 'init', array(&$this, 'post_type_service_message'));
+			//add_filter('the_title' , array( &$this, 'add_update_status' ) );
+		}
+
 	}
 
 	function post_type_service_message() {

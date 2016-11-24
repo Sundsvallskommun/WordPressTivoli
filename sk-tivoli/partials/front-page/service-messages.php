@@ -1,6 +1,22 @@
 <?php
 global $service_messages;
 
+/*
+ * We wont render this partial at all if service messages is deactivated
+ * through acf-options page.
+ */
+if( function_exists( 'get_field' ) ) {
+
+	$use_service_messages = get_field( 'use_service_messages', 'option' );
+
+	if (!$use_service_messages) {
+		echo '<div class="front-page-section-margin"></div>'; // Fix to keep correct margin when we removed service message section
+		return;
+	}
+
+}
+
+
 $args = array(
     'post_type' => 'service_message',
     'posts_per_page' => 4,
