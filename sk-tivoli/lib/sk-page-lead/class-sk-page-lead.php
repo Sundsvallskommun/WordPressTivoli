@@ -12,6 +12,17 @@ class SK_Page_Lead {
 
 	function __construct() {
 
+		/*
+		 * If post type is not in this array, lead is disabled on the front-end.
+		 * This does not affect the displaying of page lead in TinyMCE, that is
+		 * handled by the js-plugin registered with the
+		 * `mce_external_plugins`-action.
+		 */
+		$this->allowed_post_types = array( 'post', 'page' );
+
+		/*
+		 * Page lead can be disabled through an ACF-setting.
+		 */
 		$this->page_lead_active = true;
 
 		if ( class_exists( 'acf' ) ) {
@@ -32,6 +43,11 @@ class SK_Page_Lead {
 	* @return string
 	* */
 	function frontend_lead($content){
+
+		global $post;
+		$should_use_lead = in_array( $post->post_type, $this->allowed_post_types );
+
+		if( !$should_use_lead ) return $content;
 
 		if( !$this->page_lead_active ) return $content; // Do nothing if page lead has been disabled.
 

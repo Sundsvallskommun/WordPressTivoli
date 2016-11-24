@@ -15,7 +15,27 @@ tinymce.PluginManager.add('sk_page_lead', function(editor, url) {
 		setLead(editor);
 	});
 
+	/*
+	 * We only want to use lead on pages and posts and not on custom post types.
+	 *
+	 * We use iframeHTML to check for class names of post-type-{name}. Checking
+	 * the url is less reliable because the regular post type does not use any
+	 * url params.
+	 */
+	function shouldUseLead() {
+
+		var url = editor.iframeHTML;
+		var match = url.match(/post-type-(page|post)/g); // Match the post types "page" and "post"
+		var shouldUseLead = !!(match && match.length >= 1);
+
+		return shouldUseLead;
+	}
+
 	function setLead(ed) {
+
+		if(!shouldUseLead()) {
+			return false;
+		}
 
 		// Reset lead class and color in case it is not relevant any more.
 		var oldLead = ed.dom.select('p.lead');
