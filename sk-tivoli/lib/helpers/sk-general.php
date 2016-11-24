@@ -190,6 +190,13 @@ function ancestor_field($page_id, array $fields) {
  * @return string
  */
 function sk_get_excerpt($post_id = 0) {
+
+	// ACF-field that overrides default excerpt behaviour on navigation cards.
+	$manual_excerpt = get_field( 'navigation_desctiption', $post_id );
+	if( $manual_excerpt ) {
+		return $manual_excerpt;
+	}
+
 	global $post;
 	$save_post = $post;
 	$post = get_post( $post_id );

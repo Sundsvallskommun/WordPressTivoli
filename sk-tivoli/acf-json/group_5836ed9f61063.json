@@ -1,0 +1,43 @@
+{
+    "key": "group_5836ed9f61063",
+    "title": "Navigationskort",
+    "fields": [
+        {
+            "key": "field_5836edc41c7cb",
+            "label": "Text p\u00e5 navigationskort",
+            "name": "navigation_desctiption",
+            "type": "textarea",
+            "instructions": "Den text som visas i navigationskortet till sidan. Om inget anges anv\u00e4nds som standard navigationsl\u00e4nkar av undersidor eller sidans ingress.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "Metabox f\u00f6r sidor med inst\u00e4llningar hur den ska visas som navigationskort.",
+    "modified": 1479996036
+}

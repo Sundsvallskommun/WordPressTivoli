@@ -69,7 +69,9 @@ foreach($children as $child) {
 
 					}
 
-					if(is_navigation($child_id)) {
+					$manual_excerpt = get_field( 'navigation_desctiption', $child_id );
+
+					if(!$manual_excerpt && is_navigation($child_id)) {
 
 						$children = get_children(array('post_type' => 'page', 'post_parent' => $child_id, 'numberposts' => 5));
 
