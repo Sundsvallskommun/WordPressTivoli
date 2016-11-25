@@ -77,7 +77,15 @@ function get_the_breadcrumbs() {
 
 	if(!is_front_page()) {
 		// Link to front page
-		$front_page_title = get_the_title(get_option('page_on_front'));
+
+		// if no static start page is set print startsida.
+		if ( intval( get_option( 'page_on_front' ) ) === 0 ) {
+			$front_page_title = __( 'Startsida', 'sk_tivoli' );
+		} else {
+			$front_page_title = get_the_title( get_option( 'page_on_front' ) );
+		}
+
+
 		$bc .= bc_item($front_page_title, $home_url);
 	}
 
