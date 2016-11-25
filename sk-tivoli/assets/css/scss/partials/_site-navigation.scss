@@ -118,6 +118,7 @@
 	.menu-item-text {
 		display: inline-block;
 		vertical-align: middle;
+		min-height: auto !important;
 		@include media-breakpoint-down(sm) {
 			font-family: $font-family-large;
 		}
