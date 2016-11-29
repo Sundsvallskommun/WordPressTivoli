@@ -89,11 +89,12 @@ foreach($children as $child) {
 							$i += 1;
 						}
 
-						?>
+						// Print 'Visa alla' if there is more than 5 child pages.
+						if ( $i > 5 ) {
+							printf( '%s<a href="%s">%s</a>', '&nbsp;|&nbsp;', $is_shortcut ? $shortcut_url : $permalink, __( 'Visa alla &#187;', 'sk_tivoli' ) );
+						}
 
-							| <a href="<?php echo $is_shortcut ? $shortcut_url : $permalink ; ?>">Visa&nbsp;alla&nbsp;&#187;</a>
-
-					<?php } else {
+					} else {
 						$excerpt = sk_get_excerpt($child_id);
 						echo $excerpt;
 					}
