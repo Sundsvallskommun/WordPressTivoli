@@ -1,0 +1,91 @@
+{
+    "key": "group_583c464b99e1a",
+    "title": "E-tj\u00e4nster",
+    "fields": [
+        {
+            "key": "field_583d5c9e43878",
+            "label": "Anv\u00e4nd e-tj\u00e4nster",
+            "name": "eservices_active",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Ja",
+            "default_value": 0
+        },
+        {
+            "key": "field_583d5422cd318",
+            "label": "URL",
+            "name": "eservice_home_url",
+            "type": "url",
+            "instructions": "Adress till startsidan f\u00f6r e-tj\u00e4nsteplattformen.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_583d5c9e43878",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "https:\/\/e-tjanster.tivoli.se\/"
+        },
+        {
+            "key": "field_583c465388f13",
+            "label": "Api-url",
+            "name": "eservice_api_base_url",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_583d5c9e43878",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "https:\/\/e-tjanster.tivoli.se\/api\/v1",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-e-tjanster"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1480416471
+}

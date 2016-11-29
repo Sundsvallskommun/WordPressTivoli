@@ -261,6 +261,15 @@ require_once locate_template( 'lib/sk-widgets/class-sk-widgets.php' );
 $sk_widgets = new SK_Widgets();
 
 /**
+ * SK_EServices
+ * ============
+ *
+ * E-service shortcode and page widget.
+ */
+require_once locate_template( 'lib/sk-eservices/class-sk-eservices.php' );
+$sk_eservices = new SK_EServices();
+
+/**
  * SK_Documents
  * ============
  *

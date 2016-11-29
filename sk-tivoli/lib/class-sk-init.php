@@ -112,6 +112,12 @@ class SK_Init {
 				'menu_title'  => 'Sidfot',
 				'parent_slug' => 'general-settings'
 			));
+
+			acf_add_options_sub_page(array(
+				'page_title'  => 'E-tjänster',
+				'menu_title'  => 'E-tjänster',
+				'parent_slug' => 'general-settings'
+			));
 		}
 	}
 
