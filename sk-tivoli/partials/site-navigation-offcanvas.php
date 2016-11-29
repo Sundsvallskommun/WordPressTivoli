@@ -5,25 +5,7 @@
 	</nav>
 
 	<div class="nav-header hidden-md-up">
-		<h2 class="pull-xs-left">Meny</h2>
-
-		<div class="pull-xs-right">
-
-			<div class="nav-item dropdown">
-				<button class="btn btn-secondary btn-rounded dropdown-toggle" data-toggle="dropdown" type="button" id="loginMenuButtonMobile" aria-haspopup="true" aria-expanded="false">
-					Logga in
-				</button>
-
-				<div class="dropdown-menu" aria-labelledby="loginMenuButtonMobile">
-					<a class="dropdown-item" href="http://skola.login.sundsvall.se/">Elev</a>
-					<a class="dropdown-item" href="http://sundsvall.se/kommun-och-politik/om-webbplatsen-2/medarbetare/">Medarbetare</a>
-					<a class="dropdown-item" href="https://e-tjanster.sundsvall.se/oversikt">Medborgare</a>
-				</div>
-
-			</div>
-
-		</div>
-
+		<h2 class="pull-xs-left m-b-1">Meny</h2>
 		<div class="clearfix"></div>
 	</div>
 
