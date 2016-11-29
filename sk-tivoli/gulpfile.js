@@ -8,7 +8,6 @@ var gulp         = require('gulp'),
     sass         = require('gulp-sass'),
     cssmin       = require('gulp-cssmin'),
     autoprefixer = require('gulp-autoprefixer'),
-    critical     = require('critical'),
 
     concat       = require('gulp-concat'),
     rename       = require('gulp-rename'),
@@ -54,47 +53,6 @@ gulp.task('editor-styles', function() {
 		}))
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('./assets/css'));
-});
-
-gulp.task('critical', ['default'], function() {
-
-	var critWidth  = 1200,
-			critHeight = 1020,
-			critMinify = true,
-			critDest   = 'partials/critical/';
-
-	critical.generate({
-		src: 'http://' + config.PROXY+'/',
-		dest: critDest + 'index.css',
-		minify: critMinify,
-		width: critWidth,
-		height: critHeight
-	});
-
-	critical.generate({
-		src: 'http://' + config.PROXY+'/utbildning-och-forskola/',
-		dest: critDest + 'navpage.css',
-		minify: critMinify,
-		width: critWidth,
-		height: critHeight+200
-	});
-
-	critical.generate({
-		src: 'http://' + config.PROXY+'/?s=e',
-		dest: critDest + 'searchresult.css',
-		minify: critMinify,
-		width: critWidth,
-		height: critHeight
-	});
-
-	critical.generate({
-		src: 'http://' + config.PROXY+'/utbildning-och-forskola/testsida/',
-		dest: critDest + 'single.css',
-		minify: critMinify,
-		width: critWidth,
-		height: critHeight
-	});
-
 });
 
 gulp.task('scripts', function() {
