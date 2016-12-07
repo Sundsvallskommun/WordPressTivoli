@@ -1,0 +1,48 @@
+{
+    "key": "group_58480910453a8",
+    "title": "Sociala medier",
+    "fields": [
+        {
+            "key": "field_58480920d58f2",
+            "label": "Dela p\u00e5 sociala medier",
+            "name": "sk_share_activated",
+            "type": "checkbox",
+            "instructions": "Om aktiverad ges m\u00f6jlighet att v\u00e4lja om en sida eller inl\u00e4gg (i samband med redigering) ska kunna delas p\u00e5 sociala medier.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "1": "Ja, aktivera dela p\u00e5 sociala medier"
+            },
+            "default_value": [
+
+            ],
+            "layout": "vertical",
+            "toggle": 0,
+            "return_format": "value"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-allmant"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "menu_item_level": "all",
+    "modified": 1481116272
+}
