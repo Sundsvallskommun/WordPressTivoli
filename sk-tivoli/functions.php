@@ -231,6 +231,15 @@ require_once locate_template( 'lib/class-sk-helpmenu.php' );
 $sk_helpmenu = new SK_Helpmenu();
 
 /**
+ * SK_Share
+ * ===========
+ *
+ * Functions related to social media share.
+ */
+require_once locate_template( 'lib/sk-share/class-sk-share.php' );
+$sk_share = new SK_Share();
+
+/**
  * SK_Tags
  * =======
  *
