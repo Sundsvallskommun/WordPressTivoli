@@ -6,6 +6,7 @@
 class SK_Share {
 
 	private $media = array( 'facebook' => '', 'linkedin' => '', 'twitter' => '' );
+	private $checked = false;
 
 	/**
 	 * SK_Share constructor.
@@ -20,9 +21,17 @@ class SK_Share {
 
 		// check if share module is activated.
 		$activated = get_field( 'sk_share_activated', 'options' );
+
 		if ( ! $activated ) {
 			return false;
 		}
+
+		// check if share module should be auto checked as default
+		$checked = get_field( 'sk_share_checked', 'options' );
+		if ( $checked ) {
+			$this->checked = true;
+		}
+
 
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ), 10 );
 		add_action( 'save_post', array( $this, 'save_post' ) );
@@ -51,12 +60,15 @@ class SK_Share {
 	public function sk_share_callback() {
 		global $post;
 		$post_id        = $post->ID;
-		$previous_value = ! empty( get_post_meta( $post_id, '_sk_share_media', true ) ) ? get_post_meta( $post_id, '_sk_share_media', true ) : array();
+		$sk_share_media = get_post_meta( $post_id, '_sk_share_media', true );
+		$previous_value = ! empty( $sk_share_media ) ? $sk_share_media : array();
 
-		// mark all as checked for a new post.
-		if( $post->post_status == 'auto-draft'){
-			foreach ( $this->media as $key => $media ) {
-				$previous_value[] = $key;
+		if( $this->checked === true ) {
+			// mark all as checked for a new post.
+			if ( $post->post_status == 'auto-draft' ) {
+				foreach ( $this->media as $key => $media ) {
+					$previous_value[] = $key;
+				}
 			}
 		}
 
