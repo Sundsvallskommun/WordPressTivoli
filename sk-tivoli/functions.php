@@ -175,6 +175,18 @@ $sk_service_messages = new SK_Service_Messages();
 require_once locate_template( 'lib/class-sk-boxes.php' );
 $sk_post_type_boxes = new SK_Boxes();
 
+
+/**
+ * SK_Blocks including advanced template for start page
+ * ========
+ *
+ * Boxes ("Puffar")
+ */
+require_once locate_template( 'lib/sk-blocks/class-sk-blocks.php' );
+$sk_blocks = new SK_Blocks();
+
+
+
 /*
  * ==============================================
  *                SHORTCUT PAGE
