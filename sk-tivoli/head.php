@@ -15,7 +15,8 @@
 
 	<?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?>>
+
+<body <?php body_class(); ?> <?php echo apply_filters('sk_body_attr', $attr = array() );?>>
 
 <div id="skiplinks">
 	<a tabindex="1" href="#content" class="focus-only">Hoppa till innehåll.</a>
