@@ -34,14 +34,17 @@
             "choices": {
                 "Sundsvall.se": "sundsvall_se"
             },
-            "default_value": [],
+            "default_value": [
+
+            ],
             "allow_null": 0,
             "multiple": 0,
             "ui": 0,
             "ajax": 0,
             "placeholder": "",
             "disabled": 0,
-            "readonly": 0
+            "readonly": 0,
+            "return_format": "value"
         },
         {
             "key": "field_57ad6b71d4ec1",
@@ -126,13 +129,14 @@
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 5,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": 0,
     "description": "",
-    "modified": 1475487035
+    "menu_item_level": "all",
+    "modified": 1483453017
 }

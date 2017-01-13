@@ -30,6 +30,11 @@
                 "param": "post_type",
                 "operator": "==",
                 "value": "page"
+            },
+            {
+                "param": "page_template",
+                "operator": "!=",
+                "value": "templates\/page-start-advanced.php"
             }
         ]
     ],
@@ -41,5 +46,6 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1472736943
+    "menu_item_level": "all",
+    "modified": 1483453363
 }

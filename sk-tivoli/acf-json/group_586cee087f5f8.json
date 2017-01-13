@@ -1,0 +1,44 @@
+{
+    "key": "group_586cee087f5f8",
+    "title": "Block - navigation",
+    "fields": [
+        {
+            "key": "field_586cee183c274",
+            "label": "Namn p\u00e5 meny\/navigering",
+            "name": "sk_block_navigation_menu_name",
+            "type": "text",
+            "instructions": "Ange namnet p\u00e5 den meny som ska renderas. <br>Namnet p\u00e5 menyn finner du p\u00e5 \"Utseende > Menyer\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_taxonomy",
+                "operator": "==",
+                "value": "block-type:navigation"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "menu_item_level": "all",
+    "modified": 1483534015
+}

@@ -1,0 +1,87 @@
+{
+    "key": "group_58514120b1c3a",
+    "title": "Block - bild och text",
+    "fields": [
+        {
+            "key": "field_58514120b5a49",
+            "label": "Bild",
+            "name": "sk-block-image-and-text",
+            "type": "image",
+            "instructions": "Om det \u00e4r t\u00e4nkt att flera block ska ligga bredvid varandra s\u00e5 b\u00f6r bildernas storlek (bredd x h\u00f6jd) vara lika. Bredden b\u00f6r vara minst 800px f\u00f6r att g\u00f6ra sig bra vid responsiva l\u00e4gen.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5851455af9797",
+            "label": "Rubrik",
+            "name": "sk-block-image-and-text-title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_585145e2f9798",
+            "label": "Text",
+            "name": "sk-block-image-and-text-content",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_taxonomy",
+                "operator": "==",
+                "value": "block-type:bild-och-text"
+            }
+        ]
+    ],
+    "menu_order": 1,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "menu_item_level": "all",
+    "modified": 1483460398
+}
