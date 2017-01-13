@@ -1,0 +1,187 @@
+{
+    "key": "group_58186817408d5",
+    "title": "Flexibelt inneh\u00e5ll",
+    "fields": [
+        {
+            "key": "field_581b565ed4e19",
+            "label": "Sektioner",
+            "name": "sk-flexible-sections",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "button_label": "L\u00e4gg till rad",
+            "min": "",
+            "max": "",
+            "layouts": [
+                {
+                    "key": "581b55b66e3cf",
+                    "name": "sk-sections",
+                    "label": "Sektion",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_584ffece7fc5d",
+                            "label": "Grid",
+                            "name": "sk-row",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "collapsed": "",
+                            "min": "",
+                            "max": "",
+                            "layout": "row",
+                            "button_label": "L\u00e4gg till rad",
+                            "sub_fields": [
+                                {
+                                    "key": "field_584fff1c7fc5e",
+                                    "label": "Kolumn-grid",
+                                    "name": "sk-grid",
+                                    "type": "number",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": 1,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "min": 1,
+                                    "max": 12,
+                                    "step": 1
+                                },
+                                {
+                                    "key": "field_58500054d1195",
+                                    "label": "Typ av inneh\u00e5ll",
+                                    "name": "sk-content-type",
+                                    "type": "radio",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "block": "Block",
+                                        "shortcode": "Kort kod"
+                                    },
+                                    "allow_null": 0,
+                                    "other_choice": 0,
+                                    "save_other_choice": 0,
+                                    "default_value": "",
+                                    "layout": "horizontal",
+                                    "return_format": "value"
+                                },
+                                {
+                                    "key": "field_5850020cbc8b4",
+                                    "label": "Block",
+                                    "name": "sk-block",
+                                    "type": "relationship",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_58500054d1195",
+                                                "operator": "==",
+                                                "value": "block"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "post_type": [
+                                        "blocks"
+                                    ],
+                                    "taxonomy": [
+
+                                    ],
+                                    "filters": [
+                                        "search"
+                                    ],
+                                    "elements": "",
+                                    "min": "",
+                                    "max": 1,
+                                    "return_format": "id"
+                                },
+                                {
+                                    "key": "field_5850011fd1196",
+                                    "label": "Kort kod (short code)",
+                                    "name": "sk-short-code",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_58500054d1195",
+                                                "operator": "==",
+                                                "value": "shortcode"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates\/page-start-advanced.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "featured_image",
+        "categories",
+        "tags"
+    ],
+    "active": 1,
+    "description": "",
+    "menu_item_level": "all",
+    "modified": 1484228302
+}

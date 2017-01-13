@@ -1,0 +1,200 @@
+{
+    "key": "group_5852fc9d8ad05",
+    "title": "Block - l\u00e4nklista",
+    "fields": [
+        {
+            "key": "field_5853174ebcfa3",
+            "label": "Rubrik f\u00f6r blocket",
+            "name": "sk_block_link_list_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5852fdba44da6",
+            "label": "L\u00e4nkgrupp",
+            "name": "sk_block_link_list",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": "",
+            "max": "",
+            "layout": "row",
+            "button_label": "L\u00e4gg till l\u00e4nkgrupp",
+            "sub_fields": [
+                {
+                    "key": "field_5852fdcd44da7",
+                    "label": "Rubrik",
+                    "name": "rubrik",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5852fe7b44daa",
+                    "label": "L\u00e4nk",
+                    "name": "link",
+                    "type": "flexible_content",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "button_label": "L\u00e4gg till l\u00e4nk",
+                    "min": "",
+                    "max": "",
+                    "layouts": [
+                        {
+                            "key": "5852fe8821a8b",
+                            "name": "internal-link",
+                            "label": "Intern l\u00e4nk",
+                            "display": "row",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5853006cc65d4",
+                                    "label": "L\u00e4nktitel",
+                                    "name": "linklist_title",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_5852fe9744dab",
+                                    "label": "Intern l\u00e4nk",
+                                    "name": "linklist_url",
+                                    "type": "page_link",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "post_type": [
+
+                                    ],
+                                    "taxonomy": [
+
+                                    ],
+                                    "allow_null": 0,
+                                    "allow_archives": 1,
+                                    "multiple": 0
+                                }
+                            ],
+                            "min": "",
+                            "max": ""
+                        },
+                        {
+                            "key": "5852ffda66fb8",
+                            "name": "external-link",
+                            "label": "Extern l\u00e4nk",
+                            "display": "row",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5852fff766fb9",
+                                    "label": "L\u00e4nktitel",
+                                    "name": "linklist_title",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_5853001066fba",
+                                    "label": "Extern l\u00e4nk",
+                                    "name": "linklist_url",
+                                    "type": "url",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": ""
+                                }
+                            ],
+                            "min": "",
+                            "max": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_taxonomy",
+                "operator": "==",
+                "value": "block-type:lanklista"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "menu_item_level": "all",
+    "modified": 1481840509
+}

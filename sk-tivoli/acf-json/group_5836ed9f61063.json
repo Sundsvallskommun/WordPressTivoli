@@ -28,10 +28,15 @@
                 "param": "post_type",
                 "operator": "==",
                 "value": "page"
+            },
+            {
+                "param": "page_type",
+                "operator": "!=",
+                "value": "front_page"
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 10,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -39,5 +44,6 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "Metabox f\u00f6r sidor med inst\u00e4llningar hur den ska visas som navigationskort.",
-    "modified": 1479996036
+    "menu_item_level": "all",
+    "modified": 1483453106
 }

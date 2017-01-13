@@ -159,6 +159,9 @@ class SK_Blocks_Admin {
 			array(
 				'name' => 'Länklista',
 			),
+			array(
+				'name' => 'Navigation',
+			),
 
 			/*
 			array(

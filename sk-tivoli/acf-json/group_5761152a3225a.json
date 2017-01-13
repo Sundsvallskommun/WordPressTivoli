@@ -79,10 +79,15 @@
                         "class": "",
                         "id": ""
                     },
-                    "post_type": [],
-                    "taxonomy": [],
+                    "post_type": [
+
+                    ],
+                    "taxonomy": [
+
+                    ],
                     "allow_null": 0,
-                    "multiple": 0
+                    "multiple": 0,
+                    "allow_archives": 1
                 }
             ]
         }
@@ -103,13 +108,14 @@
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 5,
     "position": "acf_after_title",
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": 0,
     "description": "",
-    "modified": 1467016392
+    "menu_item_level": "all",
+    "modified": 1483452979
 }

@@ -16,6 +16,12 @@ class SK_Blocks_Public {
 	}
 
 
+	/**
+	 * Init method
+	 *
+	 * @author Daniel Pihlström <daniel.pihlstrom@cybercom.com>
+	 *
+	 */
 	public function init(){
 
 	}
@@ -52,33 +58,38 @@ class SK_Blocks_Public {
 		<?php
 	}
 
-	public static function print_block( $block_id ){
-
+	public static function print_block( $column ){
+		$block_id = $column['sk-block'][0];
+		$grid = $column['sk-grid'];
 		$block = get_post( $block_id );
 
 		$type = wp_get_post_terms($block_id, 'block-type', array('fields' => 'slugs'));
 		if(empty( $type ))
 			return false;
 
-		echo self::get_block( $block_id, $type[0] );
+		echo self::get_block( $block_id, $type[0], $grid );
 
 
 		//util::debug( $block );
 	}
 
-	private static function get_block( $block_id = '', $type = '' ){
+	private static function get_block( $block_id = '', $type = '', $grid = '' ){
 
 		switch ($type ) {
 			case 'bild':
-				echo self::get_block_image( $block_id );
+				echo self::get_block_image( $block_id, $grid );
 				break;
 
 			case 'bild-och-text':
-				echo self::get_block_image_with_text( $block_id );
+				echo self::get_block_image_with_text( $block_id, $grid );
 				break;
 
 			case 'lanklista':
-				echo self::get_block_link_list( $block_id );
+				echo self::get_block_link_list( $block_id, $grid );
+				break;
+
+			case 'navigation':
+				echo self::get_block_navigation( $block_id, $grid );
 				break;
 
 			default:
@@ -89,7 +100,7 @@ class SK_Blocks_Public {
 	}
 
 
-	private static function get_block_image( $block_id = '' ){
+	private static function get_block_image( $block_id = '', $grid = '' ){
 		$block = get_post( $block_id );
 
 		/*
@@ -100,6 +111,10 @@ class SK_Blocks_Public {
 
 		$image_id = get_field( 'sk-blocks-image', $block_id );
 		$image = wp_get_attachment_image_src( $image_id, 'content-full' );
+
+		$image    = wp_get_attachment_image_src( $image_id, 'content-full' );
+		if( intval( $grid ) === 12 )
+			$image    = wp_get_attachment_image_src( $image_id, 'full' );
 
 		$links['internal'] = get_field( 'sk-block-link-internal', $block_id );
 		$links['external'] = get_field( 'sk-block-link-external', $block_id );
@@ -136,7 +151,7 @@ class SK_Blocks_Public {
 	}
 
 
-	private static function get_block_image_with_text( $block_id = '' ){
+	private static function get_block_image_with_text( $block_id = '', $grid = '' ){
 		$block = get_post( $block_id );
 
 		/*
@@ -146,10 +161,13 @@ class SK_Blocks_Public {
 		*/
 
 		$image_id = get_field( 'sk-block-image-and-text', $block_id );
+
 		$image    = wp_get_attachment_image_src( $image_id, 'content-full' );
+		if( intval( $grid ) === 12 )
+			$image    = wp_get_attachment_image_src( $image_id, 'full' );
+
 		$title    = get_field( 'sk-block-image-and-text-title', $block_id );
 		$content  = get_field( 'sk-block-image-and-text-content', $block_id );
-		$theme    = get_field( 'sk-block-image-and-text-theme', $block_id );
 
 
 		$links['internal'] = get_field( 'sk-block-link-internal', $block_id );
@@ -165,7 +183,7 @@ class SK_Blocks_Public {
 		//util::debug( $link );
 		?>
 
-		<div class="block block-image-and-text<?php echo !empty( $theme ) ? ' '.$theme : NULL; ?>">
+		<div class="block block-image-and-text<?php echo intval( $grid ) === 12 ? ' wide' : NULL; ?>">
 			<div class="block-block__image"><img src="<?php echo $image[0];?>"></div>
 			<div class="block-footer">
 				<div class="block-footer__title"><h3><?php echo $title; ?></h3></div>
@@ -185,11 +203,11 @@ class SK_Blocks_Public {
 	}
 
 
-	private static function get_block_link_list( $block_id = '' ){
+	private static function get_block_link_list( $block_id = '', $grid = '' ){
 
 		$title = get_field( 'sk_block_link_list_title', $block_id );
 		$groups = get_field( 'sk_block_link_list', $block_id );
-		$markup  = '<a class="eservice-link" href="%s" title="%3$s"><span><span class="eservice-link__icon">%s</span><span class="eservice-link__name">%s</span></span></a>';
+		$markup  = '<a class="link-list" href="%s" title="%3$s"><span><span class="link-list__icon">%s</span><span class="link-list__name">%s</span></span></a>';
 		ob_start();
 		?>
 
@@ -217,6 +235,58 @@ class SK_Blocks_Public {
 		return $block;
 
 	}
+
+private static function get_block_navigation( $block_id = '', $grid = '' ){
+
+	$menu_name = get_field( 'sk_block_navigation_menu_name', $block_id );
+	$groups = get_field( 'sk_block_link_list', $block_id );
+	$markup  = '<a class="link-list" href="%s" title="%3$s"><span><span class="link-list__icon">%s</span><span class="link-list__name">%s</span></span></a>';
+	ob_start();
+
+	echo '<style>';
+	global $page_themes;
+	foreach( $page_themes as $theme ) {
+
+		$keyword = $theme['keyword'];
+		$color = $theme['color'];
+
+		echo "
+		.blocks .nav-$keyword .menu-item-icon {
+				background-color:  $color;
+		}
+		.blocks .nav-$keyword:hover,
+		.blocks .nav-$keyword.current-menu-item,
+		.blocks .nav-$keyword.current-menu-ancestor {
+				border-bottom-color:  $color;
+		}
+	";
+	}
+
+	echo '</style>';
+
+
+
+		$nav_args = array(
+			//'theme_location'  => 'main-menu',
+			'menu'            => $menu_name,
+			'container'       => false,
+			'menu_class'      => 'row blocks block-menu-container list-inline',
+			'items_wrap'      => '<div id="%1$s" class="%2$s">%3$s</div>',
+			'walker'          => new SK_Blocks_Menu_Walker()
+		);
+		wp_nav_menu( $nav_args );
+
+
+	?>
+
+
+	<?php
+	$block = ob_get_clean();
+
+	return $block;
+
+}
+
 
 
 

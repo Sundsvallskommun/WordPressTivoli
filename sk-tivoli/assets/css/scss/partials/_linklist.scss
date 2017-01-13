@@ -1,0 +1,92 @@
+.block-link-list ul,
+.page-widget ul {
+  list-style: outside none none;
+  padding: 0;
+
+}
+.page-widget__columns h3 {
+  clear: left;
+}
+
+.page-widget__columns ul {
+  @extend .clearfix;
+}
+
+.page-widget__columns ul {
+  .link-list {
+    float: left; // Fix to make it a block element but with auto width
+    clear: left;
+  }
+}
+
+
+.link-list {
+  background: $sk-linklist-bg;
+  color: $sk-linklist-fg-active;
+  padding: .75em 1.5em .75em 3.25em;
+  border-radius: 2em;
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  width: 100%;
+  margin-bottom: .2em;
+
+  font-size: .9375em;
+  @include media-breakpoint-up(sm) {
+    width: auto;
+    padding: 0em 1.25em 0em 2.25em;
+    border-radius: 1em;
+    margin-bottom: .8em;
+  }
+
+  > span {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+
+  &:focus,
+  &:hover {
+    color: $sk-linklist-fg-active;
+    background: $sk-linklist-bg;
+    text-decoration: none;
+
+    .link-list__icon{
+      background: $sk-linklist-fg-active;
+    }
+
+  }
+
+
+  &__icon {
+    content: "";
+    color: $sk-linklist-bg;
+    display: block;
+    background: $sk-linklist-fg;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 2em;
+    height: 2em;
+    transform: translate(.6em, -50%);
+
+    @include media-breakpoint-up(sm) {
+      top: 0;
+      transform: none;
+      width: 1.74em;
+      height: 1.74em;
+    }
+    border-radius: 50%;
+    img,
+    .icon {
+      fill: currentColor;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

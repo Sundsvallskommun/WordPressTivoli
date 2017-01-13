@@ -2,6 +2,7 @@
 
 require_once 'class-sk-blocks-public.php';
 require_once 'class-sk-blocks-admin.php';
+require_once 'class-sk-blocks-menu-walker.php';
 
 class SK_Blocks {
 
@@ -31,7 +32,7 @@ class SK_Blocks {
 
 		switch ($column['sk-content-type']) {
 			case 'block':
-				SK_Blocks_Public::print_block( $column['sk-block'][0] );
+				SK_Blocks_Public::print_block( $column );
 				break;
 			case "shortcode":
 				SK_Blocks_Public::print_shortcode( $column );

@@ -186,6 +186,15 @@ require_once locate_template( 'lib/sk-blocks/class-sk-blocks.php' );
 $sk_blocks = new SK_Blocks();
 
 
+/**
+ * SK_News short code
+ * ========
+ *
+ */
+require_once locate_template( 'lib/sk-news/class-sk-news.php' );
+$sk_news = new SK_News();
+
+
 
 /*
  * ==============================================
