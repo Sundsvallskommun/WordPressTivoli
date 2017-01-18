@@ -172,8 +172,8 @@ $sk_service_messages = new SK_Service_Messages();
  *
  * Boxes ("Puffar")
  */
-require_once locate_template( 'lib/class-sk-boxes.php' );
-$sk_post_type_boxes = new SK_Boxes();
+//require_once locate_template( 'lib/class-sk-boxes.php' );
+//$sk_post_type_boxes = new SK_Boxes();
 
 
 /**
