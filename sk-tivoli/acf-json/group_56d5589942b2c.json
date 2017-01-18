@@ -30,14 +30,9 @@
     "location": [
         [
             {
-                "param": "post_type",
+                "param": "page_template",
                 "operator": "==",
-                "value": "page"
-            },
-            {
-                "param": "page_type",
-                "operator": "!=",
-                "value": "front_page"
+                "value": "default"
             }
         ]
     ],
@@ -49,5 +44,6 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1465979565
+    "menu_item_level": "all",
+    "modified": 1484752998
 }
