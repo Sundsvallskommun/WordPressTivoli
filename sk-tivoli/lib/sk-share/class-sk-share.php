@@ -5,7 +5,7 @@
  */
 class SK_Share {
 
-	private $media = array( 'facebook' => '', 'linkedin' => '', 'twitter' => '' );
+	private $media = array( 'facebook' => 'Facebook', 'linkedin' => 'LinkedIn', 'twitter' => 'Twitter' );
 	private $checked = false;
 
 	/**
@@ -77,7 +77,7 @@ class SK_Share {
 		<?php foreach ( $this->media as $key => $media ) : ?>
 			<p><label><input type="checkbox"
 			                 name="sk_share_media[]" <?php checked( in_array( $key, $previous_value ) ? $key : null, $key, true ); ?>
-			                 value="<?php echo $key; ?>"><?php printf( __( '%s', 'sk_tivoli' ), ucfirst( $key ) ); ?>
+			                 value="<?php echo $key; ?>"><?php printf( __( '%s', 'sk_tivoli' ), $media ); ?>
 				</label></p>
 			<?php
 		endforeach;
@@ -128,13 +128,29 @@ class SK_Share {
 
 		$shares = get_post_meta( $post->ID, '_sk_share_media', true );
 
+
 		if ( ! empty( $shares ) ) {
 			foreach ( $shares as $share ) {
-				echo SK_Helpmenu::helplink( $share, $this->get_share_url( get_permalink( $post->ID ), $share ), sprintf( __( 'Dela på %s', 'sk_tivoli' ), ucfirst( $share ) ) );
+				echo SK_Helpmenu::helplink( $share, $this->get_share_url( get_permalink( $post->ID ), $share ), sprintf( __( 'Dela på %s', 'sk_tivoli' ), self::share_name_by_key( $share ) ) );
 			}
 		}
 
 	}
+
+	/**
+	 * Return the printable name for the social media service.
+	 *
+	 * @author Daniel Pihlström <daniel.pihlstrom@cybercom.com>
+	 *
+	 * @param string $slug
+	 *
+	 * @return mixed
+	 */
+	private function share_name_by_key( $slug = '' ){
+		return $this->media[$slug];
+	}
+
+
 
 	/**
 	 * Generate the unique share url for the media.
