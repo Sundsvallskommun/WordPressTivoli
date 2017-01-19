@@ -84,40 +84,56 @@ class SK_Init {
 		add_filter( 'wp_calculate_image_sizes', array(&$this, 'sk_content_image_sizes_attr'), 10, 2);
 	}
 
+	/**
+	 * Adding Acf options page.
+	 * Filter for child extensions.
+	 *
+	 * @author Daniel Pihlström <daniel.pihlstrom@cybercom.com>
+	 *
+	 */
 	function options_page() {
-		if( function_exists('acf_add_options_page') ) {
-			acf_add_options_page(array(
-				'page_title' 	=> 'Webbplatsen',
-				'menu_title'	=> 'Webbplatsen',
-				'menu_slug' 	=> 'general-settings',
-				'capability'	=> 'manage_options',
-				'redirect'		=> true,
-				'position'		=> '59'
-			));
+		if ( function_exists( 'acf_add_options_page' ) ) {
 
-			acf_add_options_sub_page(array(
-				'page_title'  => 'Allmänt',
-				'menu_title'  => 'Allmänt',
-				'parent_slug' => 'general-settings'
-			));
+			acf_add_options_page( array(
+				'page_title' => 'Webbplatsen',
+				'menu_title' => 'Webbplatsen',
+				'menu_slug'  => 'general-settings',
+				//'capability' => 'manage_options',
+				'capability' => 'edit_posts',
+				'redirect'   => true,
+				'position'   => '59'
+			) );
 
-			acf_add_options_sub_page(array(
-				'page_title'  => 'Sidhuvud',
-				'menu_title'  => 'Sidhuvud',
-				'parent_slug' => 'general-settings'
-			));
+			$subpages = array(
 
-			acf_add_options_sub_page(array(
-				'page_title'  => 'Sidfot',
-				'menu_title'  => 'Sidfot',
-				'parent_slug' => 'general-settings'
-			));
+				array(
+					'page_title'  => 'Allmänt',
+					'menu_title'  => 'Allmänt',
+					'parent_slug' => 'general-settings',
 
-			acf_add_options_sub_page(array(
-				'page_title'  => 'E-tjänster',
-				'menu_title'  => 'E-tjänster',
-				'parent_slug' => 'general-settings'
-			));
+				),
+				array(
+					'page_title'  => 'Sidhuvud',
+					'menu_title'  => 'Sidhuvud',
+					'parent_slug' => 'general-settings'
+				),
+				array(
+					'page_title'  => 'Sidfot',
+					'menu_title'  => 'Sidfot',
+					'parent_slug' => 'general-settings'
+				),
+				array(
+					'page_title'  => 'E-tjänster',
+					'menu_title'  => 'E-tjänster',
+					'parent_slug' => 'general-settings'
+				)
+			);
+
+			$subpages = apply_filters( 'sk_acf_options_page', $subpages );
+
+			foreach ( $subpages as $subpage ) {
+				acf_add_options_sub_page( $subpage );
+			}
 		}
 	}
 
