@@ -215,6 +215,7 @@ class SK_Page_Contacts {
 			'phone' => get_field('phone', $contact_id),
 			'address' => get_field('address', $contact_id),
 			'hours' => get_field('hours', $contact_id),
+			'description' => get_field('description', $contact_id),
 			'thumbnail' => get_the_post_thumbnail($contact_id, 'thumbnail'),
 			'show_thumb' => $show_thumb
 		);
@@ -235,6 +236,7 @@ class SK_Page_Contacts {
 			$contact_address = isset($args['address']) ? $args['address'] : '';
 			$contact_hours = isset($args['hours']) ? $args['hours'] : '';
 			$contact_thumb = isset($args['thumbnail']) ? $args['thumbnail'] : '';
+			$contact_description = isset($args['description']) ? $args['description'] : '';
 			$show_thumb = isset($args['show_thumb']) ? $args['show_thumb'] : true;
 
 
@@ -268,6 +270,10 @@ class SK_Page_Contacts {
 			}
 			if($contact_phone) {
 				$contact .= get_phone_links($contact_phone);
+			}
+
+			if($contact_description) {
+				$contact .= $contact_description;
 			}
 			$contact .= '</p>';
 
