@@ -17,6 +17,22 @@
             },
             "message": "Automatisk ingress",
             "default_value": 1
+        },
+        {
+            "key": "field_5889d95eeda2d",
+            "label": "Ingress navigationsmall",
+            "name": "page_lead_navigation_template",
+            "type": "true_false",
+            "instructions": "Om ingress \u00e4r aktiverat f\u00f6r navigationsmallar s\u00e5 visas den text du skrivit i den visuella editorn som ingress p\u00e5 en navigationsmall.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Aktivera ingress p\u00e5 navigationsmallar",
+            "default_value": 1
         }
     ],
     "location": [
@@ -37,5 +53,5 @@
     "active": 1,
     "description": "Inst\u00e4llningar f\u00f6r redigering av sidor (t.ex. ingress).",
     "menu_item_level": "all",
-    "modified": 1475742371
+    "modified": 1485429369
 }

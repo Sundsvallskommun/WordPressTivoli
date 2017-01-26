@@ -37,6 +37,8 @@ class SK_Init {
 
 		add_action('sk_after_page_title', array(&$this, 'sk_page_top_image'));
 
+		add_action( 'sk_after_page_title', array( $this, 'ingress_navigation_card' ) );
+
 		add_filter('wp_trim_excerpt', array(&$this, 'sk_excerpt'), 10, 2 );
 
 		add_filter('the_content', array(&$this, 'shortcode_remove_empty_paragraphs'));
@@ -52,6 +54,8 @@ class SK_Init {
 		add_filter('get_the_archive_title', array( &$this, 'change_archive_title'));
 
 		add_action('admin_menu', array( $this, 'hide_admin_menu_items') );
+
+
 
 	}
 
@@ -458,6 +462,39 @@ class SK_Init {
 		remove_submenu_page( 'themes.php', 'widgets.php' );
 
 	}
+
+	/**
+	 * Adding text/ingress to navigation card templates.
+	 *
+	 * @author Daniel Pihlström <daniel.pihlstrom@cybercom.com>
+	 *
+	 * @return bool
+	 */
+	public function ingress_navigation_card() {
+
+		// bail if not activated
+		$activated = get_field( 'page_lead_navigation_template', 'option' );
+		if ( ! $activated ) {
+			return false;
+		}
+
+		global $post;
+		if ( basename( get_page_template() ) !== 'page-navigation.php' ) {
+			return false;
+		}
+
+		if ( empty( $post->post_content ) ) {
+			return false;
+		}
+
+		?>
+		<div class="navigation-card-ingress"><p><?php echo $post->post_content; ?></p></div>
+		<?php
+
+	}
+
+
+
 
 }
 
