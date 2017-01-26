@@ -37,6 +37,7 @@
 				'phone' => array( 'Telefon', get_phone_links( get_field('phone') ) ),
 				'address' => array( 'Adress', get_field('address') ),
 				'hours' => array( 'Öppettider', get_field('hours') ),
+				'description' => array( '', get_field('description') ),
 			);
 
 			echo '<dl>';

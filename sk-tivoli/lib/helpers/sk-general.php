@@ -114,7 +114,11 @@ function format_phone($n) {
  *
  * @author Johan Linder <johan@flatmate.se>
  */
-function get_phone_links($n) {
+function get_phone_links( $n ) {
+
+	if( empty( $n ) )
+		return false;
+
 	$numbers = format_phone($n);
 	$str = '';
 	$i = 0;
@@ -125,6 +129,7 @@ function get_phone_links($n) {
 		$str .= sprintf('<a href="tel:%s">%s</a>', str_replace(' ', '-', $num), $num);
 		$i += 1;
 	}
+
 	return $str;
 }
 
@@ -134,6 +139,9 @@ function get_phone_links($n) {
  * @author Johan Linder <johan@flatmate.se>
  */
 function get_email_links($e) {
+	if( empty( $e ))
+		return false;
+
 $addresses = explode(',', $e);
 	$str = '';
 	$i = 0;
@@ -145,6 +153,7 @@ $addresses = explode(',', $e);
 		$str .= "<a href='mailto:$address'>$address</a>";
 		$i += 1;
 	}
+
 	return $str;
 }
 
