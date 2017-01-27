@@ -290,6 +290,7 @@ class SK_Search {
 		}
 
 		$posts = $query->query($args);
+		$posts = apply_filters( 'post_search_result', $posts );
 
 		if( $this->is_advanced_search ) {
 			$posts_arr = array();
@@ -352,6 +353,7 @@ class SK_Search {
 		}
 
 		$posts = $query->query($args);
+		$posts = apply_filters( 'post_search_result', $posts );
 		$posts = array_map( array( &$this, 'map_wp_posts' ), $posts);
 
 		return array(
@@ -372,6 +374,7 @@ class SK_Search {
 		$args = $this->queryArgs;
 		$args['post_type'] = 'contact_persons';
 		$posts = $query->query($args);
+		$posts = apply_filters( 'post_search_result', $posts );
 		$posts = array_map( array( &$this, 'map_wp_posts' ), $posts);
 
 		return array(
@@ -392,6 +395,7 @@ class SK_Search {
 		$args['post_type'] = 'attachment';
 		$args['post_status'] = array( 'publish', 'inherit' );
 		$posts = $query->query($args);
+		$posts = apply_filters( 'post_search_result', $posts );
 		$posts = array_map( array( &$this, 'map_wp_posts' ), $posts);
 
 		return array(
