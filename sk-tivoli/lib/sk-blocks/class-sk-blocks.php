@@ -2,7 +2,6 @@
 
 require_once 'class-sk-blocks-public.php';
 require_once 'class-sk-blocks-admin.php';
-require_once 'class-sk-blocks-menu-walker.php';
 
 class SK_Blocks {
 

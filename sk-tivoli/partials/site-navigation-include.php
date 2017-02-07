@@ -43,6 +43,10 @@ if(!class_exists('Menu_Icons_Walker')) {
 
 <?php
 if ( has_nav_menu( 'main-menu' ) ) {
+	$activated = get_field( 'sk_nav_menu', 'options');
+
+	if ( ! $activated )
+		return false;
 
 	$nav_args = array(
 		'theme_location'  => 'main-menu',
@@ -53,7 +57,7 @@ if ( has_nav_menu( 'main-menu' ) ) {
 	);
 	wp_nav_menu( $nav_args );
 
-}
+
 
 /**
  * Add theme colors to nav items.
@@ -78,5 +82,5 @@ foreach( $page_themes as $theme ) {
 }
 
 echo '</style>';
-
+}
 ?>
