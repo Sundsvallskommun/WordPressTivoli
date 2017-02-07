@@ -3,6 +3,22 @@
     "title": "Tema",
     "fields": [
         {
+            "key": "field_589995c84edbf",
+            "label": "Temaf\u00e4rger",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_58105ba0c66c0",
             "label": "Temaf\u00e4rg 1",
             "name": "theme_color_1",
@@ -31,6 +47,68 @@
                 "id": ""
             },
             "default_value": "#D85194"
+        },
+        {
+            "key": "field_589995e44edc0",
+            "label": "L\u00e4nklista",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_589995321fe9c",
+            "label": "F\u00e4rg p\u00e5 cirkel",
+            "name": "theme_linklist_circle_color",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#f7f7f7"
+        },
+        {
+            "key": "field_58999e256e934",
+            "label": "Utf\u00e4llbart inneh\u00e5ll",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_58999e3a6e935",
+            "label": "F\u00e4rg p\u00e5 ikon",
+            "name": "theme_collapse_icon_color",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": ""
         }
     ],
     "location": [
@@ -51,5 +129,5 @@
     "active": 1,
     "description": "",
     "menu_item_level": "all",
-    "modified": 1477471043
+    "modified": 1486462633
 }

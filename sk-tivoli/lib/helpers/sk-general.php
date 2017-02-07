@@ -314,4 +314,3 @@ function get_attachment_id( $url ) {
 	}
 	return $attachment_id;
 }
-

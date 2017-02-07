@@ -6,6 +6,48 @@
  * Settings for a parent page are set on the menu item in a wp-menu.
  */
 
+
+
+/**
+ * Set page theme from the main-menu settings.
+ *
+ * @author Daniel Pihlström <daniel.pihlstrom@cybercom.com>
+ *
+ */
+function set_page_theme() {
+
+	$theme_locations = get_nav_menu_locations();
+	$menu_obj        = get_term( $theme_locations['main-menu'] );
+	$menu_name       = $menu_obj->name;
+	$menu_items      = wp_get_nav_menu_items( $menu_name );
+
+	foreach ( $menu_items as $menu_item ) {
+		add_global_section_theme( $menu_item );
+	}
+}
+
+/**
+ * Adding inline styling to head for custom colors.
+ *
+ * @author Daniel Pihlström <daniel.pihlstrom@cybercom.com>
+ *
+ */
+function sk_theme_custom_css() {
+	$theme['link_list_circle'] = get_field( 'theme_linklist_circle_color', 'option' );
+	$theme['collapse_icon'] = get_field( 'theme_collapse_icon_color', 'option' );
+	if ( empty( $theme ) ) {
+		return false;
+	}
+	?>
+	<style>
+		<?php !empty( $theme['link_list_circle'] ) ? printf( '.link-list__icon{background-color :%s}', $theme['link_list_circle'] ) : null ;  ?>
+		<?php !empty( $theme['collapse_icon'] ) ? printf( '.sk-collapse > h2 a::after, .sk-collapse > h3 a::after, .sk-collapse > h4 a::after {background-color :%s}', $theme['collapse_icon'] ) : null ;  ?>
+	</style>
+	<?php
+}
+add_action( 'wp_head', 'sk_theme_custom_css' );
+
+
 function get_top_ancestor($item) {
 
 	global $post;
