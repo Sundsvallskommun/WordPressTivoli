@@ -13,7 +13,9 @@ $sk-section-colors: (
 
 $overlay_shadow: 0 5px 11px 0 rgba(0,0,0,0.28),0 4px 15px 0 rgba(0,0,0,0.22);
 
+$sk-dark-grey: #343434;
 
 $sk-linklist-fg: #cccccc;
 $sk-linklist-bg: #f7f7f7;
-$sk-linklist-fg-active: #343434;
+$sk-linklist-fg-active: $sk-dark-grey;
+
