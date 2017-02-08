@@ -1,0 +1,109 @@
+/*
+ * Single E-service link. Displayed in content with shortcode.
+ */
+.eservice-single-block > a{
+}
+.eservice-single-block {
+
+	display: block;
+	margin: 0;
+
+	+ p:not(.eservice-single-block) {
+		margin-top: 1.75rem;
+	}
+
+	> a {
+		font-size: 1em;
+	}
+
+}
+
+.page-widget__columns h4 {
+	clear: left;
+}
+
+.page-widget__columns ul {
+	@extend .clearfix;
+}
+
+.page-widget__columns ul {
+	.eservice-link {
+		float: left; // Fix to make it a block element but with auto width
+		clear: left;
+	}
+}
+
+.more-eservices-link {
+	margin-left: 23.25em;
+	display: inline-block;
+	margin-top: $spacer-y * 1.75;
+}
+
+
+/*
+ * Small inline e-service link
+ */
+.eservice-link {
+	background: $sk-eservice-bg;
+	color: $sk-eservice-fg;
+	padding: .75em 1.5em .75em 3.25em;
+	border-radius: 2em;
+	position: relative;
+	display: inline-block;
+	max-width: 100%;
+	width: 100%;
+	margin-bottom: .2em;
+
+	font-size: .9375em;
+	@include media-breakpoint-up(sm) {
+		width: auto;
+		padding: 0em 1.25em 0em 2.25em;
+		border-radius: 1em;
+		margin-bottom: .8em;
+	}
+
+	> span {
+		display: block;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		width: 100%;
+	}
+
+	&:focus,
+	&:hover {
+		color: $sk-eservice-bg;
+		background: $sk-eservice-fg;
+		text-decoration: none;
+	}
+
+	&__icon {
+		content: "";
+		color: $sk-eservice-bg;
+		display: block;
+		background: $sk-eservice-fg;
+		position: absolute;
+		top: 50%;
+		left: 0;
+		width: 2em;
+		height: 2em;
+		transform: translate(.6em, -50%);
+
+		@include media-breakpoint-up(sm) {
+			top: 0;
+			transform: none;
+			width: 1.74em;
+			height: 1.74em;
+		}
+		border-radius: 50%;
+		img,
+		.icon {
+			fill: currentColor;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+	}
+}

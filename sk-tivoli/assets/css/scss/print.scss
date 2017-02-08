@@ -1,0 +1,70 @@
+.site-header {
+	background: transparent;
+	margin-bottom: 2rem;
+
+	.logo-container {
+		display: block;
+		.icon {
+			width: 3em;
+		}
+	}
+
+}
+
+.site-navigation {
+	display: none;
+}
+
+.breadcrumb {
+	display: none;
+}
+
+.search-container {
+	display: none;
+}
+
+.global-posts {
+	display: none;
+}
+
+.sk-sidebar,
+.feedback-widget,
+.post-tags,
+.page-widgets {
+	display: none;
+}
+
+.site-footer {
+	display: none;
+}
+
+.sk-collapse {
+
+	> h2,
+	> h3,
+	> h4 {
+
+		a:after {
+			background: transparent;
+			color: currentColor;
+		}
+	}
+
+	> div {
+		border-width: 1px;
+	}
+}
+
+blockquote {
+	border-right: none;
+	border-top: none;
+	border-bottom: none;
+}
+
+.mobile-header {
+	display: none;
+}
+
+.btn-mobile-fixed {
+	display: none;
+}

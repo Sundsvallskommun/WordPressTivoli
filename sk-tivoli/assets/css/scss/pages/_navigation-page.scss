@@ -1,0 +1,88 @@
+.navigation-page__header {
+
+	&__title {
+
+		display: flex;
+		align-items: center;
+		@include media-breakpoint-down(sm) {
+			padding: 1.75em $spacer-x 1em;
+			background: $gray-lightest;
+			border-bottom: 1px solid $gray-lighter;
+			margin: 0;
+			margin-left: -$spacer-x;
+			width: calc( 100% + (#{$spacer-x} * 2) );
+		}
+
+		margin-bottom: 2.75em;
+
+	}
+
+	margin-bottom: 2em;
+
+	@extend .clearfix;
+
+	.page-icon {
+		@include section-colors(background);
+		color: #fff;
+		fill: currentColor;
+		width: 3.25em;
+		height: 3.25em;
+		border-radius: 50%;
+		float: left;
+		position: relative;
+		margin-right: 2em;
+		background: profile-color(svartvik);
+
+		@include media-breakpoint-up(md) {
+			width: 8em;
+			height: 8em;
+		}
+
+		.icon {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 60%;
+			height: 60%;
+			font-size: 2.5em;
+			@include media-breakpoint-down(sm) {
+				font-size: 1.2em;
+			}
+		}
+	}
+
+	.page-title {
+		display: inline-block;
+		float: left;
+		margin: 0;
+		@include media-breakpoint-down(sm) {
+			font-size: 1.5em;
+		}
+	}
+
+}
+
+.navigation-card .nav-card-title__icon {
+	@include section-colors(background);
+}
+
+.navigation-card:hover {
+
+}
+
+
+
+.navigation-card-ingress {
+	padding-left: 10em;
+	margin-top: -4.5em;
+	margin-bottom: 2.75em;
+	@include media-breakpoint-down(sm) {
+		padding-left: inherit;
+		padding-top: 1em;
+		margin-top: 0em;
+		margin-bottom: 0;
+	}
+}
+
+

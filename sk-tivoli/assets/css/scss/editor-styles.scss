@@ -1,0 +1,18 @@
+body#tinymce {
+	padding: 1em !important;
+}
+
+@import './bootstrap-sk/variables';
+
+@import "./bootstrap-sk/bootstrap/variables";
+@import "./bootstrap-sk/bootstrap/mixins";
+
+@import "./bootstrap-sk/bootstrap/normalize";
+
+@import "./bootstrap-sk/bootstrap/reboot";
+@import "./bootstrap-sk/bootstrap/type";
+
+@import "./bootstrap-sk/bootstrap/tables";
+
+@import "./bootstrap-sk/reboot";
+@import "./bootstrap-sk/type";

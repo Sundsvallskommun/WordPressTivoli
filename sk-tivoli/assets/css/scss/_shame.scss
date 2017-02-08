@@ -1,0 +1,177 @@
+/*
+ * Temporary stuff during development, hacks etc.
+ *
+ * If it's a hack, document it well.
+ * */
+
+// Fix IE11 height issue with input group. Fixed in bootstrap 4, alpha 2
+.search-container .form-control {
+	height: 3.62rem;
+}
+
+img {
+}
+
+.icon {
+	display: inline-block;
+	width: 1em; /* default icon width */
+	position: relative;
+	user-select: none;
+}
+
+.icon .material-icons {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.icon-canvas {
+	display: block;
+	width: 100%;
+	visibility: hidden;
+}
+
+.icon-svg {
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.post-tags {
+	font-size: .8125em;
+	color: $paragraph-color;
+}
+
+a[rel="tag"] {
+	background: $gray-lighter;
+	display: inline-block;
+	padding: .55em 1.25em;
+	border-radius: .5em;
+	color: inherit;
+	margin-right: .25em;
+	margin-bottom: .5em;
+
+	&:hover {
+		background: darken($gray-lighter, 10);
+		text-decoration: none;
+	}
+}
+
+.box {
+	&-info {
+		background: $brand-info;
+		color: #fff;
+		padding-left: $spacer-x;
+		padding-right: $spacer-x;
+		p { color: inherit; }
+	}
+	&-warning {
+		background: $brand-warning;
+		color: #fff;
+		padding-left: $spacer-x;
+		padding-right: $spacer-x;
+		p { color: inherit; }
+	}
+}
+
+/**
+ * Gravity forms styled as bootstrap
+ */
+
+.gform_heading {
+	margin-bottom: $spacer-y;
+}
+
+.single-post__content .gform_wrapper {
+	margin-bottom: $spacer-y * 2;
+}
+
+.vote-widget .gform_wrapper {
+	margin-bottom: 0;
+}
+
+.gform_wrapper ul {
+	@extend .list-unstyled;
+}
+
+.gform_wrapper li {
+	@extend .form-group;
+}
+
+.gform_wrapper form {
+	margin-bottom: 0;
+}
+
+.gform_wrapper .gfield_label {
+	font-weight: bolder;
+}
+
+.gform_wrapper .gfield_required {
+	color: $alert-danger-text;
+}
+
+.ginput_container input,
+.ginput_container select,
+.ginput_container textarea, {
+	@extend .form-control;
+}
+
+.gform_button {
+	@extend .btn;
+	@extend .btn-primary;
+}
+
+.gform_wrapper .gfield_error {
+
+	.gfield_label {
+		color: $alert-danger-text;
+	}
+
+	input,
+	select,
+	textarea {
+		border-color: $alert-danger-border;
+		background-color: $alert-danger-bg;
+		color: $alert-danger-text;
+	}
+
+}
+
+.validation_error {
+	@extend .alert;
+	@extend .alert-danger;
+}
+
+#gform_confirmation_message {
+	@extend .alert;
+}
+
+.gform_button {
+  @extend .btn;
+  @extend .btn-primary;
+}
+ 
+.gfield_required {
+  color: $alert-danger-text;
+}
+ 
+.gform_wrapper ul.gfield_radio li {
+	@extend .radio;
+	input {
+		width: auto !important;
+		margin-left: 0 !important;
+		margin-top: .45em !important;
+	}
+}
+
+.gform_wrapper ul.gfield_checkbox li {
+	@extend .checkbox;
+	input {
+		width: auto !important;
+		margin-left: 0 !important;
+		margin-top: .45em !important;
+	}
+}

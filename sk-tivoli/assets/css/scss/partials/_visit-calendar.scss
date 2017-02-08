@@ -1,0 +1,99 @@
+/**
+ *
+ * Citybreak event calendar hacks
+ */
+.front-page-section__calendar {
+	background: profile-color(juniskär, 2);
+	color: #fff;
+	width: 100%;
+
+	.calendar-image {
+		width: 200px;
+		height: 100px;
+		background-size: cover;
+		background-position: center center;
+		background-color: rgba(0,0,0,0.1);
+		position: absolute;
+	}
+
+	&__left {
+
+		line-height: 1.2;
+
+		h2 {
+			line-height: 1.2;
+			max-width: 300px;
+		}
+
+		> .content {
+			max-width: 350px;
+		}
+
+	}
+
+	h2 {
+		margin-top: 2rem;
+		font-size: 2em;
+	}
+
+	h3 {
+		font-size: .875em;
+		margin-bottom: 3.5em;
+	}
+}
+
+#tblCalendarEventWidget {
+	display: none !important;
+}
+
+#Citybreak_CalendarEventWidget {
+	margin-bottom: 2rem;
+	@include media-breakpoint-up(sm) {
+		margin-bottom: 5.25rem;
+	}
+	background: transparent !important;
+	border: none !important;
+	border-radius: 0 !important;
+	font-size: .9375em;
+	width: 100% !important;
+	line-height: 1.2;
+	#cb_whathappenstoday_list {
+		margin-bottom: 2.5em;
+		li {
+			margin-bottom: .5em;
+
+			&:before {
+				content: url('../images/clock.png');
+				float: left;
+				margin-top: .25em;
+				margin-right: 1.5em;
+			}
+
+		}
+	}
+	#cb_whathappenstoday {
+		background: transparent;
+		margin: 0;
+		padding: 0;
+		.cb_whathappensheader,
+		.cb_daytitle {
+			display: none;
+		}
+		.cb_eventlink_time {
+			font-size: 1em;
+			font-weight: 600;
+			display: block;
+		}
+		.cb_title {
+			font-size: 1em;
+		}
+	}
+
+	.cb_showmoreevents {
+		@extend .btn;
+		@extend .btn-secondary;
+		@extend .btn-rounded;
+	}
+
+}
+

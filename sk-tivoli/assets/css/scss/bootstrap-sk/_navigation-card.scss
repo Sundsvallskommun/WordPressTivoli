@@ -1,0 +1,103 @@
+/*
+ * Extra styling for bootstrap .card when .navigation-card
+ * class is also present.
+ * */
+
+.navigation-card {
+	@include make-col();
+	@include make-col-span(12);
+	border: none;
+	color: inherit;
+	padding-top: .875em;
+	padding-bottom: 1em;
+	margin-bottom: 0;
+	border-bottom: 1px solid $gray-lighter;
+	@include media-breakpoint-up(md) {
+		border-bottom: none;
+		padding-top: 1em;
+		padding-bottom: 1em;
+		margin-bottom: 2.5em;
+		@include make-col-span(6);
+		&:nth-child(2n+1) {
+			clear: both;
+		}
+	}
+	@include media-breakpoint-up(lg) {
+		@include make-col-span(4);
+		&:nth-child(n) {
+			clear: none;
+		}
+		&:nth-child(3n+1) {
+			clear: both;
+		}
+	}
+
+	&:hover,
+	&:focus {
+		background: $gray-lightest;
+	}
+
+	.nav-card-title {
+		font-size: 1.25rem;
+		margin-bottom: .65em;
+		position: relative;
+		padding-left: 1.5em;
+		line-height: 1.4;
+
+		@include media-breakpoint-up(md) {
+			padding-left: 2em;
+		}
+	}
+
+	.nav-card-title a {
+		color: inherit;
+	}
+
+	.nav-card-title__icon {
+		@extend %circle-with-icon;
+		position: absolute;
+		left: 0;
+		top: 6px;
+		content: "";
+		display: inline-block;
+		border-radius: 50%;
+		width: .75em;
+		height: .75em;
+		margin-right: .25em;
+
+		@include media-breakpoint-up(md) {
+			margin-right: .5em;
+			vertical-align: -22%;
+			width: 1.25em;
+			height: 1.25em;
+
+			top: 1px;
+		}
+	}
+
+	.nav-card-text {
+		color: $text-muted;
+		line-height: 1.75;
+		font-size: 1em;
+		@include media-breakpoint-up(md) {
+			font-size: .875em;
+		}
+
+		a {
+			color: inherit;
+		}
+	}
+
+	&.shortcut {
+	  .card-title a:before {
+			border-radius: 0;
+		}
+	}
+
+	p:last-child {
+		margin-bottom: 0;
+	}
+
+
+}
+

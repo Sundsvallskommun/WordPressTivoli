@@ -1,0 +1,85 @@
+/**
+ * Contact person displayed after page content.
+ */
+
+.page-contacts {
+	border-top: 1px solid $hr-border-color;
+	margin-top: $spacer-y * 2;
+
+	h2 {
+		margin-top: $spacer-y * 2;
+		margin-bottom: $spacer-y * 2;
+	}
+}
+
+.page-contact {
+
+	position: relative;
+	min-height: 3.125em;
+
+	+ .page-contact {
+		margin-top: 1em;
+	}
+
+	&__image {
+		@extend %circle-with-icon;
+
+		height: 3.125em;
+		width: 3.125em;
+		background: profile-color('svartvik');
+		position: absolute;
+		margin-right: 1em;
+		border-radius: 50%;
+		overflow: hidden;
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	&__block {
+		padding-left: 4.125em;
+	}
+
+	&__title {
+		font-size: 1.25em;
+		margin: 0;
+		font-weight: 300;
+	}
+
+	&__role {
+		font-family: $font-family-sans-serif;
+		font-size: .7em;
+		margin-left: 1em;
+	}
+
+	&__email {
+		font-size: .8125em;
+		color: $text-muted;
+		margin-bottom: 0;
+		a {
+			font-weight: bold;
+		}
+	}
+
+	&__address,
+	&__hours {
+		font-size: .8125em;
+		color: $text-muted;
+		margin-bottom: .5em;
+		line-height: 1.25;
+		margin-top: .3em;
+		p {
+			margin: 0;
+		}
+	}
+
+	&__heading {
+		font-size: .875em;
+		margin-top: 1.25em;
+	}
+
+}
+
+

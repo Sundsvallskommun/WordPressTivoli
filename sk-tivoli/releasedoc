@@ -1,0 +1,14 @@
+= Release documentation =
+
+== Versioning description ==
+
+1. First digit: MAJOR version when you make big update that likely breaks the backwards compatibility.
+2. Second digit: MINOR version when you add new functionality and features.
+3. Third digit: PATCH version when you make bug fixes.
+
+! Remember to update version.php with the correct version number, located in the theme folder.
+! Remember to create a new release and add the same information as below about the release.
+
+
+== Version 1.0.0 ==
+First release, starting at 1.0.0

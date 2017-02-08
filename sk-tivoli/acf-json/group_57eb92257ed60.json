@@ -1,0 +1,127 @@
+{
+    "key": "group_57eb92257ed60",
+    "title": "Menytema",
+    "fields": [
+        {
+            "key": "field_57eb922f26873",
+            "label": "F\u00e4rg",
+            "name": "color",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": ""
+        },
+        {
+            "key": "field_5811bd6a2d598",
+            "label": "Ikontyp",
+            "name": "icon_type",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "material_icon": "Material Icon",
+                "image_icon": "Ladda upp bild"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        },
+        {
+            "key": "field_57ecd6fee7a23",
+            "label": "Ikon (Ladda upp)",
+            "name": "icon",
+            "type": "image",
+            "instructions": "Ikon p\u00e5 max 150x150px, helst med transparent bakgrund.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5811bd6a2d598",
+                        "operator": "==",
+                        "value": "image_icon"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": 150,
+            "max_height": 150,
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5811bda92d599",
+            "label": "Ikon (material icon)",
+            "name": "material_icon",
+            "type": "text",
+            "instructions": "Ikonnamn fr\u00e5n <a href=\"https:\/\/design.google.com\/icons\/\">\r\nGoogle Material Icons\r\n<\/a>",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5811bd6a2d598",
+                        "operator": "==",
+                        "value": "material_icon"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "menu",
+                "operator": "==",
+                "value": "all"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "menu_item_level": "first",
+    "modified": 1477557873
+}

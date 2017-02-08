@@ -1,0 +1,128 @@
+.site-navigation {
+
+	line-height: 1.25;
+
+	.nav-header {
+		padding: 2em $spacer-x 1em;
+		background: $gray-lightest;
+		border-bottom: 1px solid $gray-lighter;
+
+
+		.admin-bar & {
+			margin-top: 46px;
+		}
+
+		h2 {
+			margin: 0;
+			font-size: 1.35em;
+		}
+	}
+
+	@include media-breakpoint-up(md) {
+		//border-bottom: 5px solid $gray-lighter;
+		border-bottom: 4px solid #DEE4E9;
+	}
+
+	@include media-breakpoint-up(md) {
+		display: block;
+	}
+
+	nav {
+		margin-bottom: 0;
+		@include media-breakpoint-up(md) {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-end;
+			align-content: flex-end;
+
+			max-width: 76.125em;
+			margin: 0 auto -4px;
+		}
+	}
+
+	nav a {
+		min-width: 0;
+		display: inline-flex;
+		flex-wrap: wrap;
+		align-items: center;
+		padding: 1.75em $spacer-x 1.75em $spacer-x;
+		border-bottom: 1px solid $gray-lighter;
+		width: 100%;
+		&:hover,
+		&.current-menu-item,
+		&.current-page-ancestor {
+			@include media-breakpoint-up(md) {
+				border-bottom-color: $gray-light;
+			}
+		}
+		@include media-breakpoint-up(md) {
+			width: auto;
+			justify-content: center;
+			text-align: center;
+			//border-bottom: 5px solid $gray-lighter;
+			border-bottom: 4px solid #DEE4E9;
+			padding: 2em .5em 2em .5em;
+		}
+		@include media-breakpoint-up(lg) {
+			text-align: left;
+			flex-wrap: nowrap;
+		}
+		color: inherit;
+	}
+
+	&:hover a,
+	&.current-menu-item a {
+		text-decoration: none;
+	}
+
+	.menu-item-icon {
+		font-size: 1.4em;
+		color: #fff;
+		fill: #fff;
+		background-color: $gray-light;
+		display: inline-block;
+		border-radius: 50%;
+		vertical-align: middle;
+		position: relative;
+		margin-right: $spacer-x/2;
+
+		min-width: 3rem;
+		min-height: 3rem;
+
+		@include media-breakpoint-up(md) {
+			margin-bottom: .5em;
+			margin-right: .2em;
+		}
+
+		@include media-breakpoint-up(lg) {
+			margin-bottom: 0;
+		}
+
+		@include media-breakpoint-up(xl) {
+			margin-right: $spacer-x/2;
+			min-width: 3.5rem;
+			min-height: 3.5rem;
+			font-size: 1.6em;
+		}
+
+		.icon {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 60%;
+			height: 60%;
+		}
+	}
+
+	.menu-item-text {
+		display: inline-block;
+		vertical-align: middle;
+		min-height: auto !important;
+		@include media-breakpoint-down(sm) {
+			font-family: $font-family-large;
+		}
+		@include media-breakpoint-up(md) {
+		}
+	}
+}

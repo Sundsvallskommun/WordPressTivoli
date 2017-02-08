@@ -1,0 +1,107 @@
+.btn-sm {
+	font-size: .8125rem;
+	border-radius: 0;
+	padding-top: .25em;
+	padding-bottom: .25em;
+}
+
+.btn.btn-rounded {
+	font-size: 1em;
+	font-weight: 600;
+	padding-top: .6rem;
+	padding-bottom: .6rem;
+	border-width: 2px;
+	border-radius: 2em;
+	font-family: $font-family-large;
+
+	@include media-breakpoint-up(lg) {
+		font-size: .825em;
+	}
+}
+
+.btn-purple {
+  @include button-variant($btn-primary-color, profile-color(björnstigen, 2), profile-color(björnstigen, 2));
+}
+
+@mixin button-action($color, $background) {
+  $active-background: $color;
+  $active-color: $background;
+
+  color: $color;
+  background-color: $background;
+	border: none;
+
+  @include hover {
+    color: $active-color;
+    background-color: $active-background;
+  }
+
+  &:focus,
+  &.focus {
+    color: $active-color;
+    background-color: $active-background;
+  }
+
+	text-align: left;
+	padding: .75em 1.5em .75em 3.25em;
+	border-radius: 2em;
+	position: relative;
+	display: inline-block;
+	max-width: 100%;
+	width: 100%;
+	margin-bottom: $spacer-x;
+
+	font-size: .9375em;
+
+	@include media-breakpoint-up(md) {
+		width: auto;
+		padding: 0em 1.25em 0em 2.25em;
+		border-radius: 1em;
+		margin-bottom: .8em;
+	}
+	
+	> span {
+		display: block;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		width: 100%;
+	}
+
+	.icon {
+		display: block;
+		position: absolute;
+		top: 50%;
+		left: 0;
+		width: 2em;
+		height: 2em;
+		transform: translate(.6em, -50%);
+		fill: $background;
+		background: $color;
+
+		@include media-breakpoint-up(md) {
+			top: 0;
+			transform: none;
+			width: 1.74em;
+			height: 1.74em;
+		}
+		border-radius: 50%;
+	}
+
+}
+
+.btn-action.btn-warning {
+	@include button-action($state-warning-text, $state-warning-bg);
+}
+
+.btn-action.btn-danger {
+	@include button-action($state-danger-text, $state-danger-bg);
+}
+
+.btn-action.btn-eservice {
+	@include button-action($sk-eservice-fg, $sk-eservice-bg);
+}
+
+.btn-action.btn-purple {
+	@include button-action(profile-color(björnstigen, 2), profile-color(björnstigen, 3));
+}

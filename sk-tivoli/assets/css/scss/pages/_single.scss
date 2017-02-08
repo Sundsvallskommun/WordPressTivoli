@@ -1,0 +1,80 @@
+/*
+ * Regular page/post like single.php, post.php
+ * */
+
+.single-post {
+
+	&__row {
+		@include make-row();
+	}
+
+
+	&__content {
+
+		a[target="_blank"]:after {
+			background: url('../images/external.png');
+			background-size: cover;
+			content: '';
+			display: inline-block;
+			height: .75em;
+			width: .75em;
+			margin-left: .25em;
+		}
+
+		.table-wrapper {
+			@extend .table-responsive;
+		}
+
+		table {
+			@extend .table;
+			@extend .table-hover;
+			//@extend .table-sm;
+			//@extend .table-striped;
+
+			thead {
+			}
+
+			td {
+				color: $paragraph-color;
+			}
+		}
+
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+
+		@include make-col();
+		@include make-col-span(12);
+
+		@include media-breakpoint-up(md) {
+			@include make-col-span(10);
+		}
+		@include media-breakpoint-up(lg) {
+			max-width: 48.125em;
+		}
+
+		p, ul, ol, dl {
+			color: $paragraph-color;
+		}
+
+		p.lead {
+			color: inherit;
+		}
+	}
+
+	&__title {
+		font-size: 1.5em;
+		margin-top: .25em;
+		@include media-breakpoint-up(sm) {
+			font-size: 3.5em;
+			margin-top: 0;
+		}
+		margin-bottom: .8em;
+	}
+
+	&__date {
+		font-size: .9375em;
+	}
+
+}

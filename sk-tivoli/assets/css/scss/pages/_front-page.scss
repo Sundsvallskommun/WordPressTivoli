@@ -1,0 +1,259 @@
+
+.front-page-section-margin {
+	@include media-breakpoint-up(sm) {
+		margin-top: 3rem;
+	}
+
+	@include media-breakpoint-up(lg) {
+		margin-top: 5rem;
+	}
+}
+
+%mobile-divider {
+	@include media-breakpoint-down(sm) {
+		border-bottom: 1px solid lighten($gray-light, 25);
+		box-shadow: 0 20px 0 $gray-lightest;
+		padding-bottom: $spacer-y * 2;
+	}
+}
+
+.home,
+.page-template-page-advanced {
+
+	.image-boxes-container {
+		@extend %mobile-divider;
+
+		@include media-breakpoint-down(sm) {
+			margin-bottom: $spacer-y * 2;
+			padding-bottom: 0;
+		}
+	}
+
+	main > .container-fluid {
+		margin-top: 0;
+	}
+
+	.front-page__heading {
+		font-size: 1.5rem;
+		@include media-breakpoint-up(md) {
+			font-size: 2rem;
+			margin-top: 0;
+		}
+
+		margin-top: .65em;
+		margin-bottom: .75em;
+	}
+
+	@include media-breakpoint-down(sm) {
+
+		.content-news-row {
+			display: flex;
+			flex-flow: column;
+		}
+
+		.content-col {
+			order: 3;
+		}
+
+		.news-col {
+			order: 1;
+		}
+
+		.front-page-section__service-messages {
+			order: 2;
+		}
+
+	}
+
+	.content-col,
+	.news-col,
+	.front-page-section__service-messages {
+		@include make-col();
+		@include media-breakpoint-down(sm) {
+			margin-bottom: $spacer-y * 1.5;
+		}
+
+		@extend %mobile-divider;
+		@include media-breakpoint-down(sm) {
+			padding-left: $spacer-x * 1.5;
+			padding-right: $spacer-x * 1.5;
+			margin-bottom: 0;
+		}
+	}
+
+	.content-col {
+
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+
+		margin-top: .6em;
+
+		@include make-col-span(12);
+
+		@include media-breakpoint-up(md) {
+			@include make-col-span(6);
+		}
+
+		@include media-breakpoint-up(lg) {
+			@include make-col-span(7.5);
+		}
+
+		.page-widget__columns {
+			margin-bottom: .6em;
+		}
+	}
+
+	.news-col {
+
+		margin-top: 1.35em;
+
+		@include make-col-span(12);
+		
+		@include media-breakpoint-up(md) {
+			@include make-col-span(6);
+		}
+
+		@include media-breakpoint-up(lg) {
+			@include make-col-span(4.5);
+		}
+
+		.widget-latest-news {
+			margin-bottom: 1.7em;
+		}
+	}
+
+	.content-col .front-page__heading,
+	.news-col .front-page__heading {
+		margin-bottom: 1.4em;
+	}
+
+	.news-col .front-page__heading {
+		font-size: 1.25rem;
+		margin-bottom: 2.1em;
+	}
+
+	// E-service container
+	.page-widget__container {
+		padding-top: 0;
+	}
+
+	.widget-eservices {
+
+		@include media-breakpoint-down(md) {
+			padding-top: 1.75rem;
+		}
+
+		> .page-widget__columns {
+			position: relative;
+			margin-top: 4.7em;
+		}
+
+		.eservice-link {
+			margin-top: .8em;
+			@include media-breakpoint-up(sm) {
+				margin-bottom: 0;
+			}
+		}
+
+		h3,h4 {
+			font-size: 1.25em;
+			margin-bottom: .4em;
+			margin-top: 1.55em;
+
+			&:first-child {
+				top: -1.5em;
+				position: absolute;
+				margin-top: 0;
+			}
+		}
+	}
+
+	.mobile-news .news .front-page__heading {
+		@include media-breakpoint-down(md) {
+			display: none;
+		}
+	}
+}
+
+
+.widget-latest-news__post .media-left {
+
+	@include media-breakpoint-down(sm) {
+		.small {
+			display: none;
+		}
+		.img-placeholder {
+			width: 100%;
+			height: 200px;
+			height: 72.5vw;
+		}
+	}
+	@include media-breakpoint-up(md) {
+		.large {
+			display: none;
+		}
+	}
+}
+
+@include media-breakpoint-down(sm) {
+
+	.widget-latest-news {
+
+		position: relative;
+
+		&__post {
+			margin: 0;
+			.media-left {
+				display: block;
+				width: 100%;
+				padding: 0 !important;
+				margin-bottom: $spacer-y;
+			}
+
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}
+
+	}
+
+	.news-slider {
+		position: relative;
+	}
+
+	.slider-controls {
+
+		.icon {
+			width: 100%;
+			height: 100%;
+		}
+
+		#prevslide,
+		#nextslide {
+
+			opacity: .75;
+			position: absolute;
+			top: calc(75vw - 3em);
+			padding: 0;
+			height: 2em;
+			width: 2em;
+			fill: profile-color(björnstigen, 2);
+			&:hover {
+        opacity: 1;
+				fill: profile-color(björnstigen, 3);
+			}
+		}
+		#prevslide {
+			left: 1.5em;
+			transform: translateY(-50%) translateX(-65%) rotate(180deg);
+		}
+		#nextslide {
+			right: 1.5em;
+			transform: translateY(-50%) translateX(65%);
+		}
+	}
+
+}

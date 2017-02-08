@@ -1,0 +1,48 @@
+.lead {
+	line-height: 1.55;
+	margin-bottom: 2.2em;
+
+	@include media-breakpoint-down(sm) {
+		font-size: $font-size-base;
+	}
+}
+
+p,
+ol,
+ul,
+dl,
+.table-wrapper,
+blockquote,
+.eservice-single-block {
+	+ h2,
+	+ h3,
+	+ h4,
+	+ h5,
+	+ .h2,
+	+ .h3,
+	+ .h4,
+	+ .h5 {
+		margin-top: 1.9em;
+	}
+}
+
+.blockquote {
+
+	quotes: "\201C""\201D""\2018""\2019";
+
+	&:before {
+		content: open-quote;
+		color: $blockquote-border-color;
+		font-size: 4em;
+		line-height: 0.1em;
+		vertical-align: -0.4em;
+	}
+}
+
+blockquote {
+	@extend .blockquote;
+
+	p:last-child {
+		margin-bottom: 0;
+	}
+}

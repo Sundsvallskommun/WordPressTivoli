@@ -1,0 +1,133 @@
+{
+    "key": "group_581057698de81",
+    "title": "Tema",
+    "fields": [
+        {
+            "key": "field_589995c84edbf",
+            "label": "Temaf\u00e4rger",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_58105ba0c66c0",
+            "label": "Temaf\u00e4rg 1",
+            "name": "theme_color_1",
+            "type": "color_picker",
+            "instructions": "F\u00e4rg f\u00f6r bl.a. sidfot, sidhuvud.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#5B1F78"
+        },
+        {
+            "key": "field_5810688a0feb1",
+            "label": "Temaf\u00e4rg 2",
+            "name": "theme_color_2",
+            "type": "color_picker",
+            "instructions": "F\u00e4rg f\u00f6r bl.a. toppmeny l\u00e4ngst upp p\u00e5 sidan.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#D85194"
+        },
+        {
+            "key": "field_589995e44edc0",
+            "label": "L\u00e4nklista",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_589995321fe9c",
+            "label": "F\u00e4rg p\u00e5 cirkel",
+            "name": "theme_linklist_circle_color",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#f7f7f7"
+        },
+        {
+            "key": "field_58999e256e934",
+            "label": "Utf\u00e4llbart inneh\u00e5ll",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_58999e3a6e935",
+            "label": "F\u00e4rg p\u00e5 ikon",
+            "name": "theme_collapse_icon_color",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-allmant"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "menu_item_level": "all",
+    "modified": 1486462633
+}

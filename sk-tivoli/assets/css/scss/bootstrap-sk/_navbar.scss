@@ -1,0 +1,16 @@
+.navbar {
+	padding: 0;
+
+	.container-fluid {
+	}
+}
+
+.navbar-nav {
+	.nav-item + .nav-item {
+		margin-left: 1px;
+	}
+
+	.nav-link {
+		padding: .3rem 1.875rem;
+	}
+}

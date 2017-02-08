@@ -1,0 +1,72 @@
+// Webb-i-webb
+
+.advanced-template-header {
+  .logo-container {
+
+    display: block;
+    margin-top: .5em;
+    max-width: 100%;
+    white-space: nowrap;
+
+		@include media-breakpoint-down(md) {
+			max-width: 100%;
+			width: 100%;
+			text-align: center;
+		}
+
+    > * {
+      vertical-align: middle;
+    }
+
+
+		.parent-site-logo {
+			float: left;
+			@include media-breakpoint-down(md) {
+				display: none;
+			}
+			.site-title {
+				margin-top: .05em;
+				margin-right: $spacer-x;
+			}
+		}
+
+    a {
+      display: inline-block;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    .logo-divider {
+      font-size: 1.5em;
+      @include media-breakpoint-up(md) {
+        font-size: 3em;
+      }
+			@include media-breakpoint-down(md) {
+				display: none;
+			}
+      vertical-align: 0;
+    }
+
+    .icon {
+      max-width: 1.75em;
+      margin-right: .3em;
+    }
+
+  }
+
+  h1 {
+    display: inline-block;
+  }
+
+  .logo-container a {
+    color: inherit;
+    font-weight: 500;
+    font-size: 1.25rem;
+    @include media-breakpoint-up(md) {
+      font-size: 3rem;
+    }
+  }
+
+}
+

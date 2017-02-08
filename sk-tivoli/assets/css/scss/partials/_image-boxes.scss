@@ -1,0 +1,8 @@
+.image-boxes {
+  margin-top: $spacer-y;
+  margin-bottom: $spacer-y;
+  @include media-breakpoint-up(md) {
+    margin-top: $spacer-y*3;
+    margin-bottom: $spacer-y*2;
+  }
+}

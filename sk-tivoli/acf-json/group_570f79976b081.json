@@ -1,0 +1,41 @@
+{
+    "key": "group_570f79976b081",
+    "title": "Exponering",
+    "fields": [
+        {
+            "key": "field_573448dfe86c5",
+            "label": "Visa p\u00e5 hela webbplatsen",
+            "name": "pin_post_global",
+            "type": "true_false",
+            "instructions": "Visas som en list under menyn p\u00e5 alla sidor p\u00e5 webbplatsen.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Ja.",
+            "default_value": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "service_message"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "menu_item_level": "all",
+    "modified": 1476452741
+}

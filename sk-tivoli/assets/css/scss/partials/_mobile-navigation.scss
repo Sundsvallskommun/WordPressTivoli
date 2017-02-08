@@ -1,0 +1,158 @@
+/**
+* Buttons to toggle navigation + search
+*/
+
+.btn-mobile-fixed {
+
+	@include media-breakpoint-up(md) {
+		display: none;
+	}
+
+	position: fixed;
+	bottom: 1rem;
+	z-index: 100;
+
+
+	.iconwrapper {
+		display: inline-block;
+		background: white;
+		border-radius: 50%;
+		position: relative;
+		width: 4.35rem;
+		height: 4.35rem;
+		box-shadow: $overlay_shadow;
+		font-size: 1rem;
+		text-transform: uppercase;
+		text-align: center;
+		fill: $brand-primary;
+		overflow: hidden;
+	}
+
+	.search-active & {
+		bottom: -.15rem;
+		.iconwrapper {
+			box-shadow: none;
+		}
+	}
+
+	.icon {
+		font-size: 1.75em;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.icon-active {
+		display: none;
+	}
+
+	.search-active &,
+	.offcanvas-active-bottom & {
+
+		.icon-inactive {
+			display: none;
+		}
+
+		.icon-active {
+			display: inline-block;
+		}
+	}
+
+	&-bottom-left {
+		left: 1rem;
+
+		.offcanvas-active-bottom & {
+			display: none;
+		}
+
+		.search-active & {
+			left: .35rem;
+		}
+
+	}
+
+	&-bottom-right {
+		right: 1rem;
+
+		.icon-inactive {
+			font-size: 1.25em;
+		}
+
+		.search-active & {
+			display: none;
+		}
+
+	}
+
+	.icon-active {
+		font-size: .875em;
+	}
+
+}
+
+
+/**
+ * Off canvas navigation, sliding from bottom
+ */
+.offcanvas {
+
+	.nav-header {
+		padding-top: .75em;
+		padding-bottom: .75em;
+
+		h2 {
+			font-size: 1.5em;
+			margin-top: .5em;
+			margin-bottom: 0;
+		}
+	}
+
+	// Login button and dropdown
+	.btn-rounded {
+		background: transparent;
+	}
+
+	@include media-breakpoint-down(sm) {
+		opacity: 0; // Opacity 0 when hidden, else it might show up in mobile when viewport changes height on scroll
+		z-index: 2;
+		background: white;
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		overflow: scroll;
+		-webkit-overflow-scrolling: touch;
+		transform: translateY(100%);
+		transition: transform $offcanvas-transition-duration, padding $mobile-search-transition-duration, opacity 0s $offcanvas-transition-duration;
+		-webkit-overflow-scrollling: touch; // More standard scroll behaviour in iOS
+		&.active,
+		&:target {
+			transform: translateY(0);
+			opacity: 1;
+		transition: transform $offcanvas-transition-duration, padding $mobile-search-transition-duration, opacity 0s;
+		}
+	}
+
+	.site-logo {
+
+		a {
+			width: auto;
+			padding: 0;
+			border-bottom: none;
+		}
+
+	}
+
+}
+
+@include media-breakpoint-down(sm) {
+
+	body.offcanvas-active-bottom,
+	body.offcanvas-animating-bottom {
+		overflow: hidden;
+	}
+
+}
+
