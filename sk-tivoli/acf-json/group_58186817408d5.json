@@ -4,10 +4,10 @@
     "fields": [
         {
             "key": "field_581b565ed4e19",
-            "label": "Sektioner",
+            "label": "Sektioner\/rad",
             "name": "sk-flexible-sections",
             "type": "flexible_content",
-            "instructions": "",
+            "instructions": "En sektion \u00e4r en rad som kan inneh\u00e5lla flera kolumner. Webbplatsen \u00e4r byggd i ett s\u00e5 kallat 12-kolumnsystem. Att t\u00e4nka p\u00e5 \u00e4r att resultatet av v\u00e4rdena i kolumnernas kolumn-grid i en sektion ska vara 12. <br>\r\nF\u00f6r att t ex skapa tre lika breda kolumner i en sektion s\u00e5 ska v\u00e4rdet i varje kolumn-grid vara 4 (3x4=12).",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -27,10 +27,10 @@
                     "sub_fields": [
                         {
                             "key": "field_584ffece7fc5d",
-                            "label": "Grid",
+                            "label": "Kolumner",
                             "name": "sk-row",
                             "type": "repeater",
-                            "instructions": "",
+                            "instructions": "F\u00f6r att placera inneh\u00e5ll i en kolumn beh\u00f6ver du skapa ett block eller ange en kort kod (short code).",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -42,7 +42,7 @@
                             "min": "",
                             "max": "",
                             "layout": "row",
-                            "button_label": "L\u00e4gg till rad",
+                            "button_label": "L\u00e4gg till kolumn",
                             "sub_fields": [
                                 {
                                     "key": "field_584fff1c7fc5e",
@@ -183,5 +183,5 @@
     "active": 1,
     "description": "",
     "menu_item_level": "all",
-    "modified": 1484228302
+    "modified": 1486481911
 }
