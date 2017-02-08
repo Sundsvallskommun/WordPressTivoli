@@ -15,6 +15,12 @@ function sk_header() {
 
 }
 
+/**
+ * Class for theme version.
+ */
+require_once locate_template( 'lib/class-sk-release-version.php' );
+
+
 require_once locate_template( 'lib/page-advanced.php' );
 
 /*
