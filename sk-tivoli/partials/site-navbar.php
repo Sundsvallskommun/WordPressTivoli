@@ -52,7 +52,7 @@ ob_start();
 
 						<?php if( 'google_translate' == $type ): ?>
 
-							<button class="btn btn-primary btn-sm nav-link dropdown-toggle" lang="en" type="button" id="languageMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" <?php theme_color( array('background', 'border-color'), 2); ?>>
+							<button class="btn btn-primary btn-sm nav-link dropdown-toggle" lang="en" type="button" id="languageMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Language
 							</button>
 
