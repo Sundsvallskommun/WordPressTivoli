@@ -240,10 +240,10 @@
 			padding: 0;
 			height: 2em;
 			width: 2em;
-			fill: profile-color(björnstigen, 2);
+			fill: profile-color(default);
 			&:hover {
         opacity: 1;
-				fill: profile-color(björnstigen, 3);
+				fill: profile-color(default);
 			}
 		}
 		#prevslide {
