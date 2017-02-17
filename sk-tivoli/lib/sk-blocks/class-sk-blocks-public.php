@@ -57,7 +57,7 @@ class SK_Blocks_Public {
 	 * @param $column
 	 */
 	public static function print_shortcode( $column ) {
-		if ( intval( $column['sk-grid-border'] ) === 1 ) : ?>
+		if ( isset( $column['sk-grid-border'] ) && intval( $column['sk-grid-border'] ) === 1 ) : ?>
 			<div class="sk-grid-border-inner">
 				<?php echo do_shortcode( $column['sk-short-code'] ); ?>
 			</div>
