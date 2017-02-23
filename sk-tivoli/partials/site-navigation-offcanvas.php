@@ -6,6 +6,11 @@
 
 	<div class="nav-header hidden-md-up">
 		<h2 class="pull-xs-left m-b-1">Meny</h2>
+		<div class="pull-xs-right">
+			<div class="nav-item dropdown">
+				<?php get_mobile_top_navbar(); ?>
+			</div>
+		</div>
 		<div class="clearfix"></div>
 	</div>
 
