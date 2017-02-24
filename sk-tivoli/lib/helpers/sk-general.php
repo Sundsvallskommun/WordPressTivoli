@@ -353,9 +353,9 @@ function get_mobile_top_navbar() {
 				printf( '<a class="dropdown-item" href="%s" title="%s">%s</a>', $item['link_url'], $item['link_text'], $item['link_text'] );
 			}
 
-			if ( $item['acf_fc_layout'] === 'google_translate' ) {
-				return false;
-			}
+			/* Hide until we have a fix for google translate.
+				if ( $item['acf_fc_layout'] === 'google_translate' ) {}
+			*/
 		}
 		?>
 	</div><!-- .dropdown-menu -->
