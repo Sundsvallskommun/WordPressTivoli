@@ -3,6 +3,25 @@
     "title": "Toppmeny",
     "fields": [
         {
+            "key": "field_58aee6d5219b5",
+            "label": "L\u00e4nkrubrik",
+            "name": "sk_mobile_top_navbar_title",
+            "type": "text",
+            "instructions": "Vid responsivt l\u00e4ge (mobilvy) s\u00e5 visas en knapp som f\u00e4ller ut toppmenyn. H\u00e4r kan du \u00e4ndra standardtexten \"Toppmeny\" till valfri text.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_57d94cf95122e",
             "label": "Toppl\u00e4nkar",
             "name": "header_links",
@@ -303,5 +322,5 @@
     "active": 1,
     "description": "",
     "menu_item_level": "all",
-    "modified": 1478968798
+    "modified": 1487856494
 }
