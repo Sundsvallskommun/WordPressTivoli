@@ -9,6 +9,22 @@
 ! Remember to update version.php with the correct version number, located in the theme folder.
 ! Remember to create a new release and add the same information as below about the release.
 
+http://semver.org/
+
+
+== Version 1.3.0 ==
+
+=== MINOR ===
+* Added theme colouring settings.
+* Added top navbar to be visible in mobile navigation.
+* Possibility to use Google Analytics.
+
+=== PATCH ===
+* Missing ACF Field for block type image
+* Removed some colours that where specifically for sundsvall.se
+* Fix to show mobile navigation when navigation is not used.
+* Closed some notice for undefined variables.
+
 
 == Version 1.0.0 ==
 First release, starting at 1.0.0
