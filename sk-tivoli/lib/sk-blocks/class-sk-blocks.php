@@ -9,9 +9,9 @@ class SK_Blocks {
 	 * SK_Blocks constructor.
 	 */
 	function __construct() {
-		add_action('after_setup_theme', function () {
+		add_action( 'after_setup_theme', function () {
 			$this->init();
-		});
+		} );
 
 	}
 
@@ -21,15 +21,15 @@ class SK_Blocks {
 	 * @author Daniel Pihlström <daniel.pihlstrom@cybercom.com>
 	 *
 	 */
-	public function init(){
+	public function init() {
 		$sk_blocks_public = new SK_Blocks_Public();
-		$sk_blocks_admin = new SK_Blocks_Admin();
+		$sk_blocks_admin  = new SK_Blocks_Admin();
 	}
 
 
 	public static function get_block( $column ) {
 
-		switch ($column['sk-content-type']) {
+		switch ( $column['sk-content-type'] ) {
 			case 'block':
 				SK_Blocks_Public::print_block( $column );
 				break;
@@ -43,11 +43,10 @@ class SK_Blocks {
 	}
 
 
-
-	public static function get_sections(){
+	public static function get_sections() {
 		global $post;
 
-		if( class_exists('acf') ) {
+		if ( class_exists( 'acf' ) ) {
 
 			$sections = get_field( 'sk-flexible-sections' );
 
@@ -60,10 +59,11 @@ class SK_Blocks {
 
 	}
 
-	public static function is_grid_border( $section ){
+	public static function is_grid_border( $section ) {
 
-		if( intval( $section['sk-row'][0]['sk-grid-border']) === 1 )
+		if ( isset( $section['sk-row'][0]['sk-grid-border'] ) && intval( $section['sk-row'][0]['sk-grid-border'] ) === 1 ) {
 			echo ' has-grid';
+		}
 
 		return false;
 	}

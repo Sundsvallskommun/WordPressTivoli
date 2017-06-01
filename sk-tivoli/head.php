@@ -16,7 +16,7 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?> <?php echo apply_filters('sk_body_attr', $attr = array() );?>>
+<body <?php body_class(); ?> <?php echo apply_filters('sk_body_attr', $attr = '' );?>>
 
 <?php 
 //Kollar om filen analyticstracking.php finns. Detta för att få in Google Analytic koden i de siter som ska ha det.

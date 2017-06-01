@@ -45,13 +45,14 @@ if(!class_exists('Menu_Icons_Walker')) {
 if ( has_nav_menu( 'main-menu' ) ) {
 	$activated = get_field( 'sk_nav_menu', 'options');
 
+	$hide = '';
 	if ( ! $activated )
-		return false;
+		$hide = ' hidden-md-up';
 
 	$nav_args = array(
 		'theme_location'  => 'main-menu',
 		'container'       => false,
-		'menu_class'      => 'menu-container list-inline',
+		'menu_class'      => 'menu-container list-inline' . $hide,
 		'items_wrap'      => '<nav id="%1$s" class="%2$s">%3$s</nav>',
 		'walker'          => new Menu_Icons_Walker()
 	);

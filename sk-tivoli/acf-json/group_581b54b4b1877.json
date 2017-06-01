@@ -1,0 +1,49 @@
+{
+    "key": "group_581b54b4b1877",
+    "title": "Block - bild",
+    "fields": [
+        {
+            "key": "field_581b5583d372d",
+            "label": "Bild",
+            "name": "sk-blocks-image",
+            "type": "image",
+            "instructions": "Optimala bildstorlekar beroende p\u00e5 t\u00e4nkt placering: <br>\r\n- H\u00f6gerkolumn intill nyheter: 740px x 940 px.\r\n- Bred bild som ska str\u00e4cka sig \u00f6ver hela kolumnen: 1170 px bred.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_taxonomy",
+                "operator": "==",
+                "value": "block-type:bild"
+            }
+        ]
+    ],
+    "menu_order": 1,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "menu_item_level": "all",
+    "modified": 1486989531
+}

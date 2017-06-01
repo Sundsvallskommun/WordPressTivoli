@@ -13,6 +13,11 @@ function sk_header() {
 		get_header();
 	}
 
+
+	if( is_page_template('templates/page-navigation.php') ){
+		set_page_theme();
+	}
+
 }
 
 /**

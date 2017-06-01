@@ -20,6 +20,29 @@
             "prepend": "",
             "append": "",
             "maxlength": ""
+        },
+        {
+            "key": "field_589b30b87b0fd",
+            "label": "Visa ikoner",
+            "name": "sk_block_navigation_menu_show_icons",
+            "type": "checkbox",
+            "instructions": "T\u00e4nk p\u00e5 att ikoner beh\u00f6ver kopplas p\u00e5 till menyposterna under \"Utseende > Menyer\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "ja": "Visa ikoner"
+            },
+            "default_value": [
+
+            ],
+            "layout": "vertical",
+            "toggle": 0,
+            "return_format": "value"
         }
     ],
     "location": [
@@ -40,5 +63,5 @@
     "active": 1,
     "description": "",
     "menu_item_level": "all",
-    "modified": 1483534015
+    "modified": 1486568800
 }

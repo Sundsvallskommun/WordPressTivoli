@@ -57,7 +57,7 @@ class SK_Blocks_Public {
 	 * @param $column
 	 */
 	public static function print_shortcode( $column ) {
-		if ( intval( $column['sk-grid-border'] ) === 1 ) : ?>
+		if ( isset( $column['sk-grid-border'] ) && intval( $column['sk-grid-border'] ) === 1 ) : ?>
 			<div class="sk-grid-border-inner">
 				<?php echo do_shortcode( $column['sk-short-code'] ); ?>
 			</div>
@@ -301,6 +301,8 @@ class SK_Blocks_Public {
 	private static function get_block_navigation( $block_id = '', $grid = '' ) {
 
 		$menu_name = get_field( 'sk_block_navigation_menu_name', $block_id );
+		$use_icons = get_field( 'sk_block_navigation_menu_show_icons', $block_id );
+
 		$menu_items = wp_get_nav_menu_items( $menu_name );
 
 		foreach ( $menu_items as $menu_item ) {
@@ -345,7 +347,7 @@ class SK_Blocks_Public {
 
 
 		?>
-		<div class="block block-navigation-cards">
+		<div class="block block-navigation-cards<?php echo !empty($use_icons) ? ' use-icons' : null;?>">
 			<div class="row">
 				<div class="col-md-12">
 
@@ -370,6 +372,7 @@ class SK_Blocks_Public {
 
 							$keyword = get_section_class_name( $parent );
 
+
 							?>
 
 							<div
@@ -379,6 +382,8 @@ class SK_Blocks_Public {
 										<?php if ( $is_shortcut === 'external' ) {
 											the_icon( 'external' );
 										} ?>
+
+										<?php echo !empty( $use_icons ) ? get_section_icon( $parent->ID ) : null; ?>
 									</span>
 
 									<?php if ( $is_shortcut === 'page' && is_null( get_field( 'page_link', $parent_id ) ) ) : ?>

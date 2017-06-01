@@ -314,3 +314,51 @@ function get_attachment_id( $url ) {
 	}
 	return $attachment_id;
 }
+
+
+/**
+ * Top navbar for mobile navigation
+ *
+ * @author Daniel Pihlström <daniel.pihlstrom@cybercom.com>
+ *
+ */
+function get_mobile_top_navbar() {
+
+	$items = get_field( 'header_links', 'option' );
+
+	if ( empty( $items ) ) {
+		return false;
+	}
+
+	$button_title = get_field( 'sk_mobile_top_navbar_title', 'options' );
+
+	?>
+
+	<button class="btn btn-secondary btn-rounded dropdown-toggle" data-toggle="dropdown" type="button"
+	        id="loginMenuButtonMobile" aria-haspopup="true" aria-expanded="false">
+		<?php echo ! empty( $button_title ) ? $button_title : __( 'Toppmeny', 'sk-tivoli' ); ?>
+	</button>
+	<div class="dropdown-menu" aria-labelledby="loginMenuButtonMobile">
+
+		<?php
+
+		foreach ( $items as $item ) {
+			if ( $item['acf_fc_layout'] === 'link_list' ) {
+				foreach ( $item['links'] as $link ) {
+					printf( '<a class="dropdown-item" href="%s" title="%s">%s</a>', $link['link_url'], $link['link_text'], $link['link_text'] );
+				}
+			}
+
+			if ( $item['acf_fc_layout'] === 'simple_link_external' || $item['acf_fc_layout'] === 'simple_link_internal' ) {
+				printf( '<a class="dropdown-item" href="%s" title="%s">%s</a>', $item['link_url'], $item['link_text'], $item['link_text'] );
+			}
+
+			/* Hide until we have a fix for google translate.
+				if ( $item['acf_fc_layout'] === 'google_translate' ) {}
+			*/
+		}
+		?>
+	</div><!-- .dropdown-menu -->
+	<?php
+
+}

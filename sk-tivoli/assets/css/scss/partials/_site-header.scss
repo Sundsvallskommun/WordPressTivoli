@@ -41,7 +41,7 @@
 }
 
 .mobile-header {
-	border-top: 6px solid profile-color(björnstigen, 2);
+	border-top: 6px solid profile-color(default);
 	z-index: 1;
 
 	.site-title {
@@ -171,7 +171,7 @@
 	}
 
 	.icon {
-		fill: $brand-primary;
+		fill: $sk-dark-grey;
 		width: 2.1em;
 		height: 1.50em;
 		vertical-align: middle;

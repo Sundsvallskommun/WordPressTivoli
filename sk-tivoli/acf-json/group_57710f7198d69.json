@@ -28,9 +28,9 @@
     "location": [
         [
             {
-                "param": "page_type",
+                "param": "page_template",
                 "operator": "==",
-                "value": "front_page"
+                "value": "templates\/page-start-simple.php"
             }
         ],
         [
@@ -47,7 +47,8 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": 0,
     "description": "",
-    "modified": 1473163004
+    "menu_item_level": "all",
+    "modified": 1486481858
 }

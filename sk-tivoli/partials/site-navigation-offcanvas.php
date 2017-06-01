@@ -1,11 +1,16 @@
 <div id="mainNavigation" class="site-navigation offcanvas">
 
-	<nav class="hidden-md-up mobile-header not-fixed">
+	<nav class="hidden-md-up mobile-header not-fixed" <?php theme_color( 'border-top-color', 1 ); ?>>
 		<?php get_template_part('partials/site-logo'); ?>
 	</nav>
 
 	<div class="nav-header hidden-md-up">
 		<h2 class="pull-xs-left m-b-1">Meny</h2>
+		<div class="pull-xs-right">
+			<div class="nav-item dropdown">
+				<?php get_mobile_top_navbar(); ?>
+			</div>
+		</div>
 		<div class="clearfix"></div>
 	</div>
 
