@@ -18,6 +18,13 @@
 
 <body <?php body_class(); ?> <?php echo apply_filters('sk_body_attr', $attr = '' );?>>
 
+<?php 
+//Kollar om filen analyticstracking.php finns. Detta för att få in Google Analytic koden i de siter som ska ha det.
+if (file_exists($_SERVER["DOCUMENT_ROOT"] . "analyticstracking.php")) {
+			include_once($_SERVER["DOCUMENT_ROOT"] . "analyticstracking.php");
+			}
+		?>
+
 <div id="skiplinks">
 	<a tabindex="1" href="#content" class="focus-only">Hoppa till innehåll.</a>
 </div>
