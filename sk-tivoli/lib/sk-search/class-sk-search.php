@@ -377,8 +377,8 @@ class SK_Search {
 		$query = new WP_Query();
 		$args = $this->queryArgs;
 		$args['post_type'] = 'contact_persons';
-		$posts = $query->query($args);
 		$args = apply_filters('search_contacts_args', $args );
+		$posts = $query->query($args);
 		$posts = apply_filters( 'post_search_result', $posts );
 		$posts = array_map( array( &$this, 'map_wp_posts' ), $posts);
 

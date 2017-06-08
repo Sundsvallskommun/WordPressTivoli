@@ -11,10 +11,11 @@
 
 http://semver.org/
 
-== Version 1.4.0 ==
+== Version 1.5.0 ==
 
 === MINOR ===
 * Language support added to make it possible to use mo/po files for translate or changing phrases without hacking the theme.
+* Added filters to alter the search queries for the custom post types.
 
 === PATCH ===
 * Fixed notice error
