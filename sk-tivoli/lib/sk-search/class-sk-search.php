@@ -288,8 +288,10 @@ class SK_Search {
 		if( $this->is_advanced_search ) {
 			$args['posts_per_page'] = -1;
 		}
-
+		$args = apply_filters('search_pages_args', $args );
 		$posts = $query->query($args);
+
+
 		$posts = apply_filters( 'post_search_result', $posts );
 
 		if( $this->is_advanced_search ) {
@@ -352,6 +354,8 @@ class SK_Search {
 			$args['cat'] = get_field( 'news_category', $this->post_parent );
 		}
 
+		$args = apply_filters('search_posts_args', $args );
+
 		$posts = $query->query($args);
 		$posts = apply_filters( 'post_search_result', $posts );
 		$posts = array_map( array( &$this, 'map_wp_posts' ), $posts);
@@ -374,6 +378,7 @@ class SK_Search {
 		$args = $this->queryArgs;
 		$args['post_type'] = 'contact_persons';
 		$posts = $query->query($args);
+		$args = apply_filters('search_contacts_args', $args );
 		$posts = apply_filters( 'post_search_result', $posts );
 		$posts = array_map( array( &$this, 'map_wp_posts' ), $posts);
 
@@ -394,6 +399,7 @@ class SK_Search {
 		$args = $this->queryArgs;
 		$args['post_type'] = 'attachment';
 		$args['post_status'] = array( 'publish', 'inherit' );
+		$args = apply_filters('search_attachments_args', $args );
 		$posts = $query->query($args);
 		$posts = apply_filters( 'post_search_result', $posts );
 		$posts = array_map( array( &$this, 'map_wp_posts' ), $posts);
