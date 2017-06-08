@@ -19,6 +19,8 @@ class SK_Init {
 
 		add_action('after_setup_theme', array(&$this, 'image_setup'));
 
+		add_action( 'after_setup_theme', array( $this, 'localization' ) );
+
 		add_filter('init', array(&$this, 'options_page'));
 
 		add_filter('embed_oembed_html', array(&$this, 'oembed_wrapper'), 10, 4);
@@ -86,6 +88,19 @@ class SK_Init {
 		add_filter('img_caption_shortcode', array(&$this, 'img_caption_shortcode_size_class'), 10, 3);
 		add_filter('image_size_names_choose', array(&$this, 'sk_attachment_image_size_options'), 10, 1);
 		add_filter( 'wp_calculate_image_sizes', array(&$this, 'sk_content_image_sizes_attr'), 10, 2);
+	}
+
+	/**
+	 * Make the theme available for translation
+	 * and the possibilty to change terminology for some words.
+	 * Language files (mo/po) should be placed in wp-content/languages/themes to prevent
+	 * to be overwritten by a theme update.
+	 *
+	 * @author Daniel Pihlström <daniel.pihlstrom@cybercom.com>
+	 *
+	 */
+	function localization(){
+		load_theme_textdomain( 'sk_tivoli', get_template_directory() . '/languages' );
 	}
 
 	/**
