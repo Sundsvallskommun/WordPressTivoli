@@ -114,6 +114,18 @@ Kollar om en sida är en navigationssida.
 
 ### sk_popular_eservices
 
+## Filters
+#### Alter search query
+Parameters: array $args
+
+`add_filter( 'search_attachments_args', 'my_search_attachments_args', 10, 1 );`
+
+`add_filter( 'search_contacts_args', 'my_search_contacts_args', 10, 1 );`
+
+`add_filter( 'search_posts_args', 'my_search_posts_args', 10, 1 );`
+
+`add_filter( 'search_pages_args', 'my_search_pages_args', 10, 1 );`
+
 ## Shortcodes
 
 ### parkeringsplatser / sk-parking
