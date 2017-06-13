@@ -150,6 +150,11 @@ class SK_Search {
 	 */
 	public function handlebar_templates() {
 		?>
+			
+			<script id="searchitem-template-generic" type="text/x-handlebars-template">
+				<?php printf($this->item_template(), '{{type}}', '{{url}}', get_icon('alignleft'), '{{title}}', '{{type_label}}', 'Uppdaterad {{modified}}' ); ?>
+			</script>
+			
 			<script id="searchitem-template-posts" type="text/x-handlebars-template">
 				<?php printf($this->item_template(), '{{type}}', '{{url}}', get_icon('alignleft'), '{{title}}', '{{type_label}}', 'Uppdaterad {{modified}}' ); ?>
 			</script>
