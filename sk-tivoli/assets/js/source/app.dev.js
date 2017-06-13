@@ -185,8 +185,13 @@ require('./sk_calendar.js');
 
 				var items = '';
 
-				var source = $('#searchitem-template-'+type).html();
-				var template = Handlebars.compile(source);
+				var source = $('#searchitem-template-' + type);
+
+				if (!source.length) {
+					source = $('#searchitem-template-generic');
+				}
+
+				var template = Handlebars.compile(source.html());
 
 				data.posts.forEach(function(item) {
 					console.log(item);
