@@ -150,6 +150,11 @@ class SK_Search {
 	 */
 	public function handlebar_templates() {
 		?>
+			
+			<script id="searchitem-template-generic" type="text/x-handlebars-template">
+				<?php printf($this->item_template(), '{{type}}', '{{url}}', get_icon('alignleft'), '{{title}}', '{{type_label}}', 'Uppdaterad {{modified}}' ); ?>
+			</script>
+			
 			<script id="searchitem-template-posts" type="text/x-handlebars-template">
 				<?php printf($this->item_template(), '{{type}}', '{{url}}', get_icon('alignleft'), '{{title}}', '{{type_label}}', 'Uppdaterad {{modified}}' ); ?>
 			</script>
@@ -200,7 +205,7 @@ class SK_Search {
 
 		$result = array();
 
-		if(!$type || $type == 'page') {
+		if(!$type || $type == 'pages') {
 			$pages = $this->searchresult_pages();
 			$result['pages'] = array(
 				'title' => __( 'Sidor', 'sk_tivoli' ),
@@ -210,7 +215,7 @@ class SK_Search {
 			);
 		}
 
-		if(!$type || $type == 'post') {
+		if(!$type || $type == 'posts') {
 			$posts = $this->searchresult_posts();
 			$result['posts'] = array(
 				'title' => __( 'Nyheter', 'sk_tivoli' ),
@@ -220,7 +225,7 @@ class SK_Search {
 			);
 		}
 
-		if((!$type || $type == 'contact') && !$this->is_advanced_search) {
+		if((!$type || $type == 'contacts') && !$this->is_advanced_search) {
 			$contacts = $this->searchresult_contacts();
 			$result['contacts'] = array(
 				'title' => __( 'Kontakter', 'sk_tivoli' ),
@@ -230,7 +235,7 @@ class SK_Search {
 			);
 		}
 
-		if((!$type || $type == 'attachment') && !$this->is_advanced_search) {
+		if((!$type || $type == 'attachments') && !$this->is_advanced_search) {
 			$attachments = $this->searchresult_attachments();
 			$result['attachments'] = array(
 				'title' => __( 'Bilder och dokument', 'sk_tivoli' ),
