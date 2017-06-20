@@ -18,6 +18,7 @@ WordPress-plugins:
 2. Installera DB
 3. Lägg in eller symlinka temat i `wp-content/themes`
 4. Installera och aktivera WordPress-plugins (se beroenden ovan).
+5. Synkronisera ACF Fältgrupper
 
 En startsida och nyhetsarkiv behöver skapas och sedan kopplas på under "Inställningar > Läsa". 
 Välj en statisk sida för Startsida och Inläggsida.
