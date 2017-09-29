@@ -414,21 +414,26 @@ add_action('acf/save_post', 'clear_transients_on_update', 20);
 
 function clear_transients_on_update( $post_id ) {
 
-	$screen = get_current_screen();
+	if(!is_admin())
+		return false;
 
-	delete_transient( "site_footer_$post_id" );
 
-	if (strpos($screen->id, "acf-options-sidfot") == true) {
-		delete_transient( "site_footer_option" );
-	}
+		$screen = get_current_screen();
 
-	if (strpos($screen->id, "acf-options-sidhuvud") == true) {
-		delete_transient( "site_navbar" );
-	}
+		delete_transient( "site_footer_$post_id" );
 
-	if (strpos($screen->id, "acf-options-allmant") == true) {
-		delete_transient( "site_footer_option" );
-		delete_transient( "site_navbar" );
-	}
+		if ( strpos( $screen->id, "acf-options-sidfot" ) == true ) {
+			delete_transient( "site_footer_option" );
+		}
+
+		if ( strpos( $screen->id, "acf-options-sidhuvud" ) == true ) {
+			delete_transient( "site_navbar" );
+		}
+
+		if ( strpos( $screen->id, "acf-options-allmant" ) == true ) {
+			delete_transient( "site_footer_option" );
+			delete_transient( "site_navbar" );
+		}
+
 
 }
