@@ -25,7 +25,7 @@ Välj en statisk sida för Startsida och Inläggsida.
 
 Permalänkar ska vara satt till "Inläggsnamn" under "Inställningar > Permalänkar".
 
-En navigationsmeny behöver skapas och kopplas som Huvudmeny, se "Utseende > Menyer".
+En navigationsmeny behöver skapas och kopplas som Huvudmeny, se "Utseende > Menyer". Även färgen på huvudmenyerna sätts här under respektive meny-objekt.
 
 Temat har en del övriga inställningar för att eventuellt anpassa webbplatsen. Dessa inställningar finns under menyvalet "Webbplatsen".
 
