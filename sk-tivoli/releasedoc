@@ -11,6 +11,9 @@
 
 http://semver.org/
 
+== Version 1.6.0 ==
+* SSL corrections for CDN
+
 == Version 1.5.1 ==
 * Bugfix for show more trigger on search result page.
 
