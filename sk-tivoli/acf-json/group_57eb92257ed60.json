@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_57eb922f26873",
-            "label": "F\u00e4rg",
+            "label": "Färg",
             "name": "color",
             "type": "color_picker",
             "instructions": "",
@@ -41,14 +41,15 @@
             "ajax": 0,
             "placeholder": "",
             "disabled": 0,
-            "readonly": 0
+            "readonly": 0,
+            "return_format": "value"
         },
         {
             "key": "field_57ecd6fee7a23",
             "label": "Ikon (Ladda upp)",
             "name": "icon",
             "type": "image",
-            "instructions": "Ikon p\u00e5 max 150x150px, helst med transparent bakgrund.",
+            "instructions": "Ikon på max 150x150px, helst med transparent bakgrund.",
             "required": 0,
             "conditional_logic": [
                 [
@@ -80,7 +81,7 @@
             "label": "Ikon (material icon)",
             "name": "material_icon",
             "type": "text",
-            "instructions": "Ikonnamn fr\u00e5n <a href=\"https:\/\/design.google.com\/icons\/\">\r\nGoogle Material Icons\r\n<\/a>",
+            "instructions": "Ikonnamn från <a href=\"https:\/\/design.google.com\/icons\/\">\r\nGoogle Material Icons\r\n<\/a>",
             "required": 0,
             "conditional_logic": [
                 [
@@ -108,7 +109,7 @@
     "location": [
         [
             {
-                "param": "menu",
+                "param": "nav_menu_item",
                 "operator": "==",
                 "value": "all"
             }
@@ -122,6 +123,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "menu_item_level": "first",
-    "modified": 1477557873
+    "modified": 1507885848
 }

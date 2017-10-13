@@ -11,6 +11,9 @@
 
 http://semver.org/
 
+== Version 1.7.0 ==
+* Prepared to remove plugin location-nav-menu-for-acf
+
 == Version 1.6.0 ==
 * SSL corrections for CDN
 
