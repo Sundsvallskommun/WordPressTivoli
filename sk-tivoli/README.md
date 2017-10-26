@@ -4,8 +4,6 @@ WordPress-plugins:
 
 * [ACF (Advanced Custom Fields) Pro](http://www.advancedcustomfields.com/pro/)
 
-* [Location "Nav Menu" for ACF](https://wordpress.org/plugins/location-nav-menu-for-acf/)
-
 * [TinyMCE Advanced](https://sv.wordpress.org/plugins/tinymce-advanced/)
 
 	(Används just nu endast för tabeller, som läggs till programmatiskt i
