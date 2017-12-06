@@ -8,6 +8,8 @@
  * @since 1.0
  */
 
+require_once __DIR__.'/sk-search-data.php';
+
 class SK_Search {
 
 	private $queryArgs;
