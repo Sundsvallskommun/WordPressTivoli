@@ -7,7 +7,7 @@
             "label": "Roll",
             "name": "role",
             "type": "text",
-            "instructions": "Publik rollbeskrivning (ex. Informat\u00f6r)",
+            "instructions": "Publik rollbeskrivning (ex. Informatör)",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -88,7 +88,7 @@
         },
         {
             "key": "field_56e6d56225240",
-            "label": "\u00d6ppettider",
+            "label": "Öppettider",
             "name": "hours",
             "type": "textarea",
             "instructions": "",
@@ -125,6 +125,68 @@
             "maxlength": "",
             "rows": "",
             "new_lines": "wpautop"
+        },
+        {
+            "key": "field_5a29054c72488",
+            "label": "Egna fält",
+            "name": "contact_custom_fields",
+            "type": "repeater",
+            "instructions": "Här finns det möjlighet att utöka ett kontaktkort med egna fält.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_5a2908c172489",
+                    "label": "Rubrik",
+                    "name": "contact_custom_field_title",
+                    "type": "taxonomy",
+                    "instructions": "Skapa en ny rubrik genom att att föra musen över rullisten och klicka på plustecknet eller från vänstermenyn välj \"Kontaktkort > Egna fält\".",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "taxonomy": "contact_persons_labels",
+                    "field_type": "select",
+                    "allow_null": 0,
+                    "add_term": 1,
+                    "save_terms": 0,
+                    "load_terms": 0,
+                    "return_format": "id",
+                    "multiple": 0
+                },
+                {
+                    "key": "field_5a2909992a450",
+                    "label": "Värde",
+                    "name": "contact_custom_field_value",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
         }
     ],
     "location": [
@@ -144,6 +206,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "menu_item_level": "all",
-    "modified": 1485422605
+    "modified": 1512640169
 }
