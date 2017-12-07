@@ -6669,6 +6669,17 @@ body.search-results main {
     text-decoration: none; }
     .link-list:focus .link-list__icon, .link-list:hover .link-list__icon {
       background: #343434; }
+  .link-list__external {
+    position: absolute;
+    top: -7px;
+    right: 0;
+    padding-left: .5em; }
+    @media (max-width: 543px) {
+      .link-list__external {
+        top: 5px;
+        right: 1em; } }
+    .link-list__external .icon {
+      fill: #999999; }
   .link-list__icon {
     content: "";
     color: #f7f7f7;

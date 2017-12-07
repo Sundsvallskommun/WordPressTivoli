@@ -260,7 +260,6 @@ class SK_Blocks_Public {
 
 		$title  = get_field( 'sk_block_link_list_title', $block_id );
 		$groups = get_field( 'sk_block_link_list', $block_id );
-		$markup = '<a class="link-list" href="%s" title="%3$s"><span><span class="link-list__icon">%s</span><span class="link-list__name">%s</span></span></a>';
 		ob_start();
 		?>
 
@@ -273,7 +272,7 @@ class SK_Blocks_Public {
 				<ul>
 					<?php foreach ( $group['link'] as $link ) : ?>
 						<li>
-							<?php echo sprintf( $markup, $link['linklist_url'], get_icon( 'arrow-right' ), $link['linklist_title'] ) ?>
+							<?php echo sprintf( '<a class="link-list" href="%s" title="%3$s"><span><span class="link-list__icon">%s</span><span class="link-list__name">%s</span>%s</span></a>', $link['linklist_url'], get_icon( 'arrow-right' ), $link['linklist_title'], $link['acf_fc_layout'] === 'external-link' ? '<span class="link-list__external">'.get_icon( 'external' ).'</span>' : null ) ?>
 						</li>
 					<?php endforeach; ?>
 				</ul>
