@@ -6356,6 +6356,29 @@ body.search-results main {
       height: auto;
       width: 50%; } }
 
+.blocks .block-image-and-title .block-footer {
+  position: absolute;
+  background-color: rgba(249, 249, 250, 0.93);
+  bottom: 0;
+  height: auto;
+  width: 50%; }
+
+.blocks .block-image-and-title .block-block__image {
+  position: relative; }
+  .blocks .block-image-and-title .block-block__image .block-block__title {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    width: 100%;
+    padding: 0.5em 1em; }
+    .blocks .block-image-and-title .block-block__image .block-block__title h3 {
+      font-family: Arial, sans-serif;
+      font-weight: normal;
+      margin: 0;
+      font-size: 100%;
+      line-height: 140%; }
+
 .blocks .block-navigation-cards.use-icons .nav-card-title {
   padding-left: 2.5em;
   padding-top: 0.25em; }

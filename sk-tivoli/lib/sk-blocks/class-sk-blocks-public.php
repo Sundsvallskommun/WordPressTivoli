@@ -210,8 +210,10 @@ class SK_Blocks_Public {
 			$image = wp_get_attachment_image_src( $image_id, 'full' );
 		}
 
-		$title   = get_field( 'sk-block-image-and-text-title', $block_id );
-		$content = get_field( 'sk-block-image-and-text-content', $block_id );
+		$title     = get_field( 'sk-block-image-and-text-title', $block_id );
+		$content   = get_field( 'sk-block-image-and-text-content', $block_id );
+		$onlytitle = get_field( 'sk-block-image-and-text-only-title', $block_id );
+
 
 
 		$links['internal'] = get_field( 'sk-block-link-internal', $block_id );
@@ -223,14 +225,37 @@ class SK_Blocks_Public {
 			$link = $links['external'];
 		}
 
+		if( !empty( $onlytitle ) ){
+			$onlytitle = true;
+
+		}else{
+			$onlytitle = false;
+		}
+
 		ob_start();
+
+		if( $onlytitle === true ) :
 		?>
+			<?php if ( ! empty( $link ) ) : ?>
+			<a href="<?php echo $link; ?>" title="<?php echo $title; ?>">
+			<?php endif; ?>
+				<div class="block block-image-and-title<?php echo intval( $grid ) === 12 ? ' wide' : null; ?>">
+					<div class="block-block__image">
+						<img src="<?php echo $image[0]; ?>">
+						<div class="block-block__title"><h3><?php echo $title; ?></h3></div>
+					</div>
+				</div><!-- .block-image-and-text -->
+			<?php if ( ! empty( $link ) ) : ?>
+			</a>
+			<?php endif; ?>
+
+		<?php else : ?>
 
 		<div class="block block-image-and-text<?php echo intval( $grid ) === 12 ? ' wide' : null; ?>">
 			<div class="block-block__image"><img src="<?php echo $image[0]; ?>"></div>
 			<div class="block-footer">
 				<div class="block-footer__title"><h3><?php echo $title; ?></h3></div>
-				<div class="block-footer__content"><?php echo $content; ?></div>
+					<div class="block-footer__content"><?php echo $content; ?></div>
 				<?php if ( ! empty( $link ) ) : ?>
 					<div class="block-footer__link"><a
 							href="<?php echo $link; ?>"><?php _e( 'Läs mer', 'sk-tivoli' ); ?><?php material_icon( 'keyboard arrow right', array( 'size' => '1.3em' ) ); ?></a>
@@ -240,6 +265,7 @@ class SK_Blocks_Public {
 		</div><!-- .block-image-and-text -->
 
 		<?php
+		endif;
 		$block = ob_get_clean();
 
 		return $block;

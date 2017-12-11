@@ -7,7 +7,7 @@
             "label": "Bild",
             "name": "sk-block-image-and-text",
             "type": "image",
-            "instructions": "Om det \u00e4r t\u00e4nkt att flera block ska ligga bredvid varandra s\u00e5 b\u00f6r bildernas storlek (bredd x h\u00f6jd) vara lika. Bredden b\u00f6r vara minst 800px f\u00f6r att g\u00f6ra sig bra vid responsiva l\u00e4gen.",
+            "instructions": "Om det är tänkt att flera block ska ligga bredvid varandra så bör bildernas storlek (bredd x höjd) vara lika. Bredden bör vara minst 800px för att göra sig bra vid responsiva lägen.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -46,13 +46,40 @@
             "maxlength": ""
         },
         {
+            "key": "field_5a2957890a450",
+            "label": "Rubrik på bild",
+            "name": "sk-block-image-and-text-only-title",
+            "type": "true_false",
+            "instructions": "Vid rubrik på bild så är det endast rubriktexten som visas.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Ja, placera rubriken på bilden.",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_585145e2f9798",
             "label": "Text",
             "name": "sk-block-image-and-text-content",
             "type": "textarea",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5a2957890a450",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -82,6 +109,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "menu_item_level": "all",
-    "modified": 1483460398
+    "modified": 1512658058
 }
