@@ -1,0 +1,43 @@
+{
+    "key": "group_5a44e4f4a64a0",
+    "title": "Meta värden",
+    "fields": [
+        {
+            "key": "field_5a44e58f9e81d",
+            "label": "Meta description",
+            "name": "sk_meta_description",
+            "type": "textarea",
+            "instructions": "Meta description är en beskrivning av webbplatsen som visas under länken vid sökresultat som på t ex Google. Texten är bör inte vara längre än 320 tecken vilket innebär att vi begränsat antal tecken till 320.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": 320,
+            "rows": "",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-allmant"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1514464961
+}
