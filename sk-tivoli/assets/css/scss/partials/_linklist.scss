@@ -58,7 +58,21 @@
     }
 
   }
+  &__external {
+    position: absolute;
+    top: -8px;
+    right: -2px;
+    padding-left: .5em;
 
+    @include media-breakpoint-down(xs) {
+      top: 5px;
+      right: 1em;
+    }
+
+    .icon{
+      fill: #999999;
+    }
+  }
 
   &__icon {
     content: "";

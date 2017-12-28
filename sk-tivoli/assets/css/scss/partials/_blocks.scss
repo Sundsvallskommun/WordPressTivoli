@@ -108,6 +108,45 @@
 
   }
 
+  .block-image-and-title{
+
+
+    .block-footer {
+      position: absolute;
+      background-color: rgba( $gray-lightest, 0.93);
+      bottom: 0;
+      height: auto;
+      width: 50%;
+    }
+
+    .block-block__image{
+      position: relative;
+
+      .block-block__title{
+        position: absolute;
+        bottom: 0;
+        background: rgba( 0, 0, 0, .5 );
+        color: #ffffff;
+        width: 100%;
+        padding: 0.5em 1em;
+        h3{
+          font-family: Arial, sans-serif;
+          font-weight: normal;
+          margin: 0;
+          font-size: 100%;
+          line-height: 140%;
+        }
+
+
+      }
+
+    }
+
+
+
+
+  }
+
 
   .block-navigation-cards{
 

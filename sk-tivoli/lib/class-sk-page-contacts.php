@@ -17,15 +17,16 @@ class SK_Page_Contacts {
 
 		$this->page_contacts = null;
 
-		add_action( 'init', array(&$this, 'register_post_type'));
-		add_action( 'sk_after_page_content', array(&$this, 'output_page_contacts'), 40);
+		add_action( 'init', array( $this, 'register_post_type' ) );
+		add_action( 'init', array( $this, 'register_taxonomy' ), 10 );
+		add_action( 'sk_after_page_content', array( $this, 'output_page_contacts' ), 40 );
+		add_filter( 'the_title', array( $this, 'contact_unique_admin_titles' ), 10, 2 );
 
-		add_filter('the_title', array(&$this, 'contact_unique_admin_titles'), 10, 2);
+		add_filter( 'enter_title_here', array( $this, 'contact_title_placeholder' ) );
+		add_action( 'edit_form_top', array( $this, 'contact_title_heading' ) );
+		add_action( 'sk_page_helpmenu', array( $this, 'contact_sidebar_link' ), 10 );
 
-		add_filter( 'enter_title_here', array(&$this, 'contact_title_placeholder'));
-		add_action( 'edit_form_top', array( &$this, 'contact_title_heading') );
-
-		add_action( 'sk_page_helpmenu', array( &$this, 'contact_sidebar_link'), 10);
+		add_action( 'admin_menu', array( $this, 'remove_meta_boxes' ), 10 );
 
 	}
 
@@ -125,6 +126,53 @@ class SK_Page_Contacts {
 
 	}
 
+
+	/**
+	 * Register custom taxonomies to be used for custom labels in contact cards.
+	 *
+	 * @author Daniel Pihlström <daniel.pihlstrom@cybercom.com>
+	 *
+	 */
+	public function register_taxonomy() {
+
+		$labels = array(
+			'name'          => _x( 'Egna fält', 'taxonomy general name', 'sk_tivoli' ),
+			'singular_name' => _x( 'Eget fält', 'taxonomy singular name', 'sk_tivoli' ),
+			'search_items'  => __( 'Sök alla fält', 'sk_tivoli' ),
+			'all_items'     => __( 'Alla fält', 'sk_tivoli' ),
+			'edit_item'     => __( 'Ändra fält', 'sk_tivoli' ),
+			'update_item'   => __( 'Uppdatera fält', 'sk_tivoli' ),
+			'add_new_item'  => __( 'Lägg till nytt fält', 'sk_tivoli' ),
+			'not_found'     => __( 'Inga fält funna', 'sk_tivoli' )
+
+		);
+
+		register_taxonomy(
+			'contact_persons_labels',
+			'contact_persons',
+			array(
+				'labels'        => $labels,
+				'public'       => true,
+				'show_ui'      => true,
+				'hierarchical' => false,
+				'parent_item'  => null,
+				'parent_item_colon' => null
+			)
+		);
+
+	}
+
+	/**
+	 * Remove the standard meta box panels to prevent multiple choices.
+	 *
+	 * @author Daniel Pihlström <daniel.pihlstrom@cybercom.com>
+	 *
+	 */
+	public function remove_meta_boxes() {
+		remove_meta_box( 'contact_persons_labels', 'contact_persons', 'side' );
+	}
+
+
 	/**
 	 * Recursive function to get the closest ancestor page that has page
 	 * contacts.
@@ -217,10 +265,13 @@ class SK_Page_Contacts {
 			'hours' => get_field('hours', $contact_id),
 			'description' => get_field('description', $contact_id),
 			'thumbnail' => get_the_post_thumbnail($contact_id, 'thumbnail'),
-			'show_thumb' => $show_thumb
+			'show_thumb' => $show_thumb,
+			'custom_fields' => get_field( 'contact_custom_fields', $contact_id )
 		);
 
 		return $args;
+
+
 
 
 		return $this->get_page_contact_markup($args);
@@ -238,6 +289,7 @@ class SK_Page_Contacts {
 			$contact_thumb = isset($args['thumbnail']) ? $args['thumbnail'] : '';
 			$contact_description = isset($args['description']) ? $args['description'] : '';
 			$show_thumb = isset($args['show_thumb']) ? $args['show_thumb'] : true;
+			$contact_custom_fields = isset($args['custom_fields']) ? $args['custom_fields'] : '';
 
 
 			$contact =  '<div class="page-contact">';
@@ -263,6 +315,7 @@ class SK_Page_Contacts {
 
 			$contact .= '<p class="page-contact__email">';
 			if($contact_email) {
+
 				$contact .= get_email_links($contact_email);
 				if($contact_phone) {
 					$contact .= ' / '; 
@@ -271,11 +324,22 @@ class SK_Page_Contacts {
 			if($contact_phone) {
 				$contact .= get_phone_links($contact_phone);
 			}
+			$contact .= '</p>';
+
+			if( !empty( $contact_custom_fields ) ){
+				$contact .= '<div class="page-contact__custom_fields">';
+				foreach ( $contact_custom_fields as $custom ){
+					$label = get_term_by('term_id', $custom['contact_custom_field_title'], 'contact_persons_labels' );
+					$contact .= sprintf('<h4 class="page-contact__heading">%s</h4>', $label->name );
+					$contact .= sprintf('<div class="page-contact__value">%s</div>', $custom['contact_custom_field_value']);
+				}
+				$contact .= '</div>';
+
+			}
 
 			if($contact_description) {
 				$contact .= $contact_description;
 			}
-			$contact .= '</p>';
 
 			$contact .= '</div>';
 			$contact .= '<div class="clearfix"></div>';

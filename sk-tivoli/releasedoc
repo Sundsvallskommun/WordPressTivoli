@@ -11,6 +11,19 @@
 
 http://semver.org/
 
+== Version 1.12.0 ==
+
+=== MINOR ===
+* Option to add meta description
+* Extended search for "role/title"
+* Added option for block to have text printed on image.
+* Feature to add custom labels/titles for contact cards.
+* Added icon for external links in link list.
+
+=== PATCH/FIX ===
+* Changed default value for news on template page-advanced.
+
+
 == Version 1.7.0 ==
 * Prepared to remove plugin location-nav-menu-for-acf
 

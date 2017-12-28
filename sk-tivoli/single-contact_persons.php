@@ -37,15 +37,32 @@
 				'phone' => array( 'Telefon', get_phone_links( get_field('phone') ) ),
 				'address' => array( 'Adress', get_field('address') ),
 				'hours' => array( 'Öppettider', get_field('hours') ),
+				'custom_fields' => array( '', get_field('contact_custom_fields') ),
 				'description' => array( '', get_field('description') ),
+
 			);
+
+			// remove empty arrays
+			$fields['custom_fields'] = array_filter( $fields['custom_fields'] );
 
 			echo '<dl>';
 			foreach ($fields as $key => $field) {
 
-				if (!$field[1]) continue;
+				if ( ! isset( $field[1] ) ) {
+					continue;
+				}
 
-				printf( '<dt>%s</dt><dd>%s</dd>', $field[0], $field[1]);
+				if ( $key === 'custom_fields' && ! empty( $field[1] ) ) {
+
+					foreach ( $field[1] as $custom ){
+						$label = get_term_by('term_id', $custom['contact_custom_field_title'], 'contact_persons_labels' );
+						printf( '<dt>%s</dt><dd>%s</dd>', $label->name, $custom['contact_custom_field_value']);
+					}
+
+				}else {
+
+					printf( '<dt>%s</dt><dd>%s</dd>', $field[0], $field[1] );
+				}
 			}
 			echo '</dl>';
 

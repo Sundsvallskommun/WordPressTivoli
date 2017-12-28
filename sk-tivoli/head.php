@@ -9,6 +9,9 @@
 	<meta charset="utf-8">
 	<title><?php wp_title( '|', true, 'right' ); ?><?php bloginfo('name'); ?></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<?php if( !empty( get_field( 'sk_meta_description', 'options' ) ) ) : ?>
+	<meta name="description" content="<?php echo get_field( 'sk_meta_description', 'options' ); ?>">
+	<?php endif; ?>
 
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
