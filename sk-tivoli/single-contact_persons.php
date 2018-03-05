@@ -44,7 +44,6 @@
 
 			// remove empty arrays
 			$fields['custom_fields'] = array_filter( $fields['custom_fields'] );
-
 			echo '<dl>';
 			foreach ($fields as $key => $field) {
 
@@ -60,8 +59,9 @@
 					}
 
 				}else {
-
-					printf( '<dt>%s</dt><dd>%s</dd>', $field[0], $field[1] );
+					if ( ! empty( $field[1] ) ) {
+						printf( '<dt>%s</dt><dd>%s</dd>', $field[0], $field[1] );
+					}
 				}
 			}
 			echo '</dl>';

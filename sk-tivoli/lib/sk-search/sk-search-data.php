@@ -2,6 +2,44 @@
 /**
  * Add custom taxonomy for search aliases.
  */
+
+
+/**
+ * Updating posts with search-data.
+ * Should be triggered manually in admin by query string ?update-search-data=lkerlkr2lmcasd
+ *
+ * @author Daniel Pihlström <daniel.pihlstrom@cybercom.com>
+ *
+ */
+function manual_update_search_data(){
+
+	if ( ! is_admin() )
+		return false;
+
+	if(isset( $_GET['update-search-data']) && $_GET['update-search-data'] === 'lkerlkr2lmcasd'){
+
+		$args = array(
+			'posts_per_page' => -1,
+			'post_type' => array( 'page', 'contact_persons'),
+			'post_status' => 'publish'
+		);
+		$posts = get_posts( $args );
+
+		$i = 0;
+		foreach ($posts as $post ){
+			custom_search_data_in_post_content( $post->ID );
+			$i++;
+		}
+
+		echo $i . ' posts updated with search data';
+		die();
+
+	}
+}
+
+add_action( 'admin_init', 'manual_update_search_data' );
+
+
 function alias_tax_init() {
 	// create a new taxonomy
 
@@ -145,15 +183,17 @@ function contact_card_data($post_id) {
 
     $data = '';
 
-    if (!empty($contact_card_ids)) {
+    if (!empty($contact_card_ids[0])) {
 
-        foreach($contact_card_ids as $contact_card_id) {
-            $contact_card_data = fetch_contact_card_data($contact_card_id[0]);
+        foreach($contact_card_ids[0] as $contact_card_id) {
+            $contact_card_data = fetch_contact_card_data($contact_card_id);
             $data .= $contact_card_data . ' ';
         }
     }
 
     return $data;
+
+
 }
 
 /**
