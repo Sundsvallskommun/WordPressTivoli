@@ -196,26 +196,57 @@ function contact_card_data($post_id) {
 
 }
 
+
 /**
- *
  * Fetches data of single contact card
  *
- * @param $contact_card_id the post id
+ * @param $contact_card_id
  *
+ * @return string
  */
-function fetch_contact_card_data($contact_card_id) {
+function fetch_contact_card_data( $contact_card_id ) {
 
-    $post_meta = get_post_meta($contact_card_id);
+	$post_meta = get_post_meta( $contact_card_id );
 
-    if (!$post_meta) {
-        return '';
-    }
+	if ( ! $post_meta ) {
+		return '';
+	}
 
-    $role = array_key_exists('role', $post_meta) ? $post_meta['role'][0] : '';
-    $email = array_key_exists('email', $post_meta) ? $post_meta['email'][0] : '';
-    $phone = array_key_exists('phone', $post_meta) ? $post_meta['phone'][0] : '';
+	$role  = array_key_exists( 'role', $post_meta ) ? $post_meta['role'][0] : '';
+	$email = array_key_exists( 'email', $post_meta ) ? $post_meta['email'][0] : '';
+	$phone = array_key_exists( 'phone', $post_meta ) ? $post_meta['phone'][0] : '';
 
-    return sprintf(" %s %s %s", $role, $email, $phone);
+	$fields['custom_fields'] = get_field( 'contact_custom_fields', $contact_card_id );
+
+	// take care of the custom fields values
+	$custom_fields = '';
+	if ( ! empty( $fields['custom_fields'] ) ) {
+		// remove empty arrays
+		$fields['custom_fields'] = array_filter( $fields['custom_fields'] );
+		foreach ( $fields['custom_fields'] as $field ) {
+			$custom_fields .= ' ' . $field['contact_custom_field_value'];
+		}
+	}
+
+	// fix phone number without whitespaces
+	$n = $phone;
+	if ( ! empty( $n ) ) {
+
+		$numbers = format_phone( $n );
+		$str     = '';
+		$i       = 0;
+		foreach ( $numbers as $num ) {
+			if ( $i > 0 ) {
+				$str .= ', ';
+			}
+			$str .= $num;
+			$i += 1;
+		}
+
+		$phone = str_replace( ' ', '', $str );
+	}
+
+	return sprintf( " %s %s %s %s", $role, $email, $phone, $custom_fields );
 
 }
 
