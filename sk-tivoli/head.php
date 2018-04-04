@@ -9,7 +9,7 @@
 	<meta charset="utf-8">
 	<title><?php wp_title( '|', true, 'right' ); ?><?php bloginfo('name'); ?></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<?php if( !empty( get_field( 'sk_meta_description', 'options' ) ) ) : ?>
+	<?php if( !empty( get_field( 'sk_meta_description', 'options' ) ) && is_front_page() ) : ?>
 	<meta name="description" content="<?php echo get_field( 'sk_meta_description', 'options' ); ?>">
 	<?php endif; ?>
 
