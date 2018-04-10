@@ -205,6 +205,10 @@ function sk_get_excerpt($post_id = 0) {
 	if( $manual_excerpt ) {
 		return $manual_excerpt;
 	}
+	
+	if ( class_exists( 'acf' ) ) {
+		$page_lead_active = get_field( 'page_lead_active', 'option' );
+	}
 
 	global $post;
 	$save_post = $post;
@@ -213,6 +217,11 @@ function sk_get_excerpt($post_id = 0) {
 	$excerpt = get_the_excerpt();
 	$post = $save_post;
 	wp_reset_postdata( $post );
+
+	if( !$page_lead_active ) {
+		return wp_trim_words( $excerpt, 25, ' ... ');
+	}
+
 	return $excerpt;
 }
 
