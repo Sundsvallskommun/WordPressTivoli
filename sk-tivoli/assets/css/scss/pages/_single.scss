@@ -11,6 +11,10 @@
 
 	&__content {
 
+		a{
+			color: #a90074;
+		}
+
 		a[target="_blank"]:after {
 			background: url('../images/external.png');
 			background-size: cover;
