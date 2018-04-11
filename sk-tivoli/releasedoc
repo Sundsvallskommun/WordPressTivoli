@@ -11,6 +11,13 @@
 
 http://semver.org/
 
+== Version 1.12.2 ==
+
+=== PATCH/FIX ===
+* Limit for page lead on navigation cards when ingress/lead is inactive.
+* added color for links in content.
+
+
 == Version 1.12.0 ==
 
 === MINOR ===
