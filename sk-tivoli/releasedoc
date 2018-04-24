@@ -11,6 +11,11 @@
 
 http://semver.org/
 
+== Version 1.12.3 ==
+
+=== PATCH/FIX ===
+* Fix to not save search alias element to all post types, added option to set post types for search alias to be attached to.
+
 == Version 1.12.2 ==
 
 === PATCH/FIX ===

@@ -4,4 +4,4 @@
  * http://semver.org/
  *
  */
-define( 'VERSION', '1.12.2' );
+define( 'VERSION', '1.12.3' );
