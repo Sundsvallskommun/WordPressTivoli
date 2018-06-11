@@ -52,8 +52,6 @@ function get_top_ancestor($item) {
 
 	global $post;
 
-
-
 	if(!isset($item)) {
 		$item = $post;
 	}
@@ -70,10 +68,10 @@ function get_top_ancestor($item) {
 
 	$parent = array_reverse(get_post_ancestors($id));
 
-	if(isset($parent[0])) {
-		$first_parent = get_page($parent[0]);
+	if ( isset( $parent[0] ) ) {
+		$first_parent = get_post( $parent[0] );
 	} else {
-		$first_parent = get_page($item);
+		$first_parent = get_post( $item );
 	}
 
 	return $first_parent;
@@ -88,14 +86,17 @@ function get_top_ancestor($item) {
  *
  * @author Johan Linder <johan@flatmate.se>
  */
-function get_section_class_name($item = null) {
+function get_section_class_name( $item = null ) {
 
-	$top_ancestor = get_top_ancestor($item);
+	$top_ancestor = get_top_ancestor( $item );
+	if ( empty( $top_ancestor ) ) {
+		return '';
+	}
 
-	$title = isset($top_ancestor->title) ? $top_ancestor->title : $top_ancestor->post_title;
+	$title = $top_ancestor->post_title;
 
-	$keyword = strtolower(preg_split("/\ |,\ */", trim($title))[0]);
-	$keyword = str_replace(array('å', 'ä', 'ö'), array('a', 'a', 'o'), $keyword);
+	$keyword = strtolower( preg_split( "/\ |,\ */", trim( $title ) )[0] );
+	$keyword = str_replace( array( 'å', 'ä', 'ö' ), array( 'a', 'a', 'o' ), $keyword );
 
 	return $keyword;
 }
