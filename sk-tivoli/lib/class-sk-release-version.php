@@ -2,6 +2,7 @@
 
 /**
  * Handles the theme release versioning.
+ * Prints out theme version in admin bar.
  *
  * @author Daniel Pihlström <daniel.pihlstrom@cybercom.com>
  *
@@ -11,12 +12,15 @@
  */
 class SK_Release_Version {
 
+	public $version;
+
 	/**
 	 * SK_Release_Version constructor.
 	 */
 	public function __construct() {
 		add_action( 'admin_bar_menu', array( $this, 'add_version' ), 110 );
 	}
+
 
 	/**
 	 * Grab the version number and add to admin-bar.
@@ -27,7 +31,10 @@ class SK_Release_Version {
 	 *
 	 */
 	public function add_version() {
-		$this->add_root_menu( 'Tivoli Version ' . VERSION, 'version' );
+		$version = wp_get_theme()->get( 'Version' );
+		if ( ! empty( $version ) ) {
+			$this->add_root_menu( 'Tivoli Version ' . $version, 'version' );
+		}
 	}
 
 	/**
@@ -52,11 +59,6 @@ class SK_Release_Version {
 	}
 
 }
-
-/**
- * Include file with theme version.
- */
-require_once get_template_directory() . '/version.php';
 
 // Initialize object
 if ( class_exists( 'SK_Release_Version' ) ) {
