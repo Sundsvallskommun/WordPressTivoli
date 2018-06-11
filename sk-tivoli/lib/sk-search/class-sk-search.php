@@ -8,7 +8,8 @@
  * @since 1.0
  */
 
-require_once __DIR__.'/sk-search-data.php';
+require_once __DIR__.'/class-sk-search-alias.php';
+$sk_search_alias = new SK_Search_Alias();
 
 class SK_Search {
 

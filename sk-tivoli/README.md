@@ -4,8 +4,6 @@ WordPress-plugins:
 
 * [ACF (Advanced Custom Fields) Pro](http://www.advancedcustomfields.com/pro/)
 
-* [Location "Nav Menu" for ACF](https://wordpress.org/plugins/location-nav-menu-for-acf/)
-
 * [TinyMCE Advanced](https://sv.wordpress.org/plugins/tinymce-advanced/)
 
 	(Används just nu endast för tabeller, som läggs till programmatiskt i
@@ -18,7 +16,6 @@ WordPress-plugins:
 2. Installera DB
 3. Lägg in eller symlinka temat i `wp-content/themes`
 4. Installera och aktivera WordPress-plugins (se beroenden ovan).
-5. Synkronisera ACF Fältgrupper
 
 En startsida och nyhetsarkiv behöver skapas och sedan kopplas på under "Inställningar > Läsa". 
 Välj en statisk sida för Startsida och Inläggsida.
