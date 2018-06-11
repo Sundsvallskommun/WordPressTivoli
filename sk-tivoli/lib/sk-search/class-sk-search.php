@@ -207,7 +207,7 @@ class SK_Search {
 
 		$result = array();
 
-		if(!$type || $type == 'pages') {
+		if(!$type || $type == 'page' || $type == 'pages') {
 			$pages = $this->searchresult_pages();
 			$result['pages'] = array(
 				'title' => __( 'Sidor', 'sk_tivoli' ),
@@ -217,7 +217,7 @@ class SK_Search {
 			);
 		}
 
-		if(!$type || $type == 'posts') {
+		if(!$type || $type == 'post' || $type == 'posts') {
 			$posts = $this->searchresult_posts();
 			$result['posts'] = array(
 				'title' => __( 'Nyheter', 'sk_tivoli' ),
@@ -227,7 +227,7 @@ class SK_Search {
 			);
 		}
 
-		if((!$type || $type == 'contacts') && !$this->is_advanced_search) {
+		if((!$type || $type == 'contact' || $type == 'contacts') && !$this->is_advanced_search) {
 			$contacts = $this->searchresult_contacts();
 			$result['contacts'] = array(
 				'title' => __( 'Kontakter', 'sk_tivoli' ),
@@ -237,7 +237,7 @@ class SK_Search {
 			);
 		}
 
-		if((!$type || $type == 'attachments') && !$this->is_advanced_search) {
+		if((!$type || $type == 'attachment' || $type == 'attachments') && !$this->is_advanced_search) {
 			$attachments = $this->searchresult_attachments();
 			$result['attachments'] = array(
 				'title' => __( 'Bilder och dokument', 'sk_tivoli' ),
