@@ -11,6 +11,28 @@
 
 http://semver.org/
 
+== Version 1.13.0 ==
+
+=== MINOR ===
+* Added versioning into style.css and removed version.php.
+
+=== PATCH/FIX ===
+* Replaced deprecated get_page to get_post.
+* Fix for search suggestions not showing.
+
+
+== Version 1.12.3 ==
+
+=== PATCH/FIX ===
+* Fix to not save search alias element to all post types, added option to set post types for search alias to be attached to.
+
+== Version 1.12.2 ==
+
+=== PATCH/FIX ===
+* Limit for page lead on navigation cards when ingress/lead is inactive.
+* added color for links in content.
+
+
 == Version 1.12.0 ==
 
 === MINOR ===
