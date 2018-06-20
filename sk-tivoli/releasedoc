@@ -11,6 +11,11 @@
 
 http://semver.org/
 
+== Version 1.13.1 ==
+
+=== PATCH/FIX ===
+* Fix for colors in nav menu that broke down in previous release.
+
 == Version 1.13.0 ==
 
 === MINOR ===
