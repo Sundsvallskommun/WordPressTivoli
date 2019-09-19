@@ -11,6 +11,11 @@
 
 http://semver.org/
 
+== Version 1.13.2 ==
+
+=== PATCH/FIX ===
+* Added back missing acf fields for bildpuffar.
+
 == Version 1.13.1 ==
 
 === PATCH/FIX ===
