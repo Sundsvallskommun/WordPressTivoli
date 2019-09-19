@@ -16,10 +16,10 @@
                 "id": ""
             },
             "collapsed": "",
-            "min": "",
+            "min": 0,
             "max": 3,
             "layout": "table",
-            "button_label": "L\u00e4gg till puff",
+            "button_label": "Lägg till puff",
             "sub_fields": [
                 {
                     "key": "field_576116421495d",
@@ -79,12 +79,8 @@
                         "class": "",
                         "id": ""
                     },
-                    "post_type": [
-
-                    ],
-                    "taxonomy": [
-
-                    ],
+                    "post_type": [],
+                    "taxonomy": [],
                     "allow_null": 0,
                     "multiple": 0,
                     "allow_archives": 1
@@ -106,6 +102,13 @@
                 "operator": "==",
                 "value": "templates\/page-advanced.php"
             }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates\/page-start-simple.php"
+            }
         ]
     ],
     "menu_order": 5,
@@ -114,8 +117,7 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 0,
+    "active": 1,
     "description": "",
-    "menu_item_level": "all",
-    "modified": 1483452979
+    "modified": 1568889403
 }
